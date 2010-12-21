@@ -1,0 +1,233 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BAB9D672127A6E4F00EF71E0 /* WeiboParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB9D670127A6E4F00EF71E0 /* WeiboParser.cpp */; };
+		BAB9D673127A6E4F00EF71E0 /* WeiboParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BAB9D671127A6E4F00EF71E0 /* WeiboParser.h */; };
+		BAB9D6BA127A7B7C00EF71E0 /* bbiconv.cc in Sources */ = {isa = PBXBuildFile; fileRef = BAB9D6B4127A7B7C00EF71E0 /* bbiconv.cc */; };
+		BAB9D6BB127A7B7C00EF71E0 /* bbiconv.h in Headers */ = {isa = PBXBuildFile; fileRef = BAB9D6B5127A7B7C00EF71E0 /* bbiconv.h */; };
+		BAB9D6BC127A7B7C00EF71E0 /* strconv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB9D6B6127A7B7C00EF71E0 /* strconv.cpp */; };
+		BAB9D6BD127A7B7C00EF71E0 /* strconv.h in Headers */ = {isa = PBXBuildFile; fileRef = BAB9D6B7127A7B7C00EF71E0 /* strconv.h */; };
+		BAB9D6BE127A7B7C00EF71E0 /* Urlcode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB9D6B8127A7B7C00EF71E0 /* Urlcode.cpp */; };
+		BAB9D6BF127A7B7C00EF71E0 /* Urlcode.h in Headers */ = {isa = PBXBuildFile; fileRef = BAB9D6B9127A7B7C00EF71E0 /* Urlcode.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BAB9D670127A6E4F00EF71E0 /* WeiboParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WeiboParser.cpp; path = ../WeiboParser.cpp; sourceTree = SOURCE_ROOT; };
+		BAB9D671127A6E4F00EF71E0 /* WeiboParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeiboParser.h; path = ../WeiboParser.h; sourceTree = SOURCE_ROOT; };
+		BAB9D6B4127A7B7C00EF71E0 /* bbiconv.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bbiconv.cc; path = ../../common/bbiconv.cc; sourceTree = SOURCE_ROOT; };
+		BAB9D6B5127A7B7C00EF71E0 /* bbiconv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bbiconv.h; path = ../../common/bbiconv.h; sourceTree = SOURCE_ROOT; };
+		BAB9D6B6127A7B7C00EF71E0 /* strconv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = strconv.cpp; path = ../../common/strconv.cpp; sourceTree = SOURCE_ROOT; };
+		BAB9D6B7127A7B7C00EF71E0 /* strconv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = strconv.h; path = ../../common/strconv.h; sourceTree = SOURCE_ROOT; };
+		BAB9D6B8127A7B7C00EF71E0 /* Urlcode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Urlcode.cpp; path = ../../common/Urlcode.cpp; sourceTree = SOURCE_ROOT; };
+		BAB9D6B9127A7B7C00EF71E0 /* Urlcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Urlcode.h; path = ../../common/Urlcode.h; sourceTree = SOURCE_ROOT; };
+		D2AAC046055464E500DB518D /* libwbParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libwbParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D289987405E68DCB004EDB86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* wbParser */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6A0FF2B0290797F04C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = wbParser;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				BAB9D6B4127A7B7C00EF71E0 /* bbiconv.cc */,
+				BAB9D6B5127A7B7C00EF71E0 /* bbiconv.h */,
+				BAB9D6B6127A7B7C00EF71E0 /* strconv.cpp */,
+				BAB9D6B7127A7B7C00EF71E0 /* strconv.h */,
+				BAB9D6B8127A7B7C00EF71E0 /* Urlcode.cpp */,
+				BAB9D6B9127A7B7C00EF71E0 /* Urlcode.h */,
+				BAB9D670127A6E4F00EF71E0 /* WeiboParser.cpp */,
+				BAB9D671127A6E4F00EF71E0 /* WeiboParser.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC046055464E500DB518D /* libwbParser.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6A0FF2B0290797F04C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC043055464E500DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAB9D673127A6E4F00EF71E0 /* WeiboParser.h in Headers */,
+				BAB9D6BB127A7B7C00EF71E0 /* bbiconv.h in Headers */,
+				BAB9D6BD127A7B7C00EF71E0 /* strconv.h in Headers */,
+				BAB9D6BF127A7B7C00EF71E0 /* Urlcode.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC045055464E500DB518D /* wbParser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB91EB08733DB70010E9CD /* Build configuration list for PBXNativeTarget "wbParser" */;
+			buildPhases = (
+				D2AAC043055464E500DB518D /* Headers */,
+				D2AAC044055464E500DB518D /* Sources */,
+				D289987405E68DCB004EDB86 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = wbParser;
+			productName = wbParser;
+			productReference = D2AAC046055464E500DB518D /* libwbParser.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB91EF08733DB70010E9CD /* Build configuration list for PBXProject "wbParser" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* wbParser */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC045055464E500DB518D /* wbParser */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC044055464E500DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAB9D672127A6E4F00EF71E0 /* WeiboParser.cpp in Sources */,
+				BAB9D6BA127A7B7C00EF71E0 /* bbiconv.cc in Sources */,
+				BAB9D6BC127A7B7C00EF71E0 /* strconv.cpp in Sources */,
+				BAB9D6BE127A7B7C00EF71E0 /* Urlcode.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB91EC08733DB70010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = wbParser;
+			};
+			name = Debug;
+		};
+		1DEB91ED08733DB70010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = wbParser;
+			};
+			name = Release;
+		};
+		1DEB91F008733DB70010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../third-party/include/json",
+					"../../third-party/include/tinyxml",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"../../third-party/lib/MACOS_X/json",
+					"../../third-party/lib/MACOS_X/tinyxml",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		1DEB91F108733DB70010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB91EB08733DB70010E9CD /* Build configuration list for PBXNativeTarget "wbParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91EC08733DB70010E9CD /* Debug */,
+				1DEB91ED08733DB70010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB91EF08733DB70010E9CD /* Build configuration list for PBXProject "wbParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91F008733DB70010E9CD /* Debug */,
+				1DEB91F108733DB70010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

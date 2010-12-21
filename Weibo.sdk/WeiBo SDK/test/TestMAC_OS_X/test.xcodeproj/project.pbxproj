@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8DD76F6A0486A84900D96B5E /* test.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* test.1 */; };
+		BAB9D5E5127A5D9000EF71E0 /* wbcallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB9D5E1127A5D9000EF71E0 /* wbcallback.cpp */; };
+		BAB9D5E6127A5D9000EF71E0 /* wbinit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB9D5E3127A5D9000EF71E0 /* wbinit.cpp */; };
+		BAB9D5F1127A5DA300EF71E0 /* UnitTestDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB9D5E7127A5DA300EF71E0 /* UnitTestDisplay.cpp */; };
+		BAB9D5F2127A5DA300EF71E0 /* WeiboParseFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB9D5EA127A5DA300EF71E0 /* WeiboParseFunc.cpp */; };
+		BAB9D5F3127A5DA300EF71E0 /* WeiboParseObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB9D5EC127A5DA300EF71E0 /* WeiboParseObj.cpp */; };
+		BAB9D5F4127A5DA300EF71E0 /* WeiboParserMemop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB9D5EE127A5DA300EF71E0 /* WeiboParserMemop.cpp */; };
+		BAB9D8BA127AB58300EF71E0 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB9D8B8127AB58300EF71E0 /* stdafx.cpp */; };
+		BAB9D922127ABCEB00EF71E0 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB9D921127ABCEB00EF71E0 /* test.cpp */; };
+		C0158DF3127D87A90087119F /* libwbParser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0158DF2127D87A90087119F /* libwbParser.a */; };
+		C0158DF5127D87C30087119F /* libWeibo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0158DF4127D87C30087119F /* libWeibo.a */; };
+		C0158DF9127D87E40087119F /* libhttp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0158DF6127D87E40087119F /* libhttp.a */; };
+		C0158DFA127D87E40087119F /* libjson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0158DF7127D87E40087119F /* libjson.a */; };
+		C0158DFB127D87E40087119F /* libtinyxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0158DF8127D87E40087119F /* libtinyxml.a */; };
+		C01590DC127DBC9A0087119F /* libiconv.2.4.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C01590DB127DBC9A0087119F /* libiconv.2.4.0.dylib */; };
+		C01590E2127DBCB90087119F /* libcurl.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C01590E1127DBCB90087119F /* libcurl.4.dylib */; };
+		C01590E6127DBCC20087119F /* libcrypto.0.9.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C01590E5127DBCC20087119F /* libcrypto.0.9.8.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BAB9D882127AB3A100EF71E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BAB9D87B127AB3A100EF71E0 /* Weibo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC046055464E500DB518D;
+			remoteInfo = Weibo;
+		};
+		C0158E0E127D9A400087119F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0158E07127D9A400087119F /* wbParser.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC046055464E500DB518D;
+			remoteInfo = wbParser;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DD76F690486A84900D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				8DD76F6A0486A84900D96B5E /* test.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8DD76F6C0486A84900D96B5E /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAB9D5E1127A5D9000EF71E0 /* wbcallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wbcallback.cpp; path = ../wbcallback.cpp; sourceTree = SOURCE_ROOT; };
+		BAB9D5E2127A5D9000EF71E0 /* wbcallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wbcallback.h; path = ../wbcallback.h; sourceTree = SOURCE_ROOT; };
+		BAB9D5E3127A5D9000EF71E0 /* wbinit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wbinit.cpp; path = ../wbinit.cpp; sourceTree = SOURCE_ROOT; };
+		BAB9D5E4127A5D9000EF71E0 /* wbinit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wbinit.h; path = ../wbinit.h; sourceTree = SOURCE_ROOT; };
+		BAB9D5E7127A5DA300EF71E0 /* UnitTestDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UnitTestDisplay.cpp; path = ../WeiboParse/UnitTestDisplay.cpp; sourceTree = SOURCE_ROOT; };
+		BAB9D5E8127A5DA300EF71E0 /* UnitTestDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitTestDisplay.h; path = ../WeiboParse/UnitTestDisplay.h; sourceTree = SOURCE_ROOT; };
+		BAB9D5E9127A5DA300EF71E0 /* WeiboParse.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = WeiboParse.inl; path = ../WeiboParse/WeiboParse.inl; sourceTree = SOURCE_ROOT; };
+		BAB9D5EA127A5DA300EF71E0 /* WeiboParseFunc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WeiboParseFunc.cpp; path = ../WeiboParse/WeiboParseFunc.cpp; sourceTree = SOURCE_ROOT; };
+		BAB9D5EB127A5DA300EF71E0 /* WeiboParseFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeiboParseFunc.h; path = ../WeiboParse/WeiboParseFunc.h; sourceTree = SOURCE_ROOT; };
+		BAB9D5EC127A5DA300EF71E0 /* WeiboParseObj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WeiboParseObj.cpp; path = ../WeiboParse/WeiboParseObj.cpp; sourceTree = SOURCE_ROOT; };
+		BAB9D5ED127A5DA300EF71E0 /* WeiboParseObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeiboParseObj.h; path = ../WeiboParse/WeiboParseObj.h; sourceTree = SOURCE_ROOT; };
+		BAB9D5EE127A5DA300EF71E0 /* WeiboParserMemop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WeiboParserMemop.cpp; path = ../WeiboParse/WeiboParserMemop.cpp; sourceTree = SOURCE_ROOT; };
+		BAB9D5EF127A5DA300EF71E0 /* WeiboParserMemop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeiboParserMemop.h; path = ../WeiboParse/WeiboParserMemop.h; sourceTree = SOURCE_ROOT; };
+		BAB9D5F0127A5DA300EF71E0 /* WeiboParseStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeiboParseStruct.h; path = ../WeiboParse/WeiboParseStruct.h; sourceTree = SOURCE_ROOT; };
+		BAB9D87B127AB3A100EF71E0 /* Weibo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Weibo.xcodeproj; path = ../../libWeiboMAC_OS_X/Weibo.xcodeproj; sourceTree = SOURCE_ROOT; };
+		BAB9D8B8127AB58300EF71E0 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = stdafx.cpp; path = ../stdafx.cpp; sourceTree = SOURCE_ROOT; };
+		BAB9D8B9127AB58300EF71E0 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stdafx.h; path = ../stdafx.h; sourceTree = SOURCE_ROOT; };
+		BAB9D921127ABCEB00EF71E0 /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test.cpp; path = ../test.cpp; sourceTree = SOURCE_ROOT; };
+		C0158DF2127D87A90087119F /* libwbParser.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwbParser.a; path = ../../lib/MACOS_X/libwbParser/Debug/libwbParser.a; sourceTree = SOURCE_ROOT; };
+		C0158DF4127D87C30087119F /* libWeibo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeibo.a; path = ../../lib/MACOS_X/libWeibo/Debug/libWeibo.a; sourceTree = SOURCE_ROOT; };
+		C0158DF6127D87E40087119F /* libhttp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhttp.a; path = "../../third-party/lib/MACOS_X/libhttp/Debug/libhttp.a"; sourceTree = SOURCE_ROOT; };
+		C0158DF7127D87E40087119F /* libjson.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjson.a; path = "../../third-party/lib/MACOS_X/libjson/Debug/libjson.a"; sourceTree = SOURCE_ROOT; };
+		C0158DF8127D87E40087119F /* libtinyxml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtinyxml.a; path = "../../third-party/lib/MACOS_X/libtinyxml/Debug/libtinyxml.a"; sourceTree = SOURCE_ROOT; };
+		C0158E07127D9A400087119F /* wbParser.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = wbParser.xcodeproj; path = ../../wbParser/wbParserMAC_OS_X/wbParser.xcodeproj; sourceTree = SOURCE_ROOT; };
+		C01590DB127DBC9A0087119F /* libiconv.2.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.4.0.dylib; path = "../../third-party/lib/MACOS_X/depend/libiconv.2.4.0.dylib"; sourceTree = SOURCE_ROOT; };
+		C01590E1127DBCB90087119F /* libcurl.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.4.dylib; path = "../../third-party/lib/MACOS_X/depend/libcurl.4.dylib"; sourceTree = SOURCE_ROOT; };
+		C01590E5127DBCC20087119F /* libcrypto.0.9.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.0.9.8.dylib; path = "../../third-party/lib/MACOS_X/depend/libcrypto.0.9.8.dylib"; sourceTree = SOURCE_ROOT; };
+		C6859E8B029090EE04C91782 /* test.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = test.1; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76F660486A84900D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0158DF3127D87A90087119F /* libwbParser.a in Frameworks */,
+				C0158DF5127D87C30087119F /* libWeibo.a in Frameworks */,
+				C0158DF9127D87E40087119F /* libhttp.a in Frameworks */,
+				C0158DFA127D87E40087119F /* libjson.a in Frameworks */,
+				C0158DFB127D87E40087119F /* libtinyxml.a in Frameworks */,
+				C01590DC127DBC9A0087119F /* libiconv.2.4.0.dylib in Frameworks */,
+				C01590E2127DBCB90087119F /* libcurl.4.dylib in Frameworks */,
+				C01590E6127DBCC20087119F /* libcrypto.0.9.8.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				C0158DF4127D87C30087119F /* libWeibo.a */,
+				C0158DF6127D87E40087119F /* libhttp.a */,
+				C0158DF7127D87E40087119F /* libjson.a */,
+				C0158DF8127D87E40087119F /* libtinyxml.a */,
+				C0158DF2127D87A90087119F /* libwbParser.a */,
+				C01590E1127DBCB90087119F /* libcurl.4.dylib */,
+				C01590DB127DBC9A0087119F /* libiconv.2.4.0.dylib */,
+				C01590E5127DBCC20087119F /* libcrypto.0.9.8.dylib */,
+				BAB9D88C127AB3BC00EF71E0 /* DependProject */,
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6859E8C029090F304C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = test;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				BAB9D920127ABCCE00EF71E0 /* wbParser */,
+				BAB9D8B8127AB58300EF71E0 /* stdafx.cpp */,
+				BAB9D8B9127AB58300EF71E0 /* stdafx.h */,
+				BAB9D5E7127A5DA300EF71E0 /* UnitTestDisplay.cpp */,
+				BAB9D5E8127A5DA300EF71E0 /* UnitTestDisplay.h */,
+				BAB9D5E1127A5D9000EF71E0 /* wbcallback.cpp */,
+				BAB9D5E2127A5D9000EF71E0 /* wbcallback.h */,
+				BAB9D5E3127A5D9000EF71E0 /* wbinit.cpp */,
+				BAB9D5E4127A5D9000EF71E0 /* wbinit.h */,
+				BAB9D921127ABCEB00EF71E0 /* test.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD76F6C0486A84900D96B5E /* test */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BAB9D87C127AB3A100EF71E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BAB9D883127AB3A100EF71E0 /* libWeibo.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BAB9D88C127AB3BC00EF71E0 /* DependProject */ = {
+			isa = PBXGroup;
+			children = (
+				C0158E07127D9A400087119F /* wbParser.xcodeproj */,
+				BAB9D87B127AB3A100EF71E0 /* Weibo.xcodeproj */,
+			);
+			name = DependProject;
+			sourceTree = "<group>";
+		};
+		BAB9D920127ABCCE00EF71E0 /* wbParser */ = {
+			isa = PBXGroup;
+			children = (
+				BAB9D5E9127A5DA300EF71E0 /* WeiboParse.inl */,
+				BAB9D5EA127A5DA300EF71E0 /* WeiboParseFunc.cpp */,
+				BAB9D5EB127A5DA300EF71E0 /* WeiboParseFunc.h */,
+				BAB9D5EC127A5DA300EF71E0 /* WeiboParseObj.cpp */,
+				BAB9D5ED127A5DA300EF71E0 /* WeiboParseObj.h */,
+				BAB9D5EE127A5DA300EF71E0 /* WeiboParserMemop.cpp */,
+				BAB9D5EF127A5DA300EF71E0 /* WeiboParserMemop.h */,
+				BAB9D5F0127A5DA300EF71E0 /* WeiboParseStruct.h */,
+			);
+			name = wbParser;
+			sourceTree = "<group>";
+		};
+		C0158E08127D9A400087119F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0158E0F127D9A400087119F /* libwbParser.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6859E8C029090F304C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				C6859E8B029090EE04C91782 /* test.1 */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD76F620486A84900D96B5E /* test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "test" */;
+			buildPhases = (
+				8DD76F640486A84900D96B5E /* Sources */,
+				8DD76F660486A84900D96B5E /* Frameworks */,
+				8DD76F690486A84900D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = test;
+			productInstallPath = "$(HOME)/bin";
+			productName = test;
+			productReference = 8DD76F6C0486A84900D96B5E /* test */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "test" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* test */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C0158E08127D9A400087119F /* Products */;
+					ProjectRef = C0158E07127D9A400087119F /* wbParser.xcodeproj */;
+				},
+				{
+					ProductGroup = BAB9D87C127AB3A100EF71E0 /* Products */;
+					ProjectRef = BAB9D87B127AB3A100EF71E0 /* Weibo.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				8DD76F620486A84900D96B5E /* test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BAB9D883127AB3A100EF71E0 /* libWeibo.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libWeibo.a;
+			remoteRef = BAB9D882127AB3A100EF71E0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C0158E0F127D9A400087119F /* libwbParser.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libwbParser.a;
+			remoteRef = C0158E0E127D9A400087119F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76F640486A84900D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAB9D5E5127A5D9000EF71E0 /* wbcallback.cpp in Sources */,
+				BAB9D5E6127A5D9000EF71E0 /* wbinit.cpp in Sources */,
+				BAB9D5F1127A5DA300EF71E0 /* UnitTestDisplay.cpp in Sources */,
+				BAB9D5F2127A5DA300EF71E0 /* WeiboParseFunc.cpp in Sources */,
+				BAB9D5F3127A5DA300EF71E0 /* WeiboParseObj.cpp in Sources */,
+				BAB9D5F4127A5DA300EF71E0 /* WeiboParserMemop.cpp in Sources */,
+				BAB9D8BA127AB58300EF71E0 /* stdafx.cpp in Sources */,
+				BAB9D922127ABCEB00EF71E0 /* test.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB923208733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../lib/LINUX/wbParser/Debug\"",
+					"\"$(SRCROOT)/../../lib/LINUX/WeiboSDK/Debug\"",
+					"\"$(SRCROOT)/../../third-party/lib/LINUX/libhttp/Debug\"",
+					"\"$(SRCROOT)/../../third-party/lib/LINUX/libjson/Debug\"",
+					"\"$(SRCROOT)/../../third-party/lib/LINUX/tinyxml/Debug\"",
+					"\"$(SRCROOT)/../../lib/MACOS_X/libwbParser/Debug\"",
+					"\"$(SRCROOT)/../../lib/MACOS_X/libWeibo/Debug\"",
+					"\"$(SRCROOT)/../../third-party/lib/MACOS_X/libhttp/Debug\"",
+					"\"$(SRCROOT)/../../third-party/lib/MACOS_X/libjson/Debug\"",
+					"\"$(SRCROOT)/../../third-party/lib/MACOS_X/libtinyxml/Debug\"",
+					"\"$(SRCROOT)/../../third-party/lib/MACOS_X/libcurl/Debug/lib\"",
+					/opt/local/var/macports/software/openssl/1.0.0a_0/opt/local/lib,
+					/opt/local/var/macports/software/libiconv/1.13.1_0/opt/local/lib,
+					/opt/local/lib,
+					"\"$(SRCROOT)/../../third-party/lib/MACOS_X/depend\"",
+				);
+				PRODUCT_NAME = test;
+			};
+			name = Debug;
+		};
+		1DEB923308733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../lib/LINUX/wbParser/Debug\"",
+					"\"$(SRCROOT)/../../lib/LINUX/WeiboSDK/Debug\"",
+					"\"$(SRCROOT)/../../third-party/lib/LINUX/libhttp/Debug\"",
+					"\"$(SRCROOT)/../../third-party/lib/LINUX/libjson/Debug\"",
+					"\"$(SRCROOT)/../../third-party/lib/LINUX/tinyxml/Debug\"",
+					"\"$(SRCROOT)/../../lib/MACOS_X/libwbParser/Debug\"",
+					"\"$(SRCROOT)/../../lib/MACOS_X/libWeibo/Debug\"",
+					"\"$(SRCROOT)/../../third-party/lib/MACOS_X/libhttp/Debug\"",
+					"\"$(SRCROOT)/../../third-party/lib/MACOS_X/libjson/Debug\"",
+					"\"$(SRCROOT)/../../third-party/lib/MACOS_X/libtinyxml/Debug\"",
+					"\"$(SRCROOT)/../../third-party/lib/MACOS_X/libcurl/Debug/lib\"",
+					/opt/local/var/macports/software/openssl/1.0.0a_0/opt/local/lib,
+					/opt/local/var/macports/software/libiconv/1.13.1_0/opt/local/lib,
+					/opt/local/lib,
+					"\"$(SRCROOT)/../../third-party/lib/MACOS_X/depend\"",
+				);
+				PRODUCT_NAME = test;
+			};
+			name = Release;
+		};
+		1DEB923608733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ADDITIONAL_SDKS = "";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../../include,
+					"../../../third-party/include",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-fpermissive",
+				);
+				PREBINDING = NO;
+				PRELINK_FLAGS = "";
+				SDKROOT = macosx10.6;
+				SECTORDER_FLAGS = "";
+				STRIPFLAGS = "";
+				USER_HEADER_SEARCH_PATHS = "";
+				WARNING_LDFLAGS = "";
+			};
+			name = Debug;
+		};
+		1DEB923708733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923208733DC60010E9CD /* Debug */,
+				1DEB923308733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923608733DC60010E9CD /* Debug */,
+				1DEB923708733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
