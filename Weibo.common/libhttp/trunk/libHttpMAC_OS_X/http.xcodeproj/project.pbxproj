@@ -1,0 +1,328 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BAC81BC2127958C600441721 /* loHttp.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BBF127958C600441721 /* loHttp.h */; };
+		BAC81BC3127958C600441721 /* loHttp+.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BC0127958C600441721 /* loHttp+.h */; };
+		BAC81BC4127958C600441721 /* loHttpDef.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BC1127958C600441721 /* loHttpDef.h */; };
+		BAC81BDD127958D800441721 /* bbiconv.cc in Sources */ = {isa = PBXBuildFile; fileRef = BAC81BC5127958D800441721 /* bbiconv.cc */; };
+		BAC81BDE127958D800441721 /* bbiconv.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BC6127958D800441721 /* bbiconv.h */; };
+		BAC81BE0127958D800441721 /* loBytebuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAC81BC8127958D800441721 /* loBytebuffer.cpp */; };
+		BAC81BE1127958D800441721 /* loBytebuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BC9127958D800441721 /* loBytebuffer.h */; };
+		BAC81BE2127958D800441721 /* loFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAC81BCA127958D800441721 /* loFile.cpp */; };
+		BAC81BE3127958D800441721 /* loFile.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BCB127958D800441721 /* loFile.h */; };
+		BAC81BE4127958D800441721 /* loHttp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAC81BCC127958D800441721 /* loHttp.cpp */; };
+		BAC81BE5127958D800441721 /* loHttp+.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAC81BCD127958D800441721 /* loHttp+.cpp */; };
+		BAC81BE6127958D800441721 /* loHttpAssoc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAC81BCE127958D800441721 /* loHttpAssoc.cpp */; };
+		BAC81BE7127958D800441721 /* loHttpAssoc.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BCF127958D800441721 /* loHttpAssoc.h */; };
+		BAC81BE8127958D800441721 /* loHttpCurl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAC81BD0127958D800441721 /* loHttpCurl.cpp */; };
+		BAC81BE9127958D800441721 /* loHttpCurl.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BD1127958D800441721 /* loHttpCurl.h */; };
+		BAC81BEA127958D800441721 /* loHttpMap.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BD2127958D800441721 /* loHttpMap.h */; };
+		BAC81BEB127958D800441721 /* loHttpStr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAC81BD3127958D800441721 /* loHttpStr.cpp */; };
+		BAC81BEC127958D800441721 /* loHttpStr.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BD4127958D800441721 /* loHttpStr.h */; };
+		BAC81BED127958D800441721 /* loHttpStruct.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BD5127958D800441721 /* loHttpStruct.h */; };
+		BAC81BEE127958D800441721 /* loHttpThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAC81BD6127958D800441721 /* loHttpThread.cpp */; };
+		BAC81BEF127958D800441721 /* loHttpThread.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BD7127958D800441721 /* loHttpThread.h */; };
+		BAC81BF0127958D800441721 /* loSafeInt.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BD8127958D800441721 /* loSafeInt.hpp */; };
+		BAC81BF1127958D800441721 /* lostrconv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAC81BD9127958D800441721 /* lostrconv.cpp */; };
+		BAC81BF2127958D800441721 /* lostrconv.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BDA127958D800441721 /* lostrconv.h */; };
+		BAC81BF3127958D800441721 /* loUrlcode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAC81BDB127958D800441721 /* loUrlcode.cpp */; };
+		BAC81BF4127958D800441721 /* loUrlcode.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81BDC127958D800441721 /* loUrlcode.h */; };
+		BAC81C0B1279593C00441721 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAC81C081279593C00441721 /* stdafx.cpp */; };
+		BAC81C0C1279593C00441721 /* stdafx.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81C091279593C00441721 /* stdafx.h */; };
+		BAC81C0D1279593C00441721 /* targetver.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81C0A1279593C00441721 /* targetver.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BAC81BBF127958C600441721 /* loHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loHttp.h; path = ../include/loHttp.h; sourceTree = SOURCE_ROOT; };
+		BAC81BC0127958C600441721 /* loHttp+.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "loHttp+.h"; path = "../include/loHttp+.h"; sourceTree = SOURCE_ROOT; };
+		BAC81BC1127958C600441721 /* loHttpDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loHttpDef.h; path = ../include/loHttpDef.h; sourceTree = SOURCE_ROOT; };
+		BAC81BC5127958D800441721 /* bbiconv.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bbiconv.cc; path = ../src/bbiconv.cc; sourceTree = SOURCE_ROOT; };
+		BAC81BC6127958D800441721 /* bbiconv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bbiconv.h; path = ../src/bbiconv.h; sourceTree = SOURCE_ROOT; };
+		BAC81BC8127958D800441721 /* loBytebuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = loBytebuffer.cpp; path = ../src/loBytebuffer.cpp; sourceTree = SOURCE_ROOT; };
+		BAC81BC9127958D800441721 /* loBytebuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loBytebuffer.h; path = ../src/loBytebuffer.h; sourceTree = SOURCE_ROOT; };
+		BAC81BCA127958D800441721 /* loFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = loFile.cpp; path = ../src/loFile.cpp; sourceTree = SOURCE_ROOT; };
+		BAC81BCB127958D800441721 /* loFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loFile.h; path = ../src/loFile.h; sourceTree = SOURCE_ROOT; };
+		BAC81BCC127958D800441721 /* loHttp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = loHttp.cpp; path = ../src/loHttp.cpp; sourceTree = SOURCE_ROOT; };
+		BAC81BCD127958D800441721 /* loHttp+.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "loHttp+.cpp"; path = "../src/loHttp+.cpp"; sourceTree = SOURCE_ROOT; };
+		BAC81BCE127958D800441721 /* loHttpAssoc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = loHttpAssoc.cpp; path = ../src/loHttpAssoc.cpp; sourceTree = SOURCE_ROOT; };
+		BAC81BCF127958D800441721 /* loHttpAssoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loHttpAssoc.h; path = ../src/loHttpAssoc.h; sourceTree = SOURCE_ROOT; };
+		BAC81BD0127958D800441721 /* loHttpCurl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = loHttpCurl.cpp; path = ../src/loHttpCurl.cpp; sourceTree = SOURCE_ROOT; };
+		BAC81BD1127958D800441721 /* loHttpCurl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loHttpCurl.h; path = ../src/loHttpCurl.h; sourceTree = SOURCE_ROOT; };
+		BAC81BD2127958D800441721 /* loHttpMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loHttpMap.h; path = ../src/loHttpMap.h; sourceTree = SOURCE_ROOT; };
+		BAC81BD3127958D800441721 /* loHttpStr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = loHttpStr.cpp; path = ../src/loHttpStr.cpp; sourceTree = SOURCE_ROOT; };
+		BAC81BD4127958D800441721 /* loHttpStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loHttpStr.h; path = ../src/loHttpStr.h; sourceTree = SOURCE_ROOT; };
+		BAC81BD5127958D800441721 /* loHttpStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loHttpStruct.h; path = ../src/loHttpStruct.h; sourceTree = SOURCE_ROOT; };
+		BAC81BD6127958D800441721 /* loHttpThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = loHttpThread.cpp; path = ../src/loHttpThread.cpp; sourceTree = SOURCE_ROOT; };
+		BAC81BD7127958D800441721 /* loHttpThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loHttpThread.h; path = ../src/loHttpThread.h; sourceTree = SOURCE_ROOT; };
+		BAC81BD8127958D800441721 /* loSafeInt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = loSafeInt.hpp; path = ../src/loSafeInt.hpp; sourceTree = SOURCE_ROOT; };
+		BAC81BD9127958D800441721 /* lostrconv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lostrconv.cpp; path = ../src/lostrconv.cpp; sourceTree = SOURCE_ROOT; };
+		BAC81BDA127958D800441721 /* lostrconv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lostrconv.h; path = ../src/lostrconv.h; sourceTree = SOURCE_ROOT; };
+		BAC81BDB127958D800441721 /* loUrlcode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = loUrlcode.cpp; path = ../src/loUrlcode.cpp; sourceTree = SOURCE_ROOT; };
+		BAC81BDC127958D800441721 /* loUrlcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loUrlcode.h; path = ../src/loUrlcode.h; sourceTree = SOURCE_ROOT; };
+		BAC81C081279593C00441721 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = stdafx.cpp; path = ../stdafx.cpp; sourceTree = SOURCE_ROOT; };
+		BAC81C091279593C00441721 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stdafx.h; path = ../stdafx.h; sourceTree = SOURCE_ROOT; };
+		BAC81C0A1279593C00441721 /* targetver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = targetver.h; path = ../targetver.h; sourceTree = SOURCE_ROOT; };
+		D2AAC046055464E500DB518D /* libhttp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libhttp.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D289987405E68DCB004EDB86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* http */ = {
+			isa = PBXGroup;
+			children = (
+				BAC81BBE127958B500441721 /* Header */,
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6A0FF2B0290797F04C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = http;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				BAC81C081279593C00441721 /* stdafx.cpp */,
+				BAC81C091279593C00441721 /* stdafx.h */,
+				BAC81C0A1279593C00441721 /* targetver.h */,
+				BAC81BC5127958D800441721 /* bbiconv.cc */,
+				BAC81BC6127958D800441721 /* bbiconv.h */,
+				BAC81BC8127958D800441721 /* loBytebuffer.cpp */,
+				BAC81BC9127958D800441721 /* loBytebuffer.h */,
+				BAC81BCA127958D800441721 /* loFile.cpp */,
+				BAC81BCB127958D800441721 /* loFile.h */,
+				BAC81BCC127958D800441721 /* loHttp.cpp */,
+				BAC81BCD127958D800441721 /* loHttp+.cpp */,
+				BAC81BCE127958D800441721 /* loHttpAssoc.cpp */,
+				BAC81BCF127958D800441721 /* loHttpAssoc.h */,
+				BAC81BD0127958D800441721 /* loHttpCurl.cpp */,
+				BAC81BD1127958D800441721 /* loHttpCurl.h */,
+				BAC81BD2127958D800441721 /* loHttpMap.h */,
+				BAC81BD3127958D800441721 /* loHttpStr.cpp */,
+				BAC81BD4127958D800441721 /* loHttpStr.h */,
+				BAC81BD5127958D800441721 /* loHttpStruct.h */,
+				BAC81BD6127958D800441721 /* loHttpThread.cpp */,
+				BAC81BD7127958D800441721 /* loHttpThread.h */,
+				BAC81BD8127958D800441721 /* loSafeInt.hpp */,
+				BAC81BD9127958D800441721 /* lostrconv.cpp */,
+				BAC81BDA127958D800441721 /* lostrconv.h */,
+				BAC81BDB127958D800441721 /* loUrlcode.cpp */,
+				BAC81BDC127958D800441721 /* loUrlcode.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC046055464E500DB518D /* libhttp.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BAC81BBE127958B500441721 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				BAC81BBF127958C600441721 /* loHttp.h */,
+				BAC81BC0127958C600441721 /* loHttp+.h */,
+				BAC81BC1127958C600441721 /* loHttpDef.h */,
+			);
+			name = Header;
+			sourceTree = "<group>";
+		};
+		C6A0FF2B0290797F04C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC043055464E500DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAC81BC2127958C600441721 /* loHttp.h in Headers */,
+				BAC81BC3127958C600441721 /* loHttp+.h in Headers */,
+				BAC81BC4127958C600441721 /* loHttpDef.h in Headers */,
+				BAC81BDE127958D800441721 /* bbiconv.h in Headers */,
+				BAC81BE1127958D800441721 /* loBytebuffer.h in Headers */,
+				BAC81BE3127958D800441721 /* loFile.h in Headers */,
+				BAC81BE7127958D800441721 /* loHttpAssoc.h in Headers */,
+				BAC81BE9127958D800441721 /* loHttpCurl.h in Headers */,
+				BAC81BEA127958D800441721 /* loHttpMap.h in Headers */,
+				BAC81BEC127958D800441721 /* loHttpStr.h in Headers */,
+				BAC81BED127958D800441721 /* loHttpStruct.h in Headers */,
+				BAC81BEF127958D800441721 /* loHttpThread.h in Headers */,
+				BAC81BF0127958D800441721 /* loSafeInt.hpp in Headers */,
+				BAC81BF2127958D800441721 /* lostrconv.h in Headers */,
+				BAC81BF4127958D800441721 /* loUrlcode.h in Headers */,
+				BAC81C0C1279593C00441721 /* stdafx.h in Headers */,
+				BAC81C0D1279593C00441721 /* targetver.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC045055464E500DB518D /* http */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB91EB08733DB70010E9CD /* Build configuration list for PBXNativeTarget "http" */;
+			buildPhases = (
+				D2AAC043055464E500DB518D /* Headers */,
+				D2AAC044055464E500DB518D /* Sources */,
+				D289987405E68DCB004EDB86 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = http;
+			productName = http;
+			productReference = D2AAC046055464E500DB518D /* libhttp.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = NO;
+			};
+			buildConfigurationList = 1DEB91EF08733DB70010E9CD /* Build configuration list for PBXProject "http" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 08FB7794FE84155DC02AAC07 /* http */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC045055464E500DB518D /* http */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC044055464E500DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAC81BDD127958D800441721 /* bbiconv.cc in Sources */,
+				BAC81BE0127958D800441721 /* loBytebuffer.cpp in Sources */,
+				BAC81BE2127958D800441721 /* loFile.cpp in Sources */,
+				BAC81BE4127958D800441721 /* loHttp.cpp in Sources */,
+				BAC81BE5127958D800441721 /* loHttp+.cpp in Sources */,
+				BAC81BE6127958D800441721 /* loHttpAssoc.cpp in Sources */,
+				BAC81BE8127958D800441721 /* loHttpCurl.cpp in Sources */,
+				BAC81BEB127958D800441721 /* loHttpStr.cpp in Sources */,
+				BAC81BEE127958D800441721 /* loHttpThread.cpp in Sources */,
+				BAC81BF1127958D800441721 /* lostrconv.cpp in Sources */,
+				BAC81BF3127958D800441721 /* loUrlcode.cpp in Sources */,
+				BAC81C0B1279593C00441721 /* stdafx.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB91EC08733DB70010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = http;
+			};
+			name = Debug;
+		};
+		1DEB91ED08733DB70010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = http;
+			};
+			name = Release;
+		};
+		1DEB91F008733DB70010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../../../include;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+				USER_HEADER_SEARCH_PATHS = ../../../include;
+			};
+			name = Debug;
+		};
+		1DEB91F108733DB70010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB91EB08733DB70010E9CD /* Build configuration list for PBXNativeTarget "http" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91EC08733DB70010E9CD /* Debug */,
+				1DEB91ED08733DB70010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB91EF08733DB70010E9CD /* Build configuration list for PBXProject "http" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91F008733DB70010E9CD /* Debug */,
+				1DEB91F108733DB70010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

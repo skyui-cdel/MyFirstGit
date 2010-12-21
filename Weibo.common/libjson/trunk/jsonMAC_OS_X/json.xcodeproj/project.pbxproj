@@ -1,0 +1,250 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BAC81B82127957D000441721 /* autolink.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81B7B127957D000441721 /* autolink.h */; };
+		BAC81B83127957D000441721 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81B7C127957D000441721 /* config.h */; };
+		BAC81B84127957D000441721 /* forwards.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81B7D127957D000441721 /* forwards.h */; };
+		BAC81B85127957D000441721 /* json.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81B7E127957D000441721 /* json.h */; };
+		BAC81B86127957D000441721 /* reader.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81B7F127957D000441721 /* reader.h */; };
+		BAC81B87127957D000441721 /* value.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81B80127957D000441721 /* value.h */; };
+		BAC81B88127957D000441721 /* writer.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81B81127957D000441721 /* writer.h */; };
+		BAC81B90127957E400441721 /* json_batchallocator.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC81B89127957E400441721 /* json_batchallocator.h */; };
+		BAC81B91127957E400441721 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAC81B8C127957E400441721 /* json_reader.cpp */; };
+		BAC81B92127957E400441721 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAC81B8D127957E400441721 /* json_value.cpp */; };
+		BAC81B93127957E400441721 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAC81B8F127957E400441721 /* json_writer.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BAC81B7B127957D000441721 /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = autolink.h; path = ../include/json/autolink.h; sourceTree = SOURCE_ROOT; };
+		BAC81B7C127957D000441721 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = ../include/json/config.h; sourceTree = SOURCE_ROOT; };
+		BAC81B7D127957D000441721 /* forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = forwards.h; path = ../include/json/forwards.h; sourceTree = SOURCE_ROOT; };
+		BAC81B7E127957D000441721 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = json.h; path = ../include/json/json.h; sourceTree = SOURCE_ROOT; };
+		BAC81B7F127957D000441721 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = reader.h; path = ../include/json/reader.h; sourceTree = SOURCE_ROOT; };
+		BAC81B80127957D000441721 /* value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = value.h; path = ../include/json/value.h; sourceTree = SOURCE_ROOT; };
+		BAC81B81127957D000441721 /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = writer.h; path = ../include/json/writer.h; sourceTree = SOURCE_ROOT; };
+		BAC81B89127957E400441721 /* json_batchallocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = json_batchallocator.h; path = ../src/json_batchallocator.h; sourceTree = SOURCE_ROOT; };
+		BAC81B8A127957E400441721 /* json_internalarray.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = json_internalarray.inl; path = ../src/json_internalarray.inl; sourceTree = SOURCE_ROOT; };
+		BAC81B8B127957E400441721 /* json_internalmap.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = json_internalmap.inl; path = ../src/json_internalmap.inl; sourceTree = SOURCE_ROOT; };
+		BAC81B8C127957E400441721 /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_reader.cpp; path = ../src/json_reader.cpp; sourceTree = SOURCE_ROOT; };
+		BAC81B8D127957E400441721 /* json_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_value.cpp; path = ../src/json_value.cpp; sourceTree = SOURCE_ROOT; };
+		BAC81B8E127957E400441721 /* json_valueiterator.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = json_valueiterator.inl; path = ../src/json_valueiterator.inl; sourceTree = SOURCE_ROOT; };
+		BAC81B8F127957E400441721 /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_writer.cpp; path = ../src/json_writer.cpp; sourceTree = SOURCE_ROOT; };
+		D2AAC046055464E500DB518D /* libjson.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjson.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D289987405E68DCB004EDB86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				BAC81B7A127957B200441721 /* Header */,
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6A0FF2B0290797F04C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = json;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				BAC81B89127957E400441721 /* json_batchallocator.h */,
+				BAC81B8A127957E400441721 /* json_internalarray.inl */,
+				BAC81B8B127957E400441721 /* json_internalmap.inl */,
+				BAC81B8C127957E400441721 /* json_reader.cpp */,
+				BAC81B8D127957E400441721 /* json_value.cpp */,
+				BAC81B8E127957E400441721 /* json_valueiterator.inl */,
+				BAC81B8F127957E400441721 /* json_writer.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC046055464E500DB518D /* libjson.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BAC81B7A127957B200441721 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				BAC81B7B127957D000441721 /* autolink.h */,
+				BAC81B7C127957D000441721 /* config.h */,
+				BAC81B7D127957D000441721 /* forwards.h */,
+				BAC81B7E127957D000441721 /* json.h */,
+				BAC81B7F127957D000441721 /* reader.h */,
+				BAC81B80127957D000441721 /* value.h */,
+				BAC81B81127957D000441721 /* writer.h */,
+			);
+			name = Header;
+			sourceTree = "<group>";
+		};
+		C6A0FF2B0290797F04C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC043055464E500DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAC81B82127957D000441721 /* autolink.h in Headers */,
+				BAC81B83127957D000441721 /* config.h in Headers */,
+				BAC81B84127957D000441721 /* forwards.h in Headers */,
+				BAC81B85127957D000441721 /* json.h in Headers */,
+				BAC81B86127957D000441721 /* reader.h in Headers */,
+				BAC81B87127957D000441721 /* value.h in Headers */,
+				BAC81B88127957D000441721 /* writer.h in Headers */,
+				BAC81B90127957E400441721 /* json_batchallocator.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC045055464E500DB518D /* json */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB91EB08733DB70010E9CD /* Build configuration list for PBXNativeTarget "json" */;
+			buildPhases = (
+				D2AAC043055464E500DB518D /* Headers */,
+				D2AAC044055464E500DB518D /* Sources */,
+				D289987405E68DCB004EDB86 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = json;
+			productName = json;
+			productReference = D2AAC046055464E500DB518D /* libjson.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB91EF08733DB70010E9CD /* Build configuration list for PBXProject "json" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* json */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC045055464E500DB518D /* json */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC044055464E500DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAC81B91127957E400441721 /* json_reader.cpp in Sources */,
+				BAC81B92127957E400441721 /* json_value.cpp in Sources */,
+				BAC81B93127957E400441721 /* json_writer.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB91EC08733DB70010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = json;
+			};
+			name = Debug;
+		};
+		1DEB91ED08733DB70010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = json;
+			};
+			name = Release;
+		};
+		1DEB91F008733DB70010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		1DEB91F108733DB70010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB91EB08733DB70010E9CD /* Build configuration list for PBXNativeTarget "json" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91EC08733DB70010E9CD /* Debug */,
+				1DEB91ED08733DB70010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB91EF08733DB70010E9CD /* Build configuration list for PBXProject "json" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91F008733DB70010E9CD /* Debug */,
+				1DEB91F108733DB70010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

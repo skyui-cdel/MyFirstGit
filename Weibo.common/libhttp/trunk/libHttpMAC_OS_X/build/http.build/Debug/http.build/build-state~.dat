@@ -1,0 +1,788 @@
+Thttp
+v7
+r0
+t309942562.545950
+cCheck dependencies
+cCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/bbiconv.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/bbiconv.cc normal x86_64 c++ com.apple.compilers.gcc.4_2
+cCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/dllmain.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/dllmain.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+cCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loBytebuffer.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+cCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loFile.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+cCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loHttp.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+cCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loHttp+.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+cCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpAssoc.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+cCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpCurl.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+cCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpStr.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+cCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpThread.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+cCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/lostrconv.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/lostrconv.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+cCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loUrlcode.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loUrlcode.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+
+N/Developer/SDKs/MacOSX10.6.sdk
+c000000004BF4701900000000000000EE
+t1274310681
+s238
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/assert.h
+c000000004AC59C810000000000000DCB
+t1254464641
+s3531
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/curl/curl.h
+c000000004B90F1D8000000000001110E
+t1267790296
+s69902
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/errno.h
+c000000004AC59C8100000000000003EB
+t1254464641
+s1003
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/fcntl.h
+c000000004AC59C8100000000000003EA
+t1254464641
+s1002
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/iconv.h
+c000000004BE896FA0000000000001FBE
+t1273534202
+s8126
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/malloc/malloc.h
+c000000004AC59C8100000000000029BF
+t1254464641
+s10687
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/pthread.h
+c000000004AC59C8100000000000038F0
+t1254464641
+s14576
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/stdio.h
+c000000004AC59C820000000000004174
+t1254464642
+s16756
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/stdlib.h
+c000000004AC59C820000000000002DF5
+t1254464642
+s11765
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/string.h
+c000000004AC59C820000000000001731
+t1254464642
+s5937
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/sys/stat.h
+c000000004B90BBAA0000000000004A1D
+t1267776426
+s18973
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/sys/time.h
+c000000004B90BBAA0000000000001E17
+t1267776426
+s7703
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/sys/types.h
+c000000004B90BBAB0000000000002905
+t1267776427
+s10501
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/time.h
+c000000004AC59C82000000000000178E
+t1254464642
+s6030
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/unistd.h
+c000000004AC59C82000000000000563E
+t1254464642
+s22078
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stdarg.h
+c000000004AC59DB700000000000010DD
+t1254464951
+s4317
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp+.h
+c000000004CC6731C00000000000011EA
+t1288074012
+s4586
+i<libhttp/loHttpDef.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h
+c000000004CC7844D00000000000012C8
+t1288143949
+s4808
+i<libhttp/loHttpDef.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h
+c000000004CC7844D0000000000002E85
+t1288143949
+s11909
+i<common/lo/lodefine.h>
+i<time.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/bbiconv.cc
+c000000004CC7EB8100000000000023B3
+t1288170369
+s9139
+i"bbiconv.h"
+i<iconv.h>
+i<string>
+i<malloc/malloc.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/bbiconv.h
+c000000004CC7844E0000000000000F23
+t1288143950
+s3875
+i<string>
+i<stdio.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/dllmain.cpp
+c000000004CC6731C0000000000000155
+t1288074012
+s341
+i"stdafx.h"
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp
+c000000004CC6731C0000000000000B89
+t1288074012
+s2953
+i"stdafx.h"
+i"loBytebuffer.h"
+i<stdlib.h>
+i<stdio.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h
+c000000004CC6731C00000000000004DD
+t1288074012
+s1245
+i<string>
+i<common/lo/loctypes.h>
+i<common/loCommon.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp
+c000000004CC7F8A80000000000001092
+t1288173736
+s4242
+i"stdafx.h"
+i"loFile.h"
+i<unistd.h>
+i<sys/types.h>
+i<sys/stat.h>
+i<fcntl.h>
+i<bbiconv.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h
+c000000004CC7F8A80000000000000766
+t1288173736
+s1894
+i<common/loCommon.h>
+i<tchar.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp
+c000000004CC6731C0000000000003B44
+t1288074012
+s15172
+i"stdafx.h"
+i"loHttp+.h"
+i"loHttp.h"
+i<stdlib.h>
+i<string.h>
+i<stdarg.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp
+c000000004CC7F8A80000000000004B89
+t1288173736
+s19337
+i"Stdafx.h"
+i"loHttp.h"
+i"loHttpAssoc.h"
+i"loHttpCurl.h"
+i"loUrlcode.h"
+i"lostrconv.h"
+i"loHttpStruct.h"
+i<time.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp
+c000000004CC7F8A8000000000000192D
+t1288173736
+s6445
+i"StdAfx.h"
+i"loHttpAssoc.h"
+i"loHttpCurl.h"
+i"loHttp.h"
+i"loUrlcode.h"
+i"lostrconv.h"
+i<time.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h
+c000000004CC7844E0000000000000D4D
+t1288143950
+s3405
+i<list>
+i"loHttpDef.h"
+i"loHttpMap.h"
+i"loHttpStr.h"
+i"loHttpStruct.h"
+i"loHttpCurl.h"
+i"common/loBytebuffer.h"
+i"loHttpThread.h"
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp
+c000000004CC7F8A8000000000000A7E7
+t1288173736
+s42983
+i"stdafx.h"
+i<assert.h>
+i"loHttpCurl.h"
+i"loFile.h"
+i"curl/curl.h"
+i"lostrconv.h"
+i"loHttpThread.h"
+i"common/lo/lolock.h"
+i<string.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.h
+c000000004CC7844E0000000000000ECB
+t1288143950
+s3787
+i<string>
+i"loHttpStruct.h"
+i"loHttpDef.h"
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpMap.h
+c000000004CC7F8A80000000000003C5A
+t1288173736
+s15450
+i<windows.h>
+i<utility>
+i<map>
+i<vector>
+i<utility>
+i"loSafeInt.hpp"
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp
+c000000004CC7844E0000000000000E85
+t1288143950
+s3717
+i"stdafx.h"
+i"loHttpStr.h"
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h
+c000000004CC7844E00000000000016E4
+t1288143950
+s5860
+i<windows.h>
+i<tchar.h>
+i<string.h>
+i<stdio.h>
+i<stdlib.h>
+i"loHttpDef.h"
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStruct.h
+c000000004CC7F8A80000000000001B8F
+t1288173736
+s7055
+i"loHttpDef.h"
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp
+c000000004CC7844E0000000000000C2B
+t1288143950
+s3115
+i"Stdafx.h"
+i"loHttpThread.h"
+i<stdio.h>
+i<stdlib.h>
+i<string.h>
+i<pthread.h>
+i<sys/time.h>
+i<errno.h>
+i<unistd.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h
+c000000004CC7F8A800000000000004A3
+t1288173736
+s1187
+i<common/lo/lodefine.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loSafeInt.hpp
+c000000004CC7844E00000000000105D0
+t1288143950
+s67024
+i<assert.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loUrlcode.cpp
+c000000004CC7844E00000000000009E2
+t1288143950
+s2530
+i"stdafx.h"
+i"loUrlcode.h"
+i"lostrconv.h"
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loUrlcode.h
+c000000004CC6731C000000000000017C
+t1288074012
+s380
+i<string>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/lostrconv.cpp
+c000000004CC7F8A80000000000000EF8
+t1288173736
+s3832
+i"stdafx.h"
+i"lostrconv.h"
+i<windows.h>
+i"bbiconv.h"
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/lostrconv.h
+c000000004CC7F8A80000000000000480
+t1288173736
+s1152
+i<string>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug/libhttp.a
+t2
+s0
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/bbiconv.o
+t1288249762
+s56832
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/dllmain.o
+t2
+s0
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/http.LinkFileList
+c000000004CC921A100000000000006E1
+t1288249761
+s1761
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loBytebuffer.o
+t2
+s0
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loFile.o
+t2
+s0
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loHttp+.o
+t2
+s0
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loHttp.o
+t2
+s0
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpAssoc.o
+t2
+s0
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpCurl.o
+t2
+s0
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpStr.o
+t2
+s0
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpThread.o
+t2
+s0
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loUrlcode.o
+t2
+s0
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/lostrconv.o
+t2
+s0
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/src/bbiconv.h
+c000000004CC7844E0000000000000F23
+t1288143950
+s3875
+i<string>
+i<stdio.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/src/loBytebuffer.h
+c000000004CC6731C00000000000004DD
+t1288074012
+s1245
+i<string>
+i<common/lo/loctypes.h>
+i<common/loCommon.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/src/loFile.h
+c000000004CC7F8A80000000000000766
+t1288173736
+s1894
+i<common/loCommon.h>
+i<tchar.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/src/loHttpAssoc.h
+c000000004CC7844E0000000000000D4D
+t1288143950
+s3405
+i<list>
+i"loHttpDef.h"
+i"loHttpMap.h"
+i"loHttpStr.h"
+i"loHttpStruct.h"
+i"loHttpCurl.h"
+i"common/loBytebuffer.h"
+i"loHttpThread.h"
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/src/loHttpCurl.h
+c000000004CC7844E0000000000000ECB
+t1288143950
+s3787
+i<string>
+i"loHttpStruct.h"
+i"loHttpDef.h"
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/src/loHttpMap.h
+c000000004CC7F8A80000000000003C5A
+t1288173736
+s15450
+i<windows.h>
+i<utility>
+i<map>
+i<vector>
+i<utility>
+i"loSafeInt.hpp"
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/src/loHttpStr.h
+c000000004CC7844E00000000000016E4
+t1288143950
+s5860
+i<windows.h>
+i<tchar.h>
+i<string.h>
+i<stdio.h>
+i<stdlib.h>
+i"loHttpDef.h"
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/src/loHttpStruct.h
+c000000004CC7F8A80000000000001B8F
+t1288173736
+s7055
+i"loHttpDef.h"
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/src/loHttpThread.h
+c000000004CC7F8A800000000000004A3
+t1288173736
+s1187
+i<common/lo/lodefine.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/src/loSafeInt.hpp
+c000000004CC7844E00000000000105D0
+t1288143950
+s67024
+i<assert.h>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/src/loUrlcode.h
+c000000004CC6731C000000000000017C
+t1288074012
+s380
+i<string>
+
+N/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/src/lostrconv.h
+c000000004CC7F8A80000000000000480
+t1288173736
+s1152
+i<string>
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies309942561#309942561#0(0"0(0#1#0"8601759136#0"0#
+
+CCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/bbiconv.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/bbiconv.cc normal x86_64 c++ com.apple.compilers.gcc.4_2
+s309942561.696752
+e309942562.388264
+r1
+xCompileC
+xbuild/http.build/Debug/http.build/Objects-normal/x86_64/bbiconv.o
+x/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/bbiconv.cc
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@104"Compile /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/bbiconv.cc309942561#309942562#0(0"0(0#0#96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/bbiconv.cc8601705920#1682"    cd /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-generated-files.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-own-target-headers.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-all-target-headers.hmap -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-project-headers.hmap -F/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug -iquote../../include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug/include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources/x86_64 -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources -c /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/bbiconv.cc -o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/bbiconv.o0#
+
+CCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/dllmain.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/dllmain.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+s309942561.698121
+e309942561.757965
+r0
+xCompileC
+xbuild/http.build/Debug/http.build/Objects-normal/x86_64/dllmain.o
+x/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/dllmain.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.gcc.4_2
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/dllmain.cpp:1:20: error: stdafx.h: No such file or directory
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/dllmain.cpp:3: error: 'BOOL' does not name a type
+lSLF07#2@105"Compile /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/dllmain.cpp309942561#309942561#0(283"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/dllmain.cpp:1:20: error: stdafx.h: No such file or directory/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/dllmain.cpp:3: error: 'BOOL' does not name a type2(4@35"Stdafx.h: No such file or directory309942561#0#147#0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/dllmain.cpp309766812#1#0#1#0#28"*: No such file or directory0(4@27"'BOOL' does not name a type309942561#147#136#0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/dllmain.cpp309766812#3#0#3#0#24"'*' does not name a type0(0#0#97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/dllmain.cpp8607012800#1683"    cd /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-generated-files.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-own-target-headers.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-all-target-headers.hmap -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-project-headers.hmap -F/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug -iquote../../include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug/include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources/x86_64 -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources -c /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/dllmain.cpp -o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/dllmain.o1#
+
+CCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loBytebuffer.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+s309942561.703386
+e309942562.029674
+r0
+xCompileC
+xbuild/http.build/Debug/http.build/Objects-normal/x86_64/loBytebuffer.o
+x/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.gcc.4_2
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp:1:20: error: stdafx.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp:4:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h:5:32: error: common/lo/loctypes.h: No such file or directory
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h:6:29: error: common/loCommon.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp:4:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h:8: error: expected constructor, destructor, or type conversion before '(' token
+lSLF07#2@110"Compile /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp309942561#309942562#0(910"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp:1:20: error: stdafx.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp:4:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h:5:32: error: common/lo/loctypes.h: No such file or directory/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h:6:29: error: common/loCommon.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp:4:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h:8: error: expected constructor, destructor, or type conversion before '(' token4(4@35"Stdafx.h: No such file or directory309942561#0#152#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp309766812#1#0#1#0#28"*: No such file or directory0(4@47"Common/lo/loctypes.h: No such file or directory309942561#280#162#2(7@124"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp309942561#18446744073709551615#0#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp309766812#4#0#4#0#0"0(13@151"Common/lo/loctypes.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h309942561#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h309766812#5#0#5#0#0"0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h309766812#5#0#5#0#28"*: No such file or directory0(4@44"Common/loCommon.h: No such file or directory309942561#442#159#2(7@124"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp309942561#18446744073709551615#0#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp309766812#4#0#4#0#0"0(13@148"Common/loCommon.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h309942561#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h309766812#6#0#6#0#0"0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h309766812#6#0#6#0#28"*: No such file or directory0(4@69"Expected constructor, destructor, or type conversion before '(' token309942562#729#181#2(7@124"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp309942562#18446744073709551615#0#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp309766812#4#0#4#0#0"0(13@173"Expected constructor, destructor, or type conversion before '(' token in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h309766812#8#0#8#0#0"0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.h309766812#8#0#8#0#19"expected * before *0(0#0#102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp8605136064#1693"    cd /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-generated-files.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-own-target-headers.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-all-target-headers.hmap -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-project-headers.hmap -F/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug -iquote../../include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug/include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources/x86_64 -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources -c /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loBytebuffer.cpp -o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loBytebuffer.o1#
+
+CCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loFile.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+s309942561.705328
+e309942562.021422
+r0
+xCompileC
+xbuild/http.build/Debug/http.build/Objects-normal/x86_64/loFile.o
+x/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.gcc.4_2
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:1:20: error: stdafx.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h:23:29: error: common/loCommon.h: No such file or directory
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h:30:19: error: tchar.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h:48: error: expected constructor, destructor, or type conversion before '(' token
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h:80: error: expected constructor, destructor, or type conversion before '(' token
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:59: error: expected constructor, destructor, or type conversion before '(' token
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:69: error: 'CloFile' has not been declared
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp: In function 'BOOL IsDirectoryExists(const char*)':
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:71: error: 'IsPathOrFile' was not declared in this scope
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp: At global scope:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:74: error: 'CloFile' has not been declared
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:93: error: 'CloFile' has not been declared
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:111: error: 'CloFile' has not been declared
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp: In function 'BOOL CreateDirectoryA(const char*)':
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:114: error: 'MAX_PATH' was not declared in this scope
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:125: error: 'pszPath' was not declared in this scope
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:125: error: '_tcscpy' was not declared in this scope
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:128: error: '_T' was not declared in this scope
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:133: error: '_tcscat' was not declared in this scope
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:152: error: 'szDirect' was not declared in this scope
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:152: error: '_tcsncpy' was not declared in this scope
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp: At global scope:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:175: error: 'CloFile' has not been declared
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:205: error: expected constructor, destructor, or type conversion before '(' token
+lSLF07#2@104"Compile /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309942561#309942562#0(3828"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:1:20: error: stdafx.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h:23:29: error: common/loCommon.h: No such file or directory/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h:30:19: error: tchar.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h:48: error: expected constructor, destructor, or type conversion before '(' token/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h:80: error: expected constructor, destructor, or type conversion before '(' token/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:59: error: expected constructor, destructor, or type conversion before '(' token/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:69: error: 'CloFile' has not been declared/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp: In function 'BOOL IsDirectoryExists(const char*)':/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:71: error: 'IsPathOrFile' was not declared in this scope/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp: At global scope:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:74: error: 'CloFile' has not been declared/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:93: error: 'CloFile' has not been declared/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:111: error: 'CloFile' has not been declared/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp: In function 'BOOL CreateDirectoryA(const char*)':/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:114: error: 'MAX_PATH' was not declared in this scope/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:125: error: 'pszPath' was not declared in this scope/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:125: error: '_tcscpy' was not declared in this scope/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:128: error: '_T' was not declared in this scope/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:133: error: '_tcscat' was not declared in this scope/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:152: error: 'szDirect' was not declared in this scope/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:152: error: '_tcsncpy' was not declared in this scope/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp: At global scope:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:175: error: 'CloFile' has not been declared/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp:205: error: expected constructor, destructor, or type conversion before '(' token22(4@35"Stdafx.h: No such file or directory309942561#0#146#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#1#0#1#0#28"*: No such file or directory0(4@44"Common/loCommon.h: No such file or directory309942561#268#154#2(7@118"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309942561#18446744073709551615#0#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#2#0#2#0#0"0(13@142"Common/loCommon.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309942561#18446744073709551615#0#0(6@94"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309866536#23#0#23#0#0"0(6@94"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309866536#23#0#23#0#28"*: No such file or directory0(4@34"Tchar.h: No such file or directory309942561#422#144#2(7@118"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309942561#18446744073709551615#0#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#2#0#2#0#0"0(13@132"Tchar.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309942561#18446744073709551615#0#0(6@94"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309866536#30#0#30#0#0"0(6@94"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309866536#30#0#30#0#28"*: No such file or directory0(4@69"Expected constructor, destructor, or type conversion before '(' token309942561#688#176#2(7@118"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309942561#18446744073709551615#0#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#2#0#2#0#0"0(13@167"Expected constructor, destructor, or type conversion before '(' token in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309942561#18446744073709551615#0#0(6@94"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309866536#48#0#48#0#0"0(6@94"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309866536#48#0#48#0#19"expected * before *0(4@69"Expected constructor, destructor, or type conversion before '(' token309942561#864#176#2(7@118"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309942561#18446744073709551615#0#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#2#0#2#0#0"0(13@167"Expected constructor, destructor, or type conversion before '(' token in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309942561#18446744073709551615#0#0(6@94"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309866536#80#0#80#0#0"0(6@94"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309866536#80#0#80#0#19"expected * before *0(4@69"Expected constructor, destructor, or type conversion before '(' token309942562#1040#178#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#59#0#59#0#19"expected * before *0(4@31"'CloFile' has not been declared309942562#1218#140#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#69#0#69#0#25"'*' has not been declared0(4@45"'IsPathOrFile' was not declared in this scope309942562#1507#154#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#71#0#71#0#34"'*' was not declared in this scope0(23@16"At global scope:309942562#1661#115#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#0#0#0#0#0"0(4@31"'CloFile' has not been declared309942562#1776#140#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#74#0#74#0#25"'*' has not been declared0(4@31"'CloFile' has not been declared309942562#1916#140#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#93#0#93#0#25"'*' has not been declared0(4@31"'CloFile' has not been declared309942562#2056#141#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#111#0#111#0#25"'*' has not been declared0(4@41"'MAX_PATH' was not declared in this scope309942562#2345#151#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#114#0#114#0#34"'*' was not declared in this scope0(4@40"'pszPath' was not declared in this scope309942562#2496#150#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#125#0#125#0#34"'*' was not declared in this scope0(4@40"'_tcscpy' was not declared in this scope309942562#2646#150#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#125#0#125#0#34"'*' was not declared in this scope0(4@35"'_T' was not declared in this scope309942562#2796#145#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#128#0#128#0#34"'*' was not declared in this scope0(4@40"'_tcscat' was not declared in this scope309942562#2941#150#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#133#0#133#0#34"'*' was not declared in this scope0(4@41"'szDirect' was not declared in this scope309942562#3091#151#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#152#0#152#0#34"'*' was not declared in this scope0(4@41"'_tcsncpy' was not declared in this scope309942562#3242#151#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#152#0#152#0#34"'*' was not declared in this scope0(23@16"At global scope:309942562#3393#115#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#0#0#0#0#0"0(4@31"'CloFile' has not been declared309942562#3508#141#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#175#0#175#0#25"'*' has not been declared0(4@69"Expected constructor, destructor, or type conversion before '(' token309942562#3649#179#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp309866536#205#0#205#0#19"expected * before *0(0#0#96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp8590485632#1681"    cd /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-generated-files.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-own-target-headers.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-all-target-headers.hmap -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-project-headers.hmap -F/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug -iquote../../include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug/include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources/x86_64 -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources -c /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.cpp -o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loFile.o1#
+
+CCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loHttp+.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+s309942561.998499
+e309942562.059901
+r0
+xCompileC
+xbuild/http.build/Debug/http.build/Objects-normal/x86_64/loHttp+.o
+x/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.gcc.4_2
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp:1:20: error: stdafx.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp+.h:13:31: error: libhttp/loHttpDef.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp+.h:17: error: expected constructor, destructor, or type conversion before 'namespace'
+lSLF07#2@105"Compile /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp309942561#309942562#0(737"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp:1:20: error: stdafx.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp+.h:13:31: error: libhttp/loHttpDef.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp+.h:17: error: expected constructor, destructor, or type conversion before 'namespace'3(4@35"Stdafx.h: No such file or directory309942562#0#147#0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp309766812#1#0#1#0#28"*: No such file or directory0(4@46"Libhttp/loHttpDef.h: No such file or directory309942562#270#161#2(7@119"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp309942562#18446744073709551615#0#0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp309766812#2#0#2#0#0"0(13@149"Libhttp/loHttpDef.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp+.h309942562#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp+.h309766812#13#0#13#0#0"0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp+.h309766812#13#0#13#0#28"*: No such file or directory0(4@71"Expected constructor, destructor, or type conversion before 'namespace'309942562#554#183#2(7@119"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp309942562#18446744073709551615#0#0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp309766812#2#0#2#0#0"0(13@174"Expected constructor, destructor, or type conversion before 'namespace' in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp+.h309942562#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp+.h309766812#17#0#17#0#0"0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp+.h309766812#17#0#17#0#19"expected * before *0(0#0#97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp8601726624#1683"    cd /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-generated-files.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-own-target-headers.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-all-target-headers.hmap -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-project-headers.hmap -F/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug -iquote../../include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug/include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources/x86_64 -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources -c /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp+.cpp -o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loHttp+.o1#
+
+CCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loHttp.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+s309942561.758092
+e309942561.998359
+r0
+xCompileC
+xbuild/http.build/Debug/http.build/Objects-normal/x86_64/loHttp.o
+x/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.gcc.4_2
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp:1:20: error: Stdafx.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h:4:31: error: libhttp/loHttpDef.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:4,
+o                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp:3:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:4:32: error: common/lo/lodefine.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:6,
+o                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp:3:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h:7:19: error: tchar.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp:3:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:9:33: error: common/loBytebuffer.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h:15: error: function definition does not declare parameters
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h:135: error: function definition does not declare parameters
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h:168: error: function definition does not declare parameters
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:4,
+o                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp:3:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:30: error: expected constructor, destructor, or type conversion before 'namespace'
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:62: error: expected declaration before end of line
+lSLF07#2@104"Compile /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309942561#309942561#0(2697"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp:1:20: error: Stdafx.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h:4:31: error: libhttp/loHttpDef.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:4,                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp:3:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:4:32: error: common/lo/lodefine.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:6,                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp:3:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h:7:19: error: tchar.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp:3:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:9:33: error: common/loBytebuffer.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h:15: error: function definition does not declare parameters/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h:135: error: function definition does not declare parameters/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h:168: error: function definition does not declare parametersIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:4,                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp:3:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:30: error: expected constructor, destructor, or type conversion before 'namespace'/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:62: error: expected declaration before end of line10(4@35"Stdafx.h: No such file or directory309942561#0#146#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309866536#1#0#1#0#28"*: No such file or directory0(4@46"Libhttp/loHttpDef.h: No such file or directory309942561#268#159#2(7@118"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309942561#18446744073709551615#0#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309866536#2#0#2#0#0"0(13@148"Libhttp/loHttpDef.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309942561#18446744073709551615#0#0(6@98"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309836749#4#0#4#0#0"0(6@98"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309836749#4#0#4#0#28"*: No such file or directory0(4@47"Common/lo/lodefine.h: No such file or directory309942561#674#163#3(7@118"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309942561#18446744073709551615#0#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309866536#3#0#3#0#0"0(7@121"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309942561#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309836750#4#0#4#0#0"0(13@152"Common/lo/lodefine.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309942561#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#4#0#4#0#0"0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#4#0#4#0#28"*: No such file or directory0(4@34"Tchar.h: No such file or directory309942561#1084#146#3(7@118"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309942561#18446744073709551615#0#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309866536#3#0#3#0#0"0(7@121"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309942561#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309836750#6#0#6#0#0"0(13@135"Tchar.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309942561#18446744073709551615#0#0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309836750#7#0#7#0#0"0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309836750#7#0#7#0#28"*: No such file or directory0(4@48"Common/loBytebuffer.h: No such file or directory309942561#1352#162#2(7@118"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309942561#18446744073709551615#0#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309866536#3#0#3#0#0"0(13@151"Common/loBytebuffer.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309942561#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309836750#9#0#9#0#0"0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309836750#9#0#9#0#28"*: No such file or directory0(4@47"Function definition does not declare parameters309942561#1636#158#2(7@118"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309942561#18446744073709551615#0#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309866536#2#0#2#0#0"0(13@149"Function definition does not declare parameters in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309942561#18446744073709551615#0#0(6@98"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309836749#15#0#15#0#0"0(6@98"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309836749#15#0#15#0#0"0(4@47"Function definition does not declare parameters309942561#1794#159#2(7@118"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309942561#18446744073709551615#0#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309866536#2#0#2#0#0"0(13@149"Function definition does not declare parameters in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309942561#18446744073709551615#0#0(6@98"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309836749#135#0#135#0#0"0(6@98"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309836749#135#0#135#0#0"0(4@47"Function definition does not declare parameters309942561#1953#159#2(7@118"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309942561#18446744073709551615#0#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309866536#2#0#2#0#0"0(13@149"Function definition does not declare parameters in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309942561#18446744073709551615#0#0(6@98"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309836749#168#0#168#0#0"0(6@98"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309836749#168#0#168#0#0"0(4@71"Expected constructor, destructor, or type conversion before 'namespace'309942561#2359#185#3(7@118"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309942561#18446744073709551615#0#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309866536#3#0#3#0#0"0(7@121"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309942561#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309836750#4#0#4#0#0"0(13@176"Expected constructor, destructor, or type conversion before 'namespace' in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309942561#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#30#0#30#0#0"0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#30#0#30#0#19"expected * before *0(4@39"Expected declaration before end of line309942561#2544#153#3(7@118"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309942561#18446744073709551615#0#0(6@96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp309866536#3#0#3#0#0"0(7@121"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309942561#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309836750#4#0#4#0#0"0(13@144"Expected declaration before end of line in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309942561#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#62#0#62#0#0"0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#62#0#62#0#19"expected * before *0(0#0#96"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp7959393759784891392#1681"    cd /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-generated-files.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-own-target-headers.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-all-target-headers.hmap -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-project-headers.hmap -F/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug -iquote../../include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug/include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources/x86_64 -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources -c /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttp.cpp -o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loHttp.o1#
+
+CCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpAssoc.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+s309942562.021566
+e309942562.268042
+r0
+xCompileC
+xbuild/http.build/Debug/http.build/Objects-normal/x86_64/loHttpAssoc.o
+x/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.gcc.4_2
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp:1:20: error: StdAfx.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:4,
+o                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:4:32: error: common/lo/lodefine.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:6,
+o                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h:7:19: error: tchar.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:9:33: error: common/loBytebuffer.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp:4:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h:4:31: error: libhttp/loHttpDef.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:4,
+o                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:30: error: expected constructor, destructor, or type conversion before 'namespace'
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:62: error: expected declaration before end of line
+lSLF07#2@109"Compile /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp309942562#309942562#0(2129"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp:1:20: error: StdAfx.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:4,                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:4:32: error: common/lo/lodefine.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:6,                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h:7:19: error: tchar.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:9:33: error: common/loBytebuffer.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp:4:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h:4:31: error: libhttp/loHttpDef.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h:4,                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:30: error: expected constructor, destructor, or type conversion before 'namespace'/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:62: error: expected declaration before end of line7(4@35"StdAfx.h: No such file or directory309942562#0#151#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp309866536#1#0#1#0#28"*: No such file or directory0(4@47"Common/lo/lodefine.h: No such file or directory309942562#403#163#3(7@123"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp309942562#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp309866536#2#0#2#0#0"0(7@121"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309942562#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309836750#4#0#4#0#0"0(13@152"Common/lo/lodefine.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309942562#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#4#0#4#0#0"0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#4#0#4#0#28"*: No such file or directory0(4@34"Tchar.h: No such file or directory309942562#818#146#3(7@123"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp309942562#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp309866536#2#0#2#0#0"0(7@121"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309942562#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309836750#6#0#6#0#0"0(13@135"Tchar.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309942562#18446744073709551615#0#0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309836750#7#0#7#0#0"0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309836750#7#0#7#0#28"*: No such file or directory0(4@48"Common/loBytebuffer.h: No such file or directory309942562#1091#162#2(7@123"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp309942562#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp309866536#2#0#2#0#0"0(13@151"Common/loBytebuffer.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309942562#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309836750#9#0#9#0#0"0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309836750#9#0#9#0#28"*: No such file or directory0(4@46"Libhttp/loHttpDef.h: No such file or directory309942562#1380#159#2(7@123"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp309942562#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp309866536#4#0#4#0#0"0(13@148"Libhttp/loHttpDef.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309942562#18446744073709551615#0#0(6@98"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309836749#4#0#4#0#0"0(6@98"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttp.h309836749#4#0#4#0#28"*: No such file or directory0(4@71"Expected constructor, destructor, or type conversion before 'namespace'309942562#1791#185#3(7@123"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp309942562#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp309866536#2#0#2#0#0"0(7@121"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309942562#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309836750#4#0#4#0#0"0(13@176"Expected constructor, destructor, or type conversion before 'namespace' in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309942562#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#30#0#30#0#0"0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#30#0#30#0#19"expected * before *0(4@39"Expected declaration before end of line309942562#1976#153#3(7@123"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp309942562#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp309866536#2#0#2#0#0"0(7@121"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309942562#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.h309836750#4#0#4#0#0"0(13@144"Expected declaration before end of line in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309942562#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#62#0#62#0#0"0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#62#0#62#0#19"expected * before *0(0#0#101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp8601284128#1691"    cd /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-generated-files.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-own-target-headers.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-all-target-headers.hmap -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-project-headers.hmap -F/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug -iquote../../include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug/include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources/x86_64 -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources -c /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpAssoc.cpp -o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpAssoc.o1#
+
+CCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpCurl.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+s309942562.029810
+e309942562.372785
+r0
+xCompileC
+xbuild/http.build/Debug/http.build/Objects-normal/x86_64/loHttpCurl.o
+x/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.gcc.4_2
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp:1:20: error: stdafx.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStruct.h:4,
+o                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.h:5,
+o                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp:3:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:4:32: error: common/lo/lodefine.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp:4:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h:23:29: error: common/loCommon.h: No such file or directory
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h:30:19: error: tchar.h: No such file or directory
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp:8:30: error: common/lo/lolock.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStruct.h:4,
+o                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.h:5,
+o                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp:3:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:30: error: expected constructor, destructor, or type conversion before 'namespace'
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:62: error: expected declaration before end of line
+lSLF07#2@108"Compile /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp309942562#309942562#0(1987"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp:1:20: error: stdafx.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStruct.h:4,                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.h:5,                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp:3:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:4:32: error: common/lo/lodefine.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp:4:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h:23:29: error: common/loCommon.h: No such file or directory/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h:30:19: error: tchar.h: No such file or directory/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp:8:30: error: common/lo/lolock.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStruct.h:4,                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.h:5,                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp:3:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:30: error: expected constructor, destructor, or type conversion before 'namespace'/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:62: error: expected declaration before end of line7(4@35"Stdafx.h: No such file or directory309942562#0#150#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp309866536#1#0#1#0#28"*: No such file or directory0(4@47"Common/lo/lodefine.h: No such file or directory309942562#526#163#4(7@122"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp309866536#3#0#3#0#0"0(7@120"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.h309942562#18446744073709551615#0#0(6@98"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.h309836750#5#0#5#0#0"0(7@122"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStruct.h309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStruct.h309866536#4#0#4#0#0"0(13@152"Common/lo/lodefine.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309942562#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#4#0#4#0#0"0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#4#0#4#0#28"*: No such file or directory0(4@44"Common/loCommon.h: No such file or directory309942562#815#154#2(7@122"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp309866536#4#0#4#0#0"0(13@142"Common/loCommon.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309942562#18446744073709551615#0#0(6@94"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309866536#23#0#23#0#0"0(6@94"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309866536#23#0#23#0#28"*: No such file or directory0(4@34"Tchar.h: No such file or directory309942562#969#144#2(7@122"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp309866536#4#0#4#0#0"0(13@132"Tchar.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309942562#18446744073709551615#0#0(6@94"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309866536#30#0#30#0#0"0(6@94"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loFile.h309866536#30#0#30#0#28"*: No such file or directory0(4@45"Common/lo/lolock.h: No such file or directory309942562#1113#160#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp309866536#8#0#8#0#28"*: No such file or directory0(4@71"Expected constructor, destructor, or type conversion before 'namespace'309942562#1649#185#4(7@122"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp309866536#3#0#3#0#0"0(7@120"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.h309942562#18446744073709551615#0#0(6@98"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.h309836750#5#0#5#0#0"0(7@122"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStruct.h309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStruct.h309866536#4#0#4#0#0"0(13@176"Expected constructor, destructor, or type conversion before 'namespace' in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309942562#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#30#0#30#0#0"0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#30#0#30#0#19"expected * before *0(4@39"Expected declaration before end of line309942562#1834#153#4(7@122"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp309866536#3#0#3#0#0"0(7@120"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.h309942562#18446744073709551615#0#0(6@98"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.h309836750#5#0#5#0#0"0(7@122"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStruct.h309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStruct.h309866536#4#0#4#0#0"0(13@144"Expected declaration before end of line in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309942562#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#62#0#62#0#0"0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#62#0#62#0#19"expected * before *0(0#0#100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp8600585120#1689"    cd /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-generated-files.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-own-target-headers.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-all-target-headers.hmap -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-project-headers.hmap -F/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug -iquote../../include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug/include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources/x86_64 -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources -c /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpCurl.cpp -o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpCurl.o1#
+
+CCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpStr.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+s309942562.060348
+e309942562.145789
+r0
+xCompileC
+xbuild/http.build/Debug/http.build/Objects-normal/x86_64/loHttpStr.o
+x/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.gcc.4_2
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp:1:20: error: stdafx.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h:7:19: error: tchar.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h:11,
+o                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:4:32: error: common/lo/lodefine.h: No such file or directory
+oIn file included from /Developer/SDKs/MacOSX10.6.sdk/usr/include/_structs.h:24,
+o                 from /Developer/SDKs/MacOSX10.6.sdk/usr/include/time.h:69,
+o                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:25,
+o                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h:11,
+o                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp:2:
+o/Developer/SDKs/MacOSX10.6.sdk/usr/include/sys/_structs.h:88: error: expected constructor, destructor, or type conversion before 'struct'
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h:22: error: expected constructor, destructor, or type conversion before 'namespace'
+lSLF07#2@107"Compile /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp309942562#309942562#0(1809"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp:1:20: error: stdafx.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h:7:19: error: tchar.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h:11,                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:4:32: error: common/lo/lodefine.h: No such file or directoryIn file included from /Developer/SDKs/MacOSX10.6.sdk/usr/include/_structs.h:24,                 from /Developer/SDKs/MacOSX10.6.sdk/usr/include/time.h:69,                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h:25,                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h:11,                 from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp:2:/Developer/SDKs/MacOSX10.6.sdk/usr/include/sys/_structs.h:88: error: expected constructor, destructor, or type conversion before 'struct'In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h:22: error: expected constructor, destructor, or type conversion before 'namespace'5(4@35"Stdafx.h: No such file or directory309942562#0#149#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp309836750#1#0#1#0#28"*: No such file or directory0(4@34"Tchar.h: No such file or directory309942562#274#146#2(7@121"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp309942562#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp309836750#2#0#2#0#0"0(13@135"Tchar.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309942562#18446744073709551615#0#0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309836750#7#0#7#0#0"0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309836750#7#0#7#0#28"*: No such file or directory0(4@47"Common/lo/lodefine.h: No such file or directory309942562#669#163#3(7@121"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp309942562#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp309836750#2#0#2#0#0"0(7@119"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309942562#18446744073709551615#0#0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309836750#11#0#11#0#0"0(13@152"Common/lo/lodefine.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309942562#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#4#0#4#0#0"0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#4#0#4#0#28"*: No such file or directory0(4@68"Expected constructor, destructor, or type conversion before 'struct'309942562#1365#138#6(7@121"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp309942562#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp309836750#2#0#2#0#0"0(7@119"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309942562#18446744073709551615#0#0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309836750#11#0#11#0#0"0(7@123"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309942562#18446744073709551615#0#0(6@101"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../include/loHttpDef.h309836749#25#0#25#0#0"0(7@71"In file included from /Developer/SDKs/MacOSX10.6.sdk/usr/include/time.h309942562#18446744073709551615#0#0(6@49"/Developer/SDKs/MacOSX10.6.sdk/usr/include/time.h276157442#69#0#69#0#0"0(7@75"In file included from /Developer/SDKs/MacOSX10.6.sdk/usr/include/_structs.h309942562#18446744073709551615#0#0(6@53"/Developer/SDKs/MacOSX10.6.sdk/usr/include/_structs.h276157441#24#0#24#0#0"0(13@129"Expected constructor, destructor, or type conversion before 'struct' in /Developer/SDKs/MacOSX10.6.sdk/usr/include/sys/_structs.h309942562#18446744073709551615#0#0(6@57"/Developer/SDKs/MacOSX10.6.sdk/usr/include/sys/_structs.h289469227#88#0#88#0#0"0(6@57"/Developer/SDKs/MacOSX10.6.sdk/usr/include/sys/_structs.h289469227#88#0#88#0#19"expected * before *0(4@71"Expected constructor, destructor, or type conversion before 'namespace'309942562#1628#181#2(7@121"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp309942562#18446744073709551615#0#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp309836750#2#0#2#0#0"0(13@172"Expected constructor, destructor, or type conversion before 'namespace' in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309942562#18446744073709551615#0#0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309836750#22#0#22#0#0"0(6@97"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.h309836750#22#0#22#0#19"expected * before *0(0#0#99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp8594497472#1687"    cd /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-generated-files.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-own-target-headers.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-all-target-headers.hmap -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-project-headers.hmap -F/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug -iquote../../include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug/include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources/x86_64 -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources -c /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpStr.cpp -o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpStr.o1#
+
+CCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpThread.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+s309942562.146072
+e309942562.234665
+r0
+xCompileC
+xbuild/http.build/Debug/http.build/Objects-normal/x86_64/loHttpThread.o
+x/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.gcc.4_2
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:1:20: error: Stdafx.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:4:32: error: common/lo/lodefine.h: No such file or directory
+oIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:2:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:31: error: 'DWORD' has not been declared
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:32: error: 'DWORD' has not been declared
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:32: error: 'LPDWORD' has not been declared
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:36: error: 'BOOL' does not name a type
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:39: error: 'DWORD' has not been declared
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:42: error: 'BOOL' does not name a type
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:45: error: variable or field 'Sleep' declared void
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:45: error: 'DWORD' was not declared in this scope
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:49: error: 'BOOL' does not name a type
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:36: error: 'DWORD' has not been declared
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:39: error: 'DWORD' has not been declared
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:40: error: 'LPDWORD' has not been declared
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp: In function 'void* CreateThread(void*, int, void* (*)(void*), void*, int, int)':
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:51: error: 'attr' was not declared in this scope
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp: At global scope:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:62: error: 'BOOL' does not name a type
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:76: error: 'DWORD' has not been declared
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp: In function 'int WaitForSingleObject(void*, int)':
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:83: error: 'uint32' was not declared in this scope
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:103: error: 'ldwResult' was not declared in this scope
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp: At global scope:
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:110: error: 'BOOL' does not name a type
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:122: error: 'BOOL' does not name a type
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:136: error: variable or field 'Sleep' declared void
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:136: error: 'DWORD' was not declared in this scope
+lSLF07#2@110"Compile /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309942562#309942562#0(4224"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:1:20: error: Stdafx.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:4:32: error: common/lo/lodefine.h: No such file or directoryIn file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:2:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:31: error: 'DWORD' has not been declared/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:32: error: 'DWORD' has not been declared/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:32: error: 'LPDWORD' has not been declared/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:36: error: 'BOOL' does not name a type/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:39: error: 'DWORD' has not been declared/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:42: error: 'BOOL' does not name a type/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:45: error: variable or field 'Sleep' declared void/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:45: error: 'DWORD' was not declared in this scope/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h:49: error: 'BOOL' does not name a type/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:36: error: 'DWORD' has not been declared/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:39: error: 'DWORD' has not been declared/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:40: error: 'LPDWORD' has not been declared/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp: In function 'void* CreateThread(void*, int, void* (*)(void*), void*, int, int)':/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:51: error: 'attr' was not declared in this scope/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp: At global scope:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:62: error: 'BOOL' does not name a type/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:76: error: 'DWORD' has not been declared/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp: In function 'int WaitForSingleObject(void*, int)':/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:83: error: 'uint32' was not declared in this scope/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:103: error: 'ldwResult' was not declared in this scope/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp: At global scope:/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:110: error: 'BOOL' does not name a type/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:122: error: 'BOOL' does not name a type/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:136: error: variable or field 'Sleep' declared void/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp:136: error: 'DWORD' was not declared in this scope25(4@35"Stdafx.h: No such file or directory309942562#0#152#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#1#0#1#0#28"*: No such file or directory0(4@47"Common/lo/lodefine.h: No such file or directory309942562#280#162#2(7@124"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309942562#18446744073709551615#0#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#2#0#2#0#0"0(13@151"Common/lo/lodefine.h: No such file or directory in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#4#0#4#0#0"0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#4#0#4#0#28"*: No such file or directory0(4@29"'DWORD' has not been declared309942562#570#142#2(7@124"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309942562#18446744073709551615#0#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#2#0#2#0#0"0(13@133"'DWORD' has not been declared in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#31#0#31#0#0"0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#31#0#31#0#25"'*' has not been declared0(4@29"'DWORD' has not been declared309942562#712#142#2(7@124"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309942562#18446744073709551615#0#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#2#0#2#0#0"0(13@133"'DWORD' has not been declared in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#32#0#32#0#0"0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#32#0#32#0#25"'*' has not been declared0(4@31"'LPDWORD' has not been declared309942562#854#144#2(7@124"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309942562#18446744073709551615#0#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#2#0#2#0#0"0(13@135"'LPDWORD' has not been declared in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#32#0#32#0#0"0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#32#0#32#0#25"'*' has not been declared0(4@27"'BOOL' does not name a type309942562#998#140#2(7@124"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309942562#18446744073709551615#0#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#2#0#2#0#0"0(13@131"'BOOL' does not name a type in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#36#0#36#0#0"0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#36#0#36#0#24"'*' does not name a type0(4@29"'DWORD' has not been declared309942562#1138#142#2(7@124"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309942562#18446744073709551615#0#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#2#0#2#0#0"0(13@133"'DWORD' has not been declared in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#39#0#39#0#0"0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#39#0#39#0#25"'*' has not been declared0(4@27"'BOOL' does not name a type309942562#1280#140#2(7@124"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309942562#18446744073709551615#0#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#2#0#2#0#0"0(13@131"'BOOL' does not name a type in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#42#0#42#0#0"0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#42#0#42#0#24"'*' does not name a type0(4@39"Variable or field 'Sleep' declared void309942562#1420#152#2(7@124"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309942562#18446744073709551615#0#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#2#0#2#0#0"0(13@143"Variable or field 'Sleep' declared void in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#45#0#45#0#0"0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#45#0#45#0#0"0(4@38"'DWORD' was not declared in this scope309942562#1572#151#2(7@124"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309942562#18446744073709551615#0#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#2#0#2#0#0"0(13@142"'DWORD' was not declared in this scope in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#45#0#45#0#0"0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#45#0#45#0#34"'*' was not declared in this scope0(4@27"'BOOL' does not name a type309942562#1723#140#2(7@124"In file included from /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309942562#18446744073709551615#0#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#2#0#2#0#0"0(13@131"'BOOL' does not name a type in /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309942562#18446744073709551615#0#0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#49#0#49#0#0"0(6@100"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.h309866536#49#0#49#0#24"'*' does not name a type0(4@29"'DWORD' has not been declared309942562#1863#144#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#36#0#36#0#25"'*' has not been declared0(4@29"'DWORD' has not been declared309942562#2007#144#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#39#0#39#0#25"'*' has not been declared0(4@31"'LPDWORD' has not been declared309942562#2151#146#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#40#0#40#0#25"'*' has not been declared0(4@37"'attr' was not declared in this scope309942562#2482#152#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#51#0#51#0#34"'*' was not declared in this scope0(23@16"At global scope:309942562#2634#121#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#0#0#0#0#0"0(4@27"'BOOL' does not name a type309942562#2755#142#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#62#0#62#0#24"'*' does not name a type0(4@29"'DWORD' has not been declared309942562#2897#144#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#76#0#76#0#25"'*' has not been declared0(4@39"'uint32' was not declared in this scope309942562#3196#154#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#83#0#83#0#34"'*' was not declared in this scope0(4@42"'ldwResult' was not declared in this scope309942562#3350#158#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#103#0#103#0#34"'*' was not declared in this scope0(23@16"At global scope:309942562#3508#121#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#0#0#0#0#0"0(4@27"'BOOL' does not name a type309942562#3629#143#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#110#0#110#0#24"'*' does not name a type0(4@27"'BOOL' does not name a type309942562#3772#143#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#122#0#122#0#24"'*' does not name a type0(4@39"Variable or field 'Sleep' declared void309942562#3915#155#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#136#0#136#0#0"0(4@38"'DWORD' was not declared in this scope309942562#4070#154#0(6@102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp309836750#136#0#136#0#34"'*' was not declared in this scope0(0#0#102"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp8603125216#1693"    cd /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-generated-files.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-own-target-headers.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-all-target-headers.hmap -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-project-headers.hmap -F/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug -iquote../../include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug/include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources/x86_64 -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources -c /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loHttpThread.cpp -o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loHttpThread.o1#
+
+CCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/loUrlcode.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loUrlcode.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+s309942562.268170
+e309942562.545858
+r0
+xCompileC
+xbuild/http.build/Debug/http.build/Objects-normal/x86_64/loUrlcode.o
+x/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loUrlcode.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.gcc.4_2
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loUrlcode.cpp:1:20: error: stdafx.h: No such file or directory
+lSLF07#2@107"Compile /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loUrlcode.cpp309942562#309942562#0(149"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loUrlcode.cpp:1:20: error: stdafx.h: No such file or directory1(4@35"Stdafx.h: No such file or directory309942562#0#149#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loUrlcode.cpp309836750#1#0#1#0#28"*: No such file or directory0(0#0#99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loUrlcode.cpp8606362400#1687"    cd /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-generated-files.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-own-target-headers.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-all-target-headers.hmap -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-project-headers.hmap -F/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug -iquote../../include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug/include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources/x86_64 -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources -c /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/loUrlcode.cpp -o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/loUrlcode.o1#
+
+CCompileC build/http.build/Debug/http.build/Objects-normal/x86_64/lostrconv.o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/lostrconv.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+s309942562.234814
+e309942562.527941
+r0
+xCompileC
+xbuild/http.build/Debug/http.build/Objects-normal/x86_64/lostrconv.o
+x/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/lostrconv.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.gcc.4_2
+o/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/lostrconv.cpp:1:20: error: stdafx.h: No such file or directory
+lSLF07#2@107"Compile /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/lostrconv.cpp309942562#309942562#0(149"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/lostrconv.cpp:1:20: error: stdafx.h: No such file or directory1(4@35"Stdafx.h: No such file or directory309942562#0#149#0(6@99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/lostrconv.cpp309866536#1#0#1#0#28"*: No such file or directory0(0#0#99"/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/lostrconv.cpp8605804544#1687"    cd /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-generated-files.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-own-target-headers.hmap -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-all-target-headers.hmap -iquote /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/http-project-headers.hmap -F/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug -iquote../../include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug/include -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources/x86_64 -I/Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/DerivedSources -c /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/../src/lostrconv.cpp -o /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/http.build/Debug/http.build/Objects-normal/x86_64/lostrconv.o1#
+
+CLibtool /Users/weldorn/Desktop/weibo-sdk/weibosvn/common/libhttp/trunk/libHttpMAC_OS_X/build/Debug/libhttp.a normal x86_64
+r0
+

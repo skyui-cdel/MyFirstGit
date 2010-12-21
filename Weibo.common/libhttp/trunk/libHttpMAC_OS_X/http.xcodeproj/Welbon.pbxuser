@@ -1,0 +1,87 @@
+// !$*UTF8*$!
+{
+	08FB7793FE84155DC02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeTarget = D2AAC045055464E500DB518D /* http */;
+		codeSenseManager = C01DDD28127C755000920442 /* Code sense */;
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					341,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 310276904;
+			PBXWorkspaceStateSaveDate = 310276904;
+		};
+		perUserProjectItems = {
+			C0C93B19127EE24D0069375A /* PBXTextBookmark */ = C0C93B19127EE24D0069375A /* PBXTextBookmark */;
+			C0C93B23127EE24D0069375A /* PBXTextBookmark */ = C0C93B23127EE24D0069375A /* PBXTextBookmark */;
+		};
+		sourceControlManager = C01DDD27127C755000920442 /* Source Control */;
+		userBuildSettings = {
+			OBJROOT = ./;
+			SYMROOT = ../../../lib/MACOS_X/libhttp;
+		};
+	};
+	BAC81BC8127958D800441721 /* loBytebuffer.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {519, 2080}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 227}";
+		};
+	};
+	C01DDD27127C755000920442 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	C01DDD28127C755000920442 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	C0C93B19127EE24D0069375A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BAC81BC8127958D800441721 /* loBytebuffer.cpp */;
+		name = "loBytebuffer.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 248;
+		vrLoc = 0;
+	};
+	C0C93B23127EE24D0069375A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BAC81BC8127958D800441721 /* loBytebuffer.cpp */;
+		name = "loBytebuffer.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 227;
+		vrLoc = 0;
+	};
+	D2AAC045055464E500DB518D /* http */ = {
+		activeExec = 0;
+	};
+}
