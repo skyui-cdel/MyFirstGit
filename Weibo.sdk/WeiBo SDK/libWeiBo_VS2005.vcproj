@@ -6,6 +6,7 @@
 	ProjectGUID="{6AA1F0B5-8235-4C5E-AF10-AC905963F36D}"
 	RootNamespace="Network"
 	Keyword="Win32Proj"
+	TargetFrameworkVersion="0"
 	>
 	<Platforms>
 		<Platform
@@ -17,8 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="DLL Debug|Win32"
-			OutputDirectory="..\lib\$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)\..\..\Build\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			UseOfATL="0"
@@ -44,7 +45,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="&quot;..\third-party\include&quot;;&quot;..\third-party\include\win32&quot;;.\include;.\common"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;BUILDING_LIBWEIBO;DEBUG_OAUTH"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_LIBWEIBO;DEBUG_OAUTH"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -93,24 +94,21 @@
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
-				Name="VCWebDeploymentTool"
-			/>
-			<Tool
 				Name="VCPostBuildEventTool"
 				CommandLine=""
 			/>
 		</Configuration>
 		<Configuration
 			Name="DLL Release|Win32"
-			OutputDirectory="..\lib\$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)\..\..\Build\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine=""
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -179,17 +177,14 @@
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
-				Name="VCWebDeploymentTool"
-			/>
-			<Tool
 				Name="VCPostBuildEventTool"
 				CommandLine=""
 			/>
 		</Configuration>
 		<Configuration
 			Name="Lib Debug|Win32"
-			OutputDirectory="$(ConfigurationName)"
-			IntermediateDirectory="..\..\Build\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			UseOfMFC="0"
 			UseOfATL="0"
@@ -197,7 +192,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;src\weibo.h&quot; &quot;include\libweibo&quot;"
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -214,7 +209,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\include;.\;"
+				AdditionalIncludeDirectories="&quot;..\third-party\include&quot;;&quot;..\third-party\include\win32&quot;;.\include;.\common"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_LIBWEIBO;DEBUG_OAUTH;WEIBO_STATICLIB;HTTP_STATICLIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -257,15 +252,15 @@
 		</Configuration>
 		<Configuration
 			Name="Lib Release|Win32"
-			OutputDirectory="$(ConfigurationName)"
-			IntermediateDirectory="..\..\Build\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine=""
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -283,7 +278,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories=".\include;.\;"
+				AdditionalIncludeDirectories="&quot;..\third-party\include&quot;;&quot;..\third-party\include\win32&quot;;.\include;.\common"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;BUILDING_LIBWEIBO;WEIBO_STATICLIB;HTTP_STATICLIB"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -325,8 +320,8 @@
 		</Configuration>
 		<Configuration
 			Name="LIB DebugMT|Win32"
-			OutputDirectory="$(ConfigurationName)"
-			IntermediateDirectory="..\..\Build\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			UseOfMFC="0"
 			UseOfATL="0"
@@ -334,7 +329,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;src\weibo.h&quot; &quot;include\libweibo&quot;"
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -351,7 +346,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\include;.\;"
+				AdditionalIncludeDirectories="&quot;..\third-party\include&quot;;&quot;..\third-party\include\win32&quot;;.\include;.\common"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_LIBWEIBO;DEBUG_OAUTH;WEIBO_STATICLIB;HTTP_STATICLIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -394,15 +389,15 @@
 		</Configuration>
 		<Configuration
 			Name="LIB ReleaseMT|Win32"
-			OutputDirectory="$(ConfigurationName)"
-			IntermediateDirectory="..\..\Build\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine=""
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -420,7 +415,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories=".\include;.\;"
+				AdditionalIncludeDirectories="&quot;..\third-party\include&quot;;&quot;..\third-party\include\win32&quot;;.\include;.\common"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;BUILDING_LIBWEIBO;WEIBO_STATICLIB;HTTP_STATICLIB"
 				ExceptionHandling="2"
 				RuntimeLibrary="0"
@@ -463,8 +458,8 @@
 		</Configuration>
 		<Configuration
 			Name="DLL DebugMT|Win32"
-			OutputDirectory=".\$(ConfigurationName)"
-			IntermediateDirectory="..\..\Build\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			UseOfATL="0"
@@ -472,7 +467,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;src\weibo.h&quot; &quot;include\libweibo&quot;"
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -489,7 +484,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\include;.\;"
+				AdditionalIncludeDirectories="&quot;..\third-party\include&quot;;&quot;..\third-party\include\win32&quot;;.\include;.\common"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;BUILDING_LIBWEIBO;DEBUG_OAUTH;HTTP_STATICLIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -512,7 +507,7 @@
 				AdditionalDependencies="libHttpU.lib ssleay32.lib libeay32.lib Ws2_32.lib"
 				OutputFile="$(OutDir)\$(ProjectName)U.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories=".\lib\$(ConfigurationName)"
+				AdditionalLibraryDirectories="&quot;..\third-party\lib\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(TargetDir)\$(TargetName).pdb"
@@ -540,24 +535,21 @@
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
-				Name="VCWebDeploymentTool"
-			/>
-			<Tool
 				Name="VCPostBuildEventTool"
 				CommandLine="copy &quot;.\$(ConfigurationName)\*.lib&quot; &quot;.\lib\$(ConfigurationName)\&quot;"
 			/>
 		</Configuration>
 		<Configuration
 			Name="DLL ReleaseMT|Win32"
-			OutputDirectory=".\$(ConfigurationName)"
-			IntermediateDirectory="..\..\Build\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine=""
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -575,7 +567,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories=".\include;.\;"
+				AdditionalIncludeDirectories="&quot;..\third-party\include&quot;;&quot;..\third-party\include\win32&quot;;.\include;.\common"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;BUILDING_LIBWEIBO;HTTP_STATICLIB"
 				ExceptionHandling="2"
 				RuntimeLibrary="0"
@@ -598,7 +590,7 @@
 				AdditionalDependencies="libHttpU.lib ssleay32.lib libeay32.lib Ws2_32.lib"
 				OutputFile="$(OutDir)\$(ProjectName)U.dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories=".\lib\$(ConfigurationName)"
+				AdditionalLibraryDirectories="&quot;..\third-party\lib\$(ConfigurationName)&quot;"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(TargetDir)\$(TargetName).pdb"
 				SubSystem="2"
@@ -624,9 +616,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"

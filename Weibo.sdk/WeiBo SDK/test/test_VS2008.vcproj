@@ -17,171 +17,16 @@
 	</ToolFiles>
 	<Configurations>
 		<Configuration
-			Name="Debug|Win32"
-			OutputDirectory="..\bin\$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="0"
-			CharacterSet="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\DLL Debug\*.dll&quot; &quot;..\bin\Debug\&quot;    /E /Y /C /I"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="..\include;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;WEIBO_STATICLIB"
-				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				DebugInformationFormat="4"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="Ws2_32.lib WbResponseU_VC90.lib"
-				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\lib\DLL Debug\&quot;"
-				IgnoreDefaultLibraryNames="LIBCMTD.lib"
-				GenerateDebugInformation="true"
-				SubSystem="1"
-				TargetMachine="1"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
-		<Configuration
-			Name="Release|Win32"
-			OutputDirectory="..\bin\$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="1"
-			CharacterSet="1"
-			WholeProgramOptimization="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\DLL Release\*.dll&quot; &quot;..\bin\Release\&quot;   /E /Y /C /I&#x0D;&#x0A;xcopy &quot;..\DLL Release\*.pdb&quot; &quot;..\bin\Release\&quot; /E /Y /C /I&#x0D;&#x0A;"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\include;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;WEIBO_STATICLIB"
-				RuntimeLibrary="2"
-				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="Ws2_32.lib WbResponseU_VC90.lib"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\lib\DLL Release\&quot;;&quot;..\lib\Lib Release\&quot;"
-				GenerateDebugInformation="true"
-				SubSystem="1"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				TargetMachine="1"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
-		<Configuration
 			Name="LIB DebugMT|Win32"
 			OutputDirectory="..\bin\$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)\..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			UseOfMFC="0"
 			CharacterSet="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;xcopy &quot;..\$(ConfigurationName)\*.pdb&quot; &quot;..\bin\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\HttpU_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -198,12 +43,12 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\include;"
+				AdditionalIncludeDirectories="..\..\include;.\;.\WBParser;..\common;&quot;..\..\third-party\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;WEIBO_STATICLIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
 			/>
@@ -218,9 +63,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Ws2_32.lib WbResponseU_VC90.lib"
+				AdditionalDependencies="Ws2_32.lib"
+				OutputFile="$(OutDir)\test_VC90.exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\lib\$(ConfigurationName)\&quot;"
+				AdditionalLibraryDirectories="&quot;..\..\lib\$(ConfigurationName)&quot;;&quot;..\..\third-party\lib\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -250,15 +96,15 @@
 		</Configuration>
 		<Configuration
 			Name="LIB ReleaseMT|Win32"
-			OutputDirectory="$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory="..\bin\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)\..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;xcopy &quot;..\$(ConfigurationName)\*.pdb&quot; &quot;..\bin\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\HttpU_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -276,11 +122,11 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\include;"
+				AdditionalIncludeDirectories="..\..\include;.\;.\WBParser;..\common;&quot;..\..\third-party\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;WEIBO_STATICLIB"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -295,9 +141,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Ws2_32.lib WbResponseU_VC90.lib"
+				AdditionalDependencies="Ws2_32.lib"
+				OutputFile="$(OutDir)\test_VC90.exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\lib\$(ConfigurationName)\&quot;"
+				AdditionalLibraryDirectories="&quot;..\..\lib\$(ConfigurationName)&quot;;&quot;..\..\third-party\lib\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -337,7 +184,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;xcopy &quot;..\..\lib\$(ConfigurationName)\*.pdb&quot; &quot;..\bin\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\HttpU_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\tinyxml_VC90.dll&quot;  &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\curllib_7.21.1_VC90.dll&quot;  &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\libeay32_VC90.dll&quot;  &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\ssleay32_VC90.dll&quot;  &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\HttpU_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -359,7 +206,7 @@
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
 			/>
@@ -415,7 +262,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;xcopy &quot;..\..\lib\$(ConfigurationName)\*.pdb&quot; &quot;..\bin\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\HttpU_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\tinyxml_VC90.dll&quot;  &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\curllib_7.21.1_VC90.dll&quot;  &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\libeay32_VC90.dll&quot;  &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\ssleay32_VC90.dll&quot;  &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;&#x0D;&#x0A;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\HttpU_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -437,7 +284,7 @@
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;WEIBO_VC90;WEIBO_STATICLIB;WEIBO_PARSER_STATICLIB;_USE_JSON_PARSER"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -488,14 +335,14 @@
 		<Configuration
 			Name="DLL ReleaseMT|Win32"
 			OutputDirectory="..\bin\$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)\..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;xcopy &quot;..\$(ConfigurationName)\*.pdb&quot; &quot;..\bin\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\HttpU_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -513,11 +360,11 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\include;"
+				AdditionalIncludeDirectories="..\..\include;.\;.\WBParser;..\common;&quot;..\..\third-party\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -532,9 +379,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Ws2_32.lib WbResponseU_VC90.lib"
+				AdditionalDependencies="Ws2_32.lib"
+				OutputFile="$(OutDir)\test_VC90.exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\lib\$(ConfigurationName)\&quot;"
+				AdditionalLibraryDirectories="&quot;..\..\lib\$(ConfigurationName)&quot;;&quot;..\..\third-party\lib\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames="LIBCMTD.lib"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -567,14 +415,14 @@
 		<Configuration
 			Name="DLL DebugMT|Win32"
 			OutputDirectory="..\bin\$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)\..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			UseOfMFC="0"
 			CharacterSet="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;xcopy &quot;..\$(ConfigurationName)\*.pdb&quot; &quot;..\bin\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\HttpU_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -591,12 +439,12 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\include;"
+				AdditionalIncludeDirectories="..\..\include;.\;.\WBParser;..\common;&quot;..\..\third-party\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
 			/>
@@ -611,9 +459,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Ws2_32.lib WbResponseU_VC90.lib"
+				AdditionalDependencies="Ws2_32.lib"
+				OutputFile="$(OutDir)\test_VC90.exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\lib\$(ConfigurationName)\&quot;"
+				AdditionalLibraryDirectories="&quot;..\..\lib\$(ConfigurationName)&quot;;&quot;..\..\third-party\lib\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -653,22 +502,6 @@
 			<File
 				RelativePath=".\stdafx.cpp"
 				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
 				<FileConfiguration
 					Name="LIB DebugMT|Win32"
 					>
@@ -750,22 +583,6 @@
 				RelativePath=".\wbcallback.cpp"
 				>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="LIB DebugMT|Win32"
 					>
 					<Tool
@@ -821,22 +638,6 @@
 			<File
 				RelativePath=".\wbinit.cpp"
 				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
 				<FileConfiguration
 					Name="LIB DebugMT|Win32"
 					>

@@ -25,7 +25,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;.\WeiboParser.h&quot; &quot;..\..\include\libWeiboParser&quot;&#x0D;&#x0A;copy &quot;.\WeiboParser.h&quot; &quot;..\include\libWeiboParser&quot;&#x0D;&#x0A;"
+				CommandLine="copy &quot;.\wbParser.h&quot; &quot;..\include\libWeiboParser&quot;&#x0D;&#x0A;copy &quot;.\wbParser.h&quot; &quot;..\..\include\libWeiboParser&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -102,7 +102,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine=""
+				CommandLine="copy &quot;.\wbParser.h&quot; &quot;..\include\libWeiboParser&quot;&#x0D;&#x0A;copy &quot;.\wbParser.h&quot; &quot;..\..\include\libWeiboParser&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"

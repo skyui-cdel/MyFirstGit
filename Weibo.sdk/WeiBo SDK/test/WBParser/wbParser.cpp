@@ -9,14 +9,27 @@
 #	define strncpy_s( out,len,txt,txtlen ) strcpy(out, txt)
 #endif //WIN32 || WINCE
 
+
 #if defined(_USE_JSON_PARSER)
-#include <Json/reader.h>
-#pragma comment(lib , "json_VC90.lib")
-#endif
+#	include <Json/reader.h>
+
+#pragma comment(lib , "Json_VC80.lib")
+#if defined(WEIBO_VC80)
+#		pragma comment(lib ,"Json_VC80.lib")
+#elif defined(WEIBO_VC90)
+#		pragma comment(lib ,"Json_VC90.lib")
+#endif //WEIBO_VC80
+
+#endif //_USE_JSON_PARSER
 
 #if defined(_USE_XML_PARSER)
 #include <tinyxml/tinyxml.h>
-#pragma comment(lib , "tinyxml_VC90.lib")
+//#pragma comment(lib , "tinyxml_VC90.lib")
+#if defined(WEIBO_VC80)
+#		pragma comment(lib ,"tinyxml_VC80.lib")
+#elif defined(WEIBO_VC90)
+#		pragma comment(lib ,"tinyxml_VC90.lib")
+#endif //WEIBO_VC80
 #endif 
 
 #ifdef  __cplusplus

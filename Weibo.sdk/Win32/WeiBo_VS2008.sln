@@ -5,11 +5,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WeiBo_VC90", "..\WeiBo SDK\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{EE0111F9-EB38-4871-B636-A70456204B2B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{0DDBABB3-6673-4D31-8354-E3D575077081}"
-	ProjectSection(SolutionItems) = preProject
-		..\Weibo.exe\copybin.bat = ..\Weibo.exe\copybin.bat
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{901C4E4B-5332-4E13-9DF4-CBD11278979E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_VC90", "..\WeiBo SDK\test\test_VS2008.vcproj", "{39B0C145-F72A-4B1E-8902-B96378908D05}"
@@ -18,18 +13,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WBParser_VC90", "..\WeiBo S
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Win32 = Debug|Win32
 		DLL Debug|Win32 = DLL Debug|Win32
 		DLL DebugMT|Win32 = DLL DebugMT|Win32
 		DLL Release|Win32 = DLL Release|Win32
 		DLL ReleaseMT|Win32 = DLL ReleaseMT|Win32
 		LIB DebugMT|Win32 = LIB DebugMT|Win32
 		LIB ReleaseMT|Win32 = LIB ReleaseMT|Win32
-		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6AA1F0B5-8235-4C5E-AF10-AC905963F36D}.Debug|Win32.ActiveCfg = Lib Debug|Win32
-		{6AA1F0B5-8235-4C5E-AF10-AC905963F36D}.Debug|Win32.Build.0 = Lib Debug|Win32
 		{6AA1F0B5-8235-4C5E-AF10-AC905963F36D}.DLL Debug|Win32.ActiveCfg = DLL Debug|Win32
 		{6AA1F0B5-8235-4C5E-AF10-AC905963F36D}.DLL Debug|Win32.Build.0 = DLL Debug|Win32
 		{6AA1F0B5-8235-4C5E-AF10-AC905963F36D}.DLL DebugMT|Win32.ActiveCfg = DLL DebugMT|Win32
@@ -42,10 +33,6 @@ Global
 		{6AA1F0B5-8235-4C5E-AF10-AC905963F36D}.LIB DebugMT|Win32.Build.0 = LIB DebugMT|Win32
 		{6AA1F0B5-8235-4C5E-AF10-AC905963F36D}.LIB ReleaseMT|Win32.ActiveCfg = LIB ReleaseMT|Win32
 		{6AA1F0B5-8235-4C5E-AF10-AC905963F36D}.LIB ReleaseMT|Win32.Build.0 = LIB ReleaseMT|Win32
-		{6AA1F0B5-8235-4C5E-AF10-AC905963F36D}.Release|Win32.ActiveCfg = Lib Release|Win32
-		{6AA1F0B5-8235-4C5E-AF10-AC905963F36D}.Release|Win32.Build.0 = Lib Release|Win32
-		{39B0C145-F72A-4B1E-8902-B96378908D05}.Debug|Win32.ActiveCfg = Debug|Win32
-		{39B0C145-F72A-4B1E-8902-B96378908D05}.Debug|Win32.Build.0 = Debug|Win32
 		{39B0C145-F72A-4B1E-8902-B96378908D05}.DLL Debug|Win32.ActiveCfg = DLL Debug|Win32
 		{39B0C145-F72A-4B1E-8902-B96378908D05}.DLL Debug|Win32.Build.0 = DLL Debug|Win32
 		{39B0C145-F72A-4B1E-8902-B96378908D05}.DLL DebugMT|Win32.ActiveCfg = DLL DebugMT|Win32
@@ -58,10 +45,6 @@ Global
 		{39B0C145-F72A-4B1E-8902-B96378908D05}.LIB DebugMT|Win32.Build.0 = LIB DebugMT|Win32
 		{39B0C145-F72A-4B1E-8902-B96378908D05}.LIB ReleaseMT|Win32.ActiveCfg = LIB ReleaseMT|Win32
 		{39B0C145-F72A-4B1E-8902-B96378908D05}.LIB ReleaseMT|Win32.Build.0 = LIB ReleaseMT|Win32
-		{39B0C145-F72A-4B1E-8902-B96378908D05}.Release|Win32.ActiveCfg = Release|Win32
-		{39B0C145-F72A-4B1E-8902-B96378908D05}.Release|Win32.Build.0 = Release|Win32
-		{7C2F1B64-4902-4F3E-81AD-5942E9FAF0AE}.Debug|Win32.ActiveCfg = DLL Debug|Win32
-		{7C2F1B64-4902-4F3E-81AD-5942E9FAF0AE}.Debug|Win32.Build.0 = DLL Debug|Win32
 		{7C2F1B64-4902-4F3E-81AD-5942E9FAF0AE}.DLL Debug|Win32.ActiveCfg = DLL Debug|Win32
 		{7C2F1B64-4902-4F3E-81AD-5942E9FAF0AE}.DLL Debug|Win32.Build.0 = DLL Debug|Win32
 		{7C2F1B64-4902-4F3E-81AD-5942E9FAF0AE}.DLL DebugMT|Win32.ActiveCfg = DLL Debug|Win32
@@ -74,8 +57,6 @@ Global
 		{7C2F1B64-4902-4F3E-81AD-5942E9FAF0AE}.LIB DebugMT|Win32.Build.0 = DLL Release|Win32
 		{7C2F1B64-4902-4F3E-81AD-5942E9FAF0AE}.LIB ReleaseMT|Win32.ActiveCfg = DLL Release|Win32
 		{7C2F1B64-4902-4F3E-81AD-5942E9FAF0AE}.LIB ReleaseMT|Win32.Build.0 = DLL Release|Win32
-		{7C2F1B64-4902-4F3E-81AD-5942E9FAF0AE}.Release|Win32.ActiveCfg = DLL Release|Win32
-		{7C2F1B64-4902-4F3E-81AD-5942E9FAF0AE}.Release|Win32.Build.0 = DLL Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

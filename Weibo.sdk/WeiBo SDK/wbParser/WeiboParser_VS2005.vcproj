@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="WbParser_VC80"
+	Name="WBParser_VC80"
 	ProjectGUID="{7C2F1B64-4902-4F3E-81AD-5942E9FAF0AE}"
 	RootNamespace="WeiboParser"
 	Keyword="Win32Proj"
@@ -24,7 +24,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;.\WeiboParser.h&quot; &quot;..\..\include\libWeiboParser&quot;&#x0D;&#x0A;copy &quot;.\WeiboParser.h&quot; &quot;..\include\libWeiboParser&quot;"
+				CommandLine="copy &quot;.\wbParser.h&quot; &quot;..\include\libWeiboParser&quot;&#x0D;&#x0A;copy &quot;.\wbParser.h&quot; &quot;..\..\include\libWeiboParser&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -41,8 +41,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;..\..\third-party\include\json&quot;;&quot;..\..\third-party\include\tinyxml&quot;;..\common"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;WEIBOPARSER_EXPORTS"
+				AdditionalIncludeDirectories="&quot;..\..\third-party\include&quot;;..\common"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;WEIBO_VC80;BUILDING_LIBWBPARSER;_USE_JSON_PARSER"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -61,7 +61,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="json_VC80.lib tinyxml_VC80.lib"
 				OutputFile="$(OutDir)\WBParserU_VC80.dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;..\..\lib\$(ConfigurationName)&quot;;&quot;..\..\third-party\lib\$(ConfigurationName)&quot;"
@@ -105,7 +104,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;.\WeiboParser.h&quot; &quot;..\..\include\libWeiboParser&quot;"
+				CommandLine="copy &quot;.\wbParser.h&quot; &quot;..\include\libWeiboParser&quot;&#x0D;&#x0A;copy &quot;.\wbParser.h&quot; &quot;..\..\include\libWeiboParser&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -123,8 +122,8 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="&quot;..\..\third-party\include\json&quot;;&quot;..\..\third-party\include\tinyxml&quot;;..\common"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;WEIBOPARSER_EXPORTS"
+				AdditionalIncludeDirectories="&quot;..\..\third-party\include&quot;;..\common"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;WEIBO_VC80;WEIBOPARSER_EXPORTS;BUILDING_LIBWBPARSER;_USE_JSON_PARSER"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="2"
@@ -142,7 +141,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="json_VC80.lib tinyxml_VC80.lib"
 				OutputFile="$(OutDir)\WBParserU_VC80.dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;..\..\lib\$(ConfigurationName)&quot;;&quot;..\..\third-party\lib\$(ConfigurationName)&quot;"
@@ -230,7 +228,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\WeiboParser.cpp"
+				RelativePath=".\wbParser.cpp"
 				>
 			</File>
 		</Filter>
@@ -248,7 +246,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\WeiboParser.h"
+				RelativePath=".\wbParser.h"
 				>
 			</File>
 		</Filter>
