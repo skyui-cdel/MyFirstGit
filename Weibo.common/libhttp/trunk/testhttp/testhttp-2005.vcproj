@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="Testhttp_VC80"
-	ProjectGUID="{E2EFEBEB-987C-4892-A7D2-675CC172597C}"
+	ProjectGUID="{783D431B-7F03-4A7B-9DFF-B34F34AD5765}"
 	RootNamespace="testhttp"
 	Keyword="Win32Proj"
 	>
@@ -61,7 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libHttpU_VC80.lib"
+				AdditionalDependencies="HttpU_VC80.lib Ws2_32.lib Json_VC80.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\..\lib\$(ConfigurationName)\"
 				GenerateDebugInformation="true"
@@ -141,7 +141,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libHttpU_VC80.lib"
+				AdditionalDependencies="HttpU_VC80.lib Ws2_32.lib Json_VC80.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\..\lib\$(ConfigurationName)\"
 				GenerateDebugInformation="true"
@@ -178,8 +178,8 @@
 		</Configuration>
 		<Configuration
 			Name="LIB ReleaseMT|Win32"
-			OutputDirectory="$(SolutionDir)\bin\$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)\Build\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)..\bin\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
@@ -223,7 +223,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libHttpU_VC80.lib Ws2_32.lib"
+				AdditionalDependencies="HttpU_VC80.lib Ws2_32.lib Json_VC80.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\..\lib\$(ConfigurationName)\"
 				IgnoreDefaultLibraryNames="LIBCMTD.lib"
@@ -261,8 +261,8 @@
 		</Configuration>
 		<Configuration
 			Name="LIB DebugMT|Win32"
-			OutputDirectory="$(SolutionDir)\bin\$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)\Build\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)..\bin\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			UseOfMFC="0"
 			CharacterSet="1"
@@ -306,7 +306,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libHttpU_VC80.lib Ws2_32.lib"
+				AdditionalDependencies="HttpU_VC80.lib Ws2_32.lib Json_VC80.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\..\lib\$(ConfigurationName)\"
 				IgnoreDefaultLibraryNames=""
@@ -342,14 +342,14 @@
 		</Configuration>
 		<Configuration
 			Name="DLL DebugMT|Win32"
-			OutputDirectory="$(SolutionDir)\bin\$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)\Build\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)..\bin\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;..\..\..\bin\$(ConfigurationName)\*.dll&quot; &quot;.\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\..\bin\$(ConfigurationName)\*.pdb&quot; &quot;.\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
+				CommandLine=""
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -386,7 +386,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libHttpU_VC80.lib"
+				AdditionalDependencies="HttpU_VC80.lib Ws2_32.lib Json_VC80.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\..\lib\$(ConfigurationName)\"
 				GenerateDebugInformation="true"
@@ -420,8 +420,8 @@
 		</Configuration>
 		<Configuration
 			Name="DLL ReleaseMT|Win32"
-			OutputDirectory="$(SolutionDir)\bin\$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)\Build\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)..\bin\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
@@ -465,7 +465,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libHttpU_VC80.lib"
+				AdditionalDependencies="HttpU_VC80.lib Ws2_32.lib Json_VC80.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\..\lib\$(ConfigurationName)\"
 				GenerateDebugInformation="true"
@@ -501,8 +501,8 @@
 		</Configuration>
 		<Configuration
 			Name="LIB Debug|Win32"
-			OutputDirectory="$(SolutionDir)\bin\$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)\Build\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)..\bin\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			>
 			<Tool
@@ -537,7 +537,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libHttpU_VC80.lib Ws2_32.lib"
+				AdditionalDependencies="HttpU_VC80.lib Ws2_32.lib Json_VC80.lib"
 				AdditionalLibraryDirectories="..\..\..\lib\$(ConfigurationName)\"
 				IgnoreDefaultLibraryNames="LIBCMT.lib"
 			/>
@@ -569,8 +569,8 @@
 		</Configuration>
 		<Configuration
 			Name="LIB Release|Win32"
-			OutputDirectory="$(SolutionDir)\bin\$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)\Build\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)..\bin\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			>
 			<Tool
@@ -605,7 +605,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libHttpU_VC80.lib Ws2_32.lib"
+				AdditionalDependencies="HttpU_VC80.lib Ws2_32.lib Json_VC80.lib"
 				AdditionalLibraryDirectories="..\..\..\lib\$(ConfigurationName)\"
 				IgnoreDefaultLibraryNames="LIBCMT.lib"
 			/>
