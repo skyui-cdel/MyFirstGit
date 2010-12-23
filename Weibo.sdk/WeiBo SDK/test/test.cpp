@@ -45,9 +45,11 @@
 #	if (defined(LIB_loadWEIBOSDK)) || (defined(WEIBO_STATICLIB))
 
 #if defined(WEIBO_VC80)
+#		pragma comment(lib ,"Json_VC80.lib")
 #		pragma comment(lib ,"WeiBoU_VC80.lib")
 #		pragma comment(lib ,"WBParserU_VC80.lib")
 #elif defined(WEIBO_VC90)
+#		pragma comment(lib ,"Json_VC90.lib")
 #		pragma comment(lib ,"WeiBoU_VC90.lib")
 #		pragma comment(lib ,"WBParserU_VC90.lib")
 #endif

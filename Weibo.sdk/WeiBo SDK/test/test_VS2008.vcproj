@@ -26,7 +26,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\HttpU_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -104,7 +104,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\HttpU_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -184,7 +184,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\HttpU_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -202,7 +202,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\include;.\;.\WBParser;..\common;&quot;..\..\third-party\include&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;WEIBO_VC90;WEIBO_STATICLIB;WEIBO_PARSER_STATICLIB;_USE_JSON_PARSER"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;WEIBO_STATICLIB;WEIBO_PARSER_STATICLIB;_USE_JSON_PARSER"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -262,7 +262,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\HttpU_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -281,7 +281,7 @@
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="..\..\include;.\;.\WBParser;..\common;&quot;..\..\third-party\include&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;WEIBO_VC90;WEIBO_STATICLIB;WEIBO_PARSER_STATICLIB;_USE_JSON_PARSER"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;WEIBO_STATICLIB;WEIBO_PARSER_STATICLIB;_USE_JSON_PARSER"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
@@ -342,7 +342,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\HttpU_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -422,7 +422,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\HttpU_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"

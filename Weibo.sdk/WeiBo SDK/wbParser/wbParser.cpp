@@ -12,8 +12,7 @@
 
 #if defined(_USE_JSON_PARSER)
 #	include <Json/reader.h>
-
-#pragma comment(lib , "Json_VC80.lib")
+//#pragma comment(lib , "Json_VC80.lib")
 #if defined(WEIBO_VC80)
 #		pragma comment(lib ,"Json_VC80.lib")
 #elif defined(WEIBO_VC90)
