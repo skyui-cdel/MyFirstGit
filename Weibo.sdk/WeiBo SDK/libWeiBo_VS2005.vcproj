@@ -6,7 +6,6 @@
 	ProjectGUID="{6AA1F0B5-8235-4C5E-AF10-AC905963F36D}"
 	RootNamespace="Network"
 	Keyword="Win32Proj"
-	TargetFrameworkVersion="0"
 	>
 	<Platforms>
 		<Platform
@@ -18,7 +17,7 @@
 	<Configurations>
 		<Configuration
 			Name="DLL Debug|Win32"
-			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			OutputDirectory="..\lib\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
@@ -27,7 +26,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -94,13 +93,16 @@
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
+				Name="VCWebDeploymentTool"
+			/>
+			<Tool
 				Name="VCPostBuildEventTool"
 				CommandLine=""
 			/>
 		</Configuration>
 		<Configuration
 			Name="DLL Release|Win32"
-			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			OutputDirectory="..\lib\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
@@ -108,7 +110,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -177,13 +179,16 @@
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
+				Name="VCWebDeploymentTool"
+			/>
+			<Tool
 				Name="VCPostBuildEventTool"
 				CommandLine=""
 			/>
 		</Configuration>
 		<Configuration
 			Name="Lib Debug|Win32"
-			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			OutputDirectory="..\lib\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			UseOfMFC="0"
@@ -192,7 +197,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -252,7 +257,7 @@
 		</Configuration>
 		<Configuration
 			Name="Lib Release|Win32"
-			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			OutputDirectory="..\lib\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			CharacterSet="1"
@@ -260,7 +265,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -320,7 +325,7 @@
 		</Configuration>
 		<Configuration
 			Name="LIB DebugMT|Win32"
-			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			OutputDirectory="..\lib\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			UseOfMFC="0"
@@ -329,7 +334,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -389,7 +394,7 @@
 		</Configuration>
 		<Configuration
 			Name="LIB ReleaseMT|Win32"
-			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			OutputDirectory="..\lib\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			CharacterSet="1"
@@ -397,7 +402,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -458,7 +463,7 @@
 		</Configuration>
 		<Configuration
 			Name="DLL DebugMT|Win32"
-			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			OutputDirectory="..\lib\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
@@ -467,7 +472,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -535,13 +540,16 @@
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
+				Name="VCWebDeploymentTool"
+			/>
+			<Tool
 				Name="VCPostBuildEventTool"
 				CommandLine="copy &quot;.\$(ConfigurationName)\*.lib&quot; &quot;.\lib\$(ConfigurationName)\&quot;"
 			/>
 		</Configuration>
 		<Configuration
 			Name="DLL ReleaseMT|Win32"
-			OutputDirectory=".\..\lib\$(ConfigurationName)"
+			OutputDirectory="..\lib\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\..\Build\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
@@ -549,7 +557,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;"
+				CommandLine="copy &quot;src\weibo.h&quot; &quot;..\include\libweibo&quot;&#x0D;&#x0A;copy &quot;src\weibo.h&quot; &quot;.\include\libweibo&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -616,6 +624,9 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
