@@ -1,4 +1,4 @@
-Weibo sdk for C/C++ ,Sina App 应用支持库
+SAE(Sina App Engine)，Weibo SDK for C/C++
 
 版权所属：新浪网技术中国有限公司
 
