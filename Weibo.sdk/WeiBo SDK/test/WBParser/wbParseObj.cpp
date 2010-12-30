@@ -799,10 +799,10 @@ t_wbParse_Shipshow::Item* CWBJsonParser::parse_ship_item(wbParserNS::REQOBJ *obj
 	GET_LONG( JSON,obj,"following",p->following);
 
 	// following
-	GET_LONG( JSON,obj,"followed_by",p->following);
+	GET_LONG( JSON,obj,"followed_by",p->followed_by);
 
 	// following
-	GET_LONG( JSON,obj,"notifications_enabled",p->following);
+	GET_LONG( JSON,obj,"notifications_enabled",p->notifications_enabled);
 
 	return p;
 }
