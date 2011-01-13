@@ -1,7 +1,5 @@
 SAE(Sina App Engine)，Weibo SDK for C/C++
 
-版权所属：新浪网技术中国有限公司
-
 支持环境：
 	WINXP WIN7 (VS2005 ,VS2008)
 
@@ -62,6 +60,7 @@ A：请检查库你的SVN下载的 \trunk\Weibo.sdk\third-party\的bin和lib下面库文件是完整
 Q：为什么编译后跑不起来？提示库加载错误？
 A：可能是由于你的编译器版本过低引起的，
 	请确保你的VS2005编译器环境版本号 >= 8.0.50727.867,Microsoft .NET Framework版本号 >= 2.0.50727(SP2)，
+	VS2008版本号：
 	若满足上述条件，则可能是由于编译环境不一致，请在common下面重新编译所需要的库，并将它拷贝到运行目录下
 	
 Q：为什么有些库没有源代码？
@@ -71,9 +70,44 @@ A：考虑到版权问题，没有将第三方的开源库的源代码放上去，
 Q：weibo.sdk\third-party下面的库太多，下载起来太慢了。
 A：这个下面关联的是weibo.common\下面的东西，若觉得下载速度太慢
 	可以自行从weibo.common\拷贝到weibo.sdk\third-party
+	
+Q: VC6.0可以使用吗？
+A: 逻辑上来讲是ok的.需要自己配置一下环境。：),配好环境的同学可以直接将配置好的发给我.
 
 
 =========================================================================================
+test 如何使用：
+
+// 设置登录方式 0 oauth,1 cookie
+Please enter request method[0 = oauth/1 = cookie]: 
+// 设置 APP KEY
+Please enter APP KEY:
+
+// 设置APP SECRET
+Please enter APP SECRET:
+
+// 设置返回的数据类型:xml/json
+Please enter result data format(josn=0/xml=1):
+
+// 设置Ouath 方式如何获取验证码 0:网页获取， 1. 直接获取 ，输入用户名密码
+Please enter how to get verify code[0 = website,1 = direct access] :
+
+// 循环获取输入数字 ，具体的请参考 Weibo SDK 头文件 ： "weibo.h" 中的枚举类型WEIBOoption 
+//  例如 2 对应 WEIBO_OPTION(GETSTATUSES_PUBLIC_TIMELINE)
+// 输入 q 按回车退出程序
+Please enter TEST number[exit:'q']: 
+
+=========================================================================================
+
+由于C++ SDK 维护的时间比较紧,支持上可能还有很多问题。
+
+大家或者有什么好的意见或建议，直接提出来，大家共同学习完善。
+
+：）
+
+=========================================================================================
+
+
 更多问题请联系作者：
 
 翁立波(welbon)
@@ -84,3 +118,4 @@ A：这个下面关联的是weibo.common\下面的东西，若觉得下载速度太慢
 	Mail: loachmr@sina.com
 	UC:11050
  
+=========================================================================================
