@@ -26,7 +26,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -104,7 +104,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -184,7 +184,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -262,7 +262,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -342,7 +342,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -422,7 +422,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC90.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -689,82 +689,6 @@
 			</File>
 			<File
 				RelativePath=".\wbinit.h"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="wbparser"
-			>
-			<File
-				RelativePath=".\WBParser\splitstr.cpp"
-				>
-				<FileConfiguration
-					Name="DLL Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DLL Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\WBParser\splitstr.h"
-				>
-			</File>
-			<File
-				RelativePath="..\common\strconv.cpp"
-				>
-				<FileConfiguration
-					Name="DLL Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DLL Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\common\strconv.h"
-				>
-			</File>
-			<File
-				RelativePath=".\WBParser\wbParseMalloc.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\WBParser\wbParseMalloc.h"
-				>
-			</File>
-			<File
-				RelativePath=".\WBParser\wbParseObj.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\WBParser\wbParseObj.h"
-				>
-			</File>
-			<File
-				RelativePath=".\WBParser\wbParser.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\WBParser\wbParser.h"
 				>
 			</File>
 		</Filter>

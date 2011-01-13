@@ -53,6 +53,32 @@
 
 #define WEIBO_struct_headercallback_init_fun(name) Wb_struct_headercallback_init_##name##_cb
 
+#define _PARSER_WRAPPER_TEST
+
+#ifdef _PARSER_WRAPPER_TEST
+
+#include "libWeiboParser/WBParseWrapper.h"
+#pragma comment(lib,"WBParseWrapper_VC90.lib")
+
+//#define TEST_STATUSES(iHttpCode,body,len,_ParseFun,_FreeFun)\
+//	{\
+//		t_wbParse_Status* pStatus = NULL;\
+//		int outlen = 0;\
+//		WBParseJSON::Parse_Statuses_Public_Timeline(body,len,NULL,outlen,(void**)&pStatus);\
+//		for( int  i = 0 ; i < outlen ; i ++ )\
+//		{\
+//			t_wbParse_Status *item = (pStatus + i );\
+//			// To do something...
+//			//
+//		}\
+//		WBParseJSON::Free_Statuses_Public_Timeline(pStatus,outlen);\
+//	}\
+
+
+#else
+#define TEST_STATUSES(iHttpCode,body,len)
+#endif //
+
 
 //
 WEIBO_struct_statuscallback_init(BASE)
@@ -66,6 +92,7 @@ WEIBO_struct_bodycallback_init(BASE)
 
 //------------------------------------获取下行数据集(timeline)接口---------------------------------------------//
 //
+using namespace wbParserNS;
 
 // 2.获取最新更新的公共微博消息
 WEIBO_struct_statuscallback_init(GETSTATUSES_PUBLIC_TIMELINE)
@@ -77,6 +104,30 @@ WEIBO_struct_bodycallback_init(GETSTATUSES_PUBLIC_TIMELINE)
 {
 	printf("GETSTATUSES_PUBLIC_TIMELINE : \n    %s \n\n" , body );
 
+	if( 200 == httpCode )
+	{
+		t_wbParse_Status* pStatus = NULL;
+		int outlen = 0;
+		wbParserNS::WBPARSE_HANDLE hParse = USE_WBPARSE_FUNC(Statuses,Public_Timeline,body,len,outlen,(void**)&pStatus,NULL,NULL );
+
+		int i = 0;
+		for( int  i = 0 ; i < outlen ; i ++ )
+		{
+			t_wbParse_Status *item = (pStatus + i );
+			// To do something...
+			//
+		}
+		USE_WBFREE_FUNC(Statuses,Public_Timeline,hParse);
+	}
+	else{
+		int outlen = 0;
+		t_wbParse_Error* pError = NULL;
+		wbParserNS::WBPARSE_HANDLE hParse = USE_WBPARSE_FUNC(ERROR,ITEM,body,len,outlen,(void**)&pError,NULL,NULL );
+		if( pError){
+			//Todo something...
+		}
+		USE_WBFREE_FUNC(ERROR,ITEM,hParse);
+	}
 }
 
 // 3.获取当前用户所关注用户的最新微博信息
@@ -88,6 +139,18 @@ WEIBO_struct_bodycallback_init(GETSTATUSES_FRIENDS_TIMELINE)
 {
 	printf("GETSTATUSES_FRIENDS_TIMELINE : \n    %s \n\n" , body );
 
+	//t_wbParse_Status* pStatus = NULL;
+	//int outlen = 0;
+	//WBPARSE_HANDLE hParse = WBParseJSON::Parse_Statuses_Friends_Timeline(body,len,NULL,outlen,(void**)&pStatus);
+
+	//int i = 0;
+	//for( int  i = 0 ; i < outlen ; i ++ )
+	//{
+	//	t_wbParse_Status *item = (pStatus + i );
+	//	// To do something...
+	//	//
+	//}
+	//WBParseJSON::Free_Statuses_Friends_Timeline(hParse);
 }
 
 // 4.获取用户发布的微博信息列表
@@ -98,17 +161,30 @@ WEIBO_struct_statuscallback_init(GETSTATUSES_USE_TIMELINE)
 WEIBO_struct_bodycallback_init(GETSTATUSES_USE_TIMELINE)
 {
 	printf("   GETSTATUSES_USE_TIMELINE : \n    %s \n\n" , body );
+	//Test_statsuses(httpCode,body,len);
+	//
+	//t_wbParse_Status* pStatus = NULL;
+	//int outlen = 0;
+	//WBPARSE_HANDLE hParse = WBParseJSON::Parse_Statuses_User_Timeline(body,len,NULL,outlen,(void**)&pStatus);
 
+	//int i = 0;
+	//for( int  i = 0 ; i < outlen ; i ++ )
+	//{
+	//	t_wbParse_Status *item = (pStatus + i );
+	//	// To do something...
+	//	//
+	//}
+	//WBParseJSON::Free_Statuses_User_Timeline(hParse);
 }
 
 // 5.获取@当前用户的微博列表
 WEIBO_struct_statuscallback_init(GETSTATUSES_MENTIONS)
 {
-
 }
 WEIBO_struct_bodycallback_init(GETSTATUSES_MENTIONS)
 {
 	printf("   GETSTATUSES_MENTIONS : \n    %s \n\n" , body );
+	//Test_statsuses(httpCode,body,len);
 
 }
 
@@ -116,11 +192,25 @@ WEIBO_struct_bodycallback_init(GETSTATUSES_MENTIONS)
 // 6.获取当前用户发送及收到的评论列表
 WEIBO_struct_statuscallback_init(GETSTATUSES_COMMENTS_TIMELINE)
 {
+
 }
 
 WEIBO_struct_bodycallback_init(GETSTATUSES_COMMENTS_TIMELINE)
 {
 	printf("   GETSTATUSES_COMMENTS_TIMELINE : \n    %s \n\n" , body );
+	//
+	t_wbParse_Comment* pComment = NULL;
+	int outlen = 0;
+	wbParserNS::WBPARSE_HANDLE hParse = USE_WBPARSE_FUNC(Statuses,CommentsTimeLine,body,len,outlen,(void**)&pComment,NULL,NULL );
+
+	int i = 0;
+	for( int  i = 0 ; i < outlen ; i ++ )
+	{
+		t_wbParse_Comment *item = (pComment + i );
+		// To do something...
+		//
+	}
+	USE_WBFREE_FUNC(Statuses,CommentsTimeLine,hParse);
 
 }
 
