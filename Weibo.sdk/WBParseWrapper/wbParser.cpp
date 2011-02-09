@@ -3,21 +3,27 @@
 #include "strconv.h"
 #include <assert.h>
 
-#if (!defined(WIN32) && !defined(WINCE) )
+
+#if (defined(WIN32) || defined(_WIN32_WCE) )
+
+#	if defined(_USE_JSON_PARSER)
+#	include <Json/reader.h>
+#	pragma comment(lib , "json_VC90.lib")
+#	endif //_USE_JSON_PARSER
+
+#	if defined(_USE_XML_PARSER)
+#	include <tinyxml/tinyxml.h>
+#	pragma comment(lib , "tinyxml_VC90.lib")
+#	endif //_USE_XML_PARSER
+
+#else
+
 #	define IsBadReadPtr(p,cb) p
 #	define ZeroMemory(out,len) memset((void*)out,0,len)
 #	define strncpy_s( out,len,txt,txtlen ) strcpy(out, txt)
+
 #endif //WIN32 || WINCE
 
-#if defined(_USE_JSON_PARSER)
-#include <Json/reader.h>
-#pragma comment(lib , "json_VC90.lib")
-#endif
-
-#if defined(_USE_XML_PARSER)
-#include <tinyxml/tinyxml.h>
-#pragma comment(lib , "tinyxml_VC90.lib")
-#endif 
 
 #ifdef  __cplusplus
 extern "C" {
@@ -37,7 +43,7 @@ extern "C" {
 		}
 
 		/** ½âÎöXML,UTF8 */
-		WBPARSER_API REQOBJ* Parse_data_JSON(const char* data)
+		WBPARSER_API REQOBJ* Parse_data_JSON(const char* data,char *err_out/*= 0*/,const int len/* = 0*/)
 		{
 			if( !data || *data == 0 )
 				return NULL;
@@ -49,12 +55,18 @@ extern "C" {
 				return NULL;
 #endif //WIN32||WINCE
 
-
 			Json::Reader reader;
 			Json::Value  *pRoot = new Json::Value();
 			if( !reader.parse(outstr ,(*pRoot),false) )
 			{
+				//
+				printf(reader.getFormatedErrorMessages().c_str());
+				if( err_out){
+					strncpy(err_out,reader.getFormatedErrorMessages().c_str(),len);
+				}
 				assert(0);
+				delete pRoot;
+				pRoot = NULL;
 			}
 			free( outstr );
 			return (REQOBJ*)pRoot;
@@ -190,30 +202,28 @@ extern "C" {
 			}
 
 			Json::Value &jChildValue = (*jvalue)[key];
-			if(jChildValue.isString()) 
-			{
+			if(jChildValue.isString()) {
 				strncpy( out,jChildValue.asCString(),len);
 			}
-		}
-
-		// string 
-		WBPARSER_API const char* GetCHAR_Key_JSON_EX(const char *key,REQOBJ *obj, int& outlen)
-		{
-			outlen = 0;
-			Json::Value *jvalue = (Json::Value*)obj;
-			if( (!jvalue || IsBadReadPtr((jvalue),sizeof(Json::Value)) )||
-				( jvalue->isNull() || !jvalue->isObject()) ) 
-			{
-				return "";
+			else {
+				if( jChildValue.isNull() ){
+					return ;
+				}
+				long long l = 0;
+				if( jChildValue.isInt() ){
+					l = jChildValue.asInt();
+				}
+				else if( jChildValue.isUInt() ){
+					l = jChildValue.asUInt();
+				}
+				else if( jChildValue.isBool() ){
+					l = jChildValue.asBool();
+				}
+				else if ( jChildValue.isDouble()){
+					l = jChildValue.asDouble();
+				}
+				_i64toa( l,out,10); 
 			}
-
-			Json::Value &jChildValue = (*jvalue)[key];
-			if(jChildValue.isString()) 
-			{
-				outlen = strlen( jChildValue.asCString() );
-				return jChildValue.asCString();
-			}
-			return "";
 		}
 		WBPARSER_API void GetCHAR_Idx_JSON(const int idx,REQOBJ *obj,char *out,const int len)
 		{
@@ -228,10 +238,43 @@ extern "C" {
 				return ;
 
 			Json::Value &jChildValue = (*jvalue)[idx];
-			if(jChildValue.isString() && !jChildValue.isNull() ) 
-			{
+			if(jChildValue.isString() && !jChildValue.isNull() )  {
 				strncpy( out,jChildValue.asCString(),len );
 			}
+			else{
+				long long l = 0;
+				if( jChildValue.isInt() ){
+					l = jChildValue.asInt();
+				}
+				else if( jChildValue.isUInt() ){
+					l = jChildValue.asUInt();
+				}
+				else if( jChildValue.isBool() ){
+					l = jChildValue.asBool();
+				}
+				else if ( jChildValue.isDouble()){
+					l = jChildValue.asDouble();
+				}
+				_i64toa( l,out,10); 
+			}
+		}
+		// string 
+		WBPARSER_API const char* GetCHAR_Key_JSON_EX(const char *key,REQOBJ *obj, int& outlen)
+		{
+			outlen = 0;
+			Json::Value *jvalue = (Json::Value*)obj;
+			if( (!jvalue || IsBadReadPtr((jvalue),sizeof(Json::Value)) )||
+				( jvalue->isNull() || !jvalue->isObject()) ) 
+			{
+				return "";
+			}
+
+			Json::Value &jChildValue = (*jvalue)[key];
+			if(jChildValue.isString())  {
+				outlen = strlen( jChildValue.asCString() );
+				return jChildValue.asCString();
+			}
+			return "";
 		}
 
 
