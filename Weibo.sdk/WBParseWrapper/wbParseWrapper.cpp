@@ -12,6 +12,53 @@
 #define MMID_TYPE(p,type) if( pExternInfo){ pExternInfo->_MMId.iMMIDtype = type; }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 内部解释函数
+
+// 内部解释结果
+
+inline t_wbParse_Ret* Internal_ParseRet(const char *body)
+{
+	REQOBJ *pObjRoot = wbParserNS::Parse_data_JSON(body);
+	t_wbParse_Ret* pRet = CWBJsonParser::parse_Ret(pObjRoot);
+	wbParserNS::Parse_free_JSON(pObjRoot);
+	return pRet;
+}
+
+// trend hot
+inline t_wbParse_TrendHotQuery* Internal_Parse_TrendHotQuery(const char *body )
+{
+	REQOBJ *pObjRoot = wbParserNS::Parse_data_JSON(body);
+	REQOBJ *pObjTrends = wbParserNS::GetObject_Key_JSON("trends",pObjRoot);
+	t_wbParse_TrendHotQuery *pTrendHotQuery = (t_wbParse_TrendHotQuery*)wbParse_Malloc_TrendHotQuery(1);
+
+
+	// get time
+	Json::Value *pvalTrends  = (Json::Value*)(pObjTrends);
+	Json::Value::iterator it = pvalTrends->begin() ;
+	WBPARSER_COPY( pTrendHotQuery->time_,WBPARSER_REAL_LEN(TREND_ID),it.memberName(),strlen(it.memberName()) );
+
+	// get as_of
+	char buf [128] = {0};
+	GET_LONG_TO_STR(JSON,pObjRoot,"as_of",buf,128);
+
+	//
+	pTrendHotQuery->trend_counts_ = GetObject_JSON_SIZE(pObjRoot);
+	if( pTrendHotQuery->trend_counts_ <= 0 ){
+		return NULL;
+	}
+	t_wbParse_TrendHotQuery::TrendItem *pItemTrendList = (t_wbParse_TrendHotQuery::TrendItem*)wbParse_Malloc_TrendHotQuery(pTrendHotQuery->trend_counts_);
+	
+	for( int i = 0; i < pTrendHotQuery->trend_counts_; ++ i ){
+		t_wbParse_TrendHotQuery::TrendItem *pItemTrend = (pItemTrendList + i) ;
+		CWBJsonParser::parse_Trends_getHot( GetObject_Idx_JSON(i,pObjRoot),pItemTrend);
+	}
+	wbParserNS::Parse_free_JSON(pObjRoot);
+	return pTrendHotQuery;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 #ifdef __cplusplus
 extern "C"{
 #endif //__cplusplus
@@ -187,12 +234,17 @@ extern "C"{
 		}
 
 		/** 未读消息数清零接口 */
-		bool WBPARSE_FUNC_IMPLEMENTS(Statuses,ResetCount)
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Statuses,ResetCount)
 		{
-			//TODO:未实现
-			return false;
+			iOutCount = 1;
+			void *pout = Internal_ParseRet(sc);
+			ppout ? *ppout = pout : 0;
+			return (WBPARSE_HANDLE)pout;
 		}
-
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Statuses,ResetCount)
+		{
+			wbParse_Free_Ret((void*)handle,0 );
+		}
 
 		/** 表情接口，获取表情列表 */
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Emotions,Timeline)
@@ -253,6 +305,20 @@ extern "C"{
 		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS( Statuses,Upload)
 		{
 			handle ? (delete ((CParseStatusesSingleT*)handle)) : 0;
+		}
+
+		/** 上传图片 */
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS( Statuses,Upload_Pic )
+		{
+			iOutCount = 1;
+			CParseUploadPicSingleT* pParseObj = new CONSTRUCT_UPLOADPIC_MULTIPL(sc,len);
+			pParseObj->ParseBody();
+			ppout ? *ppout = pParseObj->get() : NULL;
+			return ((WBPARSE_HANDLE)pParseObj) ;
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS( Statuses,Upload_Pic)
+		{
+			handle ? (delete ((CParseUploadPicSingleT*)handle)) : 0;
 		}
 
 		/** 删除一条微博信息 */
@@ -405,6 +471,21 @@ extern "C"{
 			handle ? (delete ((CParseUserMultiplT*)handle)) : 0;
 		}
 
+		/** 感兴趣的用户 */
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Users,Suggestions)
+		{
+			CParseUserMultiplT* pParseObj = new CONSTRUCT_USER_MULTIPL(sc,len);
+			pParseObj->ParseBody();
+			//
+			ppout    ? *ppout    = pParseObj->get() : NULL;
+			iOutCount = pParseObj->GetCounts();
+			return ((WBPARSE_HANDLE)pParseObj) ;
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Users,Suggestions)
+		{
+			handle ? (delete ((CParseUserMultiplT*)handle)) : 0;
+		}
+
 
 		/** 更新当前登录用户所关注的某个好友的备注信息 */
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Users,Friends_UpdateRemark)
@@ -526,6 +607,20 @@ extern "C"{
 			handle ? (delete ((CParseUserSingleT*)handle)) : 0;
 		}
 
+		/** 批量关注用户 */
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Friendship,CreateBatch)
+		{
+			CParseUserMultiplT* pParseObj = new CONSTRUCT_USER_MULTIPL(sc,len);
+			pParseObj->ParseBody();
+			ppout ? *ppout = pParseObj->get() : NULL;
+			iOutCount = pParseObj->GetCounts();
+			return ((WBPARSE_HANDLE)pParseObj);
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Friendship,CreateBatch)
+		{
+			handle ? (delete ((CParseUserMultiplT*)handle)) : 0;
+		}
+
 		/** 取消关注 */
 		//WBPARSE_HANDLE Parse_Friendship_Destroy(const char* sc,const int len,void **ppout)
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Friendship,Destroy)
@@ -543,11 +638,19 @@ extern "C"{
 
 
 		/** 是否关注某用户(推荐使用friendships/show) */
-		bool WBPARSE_FUNC_IMPLEMENTS(Friendship,Exist)
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Friendship,Exist)
 		{
-			// TODO:
-			return false;
+			iOutCount = 1;
+			void *pout = Internal_ParseRet(sc);
+			ppout ? *ppout = pout : 0;
+			return (WBPARSE_HANDLE)pout;
 		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Friendship,Exist)
+		{
+			wbParse_Free_Ret((void*)handle,0 );
+		}
+
+
 
 		/** 获取两个用户关系的详细情况 */
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Friendship,Show)
@@ -660,13 +763,20 @@ extern "C"{
 		}
 
 		/** 检测某用户是否是黑名单用户 */
-		bool WBPARSE_FUNC_IMPLEMENTS(Blocks,Exist)
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Block,Exist)
 		{
-			return false;
+			iOutCount = 1;
+			void *pout = Internal_ParseRet(sc);
+			ppout ? *ppout = pout : 0;
+			return (WBPARSE_HANDLE)pout;
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Block,Exist)
+		{
+			wbParse_Free_Ret((void*)handle,0 );
 		}
 
 		/* 列出黑名单用户(输出用户详细信息) */
-		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Blocks,Blocking )
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Block,Blocking )
 		{
 			CParseUserMultiplT* pParseObj = new CONSTRUCT_USER_MULTIPL(sc,len);
 			pParseObj->ParseBody();
@@ -674,14 +784,14 @@ extern "C"{
 			iOutCount = pParseObj->GetCounts();
 			return ((WBPARSE_HANDLE)pParseObj);
 		}
-		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Blocks,Blocking)
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Block,Blocking)
 		{
 			handle ? (delete ((CParseUserMultiplT*)handle)) : 0;
 		}
 
 
 		/** 列出分页黑名单用户（只输出id）*/
-		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Blocks,Blocking_IDs)
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Block,Blocking_IDs)
 		{
 			CParseIDs *pParseObj = new CParseIDs(sc,len);
 			pParseObj->ParseBody(NULL);
@@ -690,7 +800,7 @@ extern "C"{
 			return ((WBPARSE_HANDLE)pParseObj);
 		}
 
-		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Blocks,Blocking_IDs)
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Block,Blocking_IDs)
 		{
 			handle ? (delete ((CParseIDs*)handle)) : 0;
 		}
@@ -702,56 +812,416 @@ extern "C"{
 		/** 返回用户指定的标签列表 */
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Tags,List)
 		{
+#ifdef _USE_JSON_PARSER
+			REQOBJ *pObjRoot = Parse_data_JSON(sc);
+			iOutCount = GetObject_JSON_SIZE( pObjRoot);
+			if( iOutCount <= 0 ){
+				return NULL;
+			}
+			t_wbParse_Tag *pTaglist = (t_wbParse_Tag *)wbParse_Malloc_Tag(iOutCount);
+			for( int i = 0; i < iOutCount; ++ i ){
+				t_wbParse_Tag *pTag = (pTaglist + i) ;
+				CWBJsonParser::parse_Tags( GetObject_Idx_JSON(i,pObjRoot),pTag,NULL);
+			}
+			Parse_free_JSON(pObjRoot);
+			return ((WBPARSE_HANDLE)pTaglist);
+#else
 			//TODO:
+			assert(0);
 			return NULL;
+#endif //
 		}
 		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Tags,List)
 		{
-			//TODO:
+			wbParse_Free_Tag((void*)handle,0);
 		}
 
-		/** 返回用户指定的标签列表 */
+		/** 用户创建的标签 */
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Tags,Create)
 		{
-			//TODO:
+#ifdef _USE_JSON_PARSER
+			REQOBJ *pObjRoot = Parse_data_JSON(sc);
+			iOutCount = GetObject_JSON_SIZE( pObjRoot);
+			if( iOutCount > 0 )
+			{
+				t_wbParse_Tag *pTaglist = (t_wbParse_Tag *)wbParse_Malloc_Tag(iOutCount);
+				for( int i = 0; i < iOutCount; ++ i )
+				{
+					t_wbParse_Tag *pTag = (pTaglist + i) ;
+					CWBJsonParser::parse_Tags( GetObject_Idx_JSON(i,pObjRoot),pTag,_WBC("tagid") );
+				}
+				return ((WBPARSE_HANDLE)pTaglist);
+			}
 			return NULL;
+#else
+			//TODO:
+			assert(0);
+			return NULL;
+#endif //
 		}
 		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Tags,Create)
 		{
-			//TODO:
+			wbParse_Free_Tag((void*)handle,0);
 		}
 
 		/** 返回用户感兴趣的标签 */
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Tags,Suggestions)
 		{
-			//TODO:
+#ifdef _USE_JSON_PARSER
+			REQOBJ *pObjRoot = Parse_data_JSON(sc);
+			iOutCount = GetObject_JSON_SIZE( pObjRoot);
+			if( iOutCount > 0 )
+			{
+				t_wbParse_Tag *pTaglist = (t_wbParse_Tag *)wbParse_Malloc_Tag(iOutCount);
+				for( int i = 0; i < iOutCount; ++ i )
+				{
+					t_wbParse_Tag *pTag = (pTaglist + i) ;
+					CWBJsonParser::parse_Tags( GetObject_Idx_JSON(i,pObjRoot),pTag,_WBC("id") );
+				}
+				return ((WBPARSE_HANDLE)pTaglist);
+			}
 			return NULL;
+#else
+			//TODO:
+			assert(0);
+			return NULL;
+#endif //
 		}
 		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Tags,Suggestions)
 		{
-			//TODO:
+			wbParse_Free_Tag((void*)handle,0 );
 		}
 
 		/** 删除标签 */
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Tags,Destroy)
 		{
-			//TODO:
-			return NULL;
+			iOutCount = 1;
+			void *pout = Internal_ParseRet(sc);
+			ppout ? *ppout = pout : 0;
+			return (WBPARSE_HANDLE)pout;
 		}
 		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Tags,Destroy)
 		{
-			//TODO:
+			wbParse_Free_Ret((void*)handle,0 ) ;
 		}
 
 		/** 批量删除标签 */
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Tags,Destroy_Batch)
 		{
-			//TODO:
+#ifdef _USE_JSON_PARSER
+			REQOBJ *pObjRoot = Parse_data_JSON(sc);
+			iOutCount = GetObject_JSON_SIZE( pObjRoot);
+			if( iOutCount > 0 )
+			{
+				t_wbParse_Tag *pTaglist = (t_wbParse_Tag *)wbParse_Malloc_Tag(iOutCount);
+				for( int i = 0; i < iOutCount; ++ i )
+				{
+					t_wbParse_Tag *pTag = (pTaglist + i) ;
+					CWBJsonParser::parse_Tags( GetObject_Idx_JSON(i,pObjRoot),pTag,_WBC("tagid") );
+				}
+				return ((WBPARSE_HANDLE)pTaglist);
+			}
 			return NULL;
+#else
+			//TODO:
+			assert(0);
+			return NULL;
+#endif //
 		}
 		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Tags,Destroy_Batch)
 		{
+			wbParse_Free_Tag((void*)handle,0 );
+		}
+
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// 话题接口 ,by welbon,2011-01-10
+
+		/** 获取某人的话题 */
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Trend,Trends)
+		{
+#ifdef _USE_JSON_PARSER
+			REQOBJ *pObjRoot = Parse_data_JSON(sc);
+			iOutCount = GetObject_JSON_SIZE( pObjRoot);
+			if( iOutCount > 0 )
+			{
+				t_wbParse_Trend *pTrendlist = (t_wbParse_Trend*)wbParse_Malloc_Trend(iOutCount);
+				for( int i = 0; i < iOutCount; ++ i )
+				{
+					t_wbParse_Trend *pTrend = (pTrendlist + i) ;
+					CWBJsonParser::parse_Trends_getData( GetObject_Idx_JSON(i,pObjRoot),pTrend );
+				}
+				return ((WBPARSE_HANDLE)pTrendlist);
+			}
+#else
 			//TODO:
+			assert(0);
+#endif //
+			return NULL;
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Trend,Trends)
+		{
+			wbParse_Free_Trend((void*)handle,0 );
+		}
+
+		/** 获取某一话题下的微博 */
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Trend,Statuses)
+		{
+			CParseStatusesMultiplT* pParseObj = new CONSTRUCT_STATUSES_MULTIPL(sc,len,pExternInfo);
+			pParseObj->ParseBody();
+			iOutCount = pParseObj->GetCounts();
+			ppout ? *ppout = pParseObj->get() : NULL;
+			return ((WBPARSE_HANDLE)pParseObj);
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Trend,Statuses)
+		{
+			handle ? (delete ((CParseStatusesMultiplT*)handle)) : 0;
+		}
+
+		/** 关注某一个话题 */
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Trend,Follow)
+		{
+#ifdef _USE_JSON_PARSER
+			REQOBJ *pObjRoot = Parse_data_JSON(sc);
+			t_wbParse_Trend *pTrend = (t_wbParse_Trend*)wbParse_Malloc_Trend(iOutCount);
+			CWBJsonParser::parse_Trends_Follow( pObjRoot,pTrend );
+			return ((WBPARSE_HANDLE)pTrend);
+#else
+			//TODO:
+			assert(0);
+#endif //
+			return NULL;
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Trend,Follow)
+		{
+			wbParse_Free_Trend((void*)handle,0);
+		}
+
+		/** 取消关注的某一个话题 */
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Trend,Destroy)
+		{
+			iOutCount = 1;
+			void *pout = Internal_ParseRet(sc);
+			ppout ? *ppout = pout : 0;
+			return (WBPARSE_HANDLE)pout;
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Trend,Destroy)
+		{
+			wbParse_Free_Ret((void*)handle,0);
+		}
+
+		/** 按小时返回热门话题 */
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Trend,Hourly)
+		{
+			iOutCount = 1;
+			void *pout = Internal_Parse_TrendHotQuery(sc);
+			ppout ? *ppout = pout : 0;
+			return (WBPARSE_HANDLE)pout;
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Trend,Hourly)
+		{
+			wbParse_Free_TrendHotQuery((void*)handle,0);
+		}
+
+		/** 按日期返回热门话题。返回某一日期的话题 */
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Trend,Daily)
+		{
+			iOutCount = 1;
+			void *pout = Internal_Parse_TrendHotQuery(sc);
+			ppout ? *ppout = pout : 0;
+			return (WBPARSE_HANDLE)pout;
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Trend,Daily)
+		{
+			wbParse_Free_TrendHotQuery((void*)handle,0);
+		}
+
+		/** 按周返回热门话题。返回某一日期之前某一周的话题 */
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Trend,Weekly)
+		{
+			iOutCount = 1;
+			void *pout = Internal_Parse_TrendHotQuery(sc);
+			ppout ? *ppout = pout : 0;
+			return (WBPARSE_HANDLE)pout;
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Trend,Weekly)
+		{
+			wbParse_Free_TrendHotQuery((void*)handle,0);
+		}
+
+
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// 邀请接口
+
+		//
+		void ParseInviteUsrs(wbParserNS::REQOBJ *pObjInAtt,t_wbParse_InviteContact::ItemUsr **ppUsrArray,int &outsize,bool bobject )
+		{
+			if( !pObjInAtt)
+				return;
+
+			outsize = wbParserNS::GetObject_JSON_SIZE(pObjInAtt);
+			if( outsize <= 0 ){
+				return ;
+			}
+			t_wbParse_InviteContact::ItemUsr *pInviteContactUsrs = (t_wbParse_InviteContact::ItemUsr*)wbParse_Malloc_InviteContact_Usr(outsize);
+			if( !bobject )
+			{//只有email字段
+				for( int i = 0 ; i < outsize; i ++ ) {
+					t_wbParse_InviteContact::ItemUsr *pUsr = (pInviteContactUsrs + i);
+					wbParserNS::GetCHAR_Idx_JSON( i,pObjInAtt,pUsr->email_,WBPARSER_USE_LEN(email) );
+				}
+			}
+			else {
+				for( int i = 0 ; i < outsize; i ++ )
+				{
+					wbParserNS::REQOBJ* pObjInAttUsr = wbParserNS::GetObject_Idx_JSON( i,pObjInAtt);
+					t_wbParse_InviteContact::ItemUsr *pUsr = (pInviteContactUsrs + i);
+					wbParserNS::CWBJsonParser::parse_invite_contact_usr(pObjInAttUsr,pUsr);
+				}
+			}
+			(ppUsrArray) ? (*ppUsrArray = pInviteContactUsrs) : 0 ;
+		}
+
+
+		t_wbParse_InviteContact* ParseInviteContact(const char* sc,int &outsize,bool bgroup )
+		{
+			//
+			outsize = 1;
+			t_wbParse_InviteContact* pInviteContact = (t_wbParse_InviteContact*)wbParse_Malloc_InviteContact(1);
+
+#ifdef _USE_JSON_PARSER
+			wbParserNS::REQOBJ *pObjRoot = wbParserNS::Parse_data_JSON(sc);
+
+			// error code
+			wbParserNS::GetCHAR_Key_JSON("code", pObjRoot , pInviteContact->error_code_ , WBPARSER_REAL_LEN(error_code) );
+
+			//data
+			wbParserNS::REQOBJ* pObjData = wbParserNS::GetObject_Key_JSON("data",pObjRoot);
+			if( pObjData) 
+			{
+				// in attend
+				ParseInviteUsrs(wbParserNS::GetObject_Key_JSON("in_att",pObjData) ,
+					&pInviteContact->in_attend_usr_,pInviteContact->in_attend_usr_count_ ,true );
+
+				wbParserNS::REQOBJ *pObjUsrArray = NULL;
+
+				// in not attend
+				pObjUsrArray = wbParserNS::GetObject_Key_JSON("in_no_att",pObjData);
+				if( bgroup)  {
+					// group name
+					Json::Value *val = (Json::Value *)(pObjUsrArray);
+					pInviteContact->not_attend_group_count_ = val->size();
+					pInviteContact->not_attend_group_ = (t_wbParse_InviteContact::ItemGroup*)wbParse_Malloc_InviteContact_Group(val->size());
+					Json::Value::iterator it = val->begin();
+					int i = 0;
+					while( it != val->end())
+					{
+						t_wbParse_InviteContact::ItemGroup *gr = (pInviteContact->not_attend_group_ + i);
+
+						// UTF8 convert
+						char* outstr = NULL;
+						if(  lo_Utf82C(&outstr , it.memberName()) ) {
+							strcpy( gr->groupname_,outstr );
+							free(outstr);
+						}
+						else{
+							strcpy( gr->groupname_,it.memberName() );
+						}
+
+						ParseInviteUsrs((wbParserNS::REQOBJ*)&(*it),&(gr->usrs_),(gr->count_),true );
+						++ i;
+						++ it ;
+					}
+				}
+				else{
+					pInviteContact->not_attend_group_count_ = 1;
+					pInviteContact->not_attend_group_ = (t_wbParse_InviteContact::ItemGroup*)wbParse_Malloc_InviteContact_Group(1);
+					ParseInviteUsrs( pObjUsrArray,&pInviteContact->not_attend_group_->usrs_,
+						pInviteContact->not_attend_group_->count_,true );
+				}
+
+				// not weibo
+				pObjUsrArray = wbParserNS::GetObject_Key_JSON("out",pObjData);
+				if( bgroup)  {
+					// group name
+					Json::Value *val = (Json::Value *)(pObjUsrArray);
+					pInviteContact->out_attend_group_count_ = val->size();
+					pInviteContact->out_attend_group_ = (t_wbParse_InviteContact::ItemGroup*)wbParse_Malloc_InviteContact_Group(val->size());
+					Json::Value::iterator it = val->begin();
+					int i = 0;
+					while( it != val->end())
+					{
+						t_wbParse_InviteContact::ItemGroup *gr = (pInviteContact->out_attend_group_ + i);
+
+						// UTF8 convert
+						char* outstr = NULL;
+						if(  lo_Utf82C(&outstr , it.memberName()) ) {
+							strcpy( gr->groupname_,outstr );
+							free(outstr);
+						}
+						else{
+							strcpy( gr->groupname_,it.memberName() );
+						}
+
+						ParseInviteUsrs((wbParserNS::REQOBJ*)&(*it),&(gr->usrs_),(gr->count_),true );
+						++ i;
+						++ it ;
+					}
+				}
+				else{
+					pInviteContact->out_attend_group_count_ = 1;
+					pInviteContact->out_attend_group_ = (t_wbParse_InviteContact::ItemGroup*)wbParse_Malloc_InviteContact_Group(1);
+					ParseInviteUsrs( pObjUsrArray,&pInviteContact->out_attend_group_->usrs_,
+						pInviteContact->out_attend_group_->count_,false );
+				}
+			}
+			//Free
+			wbParserNS::Parse_free_JSON(pObjRoot);
+#endif //_USE_JSON_PARSER
+
+			return pInviteContact;
+		}
+
+
+		/** 邀请邮箱联系人 */
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(InviteContact,Mail)
+		{
+			t_wbParse_InviteContact *pInviteContact = ParseInviteContact(sc,iOutCount,false);
+			ppout ? *ppout = pInviteContact : NULL;
+			return (WBPARSE_HANDLE)pInviteContact; 
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(InviteContact,Mail)
+		{
+			handle ? wbParserNS::wbParse_Free_InviteContact((t_wbParse_InviteContact*)handle,1) : 0;
+		}
+
+		/** 邀请MSN联系人 */
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(InviteContact,MSN)
+		{
+			t_wbParse_InviteContact *pInviteContact = ParseInviteContact(sc,iOutCount,true);
+			ppout ? *ppout = pInviteContact : NULL;
+			return (WBPARSE_HANDLE)pInviteContact;  
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(InviteContact,MSN)
+		{
+			handle ? wbParserNS::wbParse_Free_InviteContact((t_wbParse_InviteContact*)handle,1) : 0;
+		}
+
+		/** 发送邀请邮件 */
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(InviteContact,SendMail)
+		{
+#ifdef _USE_JSON_PARSER
+			REQOBJ *pObjRoot = wbParserNS::Parse_data_JSON(sc);
+			t_wbParse_Ret* pRet = CWBJsonParser::parse_Ret(pObjRoot);
+			wbParserNS::Parse_free_JSON(pObjRoot);
+			ppout ? *ppout = pRet : NULL;
+			return (WBPARSE_HANDLE)pRet ;
+#endif //_USE_XML_PARSER
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(InviteContact,SendMail)
+		{
+			wbParse_Free_Ret((void*)handle,0 ) ;
 		}
 
 
@@ -830,21 +1300,41 @@ extern "C"{
 		}
 
 		/**注册新浪微博帐号*/
-		bool WBPARSE_FUNC_IMPLEMENTS(Account,Register)
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Account,Register)
 		{
-			//TODO:
-			return false;
+			REQOBJ *pObjRoot = wbParserNS::Parse_data_JSON(sc);
+			//
+			iOutCount = 1;
+			t_wbParse_Register_Ret *pRet = (t_wbParse_Register_Ret*)malloc(sizeof(t_wbParse_Register_Ret));
+			ZeroMemory(pRet ,sizeof(t_wbParse_Register_Ret));
+			GET_LONG_TO_STR( JSON,pObjRoot,"uid",pRet->uid_,WBPARSER_USE_LEN(id) );
+			wbParserNS::Parse_free_JSON(pObjRoot);
+			//
+			ppout ? *ppout = pRet : 0 ;
+			return (WBPARSE_HANDLE)pRet;
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Account,Register)
+		{
+			handle ? free(handle) : 0;
 		}
 
 		/**二次注册微博的接口*/
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Account,Activate)
 		{
-			//TODO:
-			return NULL;
+			REQOBJ *pObjRoot = wbParserNS::Parse_data_JSON(sc);
+			//
+			iOutCount = 1;
+			t_wbParse_Register_Ret *pRet = (t_wbParse_Register_Ret*)malloc(sizeof(t_wbParse_Register_Ret));
+			ZeroMemory(pRet ,sizeof(t_wbParse_Register_Ret));
+			GET_LONG_TO_STR( JSON,pObjRoot,"uid",pRet->uid_,WBPARSER_USE_LEN(id) );
+			wbParserNS::Parse_free_JSON(pObjRoot);
+			//
+			ppout ? *ppout = pRet : 0 ;
+			return (WBPARSE_HANDLE)pRet;
 		}
-		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS( Account,Activate)
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(Account,Activate)
 		{
-			//TODO:
+			handle ? free(handle) : 0;
 		}
 
 
@@ -1068,6 +1558,19 @@ extern "C"{
 		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(HotPoint,Repost_Weekliy)
 		{
 			handle ? (delete ((CParseStatusesMultiplT*)handle)) : 0;
+		}
+
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS( MEDIA,SHORTURL )
+		{
+			CParseMediaShortMultiplT* pParseObj = new CONSTRUCT_MEDIA_SHORTURL_MULTIPL(sc,len,NULL);
+			pParseObj->ParseBody();
+			iOutCount = pParseObj->GetCounts();
+			ppout ? *ppout = pParseObj->get() : NULL;
+			return ((WBPARSE_HANDLE)pParseObj);
+		}
+		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS( MEDIA,SHORTURL )
+		{
+			handle ? (delete ((CParseMediaShortMultiplT*)handle)) : 0;
 		}
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////

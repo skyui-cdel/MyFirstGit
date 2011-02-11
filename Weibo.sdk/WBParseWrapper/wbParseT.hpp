@@ -170,8 +170,8 @@ public:
 
 	virtual ~CParseGenericByCursorT()
 	{
-		if( pcur_ )
-			wbParserNS::wbParse_Free_Cursor(pcur_,1);
+		//if( pcur_ )
+			//wbParserNS::wbParse_Free_Cursor(pcur_,1);
 
 		if( freeT_)
 			freeT_(object_,counts_);

@@ -25,7 +25,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;.\include\*.h&quot; &quot;..\include\wbParse&quot;"
+				CommandLine="copy &quot;.\include\*.h&quot; &quot;..\include\wbParser&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -42,7 +42,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\;.\include;..\Common;&quot;..\third-party\include&quot;;.\Convt"
+				AdditionalIncludeDirectories=".\;.\include;.\Convt;&quot;..\third-party\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;_USE_JSON_PARSER;WEIBO_PARSER_STATICLIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -90,7 +90,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;.\include\*.h&quot; &quot;..\include\wbParse&quot;"
+				CommandLine="copy &quot;.\include\*.h&quot; &quot;..\include\wbParser&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -108,7 +108,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories=".\;.\include;..\Common;&quot;..\third-party\include&quot;;.\Convt"
+				AdditionalIncludeDirectories=".\;.\include;.\Convt;&quot;..\third-party\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_USE_JSON_PARSER;WEIBO_PARSER_STATICLIB"
 				IgnoreStandardIncludePath="false"
 				GeneratePreprocessedFile="0"

@@ -16,6 +16,7 @@
 //
 #define GET_STR(type,obj,key,out,outlen)	wbParserNS::GetCHAR_Key_##type(key,obj,out,outlen)
 #define GET_STR_EX(type,obj,key,out,outlen) out = wbParserNS::GetCHAR_Key_##type##_EX(key,obj,outlen)
+#define GET_STR_IDX(type,obj,idx,out,outlen) wbParserNS::GetCHAR_Idx_##type(idx,obj,out,outlen)
 
 
 #if defined(WIN32) || defined(WINCE)

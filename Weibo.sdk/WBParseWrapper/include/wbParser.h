@@ -45,7 +45,7 @@ extern "C" {
 #if defined(_USE_JSON_PARSER)
 
 		/** 解析JSON,data format : UTF8 */
-		WBPARSER_API REQOBJ* Parse_data_JSON(const char* data);
+		WBPARSER_API REQOBJ* Parse_data_JSON(const char* data,char *err_out = 0,const int len = 0);
 
 		/** 释放 */
 		WBPARSER_API void Parse_free_JSON(REQOBJ *obj);
@@ -63,7 +63,8 @@ extern "C" {
 		WBPARSER_API void GetCHAR_Key_JSON(const char *key,REQOBJ *obj,char *out,const int len);
 		WBPARSER_API void GetCHAR_Idx_JSON(const int idx,REQOBJ *obj,char *out,const int len);
 		WBPARSER_API const char* GetCHAR_Key_JSON_EX(const char *key,REQOBJ *obj, int& outlen);
-		// 将OBJ转成INT 
+
+		// 将已知的OBJECT转成INT 
 		WBPARSER_API long long GetLong_JSON(REQOBJ *obj);
 
 #endif //_USE_JSON_PARSER

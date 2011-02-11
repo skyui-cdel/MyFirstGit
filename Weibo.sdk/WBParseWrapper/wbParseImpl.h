@@ -143,6 +143,7 @@ public:
 #endif //
 
 
+///////////////////////////////////////////////////////////////////////////////////////////
 // Status 
 typedef CParseStatusesMultipl	CParseStatusesMultiplT;
 typedef CParseStatusesSingle	CParseStatusesSingleT;
@@ -158,6 +159,7 @@ typedef CParseStatusesList		CParseStatusesListT;
 	CParseStatusesListT(sc,len,pExternInfo)
 
 
+///////////////////////////////////////////////////////////////////////////////////////////
 // Comment
 typedef CParseGenericMultiplT< t_wbParse_Comment >  CParseCommentMultiplT;
 typedef CParseGenericSingleT< t_wbParse_Comment >   CParseCommentSingleT;
@@ -172,6 +174,7 @@ typedef CParseGenericByCursorT< t_wbParse_Comment > CParseCommentListT;
 #define CONSTRUCT_COMMENTS_LIST(sc,len)\
 	CParseCommentListT(sc,len,wbParserNS::wbParse_Malloc_Comment,wbParserNS::wbParse_Free_Comment,PARSE_T(parse_comment) )
 
+///////////////////////////////////////////////////////////////////////////////////////////
 // User
 typedef CParseGenericMultiplT< t_wbParse_User >  CParseUserMultiplT;
 typedef CParseGenericSingleT< t_wbParse_User >   CParseUserSingleT;
@@ -187,6 +190,7 @@ typedef CParseGenericByCursorT< t_wbParse_User > CParseUserListT;
 	CParseUserListT(sc,len,wbParserNS::wbParse_Malloc_User,wbParserNS::wbParse_Free_User,PARSE_T(parse_user) )
 
 
+///////////////////////////////////////////////////////////////////////////////////////////
 // Counts
 typedef CParseGenericMultiplT< t_wbParse_CommentCounts >  CParseCommentCountMultiplT;
 typedef CParseGenericSingleT< t_wbParse_CommentCounts >   CParseCommentCountSingleT;
@@ -201,6 +205,7 @@ typedef CParseGenericByCursorT< t_wbParse_CommentCounts > CParseCommentCountList
 #define CONSTRUCT_COMMENTCOUNTS_LIST(sc,len)\
 	CParseCommentCountListT(sc,len,wbParserNS::wbParse_Malloc_Commentcount,wbParserNS::wbParse_Free_Commentcount,PARSE_T(parse_commentcounts) )
 
+///////////////////////////////////////////////////////////////////////////////////////////
 // Counts
 typedef CParseGenericMultiplT< t_wbParse_Unread >  CParseUnreadMultiplT;
 typedef CParseGenericSingleT< t_wbParse_Unread >   CParseUnreadCountSingleT;
@@ -216,6 +221,7 @@ typedef CParseGenericByCursorT< t_wbParse_Unread > CParseUnreadCountListT;
 	CParseUnreadCountListT(sc,len,wbParserNS::wbParse_Malloc_Unread,wbParserNS::wbParse_Free_Unread,PARSE_T(parse_unread))
 
 
+///////////////////////////////////////////////////////////////////////////////////////////
 //Direct messages
 typedef CParseGenericMultiplT< t_wbParse_DirectMessage >  CParseDirectMessageMultiplT;
 typedef CParseGenericSingleT< t_wbParse_DirectMessage >   CParseDirectMessageSingleT;
@@ -231,6 +237,7 @@ typedef CParseGenericByCursorT< t_wbParse_DirectMessage > CParseDirectMessageLis
 	CParseDirectMessageListT(sc,len,wbParserNS::wbParse_Malloc_Directmessage,wbParserNS::wbParse_Free_Directmessage,PARSE_T(parse_directmessage))
 
 
+///////////////////////////////////////////////////////////////////////////////////////////
 //Ship show
 typedef CParseGenericMultiplT< t_wbParse_Shipshow >  CParseShipShowMultiplT;
 typedef CParseGenericSingleT< t_wbParse_Shipshow >   CParseShipShowSingleT;
@@ -246,6 +253,7 @@ typedef CParseGenericByCursorT< t_wbParse_DirectMessage > CParseShipShowListT;
 	CParseShipShowListT(sc,len,wbParserNS::wbParse_Malloc_Friendship,wbParserNS::wbParse_Free_Friendship,PARSE_T(parse_shipshow))
 
 
+///////////////////////////////////////////////////////////////////////////////////////////
 //Limite
 typedef CParseGenericMultiplT<  t_wbParse_LimitStatus >  CParseLimitesMultiplT;
 typedef CParseGenericSingleT<   t_wbParse_LimitStatus >  CParseLimitesSingleT;
@@ -262,6 +270,7 @@ typedef CParseGenericByCursorT< t_wbParse_LimitStatus >  CParseLimitesListT;
 
 
 
+///////////////////////////////////////////////////////////////////////////////////////////
 //Emotion
 typedef CParseGenericMultiplT<  t_wbParse_Emotion >  CParseEmotionMultiplT;
 typedef CParseGenericSingleT<   t_wbParse_Emotion >  CParseEmotionSingleT;
@@ -276,8 +285,24 @@ typedef CParseGenericByCursorT< t_wbParse_Emotion >  CParseEmotionListT;
 #define CONSTRUCT_EMOTION_LIST(sc,len)\
 	CParseEmotionListT(sc,len,wbParserNS::wbParse_Malloc_Emotion,wbParserNS::wbParse_Free_Emotion,PARSE_T(parse_emotion))
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// media short url 
+typedef CParseGenericMultiplT<  t_wbParse_Media_ShortUrlBatch >  CParseMediaShortMultiplT;
+
+#define CONSTRUCT_MEDIA_SHORTURL_MULTIPL(sc,len)\
+	CParseMediaShortMultiplT(sc,len,wbParserNS::wbParse_Malloc_Media_ShortURLBatch,wbParserNS::wbParse_Free_Emotion,PARSE_T(parse_Media_ShortURLBatch))
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// upload picture
+
+typedef CParseGenericSingleT<  t_wbParse_UploadPic >  CParseUploadPicSingleT;
+
+#define CONSTRUCT_UPLOADPIC_MULTIPL(sc,len)\
+	CParseUploadPicSingleT(sc,len,wbParserNS::wbParse_Malloc_UploadPic,wbParserNS::wbParse_Free_UploadPic,PARSE_T(parse_UploadPic))
+
 
 #if 0
 //#define WBPARSE_OBJECT_NAME(name,type) CParse##name##type##T

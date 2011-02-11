@@ -57,7 +57,7 @@
 
 #ifdef _PARSER_WRAPPER_TEST
 
-#include "libWeiboParser/WBParseWrapper.h"
+#include "wbParser/WBParseWrapper.h"
 #pragma comment(lib,"WBParseWrapper_VC90.lib")
 
 //#define TEST_STATUSES(iHttpCode,body,len,_ParseFun,_FreeFun)\
@@ -122,11 +122,11 @@ WEIBO_struct_bodycallback_init(GETSTATUSES_PUBLIC_TIMELINE)
 	else{
 		int outlen = 0;
 		t_wbParse_Error* pError = NULL;
-		wbParserNS::WBPARSE_HANDLE hParse = USE_WBPARSE_FUNC(ERROR,ITEM,body,len,outlen,(void**)&pError,NULL,NULL );
+		wbParserNS::WBPARSE_HANDLE hParse = USE_WBPARSE_FUNC(WEIBO_ERR,ITEM,body,len,outlen,(void**)&pError,NULL,NULL );
 		if( pError){
 			//Todo something...
 		}
-		USE_WBFREE_FUNC(ERROR,ITEM,hParse);
+		USE_WBFREE_FUNC(WEIBO_ERR,ITEM,hParse);
 	}
 }
 

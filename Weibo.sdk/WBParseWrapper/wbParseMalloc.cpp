@@ -31,33 +31,38 @@
 #include "wbParseMalloc.h"
 #include <stdlib.h>
 
-#define PARSE_STRUCT_MEMOP
-
+//
 #define PARSE_STRUCT_MALLOC(p,size) \
 	p = malloc(size);\
 	memset(p,0,size);\
 	((t_wbParse_Header*)p)->eSource = wbParserNS::EPS_OPENAPI;\
 
 
+//
 #define PARSE_STRUCT_MALLOC_NORMAL(p,size)\
 	p = malloc(size);\
 	memset(p,0,size);\
 
+//
 #define PARSE_STRUCT_FREE(p) p ? free(p) : 0;
+
+//
+#define BEGIN_STRCUT_FREE(type,p,size)\
+		type *pstruct = (type*)p;\
+		if( !p ) return;\
+		for( int i = 0; i < size; i ++ ){\
+			type *pItem = (pstruct + i);\
+
+
+#define END_STRUCT_FREE(p) } PARSE_STRUCT_FREE(p);
 
 
 namespace wbParserNS
 {
 	EXTERN void *wbParse_Malloc_Cursor(int size)
 	{
-#ifdef PARSE_STRUCT_MEMOP
 		void *p = NULL;
 		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_Cursor)*size);
-#else
-		void *p = malloc(sizeof(t_wbParse_Cursor)*size);
-		memset(p,0,sizeof(t_wbParse_Cursor)*size);
-#endif //PARSE_STRUCT_MEMOP
-
 		return p;
 	}
 	EXTERN void wbParse_Free_Cursor(void *pvoid,int size)
@@ -68,14 +73,8 @@ namespace wbParserNS
 	//用户
 	EXTERN void *wbParse_Malloc_User(int size)
 	{
-#ifdef PARSE_STRUCT_MEMOP
-
 		void *p = NULL;
 		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_User)*size);
-#else
-		void *p = malloc(sizeof(t_wbParse_User)*size);
-		memset(p,0,sizeof(t_wbParse_User)*size);
-#endif //0
 		return p;
 	}
 
@@ -102,15 +101,8 @@ namespace wbParserNS
 	//状态
 	EXTERN void  *wbParse_Malloc_Status(int size)
 	{
-#ifdef PARSE_STRUCT_MEMOP
-
 		void *p = NULL;
 		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_Status)*size);
-#else
-		void *p = malloc(sizeof(t_wbParse_Status)*size);
-		memset(p,0,sizeof(t_wbParse_Status)*size);
-
-#endif //PARSE_STRUCT_MEMOP
 		return p;
 	}
 	EXTERN void wbParse_Free_Status(void  *pvoid,int size)
@@ -136,13 +128,8 @@ namespace wbParserNS
 	//评论
 	EXTERN void  *wbParse_Malloc_Comment(int size)
 	{
-#ifdef PARSE_STRUCT_MEMOP
 		void *p = NULL;
 		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_Comment)*size);
-#else
-		void* p = malloc(sizeof(t_wbParse_Comment)*size);
-		memset(p,0,sizeof(t_wbParse_Comment)*size);
-#endif //#ifdef PARSE_STRUCT_MEMOP
 		return p;
 	}
 
@@ -168,15 +155,8 @@ namespace wbParserNS
 	//评论数
 	EXTERN void *wbParse_Malloc_Commentcount(int size)
 	{
-#ifdef PARSE_STRUCT_MEMOP
 		void *p = NULL;
 		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_CommentCounts)*size);
-#else
-		void* p = malloc(sizeof(t_wbParse_CommentCounts)*size);
-		memset(p,0,sizeof(t_wbParse_CommentCounts)*size);
-#endif //PARSE_STRUCT_MEMOP
-
-
 		return p;
 	}
 	EXTERN void wbParse_Free_Commentcount(void *pvoid,int size)
@@ -187,13 +167,8 @@ namespace wbParserNS
 	//未读数
 	EXTERN void  *wbParse_Malloc_Unread(int size)
 	{
-#ifdef PARSE_STRUCT_MEMOP
 		void *p = NULL;
 		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_Unread)*size);
-#else
-		void* p = malloc(sizeof(t_wbParse_Unread)*size);
-		memset(p,0,sizeof(t_wbParse_Unread)*size);
-#endif //#ifdef PARSE_STRUCT_MEMOP
 		return p;
 	}
 	EXTERN void wbParse_Free_Unread(void *pvoid,int size)
@@ -204,13 +179,8 @@ namespace wbParserNS
 	//地理位置
 	EXTERN void *wbParse_Malloc_Geo(int size)
 	{
-#ifdef PARSE_STRUCT_MEMOP
 		void *p = NULL;
 		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_Geo)*size);
-#else
-		void *p = malloc(sizeof(t_wbParse_Geo)*size);
-		memset(p,0,sizeof(t_wbParse_Geo)*size);
-#endif //#ifdef PARSE_STRUCT_MEMOP
 		return p;
 	}
 	EXTERN void wbParse_Free_Geo(void* pvoid,int size)
@@ -221,13 +191,8 @@ namespace wbParserNS
 	// 私信
 	EXTERN void *wbParse_Malloc_Directmessage(int size)
 	{
-#ifdef PARSE_STRUCT_MEMOP
 		void *p = NULL;
 		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_DirectMessage)*size);
-#else
-		void *p = malloc(sizeof(t_wbParse_DirectMessage)*size);
-		memset(p,0,sizeof(t_wbParse_DirectMessage)*size);
-#endif //#ifdef PARSE_STRUCT_MEMOP
 		return p;
 	}
 	EXTERN void wbParse_Free_Directmessage(void *pvoid,int size)
@@ -251,13 +216,8 @@ namespace wbParserNS
 	// 好友关系
 	EXTERN void *wbParse_Malloc_Friendship(int size)
 	{
-#ifdef PARSE_STRUCT_MEMOP
 		void *p = NULL;
 		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_Shipshow)*size);
-#else
-		void *p = malloc(sizeof(t_wbParse_Shipshow)*size);
-		memset(p,0,sizeof(t_wbParse_Shipshow)*size);
-#endif //#ifdef PARSE_STRUCT_MEMOP
 		return p;
 	}
 	EXTERN void  wbParse_Free_Friendship(void *pvoid,int size)
@@ -281,13 +241,8 @@ namespace wbParserNS
 	// ids
 	EXTERN void *wbParse_Malloc_IDs(int size)
 	{
-#ifdef PARSE_STRUCT_MEMOP
 		void *p = NULL;
 		PARSE_STRUCT_MALLOC_NORMAL(p,sizeof(t_wbParse_IDs)*size);
-#else
-		void *p = malloc(sizeof(t_wbParse_IDs)*size);
-		memset(p,0,sizeof(t_wbParse_IDs)*size);
-#endif //#ifdef PARSE_STRUCT_MEMOP
 		return p;
 	}
 	//
@@ -299,13 +254,8 @@ namespace wbParserNS
 	// 访问限制
 	EXTERN void *wbParse_Malloc_Limits(int size)
 	{
-#ifdef PARSE_STRUCT_MEMOP
 		void *p = NULL;
 		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_LimitStatus)*size);
-#else
-		void *p = malloc(sizeof(t_wbParse_LimitStatus)*size);
-		memset(p,0,sizeof(t_wbParse_LimitStatus)*size);
-#endif //PARSE_STRUCT_MEMOP
 		return p;
 	}
 	EXTERN void  wbParse_Free_Limits(void *pvoid,int size)
@@ -316,13 +266,8 @@ namespace wbParserNS
 	// 表情
 	EXTERN void *wbParse_Malloc_Emotion(int size)
 	{
-#ifdef PARSE_STRUCT_MEMOP
 		void *p = NULL;
 		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_Emotion)*size);
-#else
-		void *p = malloc(sizeof(t_wbParse_Emotion)*size);
-		memset(p,0,sizeof(t_wbParse_Emotion)*size);
-#endif //PARSE_STRUCT_MEMOP
 		return p;
 	}
 
@@ -335,13 +280,8 @@ namespace wbParserNS
 	// error 
 	EXTERN void* wbParse_Malloc_Error(int size)
 	{
-#ifdef PARSE_STRUCT_MEMOP
 		void *p = NULL;
 		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_Error)*size);
-#else
-		t_wbParse_Error *p = (t_wbParse_Error*)malloc(sizeof(t_wbParse_Error)*size);
-		memset(p,0,sizeof(t_wbParse_Error)*size);
-#endif //PARSE_STRUCT_MEMOP
 		return p;
 	}
 	EXTERN void wbParse_Free_Error(void* pvoid,int size)
@@ -352,17 +292,168 @@ namespace wbParserNS
 
 	EXTERN void *wbParse_Malloc_Media(int size)
 	{
-#ifdef PARSE_STRUCT_MEMOP
 		void *p = NULL;
 		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_Media)*size);
-#else
-		t_wbParse_Media* p = (t_wbParse_Media*)malloc( sizeof(t_wbParse_Media) * size );
-		memset(p,0,sizeof(t_wbParse_Media)*size);
-#endif //PARSE_STRUCT_MEMOP
 		return p;
 	}
-
 	EXTERN void  wbParse_Free_Media(void* pvoid,int size)
+	{
+		PARSE_STRUCT_FREE(pvoid);
+	}
+
+	// t_wbParse_Media_item
+	EXTERN void *wbParse_Malloc_Media_Item(int size)
+	{
+		void *p = NULL;
+		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_media_item)*size);
+		return p;
+	}
+	EXTERN void  wbParse_Free_Media_Item(void* pvoid,int size)
+	{
+		PARSE_STRUCT_FREE(pvoid);
+	}
+
+	// Result
+	EXTERN void *wbParse_Malloc_Ret(int size)
+	{
+		void *p = NULL;
+		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_Ret)*size);
+		return p;
+	}
+	EXTERN void  wbParse_Free_Ret(void* pvoid,int size)
+	{
+		PARSE_STRUCT_FREE(pvoid);
+	}
+
+	// 用户标签
+	EXTERN void *wbParse_Malloc_Tag(int size)
+	{
+		void *p = NULL;
+		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_Tag)*size);
+		return p;
+	}
+	EXTERN void  wbParse_Free_Tag(void* pvoid,int size)
+	{
+		PARSE_STRUCT_FREE(pvoid);
+	}
+
+	// 话题
+	EXTERN void *wbParse_Malloc_Trend(int size)
+	{
+		void *p = NULL;
+		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_Trend)*size);
+		return p;
+	}
+	EXTERN void  wbParse_Free_Trend(void* pvoid,int size)
+	{
+		PARSE_STRUCT_FREE(pvoid);
+	}
+	// 话题热点查询
+	EXTERN void *wbParse_Malloc_TrendHotQuery(int size)
+	{
+		void *p = NULL;
+		PARSE_STRUCT_MALLOC_NORMAL(p,sizeof(t_wbParse_TrendHotQuery)*size);
+		return p;
+	}
+	EXTERN void  wbParse_Free_TrendHotQuery(void* pvoid,int size)
+	{
+		BEGIN_STRCUT_FREE(t_wbParse_TrendHotQuery,pvoid,size);
+		//
+		wbParse_Free_TrendHotQuery_Item(pItem->trends_,pItem->trend_counts_);
+		//
+		END_STRUCT_FREE(pvoid);
+	}
+	// 话题热点查询item
+	EXTERN void *wbParse_Malloc_TrendHotQuery_Item(int size)
+	{
+		void *p = NULL;
+		PARSE_STRUCT_MALLOC_NORMAL(p,sizeof(t_wbParse_TrendHotQuery::TrendItem)*size);
+		return p;
+	}
+	EXTERN void  wbParse_Free_TrendHotQuery_Item(void* pvoid,int size)
+	{
+		PARSE_STRUCT_FREE(pvoid);
+	}
+
+	// 邀请联系人结构
+	EXTERN void *wbParse_Malloc_InviteContact(int size)
+	{
+		void *p = NULL;
+		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_InviteContact)*size);
+		return p;
+	}
+	EXTERN void  wbParse_Free_InviteContact(void *p,int size)
+	{
+		BEGIN_STRCUT_FREE(t_wbParse_InviteContact,p,size);
+		//
+		wbParse_Free_InviteContact_Usr(pItem->in_attend_usr_     ,pItem->in_attend_usr_count_);
+		wbParse_Free_InviteContact_Group(pItem->not_attend_group_,pItem->not_attend_group_count_);
+		wbParse_Free_InviteContact_Group(pItem->out_attend_group_,pItem->out_attend_group_count_);
+		//
+		END_STRUCT_FREE(p);
+	}
+
+	// 邀请联系人，用户结构
+	EXTERN void *wbParse_Malloc_InviteContact_Usr(int size)
+	{
+		void *p = NULL;
+		PARSE_STRUCT_MALLOC_NORMAL(p,sizeof(t_wbParse_InviteContact::ItemUsr)*size);
+		return p;
+	}
+	EXTERN void wbParse_Free_InviteContact_Usr(void *p,int size)
+	{
+		PARSE_STRUCT_FREE(p);
+	}
+
+	// 邀请联系人，用户分组结构
+	EXTERN void *wbParse_Malloc_InviteContact_Group(int size)
+	{
+		void *p = NULL;
+		PARSE_STRUCT_MALLOC_NORMAL(p,sizeof(t_wbParse_InviteContact::ItemGroup)*size);
+		return p;
+	}
+	EXTERN void wbParse_Free_InviteContact_Group(void *p,int size)
+	{
+		BEGIN_STRCUT_FREE(t_wbParse_InviteContact::ItemGroup,p,size);
+		PARSE_STRUCT_FREE(pItem->usrs_);
+		END_STRUCT_FREE(p);
+	}
+
+	// 短链接
+	EXTERN void *wbParse_Malloc_Media_ShortURLBatch(int size)
+	{
+		void *p = NULL;
+		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_Media_ShortUrlBatch)*size);
+		return p;
+	}
+	EXTERN void wbParse_Free_Media_ShortURLBatch(void *p,int size)
+	{
+		BEGIN_STRCUT_FREE(t_wbParse_Media_ShortUrlBatch,p,size);
+
+		PARSE_STRUCT_FREE(pItem->annotions_);
+
+		END_STRUCT_FREE(p);
+	}
+
+	// 短链接ITEM
+	EXTERN void *wbParse_Malloc_Media_ShortURLBatch_ItemAnnotions(int size)
+	{
+		void *p = NULL;
+		PARSE_STRUCT_MALLOC(p,sizeof(t_wbParse_Media_ShortUrlBatch::ItemAnnotions)*size);
+		return p;
+	}
+	EXTERN void wbParse_Free_Media_ShortURLBatch_ItemAnnotions(void *p,int size)
+	{
+		PARSE_STRUCT_FREE(p);
+	}
+
+	EXTERN void *wbParse_Malloc_UploadPic(int size)
+	{
+		void *ptr = NULL;
+		PARSE_STRUCT_MALLOC(ptr,sizeof(t_wbParse_UploadPic)*size);
+		return ptr;
+	}
+	EXTERN void  wbParse_Free_UploadPic(void* pvoid,int size)
 	{
 		PARSE_STRUCT_FREE(pvoid);
 	}

@@ -31,10 +31,12 @@
 #include "stdafx.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <json/json.h>
 #include "wbParseObj.h"
 #include "wbParseMalloc.h"
 #include "splitstr.h"
 #include "wbParseMacro.h"
+#include "strconv.h"
 
 using namespace wbParserNS ;
 
@@ -57,7 +59,7 @@ using namespace wbParserNS ;
 
 typedef enum 
 {
-	// p
+	// ptr
 	WBPARSER_KEY_STATEIDX(createtime),
 	WBPARSER_KEY_STATEIDX(id),
 	WBPARSER_KEY_STATEIDX(text),
@@ -169,7 +171,7 @@ typedef enum
 static
 const WBParseCHAR* weibo_key_array[] =
 {
-	// p
+	// ptr
 	_WBC("created_at"),
 	_WBC("id"),
 	_WBC("text"),
@@ -286,7 +288,7 @@ const WBParseCHAR* wbParse_GetKey(int idx)
 }
 
 #define GET_VALUEKEY(idx) wbParse_GetKey(idx)
-#define WEIBO_PARSER_CAST(t,p) (t*)p
+#define WEIBO_PARSER_CAST(t,ptr) (t*)ptr
 
 
 
@@ -295,81 +297,81 @@ const WBParseCHAR* wbParse_GetKey(int idx)
 /** 解析状态 */
 t_wbParse_Status  *CWBJsonParser::parse_status(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_Status* p = 0;
+	t_wbParse_Status* ptr = 0;
 	if( obj)
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_Status,wbParse_Malloc_Status(1));
-		parse_status(obj, p);
+		ptr = WEIBO_PARSER_CAST(t_wbParse_Status,wbParse_Malloc_Status(1));
+		parse_status(obj, ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBJsonParser::parse_status(wbParserNS::REQOBJ *obj , t_wbParse_Status * p)
+void CWBJsonParser::parse_status(wbParserNS::REQOBJ *obj , t_wbParse_Status * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// id
-	GET_LONG_TO_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(id)),p->id,WBPARSER_USE_LEN(id) );
+	GET_LONG_TO_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(id)),ptr->id,WBPARSER_USE_LEN(id) );
 
 	// created_at
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(createtime)),p->created_at,WBPARSER_USE_LEN(created_at) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(createtime)),ptr->created_at,WBPARSER_USE_LEN(created_at) );
 
 	// text
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(text)),p->text,WBPARSER_USE_LEN(text) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(text)),ptr->text,WBPARSER_USE_LEN(text) );
 
 	// source
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(source)),p->source,WBPARSER_USE_LEN(source) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(source)),ptr->source,WBPARSER_USE_LEN(source) );
 
 	// in_reply_to_status_id
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(rsid)),p->in_reply_to_status_id,WBPARSER_USE_LEN(in_reply_to_status_id) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(rsid)),ptr->in_reply_to_status_id,WBPARSER_USE_LEN(in_reply_to_status_id) );
 
 	// in_reply_to_screen_name
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(rtsname)),p->in_reply_to_screen_name,WBPARSER_USE_LEN(in_reply_to_screen_name) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(rtsname)),ptr->in_reply_to_screen_name,WBPARSER_USE_LEN(in_reply_to_screen_name) );
 
 	// thumbnail_pic
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(thumbpic)),p->thumbnail_pic,WBPARSER_USE_LEN(thumbnail_pic) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(thumbpic)),ptr->thumbnail_pic,WBPARSER_USE_LEN(thumbnail_pic) );
 
 	// bmiddle_pic
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(midpic)),p->bmiddle_pic,WBPARSER_USE_LEN(bmiddle_pic) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(midpic)),ptr->bmiddle_pic,WBPARSER_USE_LEN(bmiddle_pic) );
 
 	// original_pic
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(originpic)),p->original_pic,WBPARSER_USE_LEN(original_pic) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(originpic)),ptr->original_pic,WBPARSER_USE_LEN(original_pic) );
 
 	// favorited
-	GET_BOOL(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(favorited)),p->favorited );
+	GET_BOOL(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(favorited)),ptr->favorited );
 
 	// truncated
-	GET_BOOL(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(truncated)),p->truncated );
+	GET_BOOL(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(truncated)),ptr->truncated );
 
 	//
 	USE_WEIBOPARSE_OBJ_PTR ;
 
 	// geo
-	GET_OBJECT(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(geo)),p->geo,parse_geo);
+	GET_OBJECT(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(geo)),ptr->geo,parse_geo);
 
 	// user
-	GET_OBJECT(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(user)),p->user,parse_user);
+	GET_OBJECT(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(user)),ptr->user,parse_user);
 
 	// retweeted_status
-	GET_OBJECT(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(retstatus)),p->retweeted_status,parse_status);
+	GET_OBJECT(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(retstatus)),ptr->retweeted_status,parse_status);
 }
 
 
 struct t_wbParse_Error* CWBJsonParser::parse_error(wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_Error* p = 0;
+	t_wbParse_Error* ptr = 0;
 	if( obj )
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_Error,wbParse_Malloc_Error(1) );
+		ptr = WEIBO_PARSER_CAST(t_wbParse_Error,wbParse_Malloc_Error(1) );
 
-		parse_error(obj,p);
+		parse_error(obj,ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBJsonParser::parse_error(wbParserNS::REQOBJ *obj , t_wbParse_Error * p)
+void CWBJsonParser::parse_error(wbParserNS::REQOBJ *obj , t_wbParse_Error * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 
 	int len = 0;
@@ -379,360 +381,360 @@ void CWBJsonParser::parse_error(wbParserNS::REQOBJ *obj , t_wbParse_Error * p)
 	//txt = wbParserNS::GetCHAR_Key_XML_EX("request" , obj , len );
 	GET_STR_EX(JSON,obj,"request",txt,len );
 	if( len && txt ) {
-		strncpy( p->request ,txt , WBPARSER_USE_LEN(request) );
+		strncpy( ptr->request ,txt , WBPARSER_USE_LEN(request) );
 	}
 
 	//txt = wbParserNS::GetCHAR_Key_JSON_EX("error_code" , obj, len);
 	GET_STR_EX(JSON,obj,"error_code",txt,len);
 	if( len && txt ) {
-		strncpy( p->error_code,txt , WBPARSER_USE_LEN(error_code) );
+		strncpy( ptr->error_code,txt , WBPARSER_USE_LEN(error_code) );
 	}
 
 	//txt = wbParserNS::GetCHAR_Key_JSON_EX("error" , obj, len);
 	GET_STR_EX(JSON,obj,"error",txt,len);
 	if( len && txt ) {
-		strncpy( p->error,txt,WBPARSER_USE_LEN(error) );
-		p->error_sub_code = atoi(p->error);
+		strncpy( ptr->error,txt,WBPARSER_USE_LEN(error) );
+		ptr->error_sub_code = atoi(ptr->error);
 	}
 }
 
 /** 解析用户 */
 t_wbParse_User  *CWBJsonParser::parse_user(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_User* p = 0;
+	t_wbParse_User* ptr = 0;
 	if( obj )
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_User,wbParse_Malloc_User(1));
+		ptr = WEIBO_PARSER_CAST(t_wbParse_User,wbParse_Malloc_User(1));
 
-		parse_user(obj, p );
+		parse_user(obj, ptr );
 	}
-	return p;
+	return ptr;
 }
 
-void CWBJsonParser::parse_user(wbParserNS::REQOBJ *obj , t_wbParse_User * p)
+void CWBJsonParser::parse_user(wbParserNS::REQOBJ *obj , t_wbParse_User * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// id
-	GET_LONG_TO_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(id)),p->id,WBPARSER_USE_LEN(id) );
+	GET_LONG_TO_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(id)),ptr->id,WBPARSER_USE_LEN(id) );
 
 	// screen_name
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(name)),p->screen_name,WBPARSER_USE_LEN(screen_name) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(name)),ptr->screen_name,WBPARSER_USE_LEN(screen_name) );
 
 	// name
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(name)),p->name,WBPARSER_USE_LEN(name) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(name)),ptr->name,WBPARSER_USE_LEN(name) );
 
 
 	// province
-	GET_LONG_TO_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(province)),p->province,WBPARSER_USE_LEN(province) );
+	GET_LONG_TO_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(province)),ptr->province,WBPARSER_USE_LEN(province) );
 
 	// city
-	GET_LONG_TO_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(city)),p->city,WBPARSER_USE_LEN(city) );
+	GET_LONG_TO_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(city)),ptr->city,WBPARSER_USE_LEN(city) );
 
 	// location
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(location)),p->location,WBPARSER_USE_LEN(location) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(location)),ptr->location,WBPARSER_USE_LEN(location) );
 
 	// description
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(description)),p->description,WBPARSER_USE_LEN(description) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(description)),ptr->description,WBPARSER_USE_LEN(description) );
 
 	// url
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(url)),p->url,WBPARSER_USE_LEN(url) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(url)),ptr->url,WBPARSER_USE_LEN(url) );
 
 	// profile_image_url
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(prourl)),p->profile_image_url,WBPARSER_USE_LEN(profile_image_url) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(prourl)),ptr->profile_image_url,WBPARSER_USE_LEN(profile_image_url) );
 
 	// domain
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(domain)),p->domain,WBPARSER_USE_LEN(domain) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(domain)),ptr->domain,WBPARSER_USE_LEN(domain) );
 
 	// gender
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(gender)),p->gender,WBPARSER_USE_LEN(gender) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(gender)),ptr->gender,WBPARSER_USE_LEN(gender) );
 
 	// created_at
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(createdat)),p->created_at,WBPARSER_USE_LEN(created_at) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(createdat)),ptr->created_at,WBPARSER_USE_LEN(created_at) );
 
 	// followers_count
-	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(followcount)),p->followers_count );
+	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(followcount)),ptr->followers_count );
 
 	// followers_count
-	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(frcount)),p->friends_count );
+	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(frcount)),ptr->friends_count );
 
 	// statuses_count
-	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(stacount)),p->statuses_count );
+	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(stacount)),ptr->statuses_count );
 
 	// favourites_count
-	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(favcount)),p->favourites_count );
+	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(favcount)),ptr->favourites_count );
 
 	// allow_all_act_msg
-	GET_BOOL(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(allowall)),p->allow_all_act_msg );
+	GET_BOOL(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(allowall)),ptr->allow_all_act_msg );
 
 	// geo_enabled
-	GET_BOOL(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(geoenable)),p->geo_enabled );
+	GET_BOOL(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(geoenable)),ptr->geo_enabled );
 
 	// following
-	GET_BOOL(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(following)),p->following );
+	GET_BOOL(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(following)),ptr->following );
 
 	// following
-	GET_BOOL(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(verified)),p->verified );
+	GET_BOOL(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(verified)),ptr->verified );
 
 	// last status
 	USE_WEIBOPARSE_OBJ_PTR;
-	GET_OBJECT(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(last_status)),p->last_status,parse_status);
+	GET_OBJECT(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(last_status)),ptr->last_status,parse_status);
 }
 
 /** 解析地理位置 */
 t_wbParse_Geo *CWBJsonParser::parse_geo(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_Geo *p = 0;
+	t_wbParse_Geo *ptr = 0;
 	if( obj )
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_Geo,wbParse_Malloc_Geo(1));
+		ptr = WEIBO_PARSER_CAST(t_wbParse_Geo,wbParse_Malloc_Geo(1));
 
-		parse_geo(obj,p);
+		parse_geo(obj,ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBJsonParser::parse_geo(wbParserNS::REQOBJ *obj , t_wbParse_Geo * p)
+void CWBJsonParser::parse_geo(wbParserNS::REQOBJ *obj , t_wbParse_Geo * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	//
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_GEO(type)),p->type,WBPARSER_USE_LEN(type)) ;
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_GEO(type)),ptr->type,WBPARSER_USE_LEN(type)) ;
 
 	//
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_GEO(coordinates)),p->coordinates,WBPARSER_USE_LEN(coordinates)) ;
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_GEO(coordinates)),ptr->coordinates,WBPARSER_USE_LEN(coordinates)) ;
 }
 
 /** 解析评论 */
 t_wbParse_Comment *CWBJsonParser::parse_comment(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_Comment *p = 0;
+	t_wbParse_Comment *ptr = 0;
 	if( obj )
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_Comment,wbParse_Malloc_Comment(1));
-		parse_comment(obj,p);
+		ptr = WEIBO_PARSER_CAST(t_wbParse_Comment,wbParse_Malloc_Comment(1));
+		parse_comment(obj,ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBJsonParser::parse_comment(wbParserNS::REQOBJ *obj , t_wbParse_Comment * p)
+void CWBJsonParser::parse_comment(wbParserNS::REQOBJ *obj , t_wbParse_Comment * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// id
-	GET_LONG_TO_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(id)),p->id,WBPARSER_USE_LEN(id) );
+	GET_LONG_TO_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(id)),ptr->id,WBPARSER_USE_LEN(id) );
 
 	// text
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(text)),p->text,WBPARSER_USE_LEN(text) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(text)),ptr->text,WBPARSER_USE_LEN(text) );
 
 	// source
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(source)),p->source,WBPARSER_USE_LEN(source) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(source)),ptr->source,WBPARSER_USE_LEN(source) );
 
 	// favorited
-	GET_BOOL(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(favorited)),p->favorited );
+	GET_BOOL(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(favorited)),ptr->favorited );
 
 	// created_at
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(createdat)),p->created_at,WBPARSER_USE_LEN(created_at) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(createdat)),ptr->created_at,WBPARSER_USE_LEN(created_at) );
 
 	//
 	USE_WEIBOPARSE_OBJ_PTR ;
 
 	// user
-	GET_OBJECT(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(user)),p->user,parse_user);
+	GET_OBJECT(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(user)),ptr->user,parse_user);
 
 	// status
-	GET_OBJECT(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(status)),p->status,parse_status);
+	GET_OBJECT(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(status)),ptr->status,parse_status);
 
 	// reply_comment
-	GET_OBJECT(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(rcomment)),p->reply_comment,parse_comment);
+	GET_OBJECT(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(rcomment)),ptr->reply_comment,parse_comment);
 }
 
 /** 私信 */
 t_wbParse_DirectMessage *CWBJsonParser::parse_directmessage(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_DirectMessage* p =0;
+	t_wbParse_DirectMessage* ptr =0;
 	if( obj )
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_DirectMessage,wbParse_Malloc_Directmessage(1));
-		parse_directmessage(obj,p);
+		ptr = WEIBO_PARSER_CAST(t_wbParse_DirectMessage,wbParse_Malloc_Directmessage(1));
+		parse_directmessage(obj,ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBJsonParser::parse_directmessage(wbParserNS::REQOBJ *obj , t_wbParse_DirectMessage * p)
+void CWBJsonParser::parse_directmessage(wbParserNS::REQOBJ *obj , t_wbParse_DirectMessage * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// id
-	GET_LONG_TO_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(id)),p->id,WBPARSER_USE_LEN(id) );
+	GET_LONG_TO_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(id)),ptr->id,WBPARSER_USE_LEN(id) );
 
 	// text
-	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(text)),p->text,WBPARSER_USE_LEN(text) );
+	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(text)),ptr->text,WBPARSER_USE_LEN(text) );
 
 	// created_at
-	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(createdat)),p->created_at,WBPARSER_USE_LEN(created_at) );
+	GET_STR(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(createdat)),ptr->created_at,WBPARSER_USE_LEN(created_at) );
 
 	// sender_id
-	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(senderid)),p->sender_id,WBPARSER_USE_LEN(id) );
+	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(senderid)),ptr->sender_id,WBPARSER_USE_LEN(id) );
 
 	// recipient_id
-	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(recipientid)),p->recipient_id,WBPARSER_USE_LEN(id) );
+	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(recipientid)),ptr->recipient_id,WBPARSER_USE_LEN(id) );
 
 	// sender_screen_name
-	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(sndsname)),p->sender_screen_name,WBPARSER_USE_LEN(name) );
+	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(sndsname)),ptr->sender_screen_name,WBPARSER_USE_LEN(name) );
 
 	//recipient_screen_name
-	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(rsnsame)),p->recipient_screen_name,WBPARSER_USE_LEN(name) );
+	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(rsnsame)),ptr->recipient_screen_name,WBPARSER_USE_LEN(name) );
 
 	//
 	USE_WEIBOPARSE_OBJ_PTR ;
 
 	//sender
-	GET_OBJECT( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(sender)),p->sender,parse_user );
+	GET_OBJECT( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(sender)),ptr->sender,parse_user );
 
 	//recipient
-	GET_OBJECT( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(recipient)),p->recipient,parse_user );
+	GET_OBJECT( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(recipient)),ptr->recipient,parse_user );
 }
 
 /** 解析未读数 */
 t_wbParse_Unread  *CWBJsonParser::parse_unread(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_Unread *p = 0;
+	t_wbParse_Unread *ptr = 0;
 	if( obj )
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_Unread,wbParse_Malloc_Unread(1));
+		ptr = WEIBO_PARSER_CAST(t_wbParse_Unread,wbParse_Malloc_Unread(1));
 
-		parse_unread(obj ,p );
+		parse_unread(obj ,ptr );
 	}
-	return p;
+	return ptr;
 }
 
-void CWBJsonParser::parse_unread(wbParserNS::REQOBJ *obj , t_wbParse_Unread * p)
+void CWBJsonParser::parse_unread(wbParserNS::REQOBJ *obj , t_wbParse_Unread * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// comments
-	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(comments)),p->comments);
+	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(comments)),ptr->comments);
 
 	// mentions
-	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(mentions)),p->mentions);
+	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(mentions)),ptr->mentions);
 
 	// dm
-	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(dm)),p->dm);
+	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(dm)),ptr->dm);
 
 	// followers
-	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(followers)),p->followers);
+	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(followers)),ptr->followers);
 
-	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(new_status)),p->new_status);
+	GET_LONG(JSON,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(new_status)),ptr->new_status);
 	
 }
 
 /** 解析评论计数 */
 t_wbParse_CommentCounts *CWBJsonParser::parse_commentcounts(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_CommentCounts *p = 0;
+	t_wbParse_CommentCounts *ptr = 0;
 	if( obj)
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_CommentCounts,wbParse_Malloc_Commentcount(1));
-		parse_commentcounts(obj,p);
+		ptr = WEIBO_PARSER_CAST(t_wbParse_CommentCounts,wbParse_Malloc_Commentcount(1));
+		parse_commentcounts(obj,ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBJsonParser::parse_commentcounts(wbParserNS::REQOBJ *obj , t_wbParse_CommentCounts * p)
+void CWBJsonParser::parse_commentcounts(wbParserNS::REQOBJ *obj , t_wbParse_CommentCounts * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// id
-	GET_LONG_TO_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMCOUNT(id)),p->id,WBPARSER_USE_LEN(id) );
+	GET_LONG_TO_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMCOUNT(id)),ptr->id,WBPARSER_USE_LEN(id) );
 
 	// comments
-	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMCOUNT(comments)),p->comments );
+	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMCOUNT(comments)),ptr->comments );
 
 	// rt
-	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMCOUNT(rt)),p->rt );
+	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_COMCOUNT(rt)),ptr->rt );
 }
 
 
 t_wbParse_LimitStatus *CWBJsonParser::parse_limite_status(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_LimitStatus *p = 0;
+	t_wbParse_LimitStatus *ptr = 0;
 	if( obj)
 	{
-		p = (t_wbParse_LimitStatus *)wbParse_Malloc_Limits(1);
-		parse_limite_status(obj ,  p);
+		ptr = (t_wbParse_LimitStatus *)wbParse_Malloc_Limits(1);
+		parse_limite_status(obj ,  ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBJsonParser::parse_limite_status(wbParserNS::REQOBJ *obj , t_wbParse_LimitStatus * p)
+void CWBJsonParser::parse_limite_status(wbParserNS::REQOBJ *obj , t_wbParse_LimitStatus * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// hourly_limit
-	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(hourlimit)),p->hourly_limit );
+	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(hourlimit)),ptr->hourly_limit );
 
 	// rstimeinseond
-	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(rstimeinseond)),p->reset_time_in_seconds );
+	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(rstimeinseond)),ptr->reset_time_in_seconds );
 
 	// remaining_hits
-	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(remaining_hits)),p->remaining_hits );
+	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(remaining_hits)),ptr->remaining_hits );
 
 	// reset_time
-	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(reset_time)),p->reset_time,WBPARSER_USE_LEN(reset_time) );
+	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(reset_time)),ptr->reset_time,WBPARSER_USE_LEN(reset_time) );
 }
 
 
 t_wbParse_Emotion *CWBJsonParser::parse_emotion(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_Emotion *p = 0;
+	t_wbParse_Emotion *ptr = 0;
 	if( obj )
 	{
-		p = (t_wbParse_Emotion *)wbParse_Malloc_Emotion(1);
-		parse_emotion(obj , p);
+		ptr = (t_wbParse_Emotion *)wbParse_Malloc_Emotion(1);
+		parse_emotion(obj , ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBJsonParser::parse_emotion(wbParserNS::REQOBJ *obj , t_wbParse_Emotion * p)
+void CWBJsonParser::parse_emotion(wbParserNS::REQOBJ *obj , t_wbParse_Emotion * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// phrase
-	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(phrase)),p->phrase,WBPARSER_USE_LEN(phrase) );
+	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(phrase)),ptr->phrase,WBPARSER_USE_LEN(phrase) );
 
 	// type
-	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(type)),p->type,WBPARSER_USE_LEN(type) );
+	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(type)),ptr->type,WBPARSER_USE_LEN(type) );
 
 	// url
-	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(url)),p->url,WBPARSER_USE_LEN(url) );
+	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(url)),ptr->url,WBPARSER_USE_LEN(url) );
 
 	//category
-	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(category)),p->category,WBPARSER_USE_LEN(category) );
+	GET_STR( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(category)),ptr->category,WBPARSER_USE_LEN(category) );
 
 	// is_hot
-	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(is_hot)),p->is_hot );
+	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(is_hot)),ptr->is_hot );
 
 	// is_common
-	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(is_common)),p->is_common );
+	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(is_common)),ptr->is_common );
 
 	// order_number
-	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(order_number)),p->order_number );
+	GET_LONG( JSON,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(order_number)),ptr->order_number );
 }
 
 
 t_wbParse_Shipshow *CWBJsonParser::parse_shipshow(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_Shipshow *p = 0;
+	t_wbParse_Shipshow *ptr = 0;
 	if( obj )
 	{
-		p = (t_wbParse_Shipshow *)wbParse_Malloc_Friendship(1);
-		parse_shipshow(obj , p);
+		ptr = (t_wbParse_Shipshow *)wbParse_Malloc_Friendship(1);
+		parse_shipshow(obj , ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBJsonParser::parse_shipshow(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_Shipshow *p)	
+void CWBJsonParser::parse_shipshow(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_Shipshow *ptr)	
 {
 //{
  //   "source":{
@@ -750,16 +752,16 @@ void CWBJsonParser::parse_shipshow(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_Shi
  //       ,"notifications_enabled":false
  // }
  //}
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	//
 	USE_WEIBOPARSE_OBJ_PTR ;
 
 	//source
-	GET_OBJECT( JSON,obj,"source",p->source,parse_ship_item );
+	GET_OBJECT( JSON,obj,"source",ptr->source,parse_ship_item );
 
 	//source
-	GET_OBJECT( JSON,obj,"target",p->target,parse_ship_item );
+	GET_OBJECT( JSON,obj,"target",ptr->target,parse_ship_item );
 }
 
 t_wbParse_Shipshow::Item* CWBJsonParser::parse_ship_item(wbParserNS::REQOBJ *obj)
@@ -773,27 +775,301 @@ t_wbParse_Shipshow::Item* CWBJsonParser::parse_ship_item(wbParserNS::REQOBJ *obj
  //  }
 	if( !obj )
 		return 0;
-	t_wbParse_Shipshow::Item* p = (t_wbParse_Shipshow::Item*)malloc(sizeof(t_wbParse_Shipshow::Item));
-	memset(p , 0 , sizeof(t_wbParse_Shipshow::Item));
+	t_wbParse_Shipshow::Item* ptr = (t_wbParse_Shipshow::Item*)malloc(sizeof(t_wbParse_Shipshow::Item));
+	memset(ptr , 0 , sizeof(t_wbParse_Shipshow::Item));
 
 	// id
-	GET_LONG_TO_STR( JSON,obj,"id",p->id,WBPARSER_USE_LEN(id) );
+	GET_LONG_TO_STR( JSON,obj,"id",ptr->id,WBPARSER_USE_LEN(id) );
 
 	// screen_name
-	GET_STR( JSON,obj,"screen_name",p->screen_name,WBPARSER_USE_LEN(screen_name) );
+	GET_STR( JSON,obj,"screen_name",ptr->screen_name,WBPARSER_USE_LEN(screen_name) );
 
 	// following
-	GET_LONG( JSON,obj,"following",p->following);
+	GET_LONG( JSON,obj,"following",ptr->following);
 
 	// following
-	GET_LONG( JSON,obj,"followed_by",p->followed_by);
+	GET_LONG( JSON,obj,"followed_by",ptr->followed_by);
 
 	// following
-	GET_LONG( JSON,obj,"notifications_enabled",p->notifications_enabled);
+	GET_LONG( JSON,obj,"notifications_enabled",ptr->notifications_enabled);
 
-	return p;
+	return ptr;
 }
 
+
+/** 邀请联系人用户 */
+t_wbParse_InviteContact::ItemUsr *CWBJsonParser::parse_invite_contact_usr(/*[in]*/wbParserNS::REQOBJ *obj)
+{
+	t_wbParse_InviteContact::ItemUsr *ptr = 0;
+	if( obj ) {
+		ptr = (t_wbParse_InviteContact::ItemUsr*)wbParse_Malloc_InviteContact_Usr(1);
+		parse_invite_contact_usr(obj,ptr);
+	}
+
+	return ptr;
+}
+void CWBJsonParser::parse_invite_contact_usr(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_InviteContact::ItemUsr *ptr)
+{
+	if( !ptr || !obj )
+		return ;
+
+	// UID
+	GET_STR( JSON,obj,"uid",ptr->uid_,WBPARSER_USE_LEN(id) );
+	// NAME
+	GET_STR( JSON,obj,"name",ptr->name_,WBPARSER_USE_LEN(screen_name) );
+	char* outstr = NULL;
+	if(  lo_Utf82C(&outstr , ptr->name_) ) {
+		strcpy( ptr->name_,outstr );
+		free(outstr);
+	}
+	// URL
+	GET_STR( JSON,obj,"icon",ptr->iconurl_,WBPARSER_USE_LEN(url) );
+	// EMAIL
+	GET_STR( JSON,obj,"email",ptr->email_,WBPARSER_USE_LEN(email) );
+}
+
+/** 用户标签 */
+t_wbParse_Tag *CWBJsonParser::parse_Tags(/*[in]*/wbParserNS::REQOBJ *obj,WBParseCHAR *idKey )
+{
+	t_wbParse_Tag *ptr = 0;
+	if( obj ) {
+		ptr = (t_wbParse_Tag*)wbParse_Malloc_Tag(1);
+		parse_Tags(obj,ptr,idKey );
+	}
+	return ptr;
+}
+void CWBJsonParser::parse_Tags(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_Tag *ptr,WBParseCHAR *idKey )
+{
+	if( !ptr || !obj )
+		return ;
+
+	Json::Value *val = (Json::Value*)obj;
+
+	if( idKey && *idKey != '\0' )
+	{
+		std::basic_string<WBParseCHAR> cc;
+
+		// tag id
+		Json::Value &jvalTagID = ((*val)[idKey]);
+		(jvalTagID.isString()) ? (cc = (jvalTagID.asString())) : 0;
+		if( !cc.empty()){
+			WBPARSER_COPY( ptr->tagId_,WBPARSER_REAL_LEN(TAGS_ID),cc.c_str(),cc.length() );
+		}
+
+		// tag name
+		Json::Value &jvalTagName = ((*val)["value"]);
+		( jvalTagName.isString()) ? (cc = (jvalTagName.asString())) : (0);
+		if( cc.length()){
+			WBPARSER_COPY(ptr->tagName_,WBPARSER_REAL_LEN(TAGS_ID),cc.c_str(),cc.length() );
+		}
+	}
+	else {
+		Json::Value::iterator it_begin = val->begin() ;
+
+		// tag name
+		WBPARSER_COPY(ptr->tagId_,WBPARSER_REAL_LEN(TAGS_ID),it_begin.memberName(),strlen(it_begin.memberName()));
+
+		// tag id
+		WBPARSER_COPY(ptr->tagName_,WBPARSER_REAL_LEN(TAGS_NAME),(*it_begin).asString().c_str(),(*it_begin).asString().length() );
+	}
+
+}
+
+
+/** 话题 */
+t_wbParse_Trend *CWBJsonParser::parse_Trends_getData(/*[in]*/wbParserNS::REQOBJ *obj)
+{
+	t_wbParse_Trend *ptr = 0;
+	if( obj ) {
+		ptr = (t_wbParse_Trend*)wbParse_Malloc_Trend(1);
+		parse_Trends_getData(obj,ptr);
+	}
+	return ptr;
+}
+void CWBJsonParser::parse_Trends_getData(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_Trend *ptr)
+{
+	if( !ptr || !obj )
+		return ;
+
+	//
+	GET_STR( JSON,obj,"trend_id",ptr->trendId_     ,WBPARSER_USE_LEN(TREND_ID) );
+	GET_STR( JSON,obj,"hotword" ,ptr->trendHotword_,WBPARSER_USE_LEN(TREND_NAME) );
+	GET_STR( JSON,obj,"num"     ,ptr->trendNumber_ ,WBPARSER_USE_LEN(TREND_ID) );
+}
+
+//follow
+t_wbParse_Trend *CWBJsonParser::parse_Trends_Follow(/*[in]*/wbParserNS::REQOBJ *obj)
+{
+	t_wbParse_Trend *ptr = 0;
+	if( obj ) {
+		ptr = (t_wbParse_Trend*)wbParse_Malloc_Trend(1);
+		parse_Trends_Follow(obj,ptr);
+	}
+	return ptr;
+}
+void CWBJsonParser::parse_Trends_Follow(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_Trend *ptr)
+{
+	if( !ptr || !obj )
+		return ;
+
+	GET_STR( JSON,obj,"topicid",ptr->trendId_,WBPARSER_USE_LEN(TREND_ID) );
+}
+
+// hot
+t_wbParse_TrendHotQuery::TrendItem *CWBJsonParser::parse_Trends_getHot(/*[in]*/wbParserNS::REQOBJ *obj)
+{
+	t_wbParse_TrendHotQuery::TrendItem *ptr = 0;
+	if( obj ) {
+		ptr = (t_wbParse_TrendHotQuery::TrendItem*)wbParse_Malloc_TrendHotQuery_Item(1);
+		parse_Trends_getHot(obj,ptr);
+	}
+	return ptr;
+}
+void CWBJsonParser::parse_Trends_getHot(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_TrendHotQuery::TrendItem *ptr)
+{
+	if( !ptr || !obj )
+		return ;
+
+	// name
+	GET_STR( JSON,obj,"name",ptr->trendName_,WBPARSER_USE_LEN(TREND_NAME) );
+	//
+	GET_STR( JSON,obj,"query",ptr->trendQuery_,WBPARSER_USE_LEN(TREND_NAME) );
+}
+
+
+
+/** 一个结果 */
+t_wbParse_Ret *CWBJsonParser::parse_Ret(/*[in]*/wbParserNS::REQOBJ *obj)
+{
+	t_wbParse_Ret *ptr = 0;
+	if( obj ) {
+		ptr = (t_wbParse_Ret*)wbParse_Malloc_Ret(1);
+		parse_Ret(obj,ptr);
+	}
+
+	return ptr;
+}
+void CWBJsonParser::parse_Ret(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_Ret *ptr)
+{
+	if( !ptr || !obj )
+		return ;
+
+	// 错误码
+	GET_STR_IDX( JSON,obj,0,ptr->error_code_,WBPARSER_REAL_LEN(error_code));
+}
+
+
+// media shorturl batch
+t_wbParse_Media_ShortUrlBatch *CWBJsonParser::parse_Media_ShortURLBatch(/*[in]*/wbParserNS::REQOBJ *obj)
+{
+	t_wbParse_Media_ShortUrlBatch *ptr = 0;
+	if( obj ) {
+		ptr = (t_wbParse_Media_ShortUrlBatch*)wbParse_Malloc_Ret(1);
+		parse_Media_ShortURLBatch(obj,ptr);
+	}
+	return ptr;
+}
+void CWBJsonParser::parse_Media_ShortURLBatch(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_Media_ShortUrlBatch *ptr )
+{
+	if( !ptr || !obj )
+		return ;
+
+	// short url 
+	GET_STR( JSON,obj,"url_short",ptr->urlshort_,WBPARSER_USE_LEN(url) );
+
+	// long url
+	GET_STR( JSON,obj,"url_long",ptr->urllong_,WBPARSER_USE_LEN(url) );
+
+	// type
+	GET_LONG( JSON,obj,"type",ptr->type_ );
+
+	// title
+	GET_STR( JSON,obj,"title",ptr->title_,WBPARSER_REAL_LEN(name) );
+
+	// description
+	GET_STR( JSON,obj,"description",ptr->description_,WBPARSER_REAL_LEN(text) );
+
+	// last_modified
+	GET_STR( JSON,obj,"last_modified",ptr->lastmodified_,WBPARSER_REAL_LEN(created_at));
+
+
+
+	// object  anni
+	wbParserNS::REQOBJ *pObjAnni = wbParserNS::GetObject_Key_JSON("annotations",obj) ;
+	if( !pObjAnni){
+		return ;
+	}
+
+	//
+	GET_OBJECT_SIZE( JSON,pObjAnni,ptr->anCounts_);
+	//
+	if( 0 < ptr->anCounts_){
+		typedef t_wbParse_Media_ShortUrlBatch::ItemAnnotions ItemAnnotions;
+		ItemAnnotions* pAnniList = (ItemAnnotions*)wbParse_Malloc_Media_ShortURLBatch_ItemAnnotions(ptr->anCounts_);
+		for( int i = 0 ; i < ptr->anCounts_ ; ++ i ) {
+			ItemAnnotions* pAnni = (pAnniList + i);
+			parse_Media_ShortURLBatch_ItemAnnotions(pObjAnni,pAnni);
+		}
+		ptr->annotions_ = pAnniList;
+	}
+	
+}
+
+// media shorturl batch annotions
+t_wbParse_Media_ShortUrlBatch::ItemAnnotions *CWBJsonParser::parse_Media_ShortURLBatch_ItemAnnotions(/*[in]*/wbParserNS::REQOBJ *obj)
+{
+	t_wbParse_Media_ShortUrlBatch::ItemAnnotions *ptr = 0;
+	if( obj ) {
+		ptr = (t_wbParse_Media_ShortUrlBatch::ItemAnnotions *)wbParse_Malloc_Ret(1);
+		parse_Media_ShortURLBatch_ItemAnnotions(obj,ptr);
+	}
+	return ptr;
+}
+void CWBJsonParser::parse_Media_ShortURLBatch_ItemAnnotions(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_Media_ShortUrlBatch::ItemAnnotions *ptr)
+{
+	if( !ptr || !obj )
+		return ;
+
+	// url 
+	GET_STR( JSON,obj,"url",ptr->url,WBPARSER_USE_LEN(url) );
+
+	// pic url
+	GET_STR( JSON,obj,"pic",ptr->pic,WBPARSER_USE_LEN(url) );
+
+	// from
+	GET_LONG( JSON,obj,"from",ptr->from );
+
+	// title
+	GET_STR( JSON,obj,"title",ptr->title,WBPARSER_REAL_LEN(name) );
+}
+
+
+t_wbParse_UploadPic *CWBJsonParser::parse_UploadPic(/*[in]*/wbParserNS::REQOBJ *obj)
+{
+	t_wbParse_UploadPic *ptr = 0;
+	if( obj ) {
+		ptr = (t_wbParse_UploadPic*)wbParse_Malloc_Ret(1);
+		parse_UploadPic(obj,ptr);
+	}
+	return ptr;
+}
+void CWBJsonParser::parse_UploadPic(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_UploadPic *ptr)
+{
+	if( !ptr || !obj )
+		return ;
+
+	// pic_id 
+	GET_STR( JSON,obj,"pic_id",ptr->pic_id,WBPARSER_USE_LEN(url) );
+
+	// thumbnail_pic
+	GET_STR( JSON,obj,"thumbnail_pic",ptr->thumbnail_pic,WBPARSER_USE_LEN(url) );
+
+	// bmiddle_pic
+	GET_STR( JSON,obj,"bmiddle_pic",ptr->bmiddle_pic,WBPARSER_USE_LEN(url) );
+
+	// original_pic
+	GET_STR( JSON,obj,"original_pic",ptr->original_pic,WBPARSER_REAL_LEN(name) );
+}
 
 #endif //#if defined(_USE_JSON_PARSER)
 
@@ -807,81 +1083,81 @@ t_wbParse_Shipshow::Item* CWBJsonParser::parse_ship_item(wbParserNS::REQOBJ *obj
 /** 解析状态 */
 t_wbParse_Status  *CWBXmlParser::parse_status(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_Status* p = 0;
+	t_wbParse_Status* ptr = 0;
 	if( obj)
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_Status,wbParse_Malloc_Status(1));
-		parse_status(obj, p);
+		ptr = WEIBO_PARSER_CAST(t_wbParse_Status,wbParse_Malloc_Status(1));
+		parse_status(obj, ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBXmlParser::parse_status(wbParserNS::REQOBJ *obj , t_wbParse_Status * p)
+void CWBXmlParser::parse_status(wbParserNS::REQOBJ *obj , t_wbParse_Status * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// id
-	GET_LONG_TO_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(id)),p->id,WBPARSER_USE_LEN(id) );
+	GET_LONG_TO_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(id)),ptr->id,WBPARSER_USE_LEN(id) );
 
 	// created_at
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(createtime)),p->created_at,WBPARSER_USE_LEN(created_at) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(createtime)),ptr->created_at,WBPARSER_USE_LEN(created_at) );
 
 	// text
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(text)),p->text,WBPARSER_USE_LEN(text) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(text)),ptr->text,WBPARSER_USE_LEN(text) );
 
 	// source
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(source)),p->source,WBPARSER_USE_LEN(source) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(source)),ptr->source,WBPARSER_USE_LEN(source) );
 
 	// in_reply_to_status_id
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(rsid)),p->in_reply_to_status_id,WBPARSER_USE_LEN(in_reply_to_status_id) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(rsid)),ptr->in_reply_to_status_id,WBPARSER_USE_LEN(in_reply_to_status_id) );
 
 	// in_reply_to_screen_name
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(rtsname)),p->in_reply_to_screen_name,WBPARSER_USE_LEN(in_reply_to_screen_name) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(rtsname)),ptr->in_reply_to_screen_name,WBPARSER_USE_LEN(in_reply_to_screen_name) );
 
 	// thumbnail_pic
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(thumbpic)),p->thumbnail_pic,WBPARSER_USE_LEN(thumbnail_pic) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(thumbpic)),ptr->thumbnail_pic,WBPARSER_USE_LEN(thumbnail_pic) );
 
 	// bmiddle_pic
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(midpic)),p->bmiddle_pic,WBPARSER_USE_LEN(bmiddle_pic) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(midpic)),ptr->bmiddle_pic,WBPARSER_USE_LEN(bmiddle_pic) );
 
 	// original_pic
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(originpic)),p->original_pic,WBPARSER_USE_LEN(original_pic) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(originpic)),ptr->original_pic,WBPARSER_USE_LEN(original_pic) );
 
 	// favorited
-	GET_BOOL(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(favorited)),p->favorited );
+	GET_BOOL(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(favorited)),ptr->favorited );
 
 	// truncated
-	GET_BOOL(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(truncated)),p->truncated );
+	GET_BOOL(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(truncated)),ptr->truncated );
 
 	//
 	USE_WEIBOPARSE_OBJ_PTR ;
 
 	// geo
-	GET_OBJECT(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(geo)),p->geo,parse_geo);
+	GET_OBJECT(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(geo)),ptr->geo,parse_geo);
 
 	// user
-	GET_OBJECT(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(user)),p->user,parse_user);
+	GET_OBJECT(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(user)),ptr->user,parse_user);
 
 	// retweeted_status
-	GET_OBJECT(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(retstatus)),p->retweeted_status,parse_status);
+	GET_OBJECT(XML,obj,GET_VALUEKEY(WBPARSER_KEY_STATEIDX(retstatus)),ptr->retweeted_status,parse_status);
 }
 
 
 struct t_wbParse_Error* CWBXmlParser::parse_error(wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_Error* p = 0;
+	t_wbParse_Error* ptr = 0;
 	if( obj )
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_Error,wbParse_Malloc_Error(1) );
+		ptr = WEIBO_PARSER_CAST(t_wbParse_Error,wbParse_Malloc_Error(1) );
 
-		parse_error(obj,p);
+		parse_error(obj,ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBXmlParser::parse_error(wbParserNS::REQOBJ *obj , t_wbParse_Error * p)
+void CWBXmlParser::parse_error(wbParserNS::REQOBJ *obj , t_wbParse_Error * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 
 	int len = 0;
@@ -891,360 +1167,360 @@ void CWBXmlParser::parse_error(wbParserNS::REQOBJ *obj , t_wbParse_Error * p)
 	//txt = wbParserNS::GetCHAR_Key_XML_EX("request" , obj , len );
 	GET_STR_EX(XML,obj,"request",txt,len );
 	if( len && txt ) {
-		strncpy( p->request ,txt , WBPARSER_USE_LEN(request) );
+		strncpy( ptr->request ,txt , WBPARSER_USE_LEN(request) );
 	}
 
 	//txt = wbParserNS::GetCHAR_Key_JSON_EX("error_code" , obj, len);
 	GET_STR_EX(XML,obj,"error_code",txt,len);
 	if( len && txt ) {
-		strncpy( p->error_code,txt , WBPARSER_USE_LEN(error_code) );
+		strncpy( ptr->error_code,txt , WBPARSER_USE_LEN(error_code) );
 	}
 
 	//txt = wbParserNS::GetCHAR_Key_JSON_EX("error" , obj, len);
 	GET_STR_EX(XML,obj,"error",txt,len);
 	if( len && txt ) {
-		strncpy( p->error,txt,WBPARSER_USE_LEN(error) );
-		p->error_sub_code = atoi(p->error);
+		strncpy( ptr->error,txt,WBPARSER_USE_LEN(error) );
+		ptr->error_sub_code = atoi(ptr->error);
 	}
 }
 
 /** 解析用户 */
 t_wbParse_User  *CWBXmlParser::parse_user(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_User* p = 0;
+	t_wbParse_User* ptr = 0;
 	if( obj )
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_User,wbParse_Malloc_User(1));
+		ptr = WEIBO_PARSER_CAST(t_wbParse_User,wbParse_Malloc_User(1));
 
-		parse_user(obj, p );
+		parse_user(obj, ptr );
 	}
-	return p;
+	return ptr;
 }
 
-void CWBXmlParser::parse_user(wbParserNS::REQOBJ *obj , t_wbParse_User * p)
+void CWBXmlParser::parse_user(wbParserNS::REQOBJ *obj , t_wbParse_User * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// id
-	GET_LONG_TO_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(id)),p->id,WBPARSER_USE_LEN(id) );
+	GET_LONG_TO_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(id)),ptr->id,WBPARSER_USE_LEN(id) );
 
 	// screen_name
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(name)),p->screen_name,WBPARSER_USE_LEN(screen_name) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(name)),ptr->screen_name,WBPARSER_USE_LEN(screen_name) );
 
 	// name
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(name)),p->name,WBPARSER_USE_LEN(name) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(name)),ptr->name,WBPARSER_USE_LEN(name) );
 
 
 	// province
-	GET_LONG_TO_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(province)),p->province,WBPARSER_USE_LEN(province) );
+	GET_LONG_TO_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(province)),ptr->province,WBPARSER_USE_LEN(province) );
 
 	// city
-	GET_LONG_TO_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(city)),p->city,WBPARSER_USE_LEN(city) );
+	GET_LONG_TO_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(city)),ptr->city,WBPARSER_USE_LEN(city) );
 
 	// location
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(location)),p->location,WBPARSER_USE_LEN(location) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(location)),ptr->location,WBPARSER_USE_LEN(location) );
 
 	// description
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(description)),p->description,WBPARSER_USE_LEN(description) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(description)),ptr->description,WBPARSER_USE_LEN(description) );
 
 	// url
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(url)),p->url,WBPARSER_USE_LEN(url) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(url)),ptr->url,WBPARSER_USE_LEN(url) );
 
 	// profile_image_url
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(prourl)),p->profile_image_url,WBPARSER_USE_LEN(profile_image_url) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(prourl)),ptr->profile_image_url,WBPARSER_USE_LEN(profile_image_url) );
 
 	// domain
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(domain)),p->domain,WBPARSER_USE_LEN(domain) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(domain)),ptr->domain,WBPARSER_USE_LEN(domain) );
 
 	// gender
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(gender)),p->gender,WBPARSER_USE_LEN(gender) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(gender)),ptr->gender,WBPARSER_USE_LEN(gender) );
 
 	// created_at
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(createdat)),p->created_at,WBPARSER_USE_LEN(created_at) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(createdat)),ptr->created_at,WBPARSER_USE_LEN(created_at) );
 
 	// followers_count
-	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(followcount)),p->followers_count );
+	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(followcount)),ptr->followers_count );
 
 	// followers_count
-	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(frcount)),p->friends_count );
+	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(frcount)),ptr->friends_count );
 
 	// statuses_count
-	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(stacount)),p->statuses_count );
+	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(stacount)),ptr->statuses_count );
 
 	// favourites_count
-	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(favcount)),p->favourites_count );
+	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(favcount)),ptr->favourites_count );
 
 	// allow_all_act_msg
-	GET_BOOL(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(allowall)),p->allow_all_act_msg );
+	GET_BOOL(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(allowall)),ptr->allow_all_act_msg );
 
 	// geo_enabled
-	GET_BOOL(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(geoenable)),p->geo_enabled );
+	GET_BOOL(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(geoenable)),ptr->geo_enabled );
 
 	// following
-	GET_BOOL(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(following)),p->following );
+	GET_BOOL(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(following)),ptr->following );
 
 	// following
-	GET_BOOL(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(verified)),p->verified );
+	GET_BOOL(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(verified)),ptr->verified );
 
 	// last status
 	USE_WEIBOPARSE_OBJ_PTR;
-	GET_OBJECT(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(last_status)),p->last_status,parse_status);
+	GET_OBJECT(XML,obj,GET_VALUEKEY(WBPARSER_KEY_USERIDX(last_status)),ptr->last_status,parse_status);
 }
 
 /** 解析地理位置 */
 t_wbParse_Geo *CWBXmlParser::parse_geo(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_Geo *p = 0;
+	t_wbParse_Geo *ptr = 0;
 	if( obj )
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_Geo,wbParse_Malloc_Geo(1));
+		ptr = WEIBO_PARSER_CAST(t_wbParse_Geo,wbParse_Malloc_Geo(1));
 
-		parse_geo(obj,p);
+		parse_geo(obj,ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBXmlParser::parse_geo(wbParserNS::REQOBJ *obj , t_wbParse_Geo * p)
+void CWBXmlParser::parse_geo(wbParserNS::REQOBJ *obj , t_wbParse_Geo * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	//
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_GEO(type)),p->type,WBPARSER_USE_LEN(type)) ;
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_GEO(type)),ptr->type,WBPARSER_USE_LEN(type)) ;
 
 	//
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_GEO(coordinates)),p->coordinates,WBPARSER_USE_LEN(coordinates)) ;
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_GEO(coordinates)),ptr->coordinates,WBPARSER_USE_LEN(coordinates)) ;
 }
 
 /** 解析评论 */
 t_wbParse_Comment *CWBXmlParser::parse_comment(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_Comment *p = 0;
+	t_wbParse_Comment *ptr = 0;
 	if( obj )
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_Comment,wbParse_Malloc_Comment(1));
-		parse_comment(obj,p);
+		ptr = WEIBO_PARSER_CAST(t_wbParse_Comment,wbParse_Malloc_Comment(1));
+		parse_comment(obj,ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBXmlParser::parse_comment(wbParserNS::REQOBJ *obj , t_wbParse_Comment * p)
+void CWBXmlParser::parse_comment(wbParserNS::REQOBJ *obj , t_wbParse_Comment * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// id
-	GET_LONG_TO_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(id)),p->id,WBPARSER_USE_LEN(id) );
+	GET_LONG_TO_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(id)),ptr->id,WBPARSER_USE_LEN(id) );
 
 	// text
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(text)),p->text,WBPARSER_USE_LEN(text) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(text)),ptr->text,WBPARSER_USE_LEN(text) );
 
 	// source
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(source)),p->source,WBPARSER_USE_LEN(source) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(source)),ptr->source,WBPARSER_USE_LEN(source) );
 
 	// favorited
-	GET_BOOL(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(favorited)),p->favorited );
+	GET_BOOL(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(favorited)),ptr->favorited );
 
 	// created_at
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(createdat)),p->created_at,WBPARSER_USE_LEN(created_at) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(createdat)),ptr->created_at,WBPARSER_USE_LEN(created_at) );
 
 	//
 	USE_WEIBOPARSE_OBJ_PTR ;
 
 	// user
-	GET_OBJECT(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(user)),p->user,parse_user);
+	GET_OBJECT(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(user)),ptr->user,parse_user);
 
 	// status
-	GET_OBJECT(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(status)),p->status,parse_status);
+	GET_OBJECT(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(status)),ptr->status,parse_status);
 
 	// reply_comment
-	GET_OBJECT(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(rcomment)),p->reply_comment,parse_comment);
+	GET_OBJECT(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(rcomment)),ptr->reply_comment,parse_comment);
 }
 
 /** 私信 */
 t_wbParse_DirectMessage *CWBXmlParser::parse_directmessage(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_DirectMessage* p =0;
+	t_wbParse_DirectMessage* ptr =0;
 	if( obj )
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_DirectMessage,wbParse_Malloc_Directmessage(1));
-		parse_directmessage(obj,p);
+		ptr = WEIBO_PARSER_CAST(t_wbParse_DirectMessage,wbParse_Malloc_Directmessage(1));
+		parse_directmessage(obj,ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBXmlParser::parse_directmessage(wbParserNS::REQOBJ *obj , t_wbParse_DirectMessage * p)
+void CWBXmlParser::parse_directmessage(wbParserNS::REQOBJ *obj , t_wbParse_DirectMessage * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// id
-	GET_LONG_TO_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(id)),p->id,WBPARSER_USE_LEN(id) );
+	GET_LONG_TO_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(id)),ptr->id,WBPARSER_USE_LEN(id) );
 
 	// text
-	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(text)),p->text,WBPARSER_USE_LEN(text) );
+	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(text)),ptr->text,WBPARSER_USE_LEN(text) );
 
 	// created_at
-	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(createdat)),p->created_at,WBPARSER_USE_LEN(created_at) );
+	GET_STR(XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMMENTIDX(createdat)),ptr->created_at,WBPARSER_USE_LEN(created_at) );
 
 	// sender_id
-	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(senderid)),p->sender_id,WBPARSER_USE_LEN(id) );
+	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(senderid)),ptr->sender_id,WBPARSER_USE_LEN(id) );
 
 	// recipient_id
-	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(recipientid)),p->recipient_id,WBPARSER_USE_LEN(id) );
+	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(recipientid)),ptr->recipient_id,WBPARSER_USE_LEN(id) );
 
 	// sender_screen_name
-	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(sndsname)),p->sender_screen_name,WBPARSER_USE_LEN(name) );
+	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(sndsname)),ptr->sender_screen_name,WBPARSER_USE_LEN(name) );
 
 	//recipient_screen_name
-	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(rsnsame)),p->recipient_screen_name,WBPARSER_USE_LEN(name) );
+	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(rsnsame)),ptr->recipient_screen_name,WBPARSER_USE_LEN(name) );
 
 	//
 	USE_WEIBOPARSE_OBJ_PTR ;
 
 	//sender
-	GET_OBJECT( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(sender)),p->sender,parse_user );
+	GET_OBJECT( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(sender)),ptr->sender,parse_user );
 
 	//recipient
-	GET_OBJECT( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(recipient)),p->recipient,parse_user );
+	GET_OBJECT( XML,obj,GET_VALUEKEY(WBPARSER_KEY_DIRMSGIDX(recipient)),ptr->recipient,parse_user );
 }
 
 /** 解析未读数 */
 t_wbParse_Unread  *CWBXmlParser::parse_unread(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_Unread *p = 0;
+	t_wbParse_Unread *ptr = 0;
 	if( obj )
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_Unread,wbParse_Malloc_Unread(1));
+		ptr = WEIBO_PARSER_CAST(t_wbParse_Unread,wbParse_Malloc_Unread(1));
 
-		parse_unread(obj ,p );
+		parse_unread(obj ,ptr );
 	}
-	return p;
+	return ptr;
 }
 
-void CWBXmlParser::parse_unread(wbParserNS::REQOBJ *obj , t_wbParse_Unread * p)
+void CWBXmlParser::parse_unread(wbParserNS::REQOBJ *obj , t_wbParse_Unread * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// comments
-	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(comments)),p->comments);
+	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(comments)),ptr->comments);
 
 	// mentions
-	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(mentions)),p->mentions);
+	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(mentions)),ptr->mentions);
 
 	// dm
-	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(dm)),p->dm);
+	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(dm)),ptr->dm);
 
 	// followers
-	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(followers)),p->followers);
+	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(followers)),ptr->followers);
 
-	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(new_status)),p->new_status);
+	GET_LONG(XML,obj,GET_VALUEKEY(WBPARSER_KEY_UREADER(new_status)),ptr->new_status);
 	
 }
 
 /** 解析评论计数 */
 t_wbParse_CommentCounts *CWBXmlParser::parse_commentcounts(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_CommentCounts *p = 0;
+	t_wbParse_CommentCounts *ptr = 0;
 	if( obj)
 	{
-		p = WEIBO_PARSER_CAST(t_wbParse_CommentCounts,wbParse_Malloc_Commentcount(1));
-		parse_commentcounts(obj,p);
+		ptr = WEIBO_PARSER_CAST(t_wbParse_CommentCounts,wbParse_Malloc_Commentcount(1));
+		parse_commentcounts(obj,ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBXmlParser::parse_commentcounts(wbParserNS::REQOBJ *obj , t_wbParse_CommentCounts * p)
+void CWBXmlParser::parse_commentcounts(wbParserNS::REQOBJ *obj , t_wbParse_CommentCounts * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// id
-	GET_LONG_TO_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMCOUNT(id)),p->id,WBPARSER_USE_LEN(id) );
+	GET_LONG_TO_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMCOUNT(id)),ptr->id,WBPARSER_USE_LEN(id) );
 
 	// comments
-	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMCOUNT(comments)),p->comments );
+	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMCOUNT(comments)),ptr->comments );
 
 	// rt
-	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMCOUNT(rt)),p->rt );
+	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_COMCOUNT(rt)),ptr->rt );
 }
 
 
 t_wbParse_LimitStatus *CWBXmlParser::parse_limite_status(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_LimitStatus *p = 0;
+	t_wbParse_LimitStatus *ptr = 0;
 	if( obj)
 	{
-		p = (t_wbParse_LimitStatus *)wbParse_Malloc_Limits(1);
-		parse_limite_status(obj ,  p);
+		ptr = (t_wbParse_LimitStatus *)wbParse_Malloc_Limits(1);
+		parse_limite_status(obj ,  ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBXmlParser::parse_limite_status(wbParserNS::REQOBJ *obj , t_wbParse_LimitStatus * p)
+void CWBXmlParser::parse_limite_status(wbParserNS::REQOBJ *obj , t_wbParse_LimitStatus * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// hourly_limit
-	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(hourlimit)),p->hourly_limit );
+	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(hourlimit)),ptr->hourly_limit );
 
 	// rstimeinseond
-	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(rstimeinseond)),p->reset_time_in_seconds );
+	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(rstimeinseond)),ptr->reset_time_in_seconds );
 
 	// remaining_hits
-	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(remaining_hits)),p->remaining_hits );
+	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(remaining_hits)),ptr->remaining_hits );
 
 	// reset_time
-	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(reset_time)),p->reset_time,WBPARSER_USE_LEN(reset_time) );
+	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_ACCESS_LMT(reset_time)),ptr->reset_time,WBPARSER_USE_LEN(reset_time) );
 }
 
 
 t_wbParse_Emotion *CWBXmlParser::parse_emotion(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_Emotion *p = 0;
+	t_wbParse_Emotion *ptr = 0;
 	if( obj )
 	{
-		p = (t_wbParse_Emotion *)wbParse_Malloc_Emotion(1);
-		parse_emotion(obj , p);
+		ptr = (t_wbParse_Emotion *)wbParse_Malloc_Emotion(1);
+		parse_emotion(obj , ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBXmlParser::parse_emotion(wbParserNS::REQOBJ *obj , t_wbParse_Emotion * p)
+void CWBXmlParser::parse_emotion(wbParserNS::REQOBJ *obj , t_wbParse_Emotion * ptr)
 {
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	// phrase
-	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(phrase)),p->phrase,WBPARSER_USE_LEN(phrase) );
+	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(phrase)),ptr->phrase,WBPARSER_USE_LEN(phrase) );
 
 	// type
-	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(type)),p->type,WBPARSER_USE_LEN(type) );
+	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(type)),ptr->type,WBPARSER_USE_LEN(type) );
 
 	// url
-	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(url)),p->url,WBPARSER_USE_LEN(url) );
+	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(url)),ptr->url,WBPARSER_USE_LEN(url) );
 
 	//category
-	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(category)),p->category,WBPARSER_USE_LEN(category) );
+	GET_STR( XML,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(category)),ptr->category,WBPARSER_USE_LEN(category) );
 
 	// is_hot
-	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(is_hot)),p->is_hot );
+	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(is_hot)),ptr->is_hot );
 
 	// is_common
-	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(is_common)),p->is_common );
+	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(is_common)),ptr->is_common );
 
 	// order_number
-	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(order_number)),p->order_number );
+	GET_LONG( XML,obj,GET_VALUEKEY(WBPARSER_KEY_EMOTION(order_number)),ptr->order_number );
 }
 
 
 t_wbParse_Shipshow *CWBXmlParser::parse_shipshow(/*[in]*/wbParserNS::REQOBJ *obj)
 {
-	t_wbParse_Shipshow *p = 0;
+	t_wbParse_Shipshow *ptr = 0;
 	if( obj )
 	{
-		p = (t_wbParse_Shipshow *)wbParse_Malloc_Friendship(1);
-		parse_shipshow(obj , p);
+		ptr = (t_wbParse_Shipshow *)wbParse_Malloc_Friendship(1);
+		parse_shipshow(obj , ptr);
 	}
-	return p;
+	return ptr;
 }
 
-void CWBXmlParser::parse_shipshow(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_Shipshow *p)	
+void CWBXmlParser::parse_shipshow(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_Shipshow *ptr)	
 {
 //{
  //   "source":{
@@ -1262,16 +1538,16 @@ void CWBXmlParser::parse_shipshow(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_Ship
  //       ,"notifications_enabled":false
  // }
  //}
-	if( !p || !obj )
+	if( !ptr || !obj )
 		return ;
 	//
 	USE_WEIBOPARSE_OBJ_PTR ;
 
 	//source
-	GET_OBJECT( XML,obj,"source",p->source,parse_ship_item );
+	GET_OBJECT( XML,obj,"source",ptr->source,parse_ship_item );
 
 	//source
-	GET_OBJECT( XML,obj,"target",p->target,parse_ship_item );
+	GET_OBJECT( XML,obj,"target",ptr->target,parse_ship_item );
 }
 
 t_wbParse_Shipshow::Item* CWBXmlParser::parse_ship_item(wbParserNS::REQOBJ *obj)
@@ -1285,25 +1561,25 @@ t_wbParse_Shipshow::Item* CWBXmlParser::parse_ship_item(wbParserNS::REQOBJ *obj)
  //  }
 	if( !obj )
 		return 0;
-	t_wbParse_Shipshow::Item* p = (t_wbParse_Shipshow::Item*)malloc(sizeof(t_wbParse_Shipshow::Item));
-	memset(p , 0 , sizeof(t_wbParse_Shipshow::Item));
+	t_wbParse_Shipshow::Item* ptr = (t_wbParse_Shipshow::Item*)malloc(sizeof(t_wbParse_Shipshow::Item));
+	memset(ptr , 0 , sizeof(t_wbParse_Shipshow::Item));
 
 	// id
-	GET_LONG_TO_STR( XML,obj,"id",p->id,WBPARSER_USE_LEN(id) );
+	GET_LONG_TO_STR( XML,obj,"id",ptr->id,WBPARSER_USE_LEN(id) );
 
 	// screen_name
-	GET_STR( XML,obj,"screen_name",p->screen_name,WBPARSER_USE_LEN(screen_name) );
+	GET_STR( XML,obj,"screen_name",ptr->screen_name,WBPARSER_USE_LEN(screen_name) );
 
 	// following
-	GET_LONG( XML,obj,"following",p->following);
+	GET_LONG( XML,obj,"following",ptr->following);
 
 	// following
-	GET_LONG( XML,obj,"followed_by",p->followed_by);
+	GET_LONG( XML,obj,"followed_by",ptr->followed_by);
 
 	// following
-	GET_LONG( XML,obj,"notifications_enabled",p->notifications_enabled);
+	GET_LONG( XML,obj,"notifications_enabled",ptr->notifications_enabled);
 
-	return p;
+	return ptr;
 }
 
 #endif //#if defined(_USE_XML_PARSER)
