@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="WeiBo_VC80"
-	ProjectGUID="{6AA1F0B5-8235-4C5E-AF10-AC905963F36D}"
+	ProjectGUID="{5818E6D1-01B3-47EA-8472-97011F22FCE5}"
 	RootNamespace="Network"
 	Keyword="Win32Proj"
 	>

@@ -25,6 +25,8 @@
 * THE SOFTWARE.
 *
 */
+
+#include "stdafx.h"
 #include "splitstr.h"
 #include "wbParser.h"
 #include "wbcallback.h"
@@ -58,7 +60,11 @@
 #ifdef _PARSER_WRAPPER_TEST
 
 #include "wbParser/WBParseWrapper.h"
-#pragma comment(lib,"WBParseWrapper_VC90.lib")
+#if defined(WEIBO_VC80)
+#		pragma comment(lib ,"WBParseWrapper_VC80.lib")
+#elif defined(WEIBO_VC90)
+#		pragma comment(lib ,"WBParseWrapper_VC90.lib")
+#endif
 
 //#define TEST_STATUSES(iHttpCode,body,len,_ParseFun,_FreeFun)\
 //	{\

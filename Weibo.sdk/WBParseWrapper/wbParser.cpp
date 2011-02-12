@@ -2,13 +2,17 @@
 #include "WBParser.h"
 #include "strconv.h"
 #include <assert.h>
+#include "config.h"
 
 
 #if (defined(WIN32) || defined(_WIN32_WCE) )
-
 #	if defined(_USE_JSON_PARSER)
 #	include <Json/reader.h>
-#	pragma comment(lib , "json_VC90.lib")
+#		if defined(WEIBO_VC80)
+#		pragma comment(lib,"json_VC80.lib")
+#		elif defined(WEIBO_VC90)
+#		pragma comment(lib,"json_VC90.lib")
+#		endif
 #	endif //_USE_JSON_PARSER
 
 #	if defined(_USE_XML_PARSER)
@@ -17,11 +21,9 @@
 #	endif //_USE_XML_PARSER
 
 #else
-
 #	define IsBadReadPtr(p,cb) p
 #	define ZeroMemory(out,len) memset((void*)out,0,len)
 #	define strncpy_s( out,len,txt,txtlen ) strcpy(out, txt)
-
 #endif //WIN32 || WINCE
 
 

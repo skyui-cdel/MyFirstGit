@@ -201,7 +201,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\;.\WBParser;..\common;..\..\include;&quot;..\..\third-party\include&quot;"
+				AdditionalIncludeDirectories=".\;..\..\include\WBParser;..\common;..\..\include;&quot;..\..\third-party\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;WEIBO_STATICLIB;WEIBO_PARSER_STATICLIB;_USE_JSON_PARSER"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"

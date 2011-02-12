@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="test_VC80"
-	ProjectGUID="{39B0C145-F72A-4B1E-8902-B96378908D05}"
+	ProjectGUID="{88346A30-A4E3-4D35-AEE7-9E4BB08F8E56}"
 	RootNamespace="test"
 	Keyword="Win32Proj"
 	>
@@ -42,7 +42,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\include;.\;.\WBParser;..\common;&quot;..\..\third-party\include&quot;"
+				AdditionalIncludeDirectories="..\..\include;.\;..\..\include\WBParser;..\common;&quot;..\..\third-party\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;WEIBO_STATICLIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -124,7 +124,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\..\include;.\;.\WBParser;..\common;&quot;..\..\third-party\include&quot;"
+				AdditionalIncludeDirectories="..\..\include;.\;..\..\include\WBParser;..\common;&quot;..\..\third-party\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;WEIBO_STATICLIB"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
@@ -189,7 +189,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -206,7 +206,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\include;.\;.\WBParser;..\common;&quot;..\..\third-party\include&quot;"
+				AdditionalIncludeDirectories="..\..\include;.\;..\..\include\WBParser;..\common;&quot;..\..\third-party\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;WEIBO_STATICLIB;WEIBO_PARSER_STATICLIB;_USE_JSON_PARSER"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -288,7 +288,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\..\include;.\;.\WBParser;..\common;&quot;..\..\third-party\include&quot;"
+				AdditionalIncludeDirectories="..\..\include;.\;..\..\include\WBParser;..\common;&quot;..\..\third-party\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;WEIBO_STATICLIB;WEIBO_PARSER_STATICLIB;_USE_JSON_PARSER"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -371,7 +371,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\..\include;.\;.\WBParser;..\common;&quot;..\..\third-party\include&quot;"
+				AdditionalIncludeDirectories="..\..\include;.\;..\..\include\WBParser;..\common;&quot;..\..\third-party\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
@@ -453,7 +453,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\include;.\;.\WBParser;..\common;&quot;..\..\third-party\include&quot;"
+				AdditionalIncludeDirectories="..\..\include;.\;..\..\include\WBParser;..\common;&quot;..\..\third-party\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -706,82 +706,6 @@
 			</File>
 			<File
 				RelativePath=".\wbinit.h"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="wbparser"
-			>
-			<File
-				RelativePath=".\WBParser\splitstr.cpp"
-				>
-				<FileConfiguration
-					Name="DLL Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DLL Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\WBParser\splitstr.h"
-				>
-			</File>
-			<File
-				RelativePath="..\common\strconv.cpp"
-				>
-				<FileConfiguration
-					Name="DLL Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DLL Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\common\strconv.h"
-				>
-			</File>
-			<File
-				RelativePath=".\WBParser\wbParseMalloc.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\WBParser\wbParseMalloc.h"
-				>
-			</File>
-			<File
-				RelativePath=".\WBParser\wbParseObj.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\WBParser\wbParseObj.h"
-				>
-			</File>
-			<File
-				RelativePath=".\WBParser\wbParser.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\WBParser\wbParser.h"
 				>
 			</File>
 		</Filter>
