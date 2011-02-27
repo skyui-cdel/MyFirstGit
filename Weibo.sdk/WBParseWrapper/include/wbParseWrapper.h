@@ -209,6 +209,10 @@ extern "C"{
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_DECLARE(DirectMessages,Destroy);
 		WBPARSER_API void WBFREE_FUNC_DECLARE(DirectMessages,Destroy);
 
+		/** 当前与好友的来往私信列表 */
+		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_DECLARE(DirectMessages,With);
+		WBPARSER_API void WBFREE_FUNC_DECLARE(DirectMessages,With);
+
 		/** 批量删除私信 */
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_DECLARE(DirectMessages,Destroy_Batch);
 		WBPARSER_API void WBFREE_FUNC_DECLARE(DirectMessages,Destroy_Batch);
@@ -465,9 +469,12 @@ extern "C"{
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// MEDIA 
+#ifdef _USE_GET_SHORTURL_BATCH
 
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_DECLARE( MEDIA,SHORTURL );
-		WBPARSER_API void WBFREE_FUNC_DECLARE( MEDIA,SHORTURL );		
+		WBPARSER_API void WBFREE_FUNC_DECLARE( MEDIA,SHORTURL );
+
+#endif //#ifdef _USE_GET_SHORTURL_BATCH
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// 一般解析

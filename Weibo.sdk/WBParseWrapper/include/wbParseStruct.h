@@ -120,7 +120,7 @@ namespace wbParserNS
 	WBPARSER_UINT_DEFINE(request,255);
 	WBPARSER_UINT_DEFINE(error,255);
 	WBPARSER_UINT_DEFINE(error_code,64);
-	WBPARSER_UINT_DEFINE(TGT,1024);
+	WBPARSER_UINT_DEFINE(TGT,255);
 	WBPARSER_UINT_DEFINE(GROUPNAME,255);
 	WBPARSER_UINT_DEFINE(email,255);
 	// Tags
@@ -154,7 +154,7 @@ namespace wbParserNS
 	/** 解析信息头，每个结构体必须要有的 by welbon,2011-01-08*/
 	struct t_wbParse_Header
 	{
-		eParseSource eSource;///< 信息来源
+		int eSource;///< 信息来源
 	};
 	
 
@@ -178,18 +178,31 @@ namespace wbParserNS
 		t_wbParse_Header ph_; ///< 解析头
 
 		// cookie
+		int  error;
 		char SUE[1024];
 		char SUP[2048];
-		// 
-		char uid[128];
-		char tgt[256];
+		char tgt[WBPARSER_REAL_LEN(TGT)];
+		//
 		char ticket[256];
 		char publickey[512];
-		char keyversion[16];
-		//
-		int  error;
+		char keyversion[64];
+		char uid[128];
+
+		__int64 lservertime;//获取TGT时服务器时间
+	    __int64 llocaltime;//TGT返回时本机时间
 	};
 
+
+	/** 更新TGT结果 */
+	struct t_wbParse_updateTGT
+	{
+		t_wbParse_Header ph_; ///< 解析头
+
+		int  error;
+		char SUE[1024];
+		char SUP[2048];
+		char tgt[WBPARSER_REAL_LEN(TGT)];///< TGT	
+	};
 
 	struct t_wbParse_Cursor
 	{
@@ -385,20 +398,41 @@ namespace wbParserNS
 		unsigned int error_sub_code; ///< 子错误信息
 	};
 
-
 	/** 为富媒体而定 */
 	struct t_wbParse_media_item
 	{
 		t_wbParse_Header ph_; ///< 解析头
 
-		WBParseCHAR id[WBPARSER_REAL_LEN(id)];///<mediaid
-		WBParseCHAR url[WBPARSER_REAL_LEN(url)];///<media- url
-		WBParseCHAR screen[WBPARSER_REAL_LEN(url)];///<media- url
-		WBParseCHAR type[WBPARSER_REAL_LEN(type)];///<media- type:video/audio
-		WBParseCHAR title[WBPARSER_REAL_LEN(name)];///<media- title
-		WBParseCHAR flash[WBPARSER_REAL_LEN(url)];///<media- flash
+		WBParseCHAR id[WBPARSER_REAL_LEN(id)];			 ///<mediaid
+		WBParseCHAR url[WBPARSER_REAL_LEN(url)];		 ///<media- url
+		WBParseCHAR screen[WBPARSER_REAL_LEN(url)];		 ///<media- screen
+		WBParseCHAR type[WBPARSER_REAL_LEN(type)];		 ///<media- type:webpage,video,audio,event,magic,vote
+		WBParseCHAR title[WBPARSER_REAL_LEN(name)];		 ///<media- title
+		WBParseCHAR flash[WBPARSER_REAL_LEN(url)];		 ///<media- flash
+		//
+		struct MediaExternItem
+		{
+			// extern information
+			WBParseCHAR ext_from[32]; 
+			WBParseCHAR ext_shorturl[WBPARSER_REAL_LEN(url)];	 ///<media- shorturl
+			WBParseCHAR ext_description[WBPARSER_REAL_LEN(text)];///<media- description
+			WBParseCHAR ext_lastmodified[ WBPARSER_REAL_LEN(created_time) ];///<media- lastmodify
 
+			// extern - music 
+			WBParseCHAR ext_audio_artist[WBPARSER_REAL_LEN(name)];
+			WBParseCHAR ext_audio_album[WBPARSER_REAL_LEN(name)];
+			WBParseCHAR ext_audio_appkey[256];
+
+			// extern - event
+			WBParseCHAR ext_event_id[WBPARSER_REAL_LEN(id)];
+
+			// extern - vote
+			WBParseCHAR ext_vote_uid[WBPARSER_REAL_LEN(id)];
+
+		} media_ext;
 	};
+
+#ifdef _USE_GET_SHORTURL_BATCH
 
 	/** 批量获取 */
 	struct t_wbParse_Media_ShortUrlBatch
@@ -423,6 +457,7 @@ namespace wbParserNS
 		WBParseINT anCounts_;
 		ItemAnnotions *annotions_;
 	};
+#endif //_USE_GET_SHORTURL_BATCH
 
 	/** 上传图片 */
 	struct t_wbParse_UploadPic
@@ -463,18 +498,6 @@ namespace wbParserNS
 
 		//
 		WBParseCHAR error_code_[WBPARSER_REAL_LEN(error_code)];
-	};
-
-	/** 更新TGT结果 */
-	struct t_wbParse_updateTGT
-	{
-		t_wbParse_Header ph_; ///< 解析头
-
-		//
-		char SUE[1024];
-		char SUP[2048];
-		char tgt_[WBPARSER_REAL_LEN(TGT)];///< TGT
-		long long ret_;
 	};
 
 	/** 邀请联系人 */

@@ -959,6 +959,8 @@ void CWBJsonParser::parse_Ret(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_Ret *ptr
 }
 
 
+#ifdef _USE_GET_SHORTURL_BATCH
+
 // media shorturl batch
 t_wbParse_Media_ShortUrlBatch *CWBJsonParser::parse_Media_ShortURLBatch(/*[in]*/wbParserNS::REQOBJ *obj)
 {
@@ -1042,6 +1044,9 @@ void CWBJsonParser::parse_Media_ShortURLBatch_ItemAnnotions(/*[in]*/wbParserNS::
 	// title
 	GET_STR( JSON,obj,"title",ptr->title,WBPARSER_REAL_LEN(name) );
 }
+
+
+#endif //#ifdef _USE_GET_SHORTURL_BATCH
 
 
 t_wbParse_UploadPic *CWBJsonParser::parse_UploadPic(/*[in]*/wbParserNS::REQOBJ *obj)

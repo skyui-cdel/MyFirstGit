@@ -289,10 +289,15 @@ typedef CParseGenericByCursorT< t_wbParse_Emotion >  CParseEmotionListT;
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 // media short url 
+
+#ifdef _USE_GET_SHORTURL_BATCH
+
 typedef CParseGenericMultiplT<  t_wbParse_Media_ShortUrlBatch >  CParseMediaShortMultiplT;
 
 #define CONSTRUCT_MEDIA_SHORTURL_MULTIPL(sc,len)\
 	CParseMediaShortMultiplT(sc,len,wbParserNS::wbParse_Malloc_Media_ShortURLBatch,wbParserNS::wbParse_Free_Emotion,PARSE_T(parse_Media_ShortURLBatch))
+
+#endif //_USE_GET_SHORTURL_BATCH
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////

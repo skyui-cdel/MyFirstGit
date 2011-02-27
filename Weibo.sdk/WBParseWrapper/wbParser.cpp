@@ -66,7 +66,7 @@ extern "C" {
 				if( err_out){
 					strncpy(err_out,reader.getFormatedErrorMessages().c_str(),len);
 				}
-				assert(0);
+			//	assert(0);
 				delete pRoot;
 				pRoot = NULL;
 			}

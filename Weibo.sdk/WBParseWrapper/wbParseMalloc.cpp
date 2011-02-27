@@ -419,6 +419,9 @@ namespace wbParserNS
 		END_STRUCT_FREE(p);
 	}
 
+	//
+#ifdef _USE_GET_SHORTURL_BATCH
+
 	// ∂Ã¡¥Ω”
 	EXTERN void *wbParse_Malloc_Media_ShortURLBatch(int size)
 	{
@@ -446,6 +449,8 @@ namespace wbParserNS
 	{
 		PARSE_STRUCT_FREE(p);
 	}
+
+#endif //_USE_GET_SHORTURL_BATCH
 
 	EXTERN void *wbParse_Malloc_UploadPic(int size)
 	{

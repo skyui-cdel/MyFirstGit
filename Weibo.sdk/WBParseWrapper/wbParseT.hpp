@@ -28,15 +28,24 @@ public:
 		mallocT_ = malloT;
 		freeT_   = freeT;
 		parseT_  = parseT;
-		object_  = NULL;
+		object_  = 0;
+		counts_  = 0;
 	}
 
+	virtual ~CParseGenericT() 
+	{
+		if( freeT_&&object_)
+			freeT_(object_,counts_);
+	}
 
 	T* get()const {
 		return object_;
 	}
-
+	int GetCounts() const {
+		return counts_;
+	}
 protected:
+	int counts_;
 	T *object_;  ///< 解析的目标
 	std::string    source_; ///< 原始串
 	wbParseMallocT mallocT_;
@@ -58,14 +67,9 @@ public:
 	CParseGenericMultiplT(const char* sc,const int len,wbParseMallocT malloT,wbParseFreeT freeT,wbParseDataT parseT)
 		:CParseGenericT(sc,len,malloT,freeT,parseT)
 	{
-		counts_     = 0;
+		
 	}
 
-	virtual ~CParseGenericMultiplT() 
-	{
-		if( freeT_)
-			freeT_(object_,counts_);
-	}
 
 	virtual void ParseBody()
 	{
@@ -93,16 +97,9 @@ public:
 		wbParserNS::Parse_free_JSON(pRoot);	
 	}
 
-	int GetCounts() const {
-		return counts_;
-	}
-
 	// 事件回调
 	virtual void OnParseObject(T* pObject){
 	}
-
-protected:
-	int counts_; ///< 解析目标的个数
 };
 
 
@@ -122,11 +119,11 @@ public:
 	{
 	}
 
-	virtual ~CParseGenericSingleT() 
-	{
-		if( freeT_)
-			freeT_(object_,1);
-	}
+	//virtual ~CParseGenericSingleT() 
+	//{
+	//	if( freeT_ && object_ )
+	//		freeT_(object_,1);
+	//}
 
 	virtual void ParseBody() 
 	{
@@ -137,7 +134,7 @@ public:
 		if( !pRoot ){
 			return ;
 		}
-		//
+		counts_ = 1;
 		object_ = (T*)mallocT_(1);
 		parseT_(pRoot,object_);
 		OnParseObject(object_);
@@ -164,22 +161,23 @@ public:
 	CParseGenericByCursorT(const char* sc,const int len,wbParseMallocT malloT,wbParseFreeT freeT,wbParseDataT parseT)
 		:CParseGenericT(sc,len,malloT,freeT,parseT)
 	{
-		counts_ = 0;
 		pcur_   = NULL;
 	}
 
 	virtual ~CParseGenericByCursorT()
 	{
+		// 由外面去删除，有点特别
 		//if( pcur_ )
 			//wbParserNS::wbParse_Free_Cursor(pcur_,1);
-
-		if( freeT_)
-			freeT_(object_,counts_);
 	}
 
 	virtual void ParseBody(const char *key) 
 	{
 		wbParserNS::REQOBJ* pRQRoot  = wbParserNS::Parse_data_JSON(source_.c_str());
+		if( !pRQRoot )
+		{
+			return ;
+		}
 		wbParserNS::REQOBJ* pRQChild = wbParserNS::GetObject_Key_JSON(key,pRQRoot);
 		//
 		if( !pRQChild){
@@ -211,10 +209,6 @@ public:
 		return pcur_;
 	}
 
-	int GetCounts() const {
-		return counts_;
-	}
-
 	virtual void OnParseREQ(wbParserNS::REQOBJ *reqObj)
 	{
 		int  idx = 0;
@@ -234,7 +228,6 @@ public:
 	}
 
 protected:
-	int               counts_;
 	t_wbParse_Cursor* pcur_;
 };
 
