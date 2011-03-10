@@ -118,6 +118,7 @@ namespace wbParserNS
 		static void CWBJsonParser::parse_Trends_getHot(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_TrendHotQuery::TrendItem *ptr);
 
 		/** media */
+#ifdef _USE_GET_SHORTURL_BATCH
 
 		// media shorturl batch
 		static t_wbParse_Media_ShortUrlBatch *CWBJsonParser::parse_Media_ShortURLBatch(/*[in]*/wbParserNS::REQOBJ *obj);
@@ -126,6 +127,8 @@ namespace wbParserNS
 		// media shorturl batch annotions
 		static t_wbParse_Media_ShortUrlBatch::ItemAnnotions *parse_Media_ShortURLBatch_ItemAnnotions(/*[in]*/wbParserNS::REQOBJ *obj);
 		static void parse_Media_ShortURLBatch_ItemAnnotions(/*[in]*/wbParserNS::REQOBJ *obj,t_wbParse_Media_ShortUrlBatch::ItemAnnotions *ptr);
+
+#endif //#ifdef _USE_GET_SHORTURL_BATCH
 		
 		/** upload picture */
 		static t_wbParse_UploadPic *parse_UploadPic(/*[in]*/wbParserNS::REQOBJ *obj);

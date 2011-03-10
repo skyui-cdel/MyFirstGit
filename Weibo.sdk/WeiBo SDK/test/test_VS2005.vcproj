@@ -25,7 +25,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -106,7 +106,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -270,7 +270,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -353,7 +353,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -436,7 +436,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I"
+				CommandLine="xcopy &quot;..\..\lib\$(ConfigurationName)\*.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\third-party\bin\$(ConfigurationName)\*_VC80.dll&quot; &quot;..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
