@@ -714,6 +714,30 @@ WEIBO_struct_bodycallback_init(OAUTH_ACCESS_TOKEN)
 		printf("   OAUTH_ACCESS_TOKEN : \n    %s \n\n" , body );
 	}
 }
+// 获取授权过的Access Token
+WEIBO_struct_statuscallback_init(XAUTH_ACCESS_TOKEN)
+{
+
+}
+WEIBO_struct_bodycallback_init(XAUTH_ACCESS_TOKEN)
+{
+	// 分析把数据写到 t_wb_oauth,这个是最终结果（oauth_token AND oauth_token_secret)
+	// 以后所有其他请求，就需要 使用这个 t_wb_oauth 中的数据了
+
+	struct t_wb_oauth* poauth = (struct t_wb_oauth*)pUserdata;
+
+	if( poauth && httpCode == 200 )
+	{
+		wb_parse_oauth(body , poauth->oauth_token_ , poauth->oauth_token_secret_ ,0);
+
+		printf("   oauth_acess_token =  %s \n" , poauth->oauth_token_ );
+		printf("   oauth_acess_token_secret =  %s \n" , poauth->oauth_token_secret_ );
+	}
+	else
+	{
+		printf("   XAUTH_ACCESS_TOKEN : \n    %s \n\n" , body );
+	}
+}
 
 // 表情
 WEIBO_struct_statuscallback_init(GET_EMOTIONS)
@@ -913,6 +937,8 @@ struct t_wb_callback_byloach callback_byloach[  WEIBO_OPTION(LAST) ] =
 	// COOKIE
 	{ WEIBO_struct_statuscallback_init_fun(COOKIE) , WEIBO_struct_bodycallback_init_fun(COOKIE) , WEIBO_struct_headercallback_init_fun(COOKIE)},
 
+	// XAUTH
+	INIT_CALLBACK_BYLOACH(XAUTH_ACCESS_TOKEN),
 	//自定义URL
 	INIT_CALLBACK_BYLOACH(CUSTOM),
 };

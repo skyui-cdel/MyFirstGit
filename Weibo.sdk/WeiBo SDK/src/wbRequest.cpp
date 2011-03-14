@@ -242,6 +242,9 @@ void* Weibo_senddata_create(int type , const void* senddata)
 		MALLOC( t_wb_oauth_access_token );
 		break;
 
+	case WEIBO_OPTION(XAUTH_ACCESS_TOKEN):
+		MALLOC( t_wb_xauth_access_token );
+		break;
 		// ฑํว้
 	case WEIBO_OPTION(GET_EMOTIONS):
 		MALLOC( t_wb_emotions );

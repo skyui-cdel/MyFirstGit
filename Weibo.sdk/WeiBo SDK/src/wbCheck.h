@@ -41,6 +41,7 @@ typedef enum
 	Err_PWD_ID,
 	Err_OAUTHVERIFY_ID,
 	Err_UIDTYPE_ID,
+	Err_AUTH_MODE,
 }WBCheckerror;
 
 /**

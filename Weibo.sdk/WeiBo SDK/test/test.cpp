@@ -297,6 +297,8 @@ struct t_wb_allstruct
 	struct t_wb_oauth_request_token            oauth_reqtoken;
 	struct t_wb_authorize					   oauth_authorize;
 	struct t_wb_oauth_access_token             oauth_accesstoken;
+
+	struct t_wb_xauth_access_token             xauth_accesstoken;
 	
 	// 表情
 	struct t_wb_emotions                       emotions;
@@ -1079,7 +1081,7 @@ int TEST_MAIN(int argc,char** argv)
 
 	//	struct t_wb_cookie* ptest5 = (struct t_wb_cookie*)malloc( 1024 );
 	//
-	printf("Please enter request method[0 = oauth/1 = cookie]:");
+	printf("Please enter request method[0 = oauth/1 = xauth/2 = cookie]:");
 #if defined(WINCE)
 	cookie = 1;
 #else
@@ -1087,10 +1089,16 @@ int TEST_MAIN(int argc,char** argv)
 	cookie = atoi(enter);
 #endif
 	WEIBORequest* wbRequest = wb_interface.pfun_request_create();
-
-	// cookie 
-	wb_interface.pfun_request_setopt(wbRequest , WEIBO_OPTION(REQ_COOKIE) , cookie);
-
+	
+	if(cookie == 0 || cookie == 1)
+	{
+		//hack for old mode 0,1 oauth or xauth
+		wb_interface.pfun_request_setopt(wbRequest , WEIBO_OPTION(REQ_COOKIE) , 0);
+	}
+	else
+	{
+		wb_interface.pfun_request_setopt(wbRequest , WEIBO_OPTION(REQ_COOKIE) , 1);
+	}
 	// set app key
 	printf("Please enter APP KEY:");
 	gets( enter );
@@ -1176,11 +1184,32 @@ int TEST_MAIN(int argc,char** argv)
 
 		//
 		wb_interface.pfun_request_stop(wbRequest);
-
 		//
 		SYSTEM("pause");
 	}
-	else
+	else if (cookie == 1)
+	{
+		Wb_init_wb_struct( WEIBO_OPTION(XAUTH_ACCESS_TOKEN)  , &twball.xauth_accesstoken);
+
+		printf("Please enter user id : ");
+		gets(enter);
+		strcpy(twball.xauth_accesstoken.usrid_,enter);
+
+		// 输入密码(必填)
+		printf("Please enter password : ");
+		gets(enter);
+		strcpy(twball.xauth_accesstoken.usrpwd_,enter);
+		strcpy(twball.xauth_accesstoken.authmode_,"client_auth");
+
+		wb_interface.pfun_request_setopt(wbRequest , WEIBO_OPTION(REQ_SENDDATA) ,WEIBO_OPTION(XAUTH_ACCESS_TOKEN), &twball.xauth_accesstoken );
+		wb_interface.pfun_request_setopt(wbRequest , WEIBO_OPTION(REQ_USERDATA) , &twball.oauth );
+		wb_interface.pfun_request_start(wbRequest , false);
+
+		//
+		wb_interface.pfun_request_stop(wbRequest);
+		SYSTEM("pause");
+	}
+	else if (cookie == 2)
 	{
 	//	struct t_wb_cookie* ptest2 = (struct t_wb_cookie*)malloc( 1024 );
 		Wb_init_wb_struct( WEIBO_OPTION(COOKIE) , &twball.cookie );

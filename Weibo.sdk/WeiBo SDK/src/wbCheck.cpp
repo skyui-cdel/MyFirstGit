@@ -558,6 +558,25 @@ WEIBO_check_callback(OAUTH_ACCESS_TOKEN)// 获取授权过的Access Token
 	return Err_OK;
 }
 
+WEIBO_check_callback(XAUTH_ACCESS_TOKEN)// 获取授权过的Access Token
+{
+	WEIBO_struct_cast(t_wb_xauth_access_token);
+
+	if( pstruct->usrid_[0] == '\0' )
+	{
+		return Err_WB_ID;
+	}
+	if( pstruct->usrpwd_[0] == '\0')
+	{
+		return Err_PWD_ID ;
+	}
+	if( pstruct->authmode_[0] == '\0')
+	{
+		return Err_AUTH_MODE ;
+	}
+	return Err_OK;
+}
+
 // 表情
 WEIBO_check_callback(GET_EMOTIONS)
 {
@@ -699,6 +718,8 @@ f_check_callback vector_check_callbak[]=
 	WEIBO_check_fun(REPORT),
 	// cookie 
 	WEIBO_check_fun(COOKIE),
+	//xauth
+	WEIBO_check_fun(XAUTH_ACCESS_TOKEN),
 
 	// buffer
 	WEIBO_check_fun(CUSTOM),

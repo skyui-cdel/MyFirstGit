@@ -216,6 +216,8 @@ extern "C" {
 		WEIBO_OPTION(REPORT),//49 举报
 		WEIBO_OPTION(COOKIE),// cookie
 
+		WEIBO_OPTION(XAUTH_ACCESS_TOKEN),//45
+
 		//自定义URL
 		WEIBO_OPTION(CUSTOM),//45
 		
@@ -730,6 +732,17 @@ extern "C" {
 	{
 		t_wb_oauth wbauth_;
 	};
+
+	// 第三方应用使用 xauth 来获取换取用户授权过的Access_token
+	struct t_wb_xauth_access_token
+	{
+		t_wb_oauth wbauth_;
+
+		WBChar  usrid_[ WB_REAL_LEN(UID) ];
+		WBChar  usrpwd_[ WB_REAL_LEN(PWD) ];
+		WBChar  authmode_[ WB_REAL_LEN(PWD) ];
+	};
+
 
 	// 表情(无参数)
 	struct t_wb_emotions 

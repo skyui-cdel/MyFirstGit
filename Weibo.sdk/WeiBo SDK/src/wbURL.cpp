@@ -587,6 +587,8 @@ const lohttp::HTTPChar* Weibo_url_geturi( WEIBOoption option )
 		// cookie
 		{WEIBO_OPTION(COOKIE)  , HTTP_T("/sso/login.php")},// 获取COOKIE
 
+		{WEIBO_OPTION(XAUTH_ACCESS_TOKEN)      , HTTP_T("/oauth/access_token")},// 获取授权过的Access Token 
+
 		// custom
 		{WEIBO_OPTION(CUSTOM)  , HTTP_T("")},
 	};
@@ -1807,6 +1809,26 @@ WEIBO_url_callback(OAUTH_ACCESS_TOKEN)// 获取授权过的Access Token
 
 	return 0;
 }
+WEIBO_url_callback(XAUTH_ACCESS_TOKEN)// 获取授权过的Access Token
+{
+	int   ret = -1;
+	WEIBO_struct_cast(t_wb_xauth_access_token);
+	wchar_t* outstrW = 0;
+
+	Weibo_url_get_uri(URI ,  WEIBO_OPTION(XAUTH_ACCESS_TOKEN) , req_ex , false/*不需要格式*/ );
+
+	/// 用户名/密码
+	Weibo_url_generate_URI( URI , HTTP_T("&x_auth_username") ,  pstruct->usrid_ ,  0 );
+	Weibo_url_generate_URI( URI , HTTP_T("&x_auth_password") ,  pstruct->usrpwd_ , 0 );
+	Weibo_url_generate_URI( URI , HTTP_T("&x_auth_mode") ,  pstruct->authmode_,  0 );
+	//Weibo_url_generate_URI( URI , HTTP_T("&source") ,  "client_auth",  0 );
+
+	SafeFreeA_lo( outstrW );
+
+	HTTP_SET_POST_METHOD();
+
+	return 0;
+}
 
 WEIBO_url_callback(GET_EMOTIONS)
 {// 返回新浪微博官方所有表情、魔法表情的相关信息。包括短语、表情类型、表情分类，是否热门等。
@@ -2039,7 +2061,8 @@ f_url_callback vector_url_callbak[]=
 	WEIBO_url_fun(REPORT),
 	// cookie 
 	WEIBO_url_fun(COOKIE),
-
+    //xauth
+	WEIBO_url_fun(XAUTH_ACCESS_TOKEN),
 	// buffer
 	WEIBO_url_fun(CUSTOM),
 };
@@ -2069,6 +2092,10 @@ int Weibo_url_set(lohttp::LOHttp* pHttp , WEIBOoption option , const void* t_wb 
 			lohttp::Http_setopt(pHttp , lohttp::LOHTTP_OPT_setmethod , httpmethod );
 			lohttp::Http_seturl(pHttp , Char_2HTTPChar(URI) );
 			return 0;
+		}
+		else if( WEIBO_OPTION(XAUTH_ACCESS_TOKEN) == option )
+		{
+			return Weibo_url_http_seturl(pHttp , URI  , httpmethod , 0 , req_ex);
 		}
 		else if( WEIBO_OPTION(PUTSTATUSES_UPLOAD) == option )
 		{// 表单方式			

@@ -466,6 +466,15 @@ WEIBO_struct_init_callback(OAUTH_ACCESS_TOKEN)// 获取授权过的Access Token
 	return true;
 }
 
+WEIBO_struct_init_callback(XAUTH_ACCESS_TOKEN)// xauth 获取授权过的Access Token
+{
+	WEIBO_struct_cast(t_wb_xauth_access_token);
+
+	SET_struct_callback_object( WEIBO_OPTION(XAUTH_ACCESS_TOKEN) , pstruct->wbauth_ );
+
+	return true;
+}
+
 //
 WEIBO_struct_init_callback(GET_EMOTIONS)
 {
@@ -602,6 +611,8 @@ static fun_init_wb_struct_callback vector_init_callback[ WEIBO_OPTION(LAST) ] =
 	WEIBO_struct_init_fun(GET_PROVINCES),
 	WEIBO_struct_init_fun(REPORT),//49 举报
 	WEIBO_struct_init_fun(COOKIE),
+
+	WEIBO_struct_init_fun(XAUTH_ACCESS_TOKEN),// 获取授权过的Access Token
 	//自定义URL
 	WEIBO_struct_init_fun(CUSTOM),
 };
