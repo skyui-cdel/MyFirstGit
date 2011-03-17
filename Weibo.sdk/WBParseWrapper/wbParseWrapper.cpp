@@ -244,7 +244,7 @@ extern "C"{
 		/** 11.获取当前用户未读消息数 */
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(Statuses,Unread)
 		{
-			CParseUnreadMultiplT* pParseObj = new CONSTRUCT_UNREAD_MULTIPL(sc,len);
+			CParseUnreadCountSingleT* pParseObj = new CONSTRUCT_UNREAD_SINGLE(sc,len);
 			pParseObj->ParseBody();
 			ppout ? *ppout = pParseObj->get() : NULL;
 			iOutCount = pParseObj->GetCounts();
