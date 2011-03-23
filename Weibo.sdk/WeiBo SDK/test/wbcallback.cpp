@@ -27,8 +27,8 @@
 */
 
 #include "stdafx.h"
-#include "splitstr.h"
-#include "wbParser.h"
+#include "wbParser/splitstr.h"
+#include "wbParser/wbParser.h"
 #include "wbcallback.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -55,36 +55,19 @@
 
 #define WEIBO_struct_headercallback_init_fun(name) Wb_struct_headercallback_init_##name##_cb
 
-#define _PARSER_WRAPPER_TEST
+#include "wbParser/wbParseWrapper.h"
 
-#ifdef _PARSER_WRAPPER_TEST
-
-#include "wbParser/WBParseWrapper.h"
-#if defined(WEIBO_VC80)
-#		pragma comment(lib ,"WBParseWrapper_VC80.lib")
-#elif defined(WEIBO_VC90)
-#		pragma comment(lib ,"WBParseWrapper_VC90.lib")
-#endif
-
-//#define TEST_STATUSES(iHttpCode,body,len,_ParseFun,_FreeFun)\
-//	{\
-//		t_wbParse_Status* pStatus = NULL;\
-//		int outlen = 0;\
-//		WBParseJSON::Parse_Statuses_Public_Timeline(body,len,NULL,outlen,(void**)&pStatus);\
-//		for( int  i = 0 ; i < outlen ; i ++ )\
-//		{\
-//			t_wbParse_Status *item = (pStatus + i );\
-//			// To do something...
-//			//
-//		}\
-//		WBParseJSON::Free_Statuses_Public_Timeline(pStatus,outlen);\
-//	}\
-
-
-#else
-#define TEST_STATUSES(iHttpCode,body,len)
-#endif //
-
+#ifdef _MSC_VER
+#	if defined(WEIBO_VC60)
+#		pragma comment(lib,"WBParseWrapper_VC60.lib")
+#	elif defined(WEIBO_VC70)
+#		pragma comment(lib,"WBParseWrapper_VC70.lib")
+#	elif defined(WEIBO_VC80)
+#		pragma comment(lib,"WBParseWrapper_VC80.lib")
+#	elif defined(WEIBO_VC90)
+#		pragma comment(lib,"WBParseWrapper_VC90.lib")
+#	endif //
+#endif //_MSC_VER
 
 //
 WEIBO_struct_statuscallback_init(BASE)
@@ -98,7 +81,6 @@ WEIBO_struct_bodycallback_init(BASE)
 
 //------------------------------------获取下行数据集(timeline)接口---------------------------------------------//
 //
-using namespace wbParserNS;
 
 // 2.获取最新更新的公共微博消息
 WEIBO_struct_statuscallback_init(GETSTATUSES_PUBLIC_TIMELINE)
@@ -110,30 +92,6 @@ WEIBO_struct_bodycallback_init(GETSTATUSES_PUBLIC_TIMELINE)
 {
 	printf("GETSTATUSES_PUBLIC_TIMELINE : \n    %s \n\n" , body );
 
-	if( 200 == httpCode )
-	{
-		t_wbParse_Status* pStatus = NULL;
-		int outlen = 0;
-		wbParserNS::WBPARSE_HANDLE hParse = USE_WBPARSE_FUNC(Statuses,Public_Timeline,body,len,outlen,(void**)&pStatus,NULL,NULL );
-
-		int i = 0;
-		for( int  i = 0 ; i < outlen ; i ++ )
-		{
-			t_wbParse_Status *item = (pStatus + i );
-			// To do something...
-			//
-		}
-		USE_WBFREE_FUNC(Statuses,Public_Timeline,hParse);
-	}
-	else{
-		int outlen = 0;
-		t_wbParse_Error* pError = NULL;
-		wbParserNS::WBPARSE_HANDLE hParse = USE_WBPARSE_FUNC(WEIBO_ERR,ITEM,body,len,outlen,(void**)&pError,NULL,NULL );
-		if( pError){
-			//Todo something...
-		}
-		USE_WBFREE_FUNC(WEIBO_ERR,ITEM,hParse);
-	}
 }
 
 // 3.获取当前用户所关注用户的最新微博信息
@@ -145,18 +103,6 @@ WEIBO_struct_bodycallback_init(GETSTATUSES_FRIENDS_TIMELINE)
 {
 	printf("GETSTATUSES_FRIENDS_TIMELINE : \n    %s \n\n" , body );
 
-	//t_wbParse_Status* pStatus = NULL;
-	//int outlen = 0;
-	//WBPARSE_HANDLE hParse = WBParseJSON::Parse_Statuses_Friends_Timeline(body,len,NULL,outlen,(void**)&pStatus);
-
-	//int i = 0;
-	//for( int  i = 0 ; i < outlen ; i ++ )
-	//{
-	//	t_wbParse_Status *item = (pStatus + i );
-	//	// To do something...
-	//	//
-	//}
-	//WBParseJSON::Free_Statuses_Friends_Timeline(hParse);
 }
 
 // 4.获取用户发布的微博信息列表
@@ -167,30 +113,17 @@ WEIBO_struct_statuscallback_init(GETSTATUSES_USE_TIMELINE)
 WEIBO_struct_bodycallback_init(GETSTATUSES_USE_TIMELINE)
 {
 	printf("   GETSTATUSES_USE_TIMELINE : \n    %s \n\n" , body );
-	//Test_statsuses(httpCode,body,len);
-	//
-	//t_wbParse_Status* pStatus = NULL;
-	//int outlen = 0;
-	//WBPARSE_HANDLE hParse = WBParseJSON::Parse_Statuses_User_Timeline(body,len,NULL,outlen,(void**)&pStatus);
 
-	//int i = 0;
-	//for( int  i = 0 ; i < outlen ; i ++ )
-	//{
-	//	t_wbParse_Status *item = (pStatus + i );
-	//	// To do something...
-	//	//
-	//}
-	//WBParseJSON::Free_Statuses_User_Timeline(hParse);
 }
 
 // 5.获取@当前用户的微博列表
 WEIBO_struct_statuscallback_init(GETSTATUSES_MENTIONS)
 {
+
 }
 WEIBO_struct_bodycallback_init(GETSTATUSES_MENTIONS)
 {
 	printf("   GETSTATUSES_MENTIONS : \n    %s \n\n" , body );
-	//Test_statsuses(httpCode,body,len);
 
 }
 
@@ -198,25 +131,11 @@ WEIBO_struct_bodycallback_init(GETSTATUSES_MENTIONS)
 // 6.获取当前用户发送及收到的评论列表
 WEIBO_struct_statuscallback_init(GETSTATUSES_COMMENTS_TIMELINE)
 {
-
 }
 
 WEIBO_struct_bodycallback_init(GETSTATUSES_COMMENTS_TIMELINE)
 {
 	printf("   GETSTATUSES_COMMENTS_TIMELINE : \n    %s \n\n" , body );
-	//
-	t_wbParse_Comment* pComment = NULL;
-	int outlen = 0;
-	wbParserNS::WBPARSE_HANDLE hParse = USE_WBPARSE_FUNC(Statuses,CommentsTimeLine,body,len,outlen,(void**)&pComment,NULL,NULL );
-
-	int i = 0;
-	for( int  i = 0 ; i < outlen ; i ++ )
-	{
-		t_wbParse_Comment *item = (pComment + i );
-		// To do something...
-		//
-	}
-	USE_WBFREE_FUNC(Statuses,CommentsTimeLine,hParse);
 
 }
 
@@ -308,6 +227,23 @@ WEIBO_struct_bodycallback_init(PUTSTATUSES_UPLOAD)
 {
 	printf("   PUTSTATUSES_UPLOAD : \n    %s \n\n" , body );
 
+}
+
+// 上传图片并发布一条微博信息
+WEIBO_struct_statuscallback_init(PUTSTATUSES_UPLOAD_PIC)
+{
+
+}
+WEIBO_struct_bodycallback_init(PUTSTATUSES_UPLOAD_PIC)
+{
+	printf("   PUTSTATUSES_UPLOAD_PIC : \n    %s \n\n" , body );
+
+	int iOutCount = 0;
+	wbParserNS::t_wbParse_UploadPic *pUploadPic = NULL;
+	wbParserNS::WBPARSE_HANDLE handle =  wbParserNS::USE_WBPARSE_FUNC( Statuses,Upload_Pic,body,len,iOutCount,(void**)&pUploadPic,NULL,NULL );
+	if( handle ){
+		wbParserNS::USE_WBFREE_FUNC( Statuses,Upload_Pic,handle);
+	}
 }
 
 // 15 删除一条微博信息
@@ -454,6 +390,16 @@ WEIBO_struct_bodycallback_init(PUTDIRECTMSG_DESTROY)
 	printf("   PUTDIRECTMSG_DESTROY : \n    %s \n\n" , body );
 }
 
+//26 删除一条私信
+WEIBO_struct_statuscallback_init(GETDIRECTMSG_WITH)
+{
+
+}
+WEIBO_struct_bodycallback_init(GETDIRECTMSG_WITH)
+{
+	printf("   PUTDIRECTMSG_DESTROY : \n    %s \n\n" , body );
+}
+
 
 //---------------------------------------关注接口--------------------------------------------------//
 
@@ -468,6 +414,16 @@ WEIBO_struct_bodycallback_init(PUTFRIENDSHIPS_CREATE)
 
 }
 
+// 批量关注接口
+WEIBO_struct_statuscallback_init(PUTFRIENDSHIPS_CREATE_BATCH)
+{
+
+}
+WEIBO_struct_bodycallback_init(PUTFRIENDSHIPS_CREATE_BATCH)
+{
+	printf("   PUTFRIENDSHIPS_CREATE_BATCH : \n    %s \n\n" , body );
+
+}
 
 // 28 取消关注
 WEIBO_struct_statuscallback_init(PUTFRIENDSHIPS_DESTROY)
@@ -490,6 +446,19 @@ WEIBO_struct_bodycallback_init(GETFRIENDSHIPS_EXISTS)
 	printf("   GETFRIENDSHIPS_EXISTS : \n    %s \n\n" , body );
 	// TODO:
 }
+
+//
+WEIBO_struct_statuscallback_init(GETFRIENDSHIPS_BATCH_EXISTS)
+{
+
+}
+WEIBO_struct_bodycallback_init(GETFRIENDSHIPS_BATCH_EXISTS)
+{
+	printf("   GETFRIENDSHIPS_BATCH_EXISTS : \n    %s \n\n" , body );
+	// TODO:
+}
+
+
 
 
 //
@@ -680,9 +649,11 @@ WEIBO_struct_bodycallback_init(OAUTH_AUTHORIZE)
 	if( poauth && httpCode == 200 )
 	{
 		wbParserNS::REQOBJ *pRoot = wbParserNS::Parse_data_JSON(body);
-		wbParserNS::GetCHAR_Key_JSON("oauth_verifier", pRoot , poauth->oauth_verifier_ , 64);
-		wbParserNS::Parse_free_JSON(pRoot);
-
+		if( pRoot )
+		{
+			wbParserNS::GetCHAR_Key_JSON("oauth_verifier", pRoot , poauth->oauth_verifier_ , 64);
+			wbParserNS::Parse_free_JSON(pRoot);
+		}
 		printf("oauth_acess_token =  %s \n"          , poauth->oauth_token_);
 		printf("oauth_acess_token_verifier =  %s \n" , poauth->oauth_verifier_ );
 	}
@@ -735,7 +706,7 @@ WEIBO_struct_bodycallback_init(XAUTH_ACCESS_TOKEN)
 	}
 	else
 	{
-		printf("   XAUTH_ACCESS_TOKEN : \n    %s \n\n" , body );
+		printf("   OAUTH_ACCESS_TOKEN : \n    %s \n\n" , body );
 	}
 }
 
@@ -811,14 +782,50 @@ WEIBO_struct_statuscallback_init(COOKIE)
 
 }
 
+
 WEIBO_struct_bodycallback_init(COOKIE)
+{
+	struct t_wb_oauth* poauth = (struct t_wb_oauth*)pUserdata;
+
+	//
+	int iCount = 0;
+	wbParserNS::t_wbParse_Cookie cookie;
+	wbParserNS::t_wbParse_Cookie *pCookie = &cookie;
+	wbParserNS::USE_WBPARSE_FUNC(Cookie,BASE,body,len,iCount,(void**)&pCookie,NULL,NULL);
+	
+	strcpy(poauth->tgt_,pCookie->tgt);
+
+	printf("   COOKIE : \n    %s \n\n" , body );
+}
+
+WEIBO_struct_headerycallback_init(COOKIE)
+{
+	struct t_wb_oauth* poauth = (struct t_wb_oauth*)pUserdata;
+
+	printf("   COOKIE : \n    %s \n\n" , header );
+	if( poauth && httpCode == 200 )
+	{
+		wb_parse_cookie(header , poauth->oauth_token_ , poauth->oauth_token_secret_ );
+
+		printf("   SUE =  %s \n" , poauth->oauth_token_ );
+		printf("   SUP =  %s \n" , poauth->oauth_token_secret_ );
+	}
+}
+
+//cookie方式
+WEIBO_struct_statuscallback_init(UPDATETGT)
+{
+
+}
+
+WEIBO_struct_bodycallback_init(UPDATETGT)
 {
 	struct t_wb_oauth* poauth = (struct t_wb_oauth*)pUserdata;
 
 	printf("   COOKIE : \n    %s \n\n" , body );
 }
 
-WEIBO_struct_headerycallback_init(COOKIE)
+WEIBO_struct_headerycallback_init(UPDATETGT)
 {
 	struct t_wb_oauth* poauth = (struct t_wb_oauth*)pUserdata;
 
@@ -857,12 +864,74 @@ WEIBO_struct_bodycallback_init(PUTSTATUSES_RESET_COUNT)
 {
 }
 
+
+// 获取系统推荐用户
+WEIBO_struct_statuscallback_init(GET_USERS_HOT)
+{
+
+}
+
+WEIBO_struct_bodycallback_init(GET_USERS_HOT)
+{
+	printf("   GET_USERS_HOT : \n    %s \n\n" , body );
+}
+
+//更新修改当前登录用户所关注的某个好友的备注信息New!
+WEIBO_struct_statuscallback_init(POST_USERS_REMARK)
+{
+
+}
+
+WEIBO_struct_bodycallback_init(POST_USERS_REMARK)
+{
+	printf("   POST_USERS_REMARK : \n    %s \n\n" , body );
+}
+
+
+//Users/suggestions 返回当前用户可能感兴趣的用户
+WEIBO_struct_statuscallback_init(GET_USERS_SUGGESTIONS)
+{
+
+}
+
+WEIBO_struct_bodycallback_init(GET_USERS_SUGGESTIONS)
+{
+	printf("   GET_USERS_SUGGESTIONS : \n    %s \n\n" , body );
+}
+
+
+
+
+#include "callback/wbcb_block.inl"
+#include "callback/wbcb_hotpoint.inl"
+#include "callback/wbcb_tags.inl"
+#include "callback/wbcb_trends.inl"
+#include "callback/wbcb_invitecontact.inl"
+
+//media 
+WEIBO_struct_statuscallback_init(GET_MEDIA_SHORTURL_BATCH)
+{
+
+}
+WEIBO_struct_bodycallback_init(GET_MEDIA_SHORTURL_BATCH)
+{
+	printf("   GET_MEDIA_SHORTURL_BATCH : \n    %s \n\n" , body );
+
+	//int iOutCount = 0;
+	//wbParserNS::t_wbParse_Media_ShortUrlBatch *pRet = NULL;
+	//wbParserNS::WBPARSE_HANDLE handle =  wbParserNS::USE_WBPARSE_FUNC( MEDIA,SHORTURL,body,len,iOutCount,(void**)&pRet,NULL,NULL );
+	//if( handle ){
+	//	wbParserNS::USE_WBFREE_FUNC( MEDIA,SHORTURL,handle);
+	//}
+}
+
 //-------------------------------------------------------------------------------------------//
 
 static
 struct t_wb_callback_byloach callback_byloach[  WEIBO_OPTION(LAST) ] =
 {
-#define INIT_CALLBACK_BYLOACH(NAME) { WEIBO_struct_statuscallback_init_fun(NAME) , WEIBO_struct_bodycallback_init_fun(NAME) , NULL}
+#define INIT_CALLBACK_BYLOACH(NAME) {  WEIBO_struct_statuscallback_init_fun(NAME) , WEIBO_struct_bodycallback_init_fun(NAME) , NULL}
+#define INIT_CALLBACK_BYWELBON(NAME) { WEIBO_struct_statuscallback_init_fun(NAME) , WEIBO_struct_bodycallback_init_fun(NAME) , NULL}
 
 	{0,0,0},
 	INIT_CALLBACK_BYLOACH(BASE),
@@ -883,6 +952,7 @@ struct t_wb_callback_byloach callback_byloach[  WEIBO_OPTION(LAST) ] =
 	INIT_CALLBACK_BYLOACH(GOTOSTATUSES_ID),
 	INIT_CALLBACK_BYLOACH(PUTSTATUSES_UPDATE),
 	INIT_CALLBACK_BYLOACH(PUTSTATUSES_UPLOAD),
+	INIT_CALLBACK_BYLOACH(PUTSTATUSES_UPLOAD_PIC),
 	INIT_CALLBACK_BYLOACH(PUTSTATUSES_DESTROY),
 	INIT_CALLBACK_BYLOACH(PUTSTATUSES_REPOST),
 	INIT_CALLBACK_BYLOACH(PUTSTATUSES_COMMENT),
@@ -899,11 +969,14 @@ struct t_wb_callback_byloach callback_byloach[  WEIBO_OPTION(LAST) ] =
 	INIT_CALLBACK_BYLOACH(GETDIRESTMSG_SENT),
 	INIT_CALLBACK_BYLOACH(PUTDIRECTMSG_NEW),
 	INIT_CALLBACK_BYLOACH(PUTDIRECTMSG_DESTROY),
+	INIT_CALLBACK_BYLOACH(GETDIRECTMSG_WITH),
 
 	//关注
 	INIT_CALLBACK_BYLOACH(PUTFRIENDSHIPS_CREATE),
+	INIT_CALLBACK_BYLOACH(PUTFRIENDSHIPS_CREATE_BATCH),
 	INIT_CALLBACK_BYLOACH(PUTFRIENDSHIPS_DESTROY),
 	INIT_CALLBACK_BYLOACH(GETFRIENDSHIPS_EXISTS),
+	INIT_CALLBACK_BYLOACH(GETFRIENDSHIPS_BATCH_EXISTS),
 
 	//Social Graph
 	INIT_CALLBACK_BYLOACH(GETFRIEND_IDS),
@@ -936,11 +1009,55 @@ struct t_wb_callback_byloach callback_byloach[  WEIBO_OPTION(LAST) ] =
 
 	// COOKIE
 	{ WEIBO_struct_statuscallback_init_fun(COOKIE) , WEIBO_struct_bodycallback_init_fun(COOKIE) , WEIBO_struct_headercallback_init_fun(COOKIE)},
+	INIT_CALLBACK_BYLOACH(UPDATETGT),// UPDATETGT,
 
-	// XAUTH
-	INIT_CALLBACK_BYLOACH(XAUTH_ACCESS_TOKEN),
 	//自定义URL
 	INIT_CALLBACK_BYLOACH(CUSTOM),
+
+	//
+	INIT_CALLBACK_BYWELBON(HOT_REPOST_DAYLIY), //热门转发-by day
+	INIT_CALLBACK_BYWELBON(HOT_REPOST_WEEKLIY), //热门转发-by week
+	INIT_CALLBACK_BYWELBON(HOT_COMMENT_DAYLIY), //热门评论-by day
+	INIT_CALLBACK_BYWELBON(HOT_COMMENT_WEEKLY), //热门评论-by week
+
+	//
+	INIT_CALLBACK_BYWELBON(GET_USERS_HOT),// 获取系统推荐用户
+	INIT_CALLBACK_BYWELBON(POST_USERS_REMARK),//更新修改当前登录用户所关注的某个好友的备注信息New!
+	INIT_CALLBACK_BYWELBON(GET_USERS_SUGGESTIONS), //Users/suggestions 返回当前用户可能感兴趣的用户
+
+	// 话题接口 ,by welbon,2011-01-10
+	INIT_CALLBACK_BYWELBON(GET_TRENDS),//trends 获取某人的话题
+	INIT_CALLBACK_BYWELBON(GET_TRENDS_STATUSES),//trends/statuses 获取某一话题下的微博
+	INIT_CALLBACK_BYWELBON(POST_TRENDS_FOLLOW),//trends/follow 关注某一个话题
+	INIT_CALLBACK_BYWELBON(DELETE_TRENDS_DESTROY),//trends/destroy 取消关注的某一个话题
+	INIT_CALLBACK_BYWELBON(GET_TRENDS_HOURLY),//trends/destroy 按小时返回热门话题
+	INIT_CALLBACK_BYWELBON(GET_TRENDS_DAYLIY),//trends/daily 按日期返回热门话题。返回某一日期的话题
+	INIT_CALLBACK_BYWELBON(GET_TRENDS_WEEKLIY),//trends/weekly 按周返回热门话题。返回某一日期之前某一周的话题
+
+	// 黑名单接口 ,by welbon,2011-01-10
+	INIT_CALLBACK_BYWELBON(POST_BLOCKS_CREATE),//将某用户加入黑名单
+	INIT_CALLBACK_BYWELBON(POST_BLOCKS_DESTROY),//将某用户移出黑名单
+	INIT_CALLBACK_BYWELBON(GET_BLOCKS_EXISTS),//检测某用户是否是黑名单用户
+	INIT_CALLBACK_BYWELBON(GET_BLOCKS_BLOCKING),//列出黑名单用户(输出用户详细信息)
+	INIT_CALLBACK_BYWELBON(GET_BLOCKS_BLOCKING_IDS),//列出分页黑名单用户（只输出id）
+
+	//用户标签接口 ,by welbon,2011-01-10
+	INIT_CALLBACK_BYWELBON(GET_TAGS),//tags 返回指定用户的标签列表
+	INIT_CALLBACK_BYWELBON(POST_TAGS_CREATE),//tags/create 添加用户标签
+	INIT_CALLBACK_BYWELBON(GET_TAGS_SUGGESTIONS),//tags/suggestions 返回用户感兴趣的标签
+	INIT_CALLBACK_BYWELBON(POST_TAGS_DESTROY),//tags/destroy 删除标签
+	INIT_CALLBACK_BYWELBON(POST_TAGS_DESTROY_BATCH),//tags/destroy_batch 批量删除标签
+
+	// 邀请接口
+	INIT_CALLBACK_BYWELBON(POST_INVITE_MAILCONTACT),//邀请邮箱联系人
+	INIT_CALLBACK_BYWELBON(POST_INVITE_MSNCONTACT), //邀请MSN联系人
+	INIT_CALLBACK_BYWELBON(POST_INVITE_SENDMAILS),  //发送邀请邮件
+
+	// media
+	INIT_CALLBACK_BYWELBON(GET_MEDIA_SHORTURL_BATCH),// 批量获取短链接
+    //登录/XAuth
+	INIT_CALLBACK_BYLOACH(XAUTH_ACCESS_TOKEN),
+
 };
 
 struct t_wb_callback_byloach* Wb_get_struct_callback( int option )

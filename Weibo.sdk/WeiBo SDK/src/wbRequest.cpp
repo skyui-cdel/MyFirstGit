@@ -117,6 +117,10 @@ void* Weibo_senddata_create(int type , const void* senddata)
 		MALLOC( t_wb_put_statuses_upload );
 		break;
 
+	case WEIBO_OPTION(PUTSTATUSES_UPLOAD_PIC):
+		MALLOC( t_wb_put_statuses_upload_pic );
+		break;
+
 	case WEIBO_OPTION(PUTSTATUSES_DESTROY):
 		MALLOC( t_wb_put_statuses_destroy );
 		break;
@@ -168,9 +172,17 @@ void* Weibo_senddata_create(int type , const void* senddata)
 		MALLOC(  t_wb_put_direct_message_destroy );
 		break;
 
+	case WEIBO_OPTION(GETDIRECTMSG_WITH):
+		MALLOC(  t_wb_get_direct_message_with );
+		break;
+
 		//------------------------------------关注
 	case WEIBO_OPTION(PUTFRIENDSHIPS_CREATE):
 		MALLOC( t_wb_put_friendships_create );
+		break;
+
+	case WEIBO_OPTION(PUTFRIENDSHIPS_CREATE_BATCH):
+		MALLOC( t_wb_put_friendships_create_batch );
 		break;
 
 	case WEIBO_OPTION(PUTFRIENDSHIPS_DESTROY):
@@ -179,6 +191,10 @@ void* Weibo_senddata_create(int type , const void* senddata)
 
 	case WEIBO_OPTION(GETFRIENDSHIPS_EXISTS):
 		MALLOC( t_wb_get_friendships_show );
+		break;
+
+	case WEIBO_OPTION(GETFRIENDSHIPS_BATCH_EXISTS):
+		MALLOC( t_wb_get_friendships_batchexist );
 		break;
 
 		//------------------------------------Social Graph
@@ -212,7 +228,7 @@ void* Weibo_senddata_create(int type , const void* senddata)
 		break;
 
 	case WEIBO_OPTION(PUTACCOUNT_REGISTER):
-		//MALLOC( t_wb_put_account_register  );
+		MALLOC( t_wb_put_account_register  );
 		break;
 
 		//----------------------------- 收藏
@@ -242,6 +258,7 @@ void* Weibo_senddata_create(int type , const void* senddata)
 		MALLOC( t_wb_oauth_access_token );
 		break;
 
+	//------------------------------登录/XAuth
 	case WEIBO_OPTION(XAUTH_ACCESS_TOKEN):
 		MALLOC( t_wb_xauth_access_token );
 		break;
@@ -276,8 +293,101 @@ void* Weibo_senddata_create(int type , const void* senddata)
 		MALLOC( t_wb_cookie );
 		break;
 
+	case WEIBO_OPTION(UPDATETGT):
+		MALLOC( t_wb_updateTGT );
+		break;
+
 	case WEIBO_OPTION(CUSTOM):
 		MALLOC(  t_wb_custom );
+		break;
+
+	case WEIBO_OPTION(HOT_REPOST_DAYLIY):
+	case WEIBO_OPTION(HOT_REPOST_WEEKLY):
+	case WEIBO_OPTION(HOT_COMMENT_DAYLIY):
+	case WEIBO_OPTION(HOT_COMMENT_WEEKLY):
+		MALLOC( t_wb_hotpoint );
+		break;
+
+	case WEIBO_OPTION(GET_USERS_HOT):
+		MALLOC( t_wb_users_hot );
+		break;
+	case WEIBO_OPTION(POST_USERS_REMARK):
+		MALLOC( t_wb_users_remark );
+		break;
+	case WEIBO_OPTION(GET_USERS_SUGGESTIONS):
+		MALLOC( t_wb_users_suggestions );
+		break;
+
+	// 话题接口 ,by welbon,2011-01-10
+	case WEIBO_OPTION(GET_TRENDS)://trends 获取某人的话题
+		MALLOC( t_wb_trends );
+		break;
+	case WEIBO_OPTION(GET_TRENDS_STATUSES)://trends/statuses 获取某一话题下的微博
+		MALLOC( t_wb_trends_statuses );
+		break;
+	case WEIBO_OPTION(POST_TRENDS_FOLLOW)://trends/follow 关注某一个话题
+		MALLOC( t_wb_trends_follow );
+		break;
+	case WEIBO_OPTION(DELETE_TRENDS_DESTROY)://trends/destroy 取消关注的某一个话题
+		MALLOC( t_wb_trends_destroy );
+		break;
+	case WEIBO_OPTION(GET_TRENDS_HOURLY)://trends/destroy 按小时返回热门话题
+		MALLOC( t_wb_trends_hourly );
+		break;
+	case WEIBO_OPTION(GET_TRENDS_DAYLIY)://trends/daily 按日期返回热门话题。返回某一日期的话题
+		MALLOC( t_wb_trends_daily );
+		break;
+	case WEIBO_OPTION(GET_TRENDS_WEEKLIY)://trends/weekly 按周返回热门话题。返回某一日期之前某一周的话题
+		MALLOC( t_wb_trends_weekly );
+		break;
+
+	// 黑名单接口 ,by welbon,2011-01-10
+	case WEIBO_OPTION(POST_BLOCKS_CREATE)://将某用户加入黑名单
+		MALLOC( t_wb_blocks_create );
+		break;
+	case WEIBO_OPTION(POST_BLOCKS_DESTROY)://将某用户移出黑名单
+		MALLOC( t_wb_blocks_destroy );
+		break;
+	case WEIBO_OPTION(GET_BLOCKS_EXISTS)://检测某用户是否是黑名单用户
+		MALLOC( t_wb_blocks_exist );
+		break;
+	case WEIBO_OPTION(GET_BLOCKS_BLOCKING)://列出黑名单用户(输出用户详细信息)
+		MALLOC( t_wb_blocks_blocking );
+		break;
+	case WEIBO_OPTION(GET_BLOCKS_BLOCKING_IDS)://列出分页黑名单用户（只输出id）
+		MALLOC( t_wb_blocks_blocking_ids );
+		break;
+
+		//用户标签接口 ,by welbon,2011-01-10
+	case WEIBO_OPTION(GET_TAGS)://tags 返回指定用户的标签列表
+		MALLOC( t_wb_tags );
+		break;
+	case WEIBO_OPTION(POST_TAGS_CREATE)://tags/create 添加用户标签
+		MALLOC( t_wb_tags_create );
+		break;
+	case WEIBO_OPTION(GET_TAGS_SUGGESTIONS)://tags/suggestions 返回用户感兴趣的标签
+		MALLOC( t_wb_tags_suggestions );
+		break;
+	case WEIBO_OPTION(POST_TAGS_DESTROY)://tags/destroy 删除标签
+		MALLOC( t_wb_tags_destroy );
+		break;
+	case WEIBO_OPTION(POST_TAGS_DESTROY_BATCH)://tags/destroy_batch 批量删除标签
+		MALLOC( t_wb_tags_destroy_batch );
+		break;
+
+		//Invite Mail
+	case WEIBO_OPTION(POST_INVITE_MAILCONTACT)://邀请邮箱联系人
+		MALLOC( t_wb_invite_mailcontect);
+		break;
+	case WEIBO_OPTION(POST_INVITE_MSNCONTACT)://邀请MSN联系人
+		MALLOC( t_wb_invite_msncontect );
+		break;
+	case WEIBO_OPTION(POST_INVITE_SENDMAILS)://发送邀请邮件
+		MALLOC( t_wb_invite_sendmails );
+		break;
+
+	case WEIBO_OPTION(GET_MEDIA_SHORTURL_BATCH):
+		MALLOC( t_wb_media_shorturl_batch);
 		break;
 
 	default:

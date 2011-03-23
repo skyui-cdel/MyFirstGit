@@ -36,6 +36,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <string>
+#include <time.h>
 
 #if defined(WIN32) || defined(_WIN32)
 #pragma warning(disable:4996)
@@ -239,19 +240,19 @@ struct t_wb_upload_form* Weibo_url_uploadform_create(void)
 
 
 static
-int Weibo_url_cookie_set(lohttp::LOHttp* pHttp , const char *t_key , const char *t_secret )
+int Weibo_url_cookie_set(lohttp::LOHttp* pHttp , const char *sue , const char *sup )
 {
-	if( t_key && t_secret )
+	if( sue && sup )
 	{// header 
 		lohttp::HTTPChar  cookieval[ 1024 ];
 		wchar_t* outstrW = 0;
 
 		HTTP_TCSCPY_S( cookieval , HTTP_T("SUE=") );
-		HTTP_TCSCAT_S( cookieval , Char_2HTTPChar(t_key) );
+		HTTP_TCSCAT_S( cookieval , Char_2HTTPChar(sue) );
 		SafeFreeA_lo( outstrW );
 
 		HTTP_TCSCAT_S( cookieval , HTTP_T(";SUP=") );
-		HTTP_TCSCAT_S( cookieval , Char_2HTTPChar(t_secret) );
+		HTTP_TCSCAT_S( cookieval , Char_2HTTPChar(sup) );
 		SafeFreeA_lo( outstrW );
 
 		// cookie 
@@ -358,6 +359,23 @@ const lohttp::HTTPChar* Weibo_url_format_key( int format )
 		format = 2;
 	return format_key[format];
 }
+
+
+
+static
+void Weibo_url_random(lohttp::HTTPChar* URI)
+{
+	// 增加尾部随机数的处理
+	HTTP_TCSCAT_S(URI,HTTP_T("rnd=0.") );
+	srand((unsigned int)time(NULL));
+	int paramval = rand();
+	WBChar val[16] = {0};
+	if( paramval < 0 )
+		return ;
+	_TSPRINTF(val ,"%d", HTTP_T(paramval) );
+	HTTP_TCSCAT_S( URI,val );
+}
+
 
 //----------------------------------------------------------------------------------//
 // for declare function
@@ -527,6 +545,7 @@ const lohttp::HTTPChar* Weibo_url_geturi( WEIBOoption option )
 		{WEIBO_OPTION(GOTOSTATUSES_ID)            , HTTP_T("%s/%s/statuses/%s")},// 根据微博ID和用户ID跳转到单条微博页面 
 		{WEIBO_OPTION(PUTSTATUSES_UPDATE)         , HTTP_T("/statuses/update")},// 发布一条微博信息 
 		{WEIBO_OPTION(PUTSTATUSES_UPLOAD)         , HTTP_T("/statuses/upload")},// 上传图片并发布一条微博信息 
+		{WEIBO_OPTION(PUTSTATUSES_UPLOAD_PIC)	  , HTTP_T("/statuses/upload_pic")},// 上传图片
 		{WEIBO_OPTION(PUTSTATUSES_DESTROY)        , HTTP_T("/statuses/destroy")},// 删除一条微博信息 
 		{WEIBO_OPTION(PUTSTATUSES_REPOST)         , HTTP_T("/statuses/repost")},// 转发一条微博信息（可加评论） 
 		{WEIBO_OPTION(PUTSTATUSES_COMMENT)        , HTTP_T("/statuses/comment")},// 对一条微博信息进行评论 
@@ -543,11 +562,14 @@ const lohttp::HTTPChar* Weibo_url_geturi( WEIBOoption option )
 		{WEIBO_OPTION(GETDIRESTMSG_SENT)    , HTTP_T("/direct_messages/sent")},// 获取当前用户发送的最新私信列表 
 		{WEIBO_OPTION(PUTDIRECTMSG_NEW)     , HTTP_T("/direct_messages/new")},// 发送一条私信 
 		{WEIBO_OPTION(PUTDIRECTMSG_DESTROY) , HTTP_T("/direct_messages/destroy")},// 删除一条私信 
+		{WEIBO_OPTION(GETDIRECTMSG_WITH)    , HTTP_T("/direct_messages/with")},// 获取往来私信列表
 
 		//关注接口 
-		{WEIBO_OPTION(PUTFRIENDSHIPS_CREATE)   , HTTP_T("/friendships/create")},// 关注某用户 
-		{WEIBO_OPTION(PUTFRIENDSHIPS_DESTROY)  , HTTP_T("/friendships/destroy")},// 取消关注 
-		{WEIBO_OPTION(GETFRIENDSHIPS_EXISTS)   , HTTP_T("/friendships/show")},// 获取两个用户关系的详细情况 
+		{WEIBO_OPTION(PUTFRIENDSHIPS_CREATE)		 ,HTTP_T("/friendships/create")},// 关注某用户 
+		{WEIBO_OPTION(PUTFRIENDSHIPS_CREATE_BATCH)	 ,HTTP_T("/friendships/create_batch")},// 批量关注
+		{WEIBO_OPTION(PUTFRIENDSHIPS_DESTROY)		 ,HTTP_T("/friendships/destroy")},// 取消关注 
+		{WEIBO_OPTION(GETFRIENDSHIPS_EXISTS)		 ,HTTP_T("/friendships/show")},// 获取两个用户关系的详细情况 
+		{WEIBO_OPTION(GETFRIENDSHIPS_BATCH_EXISTS)   ,HTTP_T("/friendships/batch_exists")},// 批量获取一组用户是否为好友
 
 		 //Social Graph接口
 		{WEIBO_OPTION(GETFRIEND_IDS)           , HTTP_T("/friends/ids")},// 获取用户关注对象uid列表 
@@ -586,11 +608,54 @@ const lohttp::HTTPChar* Weibo_url_geturi( WEIBOoption option )
 
 		// cookie
 		{WEIBO_OPTION(COOKIE)  , HTTP_T("/sso/login.php")},// 获取COOKIE
-
-		{WEIBO_OPTION(XAUTH_ACCESS_TOKEN)      , HTTP_T("/oauth/access_token")},// 获取授权过的Access Token 
+		{WEIBO_OPTION(UPDATETGT)  , HTTP_T("/sso/updatetgt.php")},// Update TGT https://login.sina.com.cn/
 
 		// custom
 		{WEIBO_OPTION(CUSTOM)  , HTTP_T("")},
+
+		// 热门接口
+		{WEIBO_OPTION(HOT_REPOST_DAYLIY)   ,HTTP_T("/statuses/hot/repost_daily")   }, //热门转发-by day
+		{WEIBO_OPTION(HOT_REPOST_WEEKLY)   ,HTTP_T("/statuses/hot/repost_weekly")  }, //热门转发-by week
+		{WEIBO_OPTION(HOT_COMMENT_DAYLIY)  ,HTTP_T("/statuses/hot/comments_daily") }, //热门评论-by day
+		{WEIBO_OPTION(HOT_COMMENT_WEEKLY)  ,HTTP_T("/statuses/hot/comments_weekly")}, //热门评论-by week
+
+		// 用户接口（NEW）
+		{WEIBO_OPTION(GET_USERS_HOT)		,HTTP_T("/users/hot")},// 获取系统推荐用户
+		{WEIBO_OPTION(POST_USERS_REMARK)	,HTTP_T("/user/friends/update_remark")},//更新修改当前登录用户所关注的某个好友的备注信息New!
+		{WEIBO_OPTION(GET_USERS_SUGGESTIONS),HTTP_T("/users/suggestions")},     //Users/suggestions 返回当前用户可能感兴趣的用户
+
+		// 话题接口
+		{WEIBO_OPTION(GET_TRENDS)			,HTTP_T("/trends")},			//trends 获取某人的话题
+		{WEIBO_OPTION(GET_TRENDS_STATUSES)	,HTTP_T("/trends/statuses")},	//trends/statuses 获取某一话题下的微博
+		{WEIBO_OPTION(POST_TRENDS_FOLLOW)	,HTTP_T("/trends/follow")},		//trends/follow 关注某一个话题
+		{WEIBO_OPTION(DELETE_TRENDS_DESTROY),HTTP_T("/trends/destroy")},	//trends/destroy 取消关注的某一个话题
+		{WEIBO_OPTION(GET_TRENDS_HOURLY)	,HTTP_T("/trends/hourly")},		//trends/destroy 按小时返回热门话题
+		{WEIBO_OPTION(GET_TRENDS_DAYLIY)	,HTTP_T("/trends/daily")},		//trends/daily 按日期返回热门话题。返回某一日期的话题
+		{WEIBO_OPTION(GET_TRENDS_WEEKLIY)	,HTTP_T("/trends/weekly")},		//trends/weekly 按周返回热门话题。返回某一日期之前某一周的话题
+
+		// 黑名单接口 ,by welbon,2011-01-10
+		{WEIBO_OPTION(POST_BLOCKS_CREATE)	,HTTP_T("/blocks/create")},//将某用户加入黑名单
+		{WEIBO_OPTION(POST_BLOCKS_DESTROY)	,HTTP_T("/blocks/destroy")},//将某用户移出黑名单
+		{WEIBO_OPTION(GET_BLOCKS_EXISTS)	,HTTP_T("/blocks/exists")},//检测某用户是否是黑名单用户
+		{WEIBO_OPTION(GET_BLOCKS_BLOCKING)	,HTTP_T("/blocks/bloking")},//列出黑名单用户(输出用户详细信息)
+		{WEIBO_OPTION(GET_BLOCKS_BLOCKING_IDS),HTTP_T("/blocks/bloking/ids")},//列出分页黑名单用户（只输出id）
+
+		//用户标签接口
+		{WEIBO_OPTION(GET_TAGS)				,HTTP_T("/tags")},				//tags 返回指定用户的标签列表
+		{WEIBO_OPTION(POST_TAGS_CREATE)		,HTTP_T("/tags/create")},		//tags/create 添加用户标签
+		{WEIBO_OPTION(GET_TAGS_SUGGESTIONS)	,HTTP_T("/tags/suggestions")},	//tags/suggestions 返回用户感兴趣的标签
+		{WEIBO_OPTION(POST_TAGS_DESTROY)	,HTTP_T("/tags/destroy")},		//tags/destroy 删除标签
+		{WEIBO_OPTION(POST_TAGS_DESTROY_BATCH),HTTP_T("/trends/destroy_batch")},//tags/destroy_batch 批量删除标签
+
+		//Invite Mail
+		{WEIBO_OPTION(POST_INVITE_MAILCONTACT),HTTP_T("/invite/aj_mailcontact.php")},//邀请邮箱联系人
+		{WEIBO_OPTION(POST_INVITE_MSNCONTACT) ,HTTP_T("/invite/aj_msncontact.php")},//邀请MSN联系人
+		{WEIBO_OPTION(POST_INVITE_SENDMAILS)  ,HTTP_T("/invite/aj_att_sendmails.php")},//发送邀请邮件
+
+		//Media 
+		{WEIBO_OPTION(GET_MEDIA_SHORTURL_BATCH),HTTP_T("/short_url/batch_info")},
+		{WEIBO_OPTION(XAUTH_ACCESS_TOKEN), HTTP_T("/oauth/access_token")},// 获取授权过的Access Token 
+
 	};
 
 	if( WEIBO_OPTION(BASE) >= option ||
@@ -606,11 +671,24 @@ const char* Weibo_ip(WEIBOoption option , const struct t_wb_REQ_EX* req_ex)
 {
 	static const char* ip = "http://api.t.sina.com.cn";
 	static const char* cip= "https://login.sina.com.cn";
+	static const char* invip= "http://t.sina.com.cn";
 
-	if( WEIBO_OPTION(COOKIE) == option )
+	if( WEIBO_OPTION(COOKIE) == option || WEIBO_OPTION(UPDATETGT) == option)
 	{
 		return cip;
 	}
+	else if( WEIBO_OPTION(POST_INVITE_MAILCONTACT) == option || 
+		WEIBO_OPTION(POST_INVITE_MSNCONTACT) == option || 
+		WEIBO_OPTION(POST_INVITE_SENDMAILS) == option )
+	{
+		return invip;
+	}
+//#ifdef _DEBUG
+//	// 测试代码 test short url id : hgn2ow,hk8kn
+//	else if( WEIBO_OPTION(GET_MEDIA_SHORTURL_BATCH) == option){
+//		return "10.73.14.64:8888";
+//	}
+//#endif //_DEBUG
 	return (req_ex->ip_[0] == '\0')?ip:req_ex->ip_;
 }
 
@@ -776,7 +854,7 @@ int Weibo_url_http_geturl(char** outreq_url , char** outpostarg ,
 }
 
 static
-int Weibo_url_http_seturl(lohttp::LOHttp* pHttp , const lohttp::HTTPChar* uri , int httpmethod , const void* t_wb ,const struct t_wb_REQ_EX* req_ex)
+int Weibo_url_http_seturl(lohttp::LOHttp* pHttp , const lohttp::HTTPChar* uri , int httpmethod , const void* t_wb ,const struct t_wb_REQ_EX* req_ex,bool bcookie = true)
 { 
 	char* req_url = 0;
 	char* postarg = 0;
@@ -809,9 +887,9 @@ int Weibo_url_http_seturl(lohttp::LOHttp* pHttp , const lohttp::HTTPChar* uri , 
 		SafeFreeA_lo(outstrW);
 	}
 
-	if( req_ex->cookie_ && pstruct )
+	if( req_ex->cookie_ && pstruct && bcookie )
 	{// set cookie
-		Weibo_url_cookie_set(pHttp , pstruct->wbauth_.oauth_token_ , pstruct->wbauth_.oauth_token_secret_ );
+		Weibo_url_cookie_set(pHttp , pstruct->wbauth_.sue_ , pstruct->wbauth_.sup_ );
 	}
 
 	// method
@@ -870,7 +948,7 @@ int Weibo_url_upload_form(lohttp::LOHttp* pHttp ,
 
 	if( req_ex->cookie_ && pstruct )
 	{// set cookie
-		Weibo_url_cookie_set(pHttp , pstruct->wbauth_.oauth_token_ , pstruct->wbauth_.oauth_token_secret_ );
+		Weibo_url_cookie_set(pHttp , pstruct->wbauth_.sue_ , pstruct->wbauth_.sup_ );
 	}
 
 	SafeFreeA_lo(postarg);
@@ -1178,6 +1256,18 @@ WEIBO_url_callback(PUTSTATUSES_UPLOAD)
 	return 0;
 }
 
+WEIBO_url_callback(PUTSTATUSES_UPLOAD_PIC)
+{// 上传图片
+	int  ret = -1;
+	WEIBO_struct_cast(t_wb_put_statuses_upload_pic);
+
+	URICHECK_RETURN( Weibo_url_get_uri(URI , WEIBO_OPTION(PUTSTATUSES_UPLOAD_PIC), req_ex) );
+	
+	HTTP_SET_UPLOAD_METHOD();
+
+	return 0;
+}
+
 WEIBO_url_callback(PUTSTATUSES_DESTROY)
 {// 删除一条微博信息
 	int   ret = -1;
@@ -1200,7 +1290,8 @@ WEIBO_url_callback(PUTSTATUSES_REPOST)
 
 	URICHECK_RETURN( Weibo_url_get_uri(URI , WEIBO_OPTION(PUTSTATUSES_REPOST), req_ex) );
 
-	Weibo_url_generate_URI(URI , HTTP_T("&id")      , pstruct->wbId_     , PARAM_ENCODE_UTF8 );
+	Weibo_url_generate_URI(URI ,HTTP_T("&id") , pstruct->wbId_, PARAM_ENCODE_UTF8 );
+	Weibo_url_generate_URI_INT(URI,HTTP_T("&is_comment"), pstruct->iCommentFlags );
 
 	// 可选项
 	if( pstruct->szwbInfo_[0] != '\0' )
@@ -1413,9 +1504,35 @@ WEIBO_url_callback(PUTDIRECTMSG_DESTROY)
 
 	HTTP_SET_POST_METHOD();
 	
+	return 0;
+}
+
+
+WEIBO_url_callback(GETDIRECTMSG_WITH)
+{// 获取来往私信列表
+	int   ret = -1;
+	WEIBO_struct_cast(t_wb_get_direct_message_with);
+
+	//
+	// 特殊的
+	HTTP_SPRINTF(URI, HTTP_T("%s%s/%s%s"),  Weibo_ip( WEIBO_OPTION(GETDIRECTMSG_WITH),req_ex),Weibo_url_geturi( WEIBO_OPTION(GETDIRECTMSG_WITH) ), 
+		WBChar_2HTTPChar(pstruct->wbuid_) , Weibo_url_format_key(req_ex->format_) );
+
+	Weibo_url_base( URI , pstruct , req_ex);
+
+	//
+	//page 
+	pstruct->page_ ? Weibo_url_generate_URI_INT(URI,HTTP_T("&page"), pstruct->page_ ) : 0;
+	//count
+	pstruct->count_ ? Weibo_url_generate_URI_INT(URI,HTTP_T("&count"), pstruct->count_ ) : 0;
+
+	//
+	HTTP_SET_GET_METHOD();
 
 	return 0;
 }
+
+
 
 //-----------------------------------------关注---------------------------------------------//
 
@@ -1442,6 +1559,25 @@ WEIBO_url_callback(PUTFRIENDSHIPS_CREATE)
 	return 0; 
 }
 
+
+WEIBO_url_callback(PUTFRIENDSHIPS_CREATE_BATCH)
+{// 关注某用户
+
+	//
+	int   ret = -1;
+	WEIBO_struct_cast(t_wb_put_friendships_create_batch );
+	//
+	URICHECK_RETURN( Weibo_url_get_uri(URI , WEIBO_OPTION(PUTFRIENDSHIPS_CREATE_BATCH), req_ex) );
+	//
+	Weibo_url_generate_URI(URI , HTTP_T("&ids") , pstruct->wbIDs_  , PARAM_ENCODE_UTF8 );
+	//
+	HTTP_SET_POST_METHOD();
+
+	return 0; 
+}
+
+
+
 WEIBO_url_callback(PUTFRIENDSHIPS_DESTROY)
 {// 取消关注
 	int   ret = -1;
@@ -1460,6 +1596,9 @@ WEIBO_url_callback(PUTFRIENDSHIPS_DESTROY)
 
 		Weibo_url_http_uid_param_URI(URI , &pstruct->wbuid_);
 	}
+
+	// follower
+	Weibo_url_generate_URI_INT(URI ,HTTP_T("&is_follower"), pstruct->is_follower );
 
 	HTTP_SET_POST_METHOD();
 
@@ -1495,6 +1634,21 @@ WEIBO_url_callback(GETFRIENDSHIPS_EXISTS)
 		Weibo_url_generate_URI(URI , HTTP_T("&target_id")   , pstruct->wbuid_target_.uid_    , PARAM_ENCODE_UTF8 );
 	}
 
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+
+//
+WEIBO_url_callback(GETFRIENDSHIPS_BATCH_EXISTS)
+{
+	int   ret = -1;
+	WEIBO_struct_cast(t_wb_get_friendships_batchexist );
+	//
+	URICHECK_RETURN( Weibo_url_get_uri(URI , WEIBO_OPTION(GETFRIENDSHIPS_BATCH_EXISTS), req_ex) );
+	//
+	Weibo_url_generate_URI( URI, HTTP_T("&uids") , pstruct->wbIDs_, PARAM_ENCODE_UTF8 );
+	//
 	HTTP_SET_GET_METHOD();
 
 	return 0;
@@ -1584,7 +1738,6 @@ WEIBO_url_callback(PUTACCOUNT_QUITSESSION)
 	URICHECK_RETURN( Weibo_url_get_uri(URI , WEIBO_OPTION(PUTACCOUNT_QUITSESSION), req_ex) );
 
 	HTTP_SET_POST_METHOD();
-
 	return 0;
 }
 
@@ -1624,59 +1777,57 @@ WEIBO_url_callback(PUTACCOUNT_UPDATE_PROFILE)
 
 WEIBO_url_callback(PUTACCOUNT_REGISTER)
 {
-	//int  ret = -1;
-	//WEIBO_struct_cast(t_wb_put_account_register);
+	int  ret = -1;
+	WEIBO_struct_cast(t_wb_put_account_register);
 
-	//URICHECK_RETURN( Weibo_url_get_uri(URI , WEIBO_OPTION(PUTACCOUNT_REGISTER), req_ex) );
+	URICHECK_RETURN( Weibo_url_get_uri(URI , WEIBO_OPTION(PUTACCOUNT_REGISTER), req_ex) );
 
-	//if( pstruct->szNick_[0] == '\0' )
-	//{
-	//	wbPRINTF("\n\nError:\n	 nick is null.\n\n");
-	//	return -1;
-	//}
+	if( pstruct->szNick_[0] == '\0' )
+	{
+		wbPRINTF("\n\nError:\n	 nick is null.\n\n");
+		return -1;
+	}
 
-	//if( pstruct->szGender_[0] == '\0' )
-	//{
-	//	wbPRINTF("\n\nError:\n	 gender is null.\n\n");
-	//	return -1;
-	//}
+	if( pstruct->szGender_[0] == '\0' )
+	{
+		wbPRINTF("\n\nError:\n	 gender is null.\n\n");
+		return -1;
+	}
 
-	//if(	pstruct->szPwd_[0] == '\0' )
-	//{
-	//	wbPRINTF("\n\nError:\n	 password is null.\n\n");
-	//	return -1;
-	//}
+	if(	pstruct->szPwd_[0] == '\0' )
+	{
+		wbPRINTF("\n\nError:\n	 password is null.\n\n");
+		return -1;
+	}
 
-	//if( pstruct->szEmail_[0] == '\0')
-	//{
-	//	wbPRINTF("\n\nError:\n	 email is null.\n\n");
-	//	return -1;
-	//}
+	if( pstruct->szEmail_[0] == '\0')
+	{
+		wbPRINTF("\n\nError:\n	 email is null.\n\n");
+		return -1;
+	}
 
-	//if( pstruct->szIP_[0] == '\0' )
-	//{
-	//	wbPRINTF("\n\nError:\n	 IP is null.\n\n");
-	//	return -1;
-	//}	
+	if( pstruct->szIP_[0] == '\0' )
+	{
+		wbPRINTF("\n\nError:\n	 IP is null.\n\n");
+		return -1;
+	}	
 
-	//// 必填项
-	//Weibo_url_generate_URI(URI , HTTP_T("&nick")        , pstruct->szNick_     , PARAM_ENCODE_UTF8 );
-	//Weibo_url_generate_URI(URI , HTTP_T("&gender")      , pstruct->szGender_   , PARAM_ENCODE_UTF8 );
+	// 必填项
+	Weibo_url_generate_URI(URI , HTTP_T("&nick")        , pstruct->szNick_     , PARAM_ENCODE_UTF8 );
+	Weibo_url_generate_URI(URI , HTTP_T("&gender")      , pstruct->szGender_   , PARAM_ENCODE_UTF8 );
 
-	//// 可选项
-	//Weibo_url_generate_URI(URI , HTTP_T("&province")    , pstruct->szProvince_ , PARAM_ENCODE_UTF8 );
-	//Weibo_url_generate_URI(URI , HTTP_T("&city")        , pstruct->szCity_     , PARAM_ENCODE_UTF8 );
+	// 可选项
+	Weibo_url_generate_URI(URI , HTTP_T("&province")    , pstruct->szProvince_ , PARAM_ENCODE_UTF8 );
+	Weibo_url_generate_URI(URI , HTTP_T("&city")        , pstruct->szCity_     , PARAM_ENCODE_UTF8 );
 
-	//// 必填项
-	//Weibo_url_generate_URI(URI , HTTP_T("&password")    , pstruct->szPwd_     , PARAM_ENCODE_UTF8 );
-	//Weibo_url_generate_URI(URI , HTTP_T("&email")       , pstruct->szEmail_   , PARAM_ENCODE_UTF8 );
-	//Weibo_url_generate_URI(URI , HTTP_T("&ip")          , pstruct->szIP_      , PARAM_ENCODE_UTF8 );
+	// 必填项
+	Weibo_url_generate_URI(URI , HTTP_T("&password")    , pstruct->szPwd_     , PARAM_ENCODE_UTF8 );
+	Weibo_url_generate_URI(URI , HTTP_T("&email")       , pstruct->szEmail_   , PARAM_ENCODE_UTF8 );
+	Weibo_url_generate_URI(URI , HTTP_T("&ip")          , pstruct->szIP_      , PARAM_ENCODE_UTF8 );
 
-	//HTTP_SET_POST_METHOD();
+	HTTP_SET_POST_METHOD();
 
-	//return 0;
-
-	return -1;
+	return 0;
 }
 
 // 收藏
@@ -1788,7 +1939,7 @@ WEIBO_url_callback(OAUTH_AUTHORIZE)// 请求用户授权Token
 	Weibo_url_generate_URI( URI , HTTP_T("&userId") ,  pstruct->usrid_ ,  0 );
 	Weibo_url_generate_URI( URI , HTTP_T("&passwd") ,  pstruct->usrpwd_ , 0 );
 
-	HTTP_SET_GET_METHOD();
+	HTTP_SET_POST_METHOD();
 
 	return 0;
 }
@@ -1809,6 +1960,7 @@ WEIBO_url_callback(OAUTH_ACCESS_TOKEN)// 获取授权过的Access Token
 
 	return 0;
 }
+
 WEIBO_url_callback(XAUTH_ACCESS_TOKEN)// 获取授权过的Access Token
 {
 	int   ret = -1;
@@ -1829,6 +1981,7 @@ WEIBO_url_callback(XAUTH_ACCESS_TOKEN)// 获取授权过的Access Token
 
 	return 0;
 }
+
 
 WEIBO_url_callback(GET_EMOTIONS)
 {// 返回新浪微博官方所有表情、魔法表情的相关信息。包括短语、表情类型、表情分类，是否热门等。
@@ -1961,12 +2114,28 @@ WEIBO_url_callback(COOKIE)
 	Weibo_url_get_uri(URI ,  WEIBO_OPTION(COOKIE) , req_ex , false/*不需要格式*/ );
 	
 	// 用户名/密码
-	Weibo_url_generate_URI( URI , HTTP_T("?username") ,  pstruct->usrid_  , PARAM_ENCODE_UTF8 );
+	Weibo_url_generate_URI( URI , HTTP_T("?username") ,  pstruct->usrid_  , lohttp::ParamEncodedValue/*PARAM_ENCODE_UTF8*/ );
 
 	Weibo_url_generate_URI( URI , HTTP_T("&password") ,  pstruct->usrpwd_ , PARAM_ENCODE_UTF8 );
 
-	Weibo_url_generate_URI( URI , HTTP_T("&service")  , WBCHAR_T("sinatwitter&returntype=TEXT2&client=app&usersa=1") , lohttp::ParamNormal );
+	Weibo_url_generate_URI( URI , HTTP_T("&service")  , WBCHAR_T("sso&returntype=TEXT2&client=app&usersa=1") , lohttp::ParamNormal );
 	
+	HTTP_SET_POST_METHOD();
+
+	return 0;
+}
+
+WEIBO_url_callback(UPDATETGT)
+{
+	int   ret = -1;
+	WEIBO_struct_cast(t_wb_updateTGT);
+
+	Weibo_url_get_uri(URI ,  WEIBO_OPTION(UPDATETGT) , req_ex , false/*不需要格式*/ );
+	
+	Weibo_url_generate_URI( URI , HTTP_T("?tgt") ,  pstruct->wbauth_.tgt_  , PARAM_ENCODE_UTF8 );
+
+	Weibo_url_generate_URI( URI , HTTP_T("&returntype") ,  WBCHAR_T("TEXT2") , PARAM_ENCODE_UTF8 );
+
 	HTTP_SET_GET_METHOD();
 
 	return 0;
@@ -1978,6 +2147,467 @@ WEIBO_url_callback(CUSTOM)
 	return 0;
 }
 
+/**  热点实现 */
+int WEIBO_HotPoint_url_callback(lohttp::HTTPChar *URI,const void* t_wb ,const struct t_wb_REQ_EX* req_ex,const int type)
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_hotpoint);
+	URICHECK_RETURN( Weibo_url_get_uri(URI , (WEIBOoption)type, req_ex) );
+	//
+	if( pstruct->count_) 
+	{
+		WBChar val[16] = {0};
+		_TSPRINTF(val ,"%d",pstruct->count_ );
+		Weibo_url_generate_URI( URI,HTTP_T("?counts"),val, PARAM_ENCODE_UTF8 );
+	}
+	return 0;
+}
+
+
+//热点
+WEIBO_url_callback(HOT_REPOST_DAYLIY)
+{
+	WEIBO_HotPoint_url_callback(URI,t_wb,req_ex,WEIBO_OPTION(HOT_REPOST_DAYLIY));
+	
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(HOT_REPOST_WEEKLY)
+{
+	WEIBO_HotPoint_url_callback(URI,t_wb,req_ex,WEIBO_OPTION(HOT_REPOST_WEEKLY));
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(HOT_COMMENT_DAYLIY)
+{
+	WEIBO_HotPoint_url_callback(URI,t_wb,req_ex,WEIBO_OPTION(HOT_COMMENT_DAYLIY));
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(HOT_COMMENT_WEEKLY)
+{
+	WEIBO_HotPoint_url_callback(URI,t_wb,req_ex,WEIBO_OPTION(HOT_COMMENT_WEEKLY));
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+
+//新的用户接口
+WEIBO_url_callback(GET_USERS_HOT)
+{
+	int  ret = -1;
+	WEIBO_struct_cast( t_wb_users_hot );
+	
+	//
+	URICHECK_RETURN( Weibo_url_get_uri(URI , WEIBO_OPTION(GET_USERS_HOT), req_ex) );
+
+	if( pstruct->category_ && *pstruct->category_ != '\0'){
+		Weibo_url_generate_URI( URI,HTTP_T("&category"),pstruct->category_, PARAM_ENCODE_UTF8 );
+	}
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(POST_USERS_REMARK)
+{
+	int  ret = -1;
+	WEIBO_struct_cast( t_wb_users_remark );
+
+	//
+	URICHECK_RETURN( Weibo_url_get_uri(URI , WEIBO_OPTION(POST_USERS_REMARK), req_ex) );
+	//
+	Weibo_url_generate_URI(URI , HTTP_T("&user_id"), pstruct->userId_, PARAM_ENCODE_UTF8 );
+	Weibo_url_generate_URI(URI , HTTP_T("&remark"),  pstruct->remark_, PARAM_ENCODE_UTF8 );
+
+	HTTP_SET_POST_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(GET_USERS_SUGGESTIONS)
+{
+	int  ret = -1;
+
+	WEIBO_struct_cast(t_wb_users_suggestions);
+	//
+	//get url
+	URICHECK_RETURN( Weibo_url_get_uri(URI , WEIBO_OPTION(GET_USERS_SUGGESTIONS), req_ex) );
+	//
+	Weibo_url_generate_URI_INT(URI , HTTP_T("&with_reason"), pstruct->with_reason);
+
+	//
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+
+
+// 话题接口 ,by welbon,2011-01-10
+WEIBO_url_callback(GET_TRENDS)//trends 获取某人的话题
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_trends);
+
+	//get url
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(GET_TRENDS), req_ex) );
+
+	//user id 
+	Weibo_url_generate_URI(URI,HTTP_T("&user_id"), pstruct->usrid_, PARAM_ENCODE_UTF8 );
+
+	WBChar val[16] = {0};
+
+	//page 
+	pstruct->page_ ? Weibo_url_generate_URI_INT(URI,HTTP_T("&page"), pstruct->page_ ) : 0;
+
+	//count
+	pstruct->count_ ? Weibo_url_generate_URI_INT(URI,HTTP_T("&count"), pstruct->count_ ) : 0;
+
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(GET_TRENDS_STATUSES)//trends/statuses 获取某一话题下的微博
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_trends_statuses);
+
+	//get url
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(GET_TRENDS_STATUSES), req_ex) );
+
+	//user id 
+	Weibo_url_generate_URI(URI,HTTP_T("&trend_name"), pstruct->terndname_, PARAM_ENCODE_UTF8 );
+
+
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(POST_TRENDS_FOLLOW)//trends/follow 关注某一个话题
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_trends_follow);
+
+	//get url
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(POST_TRENDS_FOLLOW), req_ex) );
+
+	//user id 
+	Weibo_url_generate_URI(URI,HTTP_T("&trend_name"), pstruct->terndname_, PARAM_ENCODE_UTF8 );
+
+	HTTP_SET_POST_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(DELETE_TRENDS_DESTROY)//trends/destroy 取消关注的某一个话题
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_trends_destroy);
+	//
+	const lohttp::HTTPChar * uri = Weibo_url_geturi( WEIBO_OPTION(DELETE_TRENDS_DESTROY));
+	if( !uri ) {
+		return -1;// URI 为空
+	}
+	HTTP_SPRINTF(URI , ("%s%s/%s%s") , Weibo_ip(WEIBO_OPTION(DELETE_TRENDS_DESTROY),req_ex), 
+		uri,pstruct->trendid_, Weibo_url_format_key( req_ex->format_) );
+
+	Weibo_url_base( URI,pstruct,req_ex);
+	//
+
+	HTTP_SET_DELETE_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(GET_TRENDS_HOURLY)//trends/destroy 按小时返回热门话题
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_trends_hourly);
+
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(GET_TRENDS_HOURLY), req_ex) );
+
+	//baseapp
+	Weibo_url_generate_URI_INT(URI,HTTP_T("&base_app"), pstruct->baseapp_);
+
+	//
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(GET_TRENDS_DAYLIY)//trends/daily 按日期返回热门话题。返回某一日期的话题
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_trends_daily);
+
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(GET_TRENDS_DAYLIY), req_ex) );
+
+	//baseapp
+	Weibo_url_generate_URI_INT(URI,HTTP_T("&base_app"), pstruct->baseapp_ );
+
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(GET_TRENDS_WEEKLIY)//trends/weekly 按周返回热门话题。返回某一日期之前某一周的话题
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_trends_weekly);
+
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(GET_TRENDS_WEEKLIY), req_ex) );
+
+	//baseapp
+	Weibo_url_generate_URI_INT(URI,HTTP_T("&base_app"), pstruct->baseapp_ );
+
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+
+// 黑名单接口 ,by welbon,2011-01-10
+WEIBO_url_callback(POST_BLOCKS_CREATE)//将某用户加入黑名单
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_blocks_create);
+
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(POST_BLOCKS_CREATE), req_ex) );
+	//
+	Weibo_url_generate_URI(URI,HTTP_T("&user_id")     ,pstruct->usrid_, PARAM_ENCODE_UTF8 );
+	Weibo_url_generate_URI(URI,HTTP_T("&screen_name") ,pstruct->screenname_, PARAM_ENCODE_UTF8 );
+
+
+	HTTP_SET_POST_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(POST_BLOCKS_DESTROY)//将某用户移出黑名单
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_blocks_destroy);
+
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(POST_BLOCKS_DESTROY), req_ex) );
+	//
+	Weibo_url_generate_URI(URI,HTTP_T("&user_id")     ,pstruct->usrid_, PARAM_ENCODE_UTF8 );
+	Weibo_url_generate_URI(URI,HTTP_T("&screen_name") ,pstruct->screenname_, PARAM_ENCODE_UTF8 );
+
+
+	HTTP_SET_POST_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(GET_BLOCKS_EXISTS)//检测某用户是否是黑名单用户
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_blocks_exist);
+
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(GET_BLOCKS_EXISTS), req_ex) );
+	//
+	Weibo_url_generate_URI(URI,HTTP_T("&user_id")     ,pstruct->usrid_, PARAM_ENCODE_UTF8 );
+	Weibo_url_generate_URI(URI,HTTP_T("&screen_name") ,pstruct->screenname_, PARAM_ENCODE_UTF8 );
+
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(GET_BLOCKS_BLOCKING)//列出黑名单用户(输出用户详细信息)
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_blocks_blocking);
+
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(GET_BLOCKS_BLOCKING), req_ex) );
+
+	//page 
+	Weibo_url_generate_URI_INT(URI,HTTP_T("&page"), pstruct->page_);
+	//count
+	Weibo_url_generate_URI_INT(URI,HTTP_T("&count"), pstruct->count_);
+	//
+
+	//
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(GET_BLOCKS_BLOCKING_IDS)//列出分页黑名单用户（只输出id）
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_blocks_blocking_ids);
+
+	//
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(GET_BLOCKS_BLOCKING_IDS), req_ex) );
+	//page 
+	Weibo_url_generate_URI_INT(URI,HTTP_T("&page"), pstruct->page_);
+	//count
+	Weibo_url_generate_URI_INT(URI,HTTP_T("&count"), pstruct->count_);
+	
+	//
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+
+//用户标签接口 ,by welbon,2011-01-10
+WEIBO_url_callback(GET_TAGS)//tags 返回指定用户的标签列表
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_tags);
+	//
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(GET_TAGS), req_ex) );
+	//user id
+	Weibo_url_generate_URI(URI,HTTP_T("&user_id"), pstruct->usrid_,PARAM_ENCODE_UTF8);
+	//page 
+	Weibo_url_generate_URI_INT(URI,HTTP_T("&page"), pstruct->page_);
+	//count
+	Weibo_url_generate_URI_INT(URI,HTTP_T("&count"), pstruct->count_);
+
+	//Http method
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(POST_TAGS_CREATE)//tags/create 添加用户标签
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_tags_create);
+	//
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(POST_TAGS_CREATE), req_ex) );
+	//user id
+	Weibo_url_generate_URI(URI,HTTP_T("&tags"), pstruct->tags_,PARAM_ENCODE_UTF8);
+
+	//Http method
+	HTTP_SET_POST_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(GET_TAGS_SUGGESTIONS)//tags/suggestions 返回用户感兴趣的标签
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_tags_suggestions);
+
+	//
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(GET_TAGS_SUGGESTIONS), req_ex) );
+	//page 
+	Weibo_url_generate_URI_INT(URI,HTTP_T("&page"), pstruct->page_);
+	//count
+	Weibo_url_generate_URI_INT(URI,HTTP_T("&count"), pstruct->count_);
+
+	//Http method
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(POST_TAGS_DESTROY)//tags/destroy 删除标签
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_tags_destroy);
+
+	//
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(POST_TAGS_DESTROY), req_ex) );
+	//id 
+	Weibo_url_generate_URI(URI,HTTP_T("&tag_id"), pstruct->tagId_,PARAM_ENCODE_UTF8);
+
+	//Http method
+	HTTP_SET_POST_METHOD();
+
+	return 0;
+}
+WEIBO_url_callback(POST_TAGS_DESTROY_BATCH)//tags/destroy_batch 批量删除标签
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_tags_destroy_batch);
+
+	//
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(POST_TAGS_DESTROY_BATCH), req_ex) );
+	//id 
+	Weibo_url_generate_URI(URI,HTTP_T("&ids"), pstruct->ids_,PARAM_ENCODE_UTF8);
+
+	//Http method
+	HTTP_SET_POST_METHOD();
+
+	return 0;
+}
+
+
+WEIBO_url_callback(POST_INVITE_MAILCONTACT)//邀请邮箱联系人
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_invite_mailcontect);
+	//
+	Weibo_url_get_uri(URI,WEIBO_OPTION(POST_INVITE_MAILCONTACT),req_ex,false);
+	// 增加尾部随机数的处理
+	HTTP_TCSCAT_S(URI,HTTP_T("?"));
+	Weibo_url_random(URI);
+	//
+	Weibo_url_generate_URI(URI,HTTP_T("&user"), pstruct->usrid_,PARAM_ENCODE_UTF8);
+	Weibo_url_generate_URI(URI,HTTP_T("&password"), pstruct->usrpwd_,PARAM_ENCODE_UTF8);
+	Weibo_url_generate_URI_INT(URI,HTTP_T("&type"), pstruct->type_ );
+	
+
+	//Http method
+	HTTP_SET_POST_METHOD();
+
+	return 0;
+}
+
+WEIBO_url_callback(POST_INVITE_MSNCONTACT)//邀请MSN联系人
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_invite_msncontect);
+	//
+	Weibo_url_get_uri(URI,WEIBO_OPTION(POST_INVITE_MSNCONTACT),req_ex,false);
+
+	// 增加尾部随机数的处理
+	HTTP_TCSCAT_S(URI,HTTP_T("?"));
+	Weibo_url_random(URI);
+	//
+	Weibo_url_generate_URI(URI,HTTP_T("&user"), pstruct->usrid_,PARAM_ENCODE_UTF8 );
+	Weibo_url_generate_URI(URI,HTTP_T("&password"), pstruct->usrpwd_,PARAM_ENCODE_UTF8 );
+
+	//Http method
+	HTTP_SET_POST_METHOD();
+
+	return 0;
+}
+
+WEIBO_url_callback(POST_INVITE_SENDMAILS)//发送邀请邮件
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_invite_sendmails);
+	//
+	Weibo_url_get_uri(URI,WEIBO_OPTION(POST_INVITE_SENDMAILS),req_ex,false);
+
+	// 增加尾部随机数的处理
+	HTTP_TCSCAT_S(URI,HTTP_T("?"));
+	Weibo_url_random(URI);
+	//
+	Weibo_url_generate_URI(URI,HTTP_T("&mymail")  , pstruct->myusrid_ , PARAM_ENCODE_UTF8);
+	Weibo_url_generate_URI(URI,HTTP_T("&mailtype"), pstruct->mailtype_, PARAM_ENCODE_UTF8);
+	Weibo_url_generate_URI(URI,HTTP_T("&emails")  , pstruct->maillist_, PARAM_ENCODE_UTF8);
+	Weibo_url_generate_URI(URI,HTTP_T("&nickName"), pstruct->nickname_, PARAM_ENCODE_UTF8);
+	
+	//Http method
+	HTTP_SET_POST_METHOD();
+
+	return 0;
+}
+
+WEIBO_url_callback(GET_MEDIA_SHORTURL_BATCH)//发送邀请邮件
+{
+	int ret = -1;
+	WEIBO_struct_cast(t_wb_media_shorturl_batch);
+
+	URICHECK_RETURN( Weibo_url_get_uri(URI,WEIBO_OPTION(GET_MEDIA_SHORTURL_BATCH), req_ex) );
+	//
+	//Weibo_url_get_uri(URI,WEIBO_OPTION(GET_MEDIA_SHORTURL_BATCH),req_ex,false);
+	Weibo_url_generate_URI(URI,HTTP_T("&url_short")  , pstruct->urlids_, PARAM_ENCODE_UTF8);
+
+	//Http method
+	HTTP_SET_GET_METHOD();
+
+	return 0;
+}
+
+
+
+
+
 typedef int (*f_url_callback)(lohttp::HTTPChar URI[] , int* httpmethod , const void* t_wb , const struct t_wb_REQ_EX* req_ex);
 static 
 f_url_callback vector_url_callbak[]=
@@ -1986,85 +2616,133 @@ f_url_callback vector_url_callbak[]=
 	WEIBO_url_fun(BASE),
 
 	//获取下行数据集(timeline)接口 
-	WEIBO_url_fun(GETSTATUSES_PUBLIC_TIMELINE),
-	WEIBO_url_fun(GETSTATUSES_FRIENDS_TIMELINE),
-	WEIBO_url_fun(GETSTATUSES_USE_TIMELINE),
-	WEIBO_url_fun(GETSTATUSES_MENTIONS),
-	WEIBO_url_fun(GETSTATUSES_COMMENTS_TIMELINE),
-	WEIBO_url_fun(GETSTATUSES_COMMENTS_BYME),
-	WEIBO_url_fun(GETSTATUSES_COMMENTS_TOME),
-	WEIBO_url_fun(GETSTATUSES_COMMENTS_LIST),
-	WEIBO_url_fun(GETSTATUSES_COMMENTS_COUNTS),
-	WEIBO_url_fun(GETSTATUSES_UNREAD),
-	WEIBO_url_fun(PUTSTATUSES_RESET_COUNT),
+	WEIBO_url_fun(GETSTATUSES_PUBLIC_TIMELINE),//2 获取最新更新的公共微博消息 
+	WEIBO_url_fun(GETSTATUSES_FRIENDS_TIMELINE),//3 获取当前用户所关注用户的最新微博信息 (别名: statuses/home_timeline) 
+	WEIBO_url_fun(GETSTATUSES_USE_TIMELINE),//4 获取用户发布的微博信息列表 
+	WEIBO_url_fun(GETSTATUSES_MENTIONS),//5 获取@当前用户的微博列表 
+	WEIBO_url_fun(GETSTATUSES_COMMENTS_TIMELINE),//6 获取当前用户发送及收到的评论列表
+	WEIBO_url_fun(GETSTATUSES_COMMENTS_BYME),//7 获取当前用户发出的评论 
+	WEIBO_url_fun(GETSTATUSES_COMMENTS_TOME),//7 获取当前用户收到的评论 
+	WEIBO_url_fun(GETSTATUSES_COMMENTS_LIST),//8 获取指定微博的评论列表 
+	WEIBO_url_fun(GETSTATUSES_COMMENTS_COUNTS),//9 批量获取一组微博的评论数及转发数 
+	WEIBO_url_fun(GETSTATUSES_UNREAD), //10 获取当前用户未读消息数
+	WEIBO_url_fun(PUTSTATUSES_RESET_COUNT),//10－1未读消息数清零接口 
 
 	//微博访问接口 
-	WEIBO_url_fun(GETSTATUSES_SHOW),
-	WEIBO_url_fun(GOTOSTATUSES_ID),
-	WEIBO_url_fun(PUTSTATUSES_UPDATE),
-	WEIBO_url_fun(PUTSTATUSES_UPLOAD),
-	WEIBO_url_fun(PUTSTATUSES_DESTROY),
-	WEIBO_url_fun(PUTSTATUSES_REPOST),
-	WEIBO_url_fun(PUTSTATUSES_COMMENT),
-	WEIBO_url_fun(PUTSTATUSES_COMMENT_DESTROY),
-	WEIBO_url_fun(PUTSTATUSES_REPLY),
+	WEIBO_url_fun(GETSTATUSES_SHOW),//11 根据ID获取单条微博信息内容 
+	WEIBO_url_fun(GOTOSTATUSES_ID),//12 根据微博ID和用户ID跳转到单条微博页面 
+	WEIBO_url_fun(PUTSTATUSES_UPDATE),//13 发布一条微博信息 
+	WEIBO_url_fun(PUTSTATUSES_UPLOAD),//14 上传图片并发布一条微博信息
+	WEIBO_url_fun(PUTSTATUSES_UPLOAD_PIC),// 上传图片并发布一条微博信息
+	WEIBO_url_fun(PUTSTATUSES_DESTROY),//15 删除一条微博信息 
+	WEIBO_url_fun(PUTSTATUSES_REPOST),//16 转发一条微博信息（可加评论） 
+	WEIBO_url_fun(PUTSTATUSES_COMMENT),//17 对一条微博信息进行评论 
+	WEIBO_url_fun(PUTSTATUSES_COMMENT_DESTROY),//18 删除当前用户的微博评论信息 
+	WEIBO_url_fun(PUTSTATUSES_REPLY),//19 回复微博评论信息
 
 	//用户接口 
-	WEIBO_url_fun(GETUSER_INFO),
-	WEIBO_url_fun(GETFRINDS_LIST),
-	WEIBO_url_fun(GETFOLLOWERS_LIST),
+	WEIBO_url_fun(GETUSER_INFO),//20 根据用户ID获取用户资料（授权用户）
+	WEIBO_url_fun(GETFRINDS_LIST),//21 获取当前用户关注对象列表及最新一条微博信息
+	WEIBO_url_fun(GETFOLLOWERS_LIST),//22 获取当前用户粉丝列表及最新一条微博信息 
 
 	//私信接口 
-	WEIBO_url_fun(GETDIRECTMSG),
-	WEIBO_url_fun(GETDIRESTMSG_SENT),
-	WEIBO_url_fun(PUTDIRECTMSG_NEW),
-	WEIBO_url_fun(PUTDIRECTMSG_DESTROY),
+	WEIBO_url_fun(GETDIRECTMSG),//23 获取当前用户最新私信列表 
+	WEIBO_url_fun(GETDIRESTMSG_SENT),//24 获取当前用户发送的最新私信列表
+	WEIBO_url_fun(PUTDIRECTMSG_NEW),//25 发送一条私信
+	WEIBO_url_fun(PUTDIRECTMSG_DESTROY),//26 删除一条私信
+	WEIBO_url_fun(GETDIRECTMSG_WITH),//获取来往私信列表
 
 	//关注接口 
-	WEIBO_url_fun(PUTFRIENDSHIPS_CREATE),
-	WEIBO_url_fun(PUTFRIENDSHIPS_DESTROY),
-	WEIBO_url_fun(GETFRIENDSHIPS_EXISTS),
+	WEIBO_url_fun(PUTFRIENDSHIPS_CREATE),//27 关注某用户
+	WEIBO_url_fun(PUTFRIENDSHIPS_CREATE_BATCH),//批量关注
+	WEIBO_url_fun(PUTFRIENDSHIPS_DESTROY),//28 取消关注
+	WEIBO_url_fun(GETFRIENDSHIPS_EXISTS),//29 判断两个用户是否有关注关系，返回两个用户关系的详细情况
+	WEIBO_url_fun(GETFRIENDSHIPS_BATCH_EXISTS),//批量获取一组用户是否为好友
 
 	//Social Graph接口
-	WEIBO_url_fun(GETFRIEND_IDS),
-	WEIBO_url_fun(GETFOLLOWER_IDS),
+	WEIBO_url_fun(GETFRIEND_IDS),//30 关注列表
+	WEIBO_url_fun(GETFOLLOWER_IDS),//31 粉丝列表
 
 	//账号接口 
-	WEIBO_url_fun(GETACCOUNT_VERIFY),
-	WEIBO_url_fun(GETACCOUNT_RATELIMIT),
-	WEIBO_url_fun(PUTACCOUNT_QUITSESSION),
-	WEIBO_url_fun(PUTACCOUNT_UPDATE_PROFILEIMAGE),
-	WEIBO_url_fun(PUTACCOUNT_UPDATE_PROFILE),
+	WEIBO_url_fun(GETACCOUNT_VERIFY),//32 验证当前用户身份是否合法 
+	WEIBO_url_fun(GETACCOUNT_RATELIMIT),//33 获取当前用户API访问频率限制
+	WEIBO_url_fun(PUTACCOUNT_QUITSESSION),//34 当前用户退出登录 
+	WEIBO_url_fun(PUTACCOUNT_UPDATE_PROFILEIMAGE),//35 更改头像
+	WEIBO_url_fun(PUTACCOUNT_UPDATE_PROFILE),//36 更改资料
 	WEIBO_url_fun(PUTACCOUNT_REGISTER),
 
 	//收藏接口 
-	WEIBO_url_fun(GETFAVORITES),
-	WEIBO_url_fun(PUTFAVORITES_CREATE),
-	WEIBO_url_fun(PUTFAVORITES_DESTROY),
+	WEIBO_url_fun(GETFAVORITES),// 38获取当前用户的收藏列表 
+	WEIBO_url_fun(PUTFAVORITES_CREATE),// 39添加收藏
+	WEIBO_url_fun(PUTFAVORITES_DESTROY),// 40删除当前用户收藏的微博信息
 
 	//登录/OAuth接口 
-	WEIBO_url_fun(OAUTH_REQUEST_TOKEN),
+	WEIBO_url_fun(OAUTH_REQUEST_TOKEN),// 41获取未授权的Request Token
 	WEIBO_url_fun(OAUTH_AUTHORIZE),
-	WEIBO_url_fun(OAUTH_ACCESS_TOKEN),
+	WEIBO_url_fun(OAUTH_ACCESS_TOKEN),// 43获取授权过的Access Token
 
 	// 表情
-	WEIBO_url_fun(GET_EMOTIONS),
+	WEIBO_url_fun(GET_EMOTIONS),// 44 返回新浪微博官方所有表情、魔法表情的相关信息。包括短语、表情类型、表情分类，是否热门等。
 
 	// 用户搜索 
-	WEIBO_url_fun(GET_USERS_SEARCH),
+	WEIBO_url_fun(GET_USERS_SEARCH),// 45 搜索微博用户,返回关键字匹配的微博用户，(仅对新浪合作开发者开放) 
 
 	// 微博搜索 
-	WEIBO_url_fun(GET_WB_SEARCH),
-	WEIBO_url_fun(GET_STATUSES_SEARCH),
+	WEIBO_url_fun(GET_WB_SEARCH),// 46 返回关键字匹配的微博，(仅对新浪合作开发者开放)
+	WEIBO_url_fun(GET_STATUSES_SEARCH),//47 搜索微博(多条件组合) (仅对合作开发者开放) 
 
-	WEIBO_url_fun(GET_PROVINCES),
-	WEIBO_url_fun(REPORT),
+	WEIBO_url_fun(GET_PROVINCES),// 48 省份城市编码表 
+	WEIBO_url_fun(REPORT),//49 举报
 	// cookie 
 	WEIBO_url_fun(COOKIE),
-    //xauth
-	WEIBO_url_fun(XAUTH_ACCESS_TOKEN),
+	WEIBO_url_fun(UPDATETGT),// UPDATETGT,
 	// buffer
 	WEIBO_url_fun(CUSTOM),
+
+	// hot point 
+	WEIBO_url_fun(HOT_REPOST_DAYLIY),
+	WEIBO_url_fun(HOT_REPOST_WEEKLY),
+	WEIBO_url_fun(HOT_COMMENT_DAYLIY),
+	WEIBO_url_fun(HOT_COMMENT_WEEKLY),
+
+	//user interface new
+	WEIBO_url_fun(GET_USERS_HOT),// 获取系统推荐用户
+	WEIBO_url_fun(POST_USERS_REMARK),//更新修改当前登录用户所关注的某个好友的备注信息New!
+	WEIBO_url_fun(GET_USERS_SUGGESTIONS), //Users/suggestions 返回当前用户可能感兴趣的用户
+
+	// 话题接口 ,by welbon,2011-01-10
+	WEIBO_url_fun(GET_TRENDS),//trends 获取某人的话题
+	WEIBO_url_fun(GET_TRENDS_STATUSES),//trends/statuses 获取某一话题下的微博
+	WEIBO_url_fun(POST_TRENDS_FOLLOW),//trends/follow 关注某一个话题
+	WEIBO_url_fun(DELETE_TRENDS_DESTROY),//trends/destroy 取消关注的某一个话题
+	WEIBO_url_fun(GET_TRENDS_HOURLY),//trends/destroy 按小时返回热门话题
+	WEIBO_url_fun(GET_TRENDS_DAYLIY),//trends/daily 按日期返回热门话题。返回某一日期的话题
+	WEIBO_url_fun(GET_TRENDS_WEEKLIY),//trends/weekly 按周返回热门话题。返回某一日期之前某一周的话题
+
+	// 黑名单接口 ,by welbon,2011-01-10
+	WEIBO_url_fun(POST_BLOCKS_CREATE),//将某用户加入黑名单
+	WEIBO_url_fun(POST_BLOCKS_DESTROY),//将某用户移出黑名单
+	WEIBO_url_fun(GET_BLOCKS_EXISTS),//检测某用户是否是黑名单用户
+	WEIBO_url_fun(GET_BLOCKS_BLOCKING),//列出黑名单用户(输出用户详细信息)
+	WEIBO_url_fun(GET_BLOCKS_BLOCKING_IDS),//列出分页黑名单用户（只输出id）
+
+	//用户标签接口 ,by welbon,2011-01-10
+	WEIBO_url_fun(GET_TAGS),//tags 返回指定用户的标签列表
+	WEIBO_url_fun(POST_TAGS_CREATE),//tags/create 添加用户标签
+	WEIBO_url_fun(GET_TAGS_SUGGESTIONS),//tags/suggestions 返回用户感兴趣的标签
+	WEIBO_url_fun(POST_TAGS_DESTROY),//tags/destroy 删除标签
+	WEIBO_url_fun(POST_TAGS_DESTROY_BATCH),//tags/destroy_batch 批量删除标签
+
+	// Invite mail
+	WEIBO_url_fun(POST_INVITE_MAILCONTACT),
+	WEIBO_url_fun(POST_INVITE_MSNCONTACT) ,
+	WEIBO_url_fun(POST_INVITE_SENDMAILS)  ,
+
+	// Media
+	WEIBO_url_fun(GET_MEDIA_SHORTURL_BATCH) ,
+	//登录/XAuth接口 
+	WEIBO_url_fun(XAUTH_ACCESS_TOKEN),
+
 };
 
 int Weibo_url_set(lohttp::LOHttp* pHttp , WEIBOoption option , const void* t_wb , const struct t_wb_REQ_EX* req_ex)
@@ -2097,7 +2775,7 @@ int Weibo_url_set(lohttp::LOHttp* pHttp , WEIBOoption option , const void* t_wb 
 		{
 			return Weibo_url_http_seturl(pHttp , URI  , httpmethod , 0 , req_ex);
 		}
-		else if( WEIBO_OPTION(PUTSTATUSES_UPLOAD) == option )
+		else if( WEIBO_OPTION(PUTSTATUSES_UPLOAD) == option || WEIBO_OPTION(PUTSTATUSES_UPLOAD_PIC) == option )
 		{// 表单方式			
 			return Weibo_url_upload_form(pHttp ,URI  , httpmethod ,  t_wb , "pic" , req_ex );
 		}
@@ -2108,6 +2786,15 @@ int Weibo_url_set(lohttp::LOHttp* pHttp , WEIBOoption option , const void* t_wb 
 		else if( WEIBO_OPTION(GET_PROVINCES) == option )
 		{// 不需要运算
 			lohttp::Http_setopt(pHttp , lohttp::LOHTTP_OPT_setmethod , httpmethod );
+			lohttp::Http_seturl(pHttp , Char_2HTTPChar(URI) );
+			return 0;
+		}
+		else if( (WEIBO_OPTION(UPDATETGT) == option)/* || 
+			(WEIBO_OPTION(POST_INVITE_MAILCONTACT) == option) ||
+			(WEIBO_OPTION(POST_INVITE_MSNCONTACT) == option)*/ ) 
+		{
+			WEIBO_struct_cast(t_wb_oauth);
+			Weibo_url_cookie_set(pHttp , pstruct->sue_ , pstruct->sup_ );
 			lohttp::Http_seturl(pHttp , Char_2HTTPChar(URI) );
 			return 0;
 		}

@@ -38,6 +38,8 @@
 #include <assert.h>
 #include "wbcallback.h"
 
+#include "option.h"
+
 #define LIB_loadWEIBOSDK
 
 #if defined(WIN32) || defined(WINCE)// WIN
@@ -45,11 +47,11 @@
 #	if (defined(LIB_loadWEIBOSDK)) || (defined(WEIBO_STATICLIB))
 
 #if defined(WEIBO_VC80)
-#		pragma comment(lib ,"Json_VC80.lib")
 #		pragma comment(lib ,"WeiBoU_VC80.lib")
+#		pragma comment(lib ,"WBParseWrapper_VC80.lib")
 #elif defined(WEIBO_VC90)
-#		pragma comment(lib ,"Json_VC90.lib")
 #		pragma comment(lib ,"WeiBoU_VC90.lib")
+#		pragma comment(lib ,"WBParseWrapper_VC90.lib")
 #endif
 
 #	else
@@ -262,6 +264,7 @@ struct t_wb_allstruct
 	struct t_wb_goto_user_status_id            usr_statid;
 	struct t_wb_put_statuses_update            stat_update;
 	struct t_wb_put_statuses_upload            stat_upload;
+	struct t_wb_put_statuses_upload_pic        stat_upload_pic;
 	struct t_wb_put_statuses_destroy           stat_destroy;
 	struct t_wb_put_statuses_repost            stat_repost;
 	struct t_wb_put_statuses_comment           stat_comment;
@@ -276,8 +279,10 @@ struct t_wb_allstruct
 	struct t_wb_get_direct_message_sent        dirt_message_sent;
 	struct t_wb_put_direct_message_new         dirt_message_new;
 	struct t_wb_put_direct_message_destroy     dirt_message_destroy;
+	struct t_wb_get_direct_message_with        dirt_message_with;
 	//
 	struct t_wb_put_friendships_create         ships_create;
+	struct t_wb_put_friendships_create_batch   ships_create_batch;
 	struct t_wb_put_friendships_destroy        ships_destroy;
 	struct t_wb_get_friendships_show           ships_show;
 	//
@@ -289,6 +294,7 @@ struct t_wb_allstruct
 	struct t_wb_put_account_end_session        account_endsession;
 	struct t_wb_put_account_up_profileimage    account_up_image;
 	struct t_wb_put_account_up_profile         account_uprofile;
+	struct t_wb_put_account_register		   account_register;
 	//
 	struct t_wb_get_favorites                  favos_list;
 	struct t_wb_put_favorites_create           favos_create;
@@ -297,8 +303,6 @@ struct t_wb_allstruct
 	struct t_wb_oauth_request_token            oauth_reqtoken;
 	struct t_wb_authorize					   oauth_authorize;
 	struct t_wb_oauth_access_token             oauth_accesstoken;
-
-	struct t_wb_xauth_access_token             xauth_accesstoken;
 	
 	// 表情
 	struct t_wb_emotions                       emotions;
@@ -310,6 +314,48 @@ struct t_wb_allstruct
 	struct t_wb_provinces                      provinces;
 
 	struct t_wb_cookie                         cookie;
+	struct t_wb_updateTGT					   updateTGT;
+	struct t_wb_hotpoint					   hot_point;
+
+	//
+	struct t_wb_users_hot					   users_hot;
+	struct t_wb_users_remark				   users_remark;
+	struct t_wb_users_suggestions			   users_suggestions;
+
+	// 话题接口
+	struct t_wb_trends							trends;
+	struct t_wb_trends_statuses					trend_statuses;
+	struct t_wb_trends_follow					trend_follow;
+	struct t_wb_trends_destroy					trend_destroy;
+	struct t_wb_trends_hourly					trend_hourly;
+	struct t_wb_trends_daily					trend_daily;
+	struct t_wb_trends_weekly					trend_weekly;
+
+	// 黑名单接口
+	struct t_wb_blocks_create					block_create;
+	struct t_wb_blocks_destroy					block_destroy;
+	struct t_wb_blocks_exist					block_exist;
+	struct t_wb_blocks_blocking					block_bloking;
+	struct t_wb_blocks_blocking_ids				block_ids;
+
+	// 用户标签接口
+	struct t_wb_tags							tags;
+	struct t_wb_tags_create						tags_create;
+	struct t_wb_tags_suggestions				tags_suggestions;
+	struct t_wb_tags_destroy					tags_destroy;
+	struct t_wb_tags_destroy_batch				tags_destroy_batch;
+
+	// 邀请接口
+	struct t_wb_invite_mailcontect						invitec_mail;
+	struct t_wb_invite_msncontect						invitec_msn;
+	struct t_wb_invite_sendmails						invitec_sendmail;
+
+	//
+	struct t_wb_xauth_access_token						xauth_accesstoken;
+
+	//media
+	struct t_wb_media_shorturl_batch					media_shorturl_batch;
+
 };
 
 
@@ -522,6 +568,18 @@ void test_weibo(WEIBORequest* wbRequest , int option , struct t_wb_allstruct* pa
 			printf("\n\nPlease enter Content[ <= 140 words]:");			
 			gets(content);
 			strcpy( pall->stat_upload.szwbInfo_ , content);
+		}
+		break;
+	case WEIBO_OPTION(PUTSTATUSES_UPLOAD_PIC):
+		{// 上传图片并发布一条微博信息
+			p_twb = &pall->stat_upload;
+
+			Wb_init_wb_struct( option , p_twb);
+			// to fill other information
+
+			printf("\n\nPlease enter image file:");			
+			gets(content);
+			strcpy( pall->stat_upload.szImagePath_ ,content );
 		}
 		break;
 	case WEIBO_OPTION(PUTSTATUSES_DESTROY):
@@ -743,6 +801,21 @@ void test_weibo(WEIBORequest* wbRequest , int option , struct t_wb_allstruct* pa
 			strcpy( pall->dirt_message_destroy.wbId_ ,content );
 		}
 		break;
+
+	case WEIBO_OPTION(GETDIRECTMSG_WITH):
+		{// 获取来往私信列表
+			p_twb = &pall->dirt_message_with;
+
+			Wb_init_wb_struct( option , p_twb);
+			// to fill other information
+
+			// id. 必填参数. 用户ID. 
+			printf("\n\nPlease enter user id:");
+			gets(content);
+			//
+			strcpy( pall->dirt_message_with.wbuid_ ,content );
+		}
+		break;
 		//关注
 	case WEIBO_OPTION(PUTFRIENDSHIPS_CREATE):
 		{// 关注某用户 
@@ -760,6 +833,19 @@ void test_weibo(WEIBORequest* wbRequest , int option , struct t_wb_allstruct* pa
 
 		}
 		break;
+	case WEIBO_OPTION(PUTFRIENDSHIPS_CREATE_BATCH):
+		{// 批量关注
+			p_twb = &pall->ships_create_batch;
+			Wb_init_wb_struct( option , p_twb);
+			// to fill other information
+
+			printf("\n\nPlease enter the ids:");
+			gets(content);
+			strcpy( pall->ships_create_batch.wbIDs_ ,content );
+		}
+		break;
+
+
 	case WEIBO_OPTION(PUTFRIENDSHIPS_DESTROY):
 		{// 取消关注
 			p_twb = &pall->ships_destroy;
@@ -771,6 +857,11 @@ void test_weibo(WEIBORequest* wbRequest , int option , struct t_wb_allstruct* pa
 			//    id. 必填参数. 要关注的用户UID或微博昵称 
 			//    user_id. 必填参数. 要关注的用户UID,主要是用在区分用户UID跟微博昵称一样，产生歧义的时候。 
 			//    screen_name.必填参数. 要关注的微博昵称,主要是用在区分用户UID跟微博昵称一样，产生歧义的时候。 
+
+			pall->ships_destroy.wbuid_.uidtype_ = t_wb_uid::IDType_id ;
+			printf("\n\nPlease enter the destroy attend usr id:");
+			gets(content);
+			strcpy( pall->ships_destroy.wbuid_.uid_ ,content );
 
 		}
 		break;
@@ -795,6 +886,13 @@ void test_weibo(WEIBORequest* wbRequest , int option , struct t_wb_allstruct* pa
 			pall->ships_show.wbuid_target_.uidtype_ = t_wb_uid::IDType_userid;
 		}
 		break;
+
+	case WEIBO_OPTION(GETFRIENDSHIPS_BATCH_EXISTS):
+		{
+			printf("\n\n Not implement.please add this interface !");
+		}
+		break;
+
 		//Social Graph
 	case WEIBO_OPTION(GETFRIEND_IDS):
 		{// 获取用户关注对象uid列表
@@ -898,17 +996,45 @@ void test_weibo(WEIBORequest* wbRequest , int option , struct t_wb_allstruct* pa
 		}
 		break;
 	case WEIBO_OPTION(PUTACCOUNT_REGISTER):
-		{// 不支持
-
-
+		{//
 			//必须有一下参数中的一个或多个，参数值为字符串. 进一步的限制，请参阅下面的各个参数描述. 
+			p_twb = &pall->account_register;
+			Wb_init_wb_struct( option , p_twb);
+
 			// nick. 昵称，必须参数.不超过20个汉字 
+			printf("\n\nPlease enter nicke name:");
+			gets(content);
+			strcpy( pall->account_register.szNick_,content );
+
 			// gender 性别，必须参数. m,男，f,女。 
+			printf("\n\nPlease enter gender:");
+			gets(content);
+			strcpy( pall->account_register.szGender_,content );
+
 			// password 密码 必须参数. 
+			printf("\n\nPlease enter password:");
+			gets(content);
+			strcpy( pall->account_register.szPwd_,content );
+
 			// email 注册邮箱 必须参数. 
-			// province 可选参数. 参考省份城市编码表 
-			// city 可选参数. 参考省份城市编码表,1000为不限 
+			printf("\n\nPlease enter email:");
+			gets(content);
+			strcpy( pall->account_register.szEmail_,content );
+
+			// province 可选参数. 参考省份城市编码表
+			printf("\n\nPlease enter province:");
+			gets(content);
+			strcpy( pall->account_register.szProvince_,content );
+
+			// city 可选参数. 参考省份城市编码表,1000为不限
+			printf("\n\nPlease enter city:");
+			gets(content);
+			strcpy( pall->account_register.szCity_,content );
+
 			// ip 必须参数，注册用户用户当前真实的IP。
+			printf("\n\nPlease enter IP:");
+			gets(content);
+			strcpy( pall->account_register.szIP_,content );
 		}
 		break;
 
@@ -1039,6 +1165,358 @@ void test_weibo(WEIBORequest* wbRequest , int option , struct t_wb_allstruct* pa
 			strcpy( pall->cookie.usrpwd_ ,content );
 		}
 		break;
+
+	case WEIBO_OPTION(HOT_REPOST_DAYLIY): //热门转发-by day
+	case WEIBO_OPTION(HOT_REPOST_WEEKLY): //热门转发-by week
+	case WEIBO_OPTION(HOT_COMMENT_DAYLIY): //热门评论-by day
+	case WEIBO_OPTION(HOT_COMMENT_WEEKLY): //热门评论-by week
+		{
+			p_twb = &pall->hot_point;
+			Wb_init_wb_struct(option , p_twb);
+		}
+		break;
+
+	case WEIBO_OPTION(GET_USERS_HOT):// 获取系统推荐用户
+		{
+			p_twb = &pall->users_hot;
+			Wb_init_wb_struct(option , p_twb);
+
+			//
+			printf("\n\nPlease enter get hot category:");
+			gets(content);
+			strcpy( pall->users_hot.category_ ,content);
+		}
+		break;
+
+	case WEIBO_OPTION(POST_USERS_REMARK)://更新修改当前登录用户所关注的某个好友的备注信息New!
+		{
+			p_twb = &pall->users_remark;
+			Wb_init_wb_struct(option , p_twb);
+
+			//
+			printf("\n\nPlease enter user id:");
+			gets(content);
+			strcpy( pall->users_remark.userId_ ,content);
+
+			//
+			printf("\n\nPlease enter modify user mark:");
+			gets(content);
+			strcpy( pall->users_remark.remark_ ,content);
+		}
+		break;
+
+	case WEIBO_OPTION(GET_USERS_SUGGESTIONS): // 返回当前用户可能感兴趣的用户
+		{
+			p_twb = &pall->users_suggestions;
+			Wb_init_wb_struct(option , p_twb);
+
+			printf("\n\nPlease enter with_reasons ? 1:0 :");
+			gets(content);
+			pall->users_suggestions.with_reason = atoi(content);
+		}
+		break;
+
+		/////////////////////////////////////////////////////
+		// 话题接口 ,by welbon,2011-01-10
+	case WEIBO_OPTION(GET_TRENDS)://trends 获取某人的话题
+		{
+			p_twb = &pall->trends;
+			Wb_init_wb_struct(option , p_twb);
+
+			printf("\n\nPlease enter user id:");
+			gets(content);
+			strcpy( pall->trends.usrid_,content);
+		}
+		break;
+
+	case WEIBO_OPTION(GET_TRENDS_STATUSES)://trends/statuses 获取某一话题下的微博
+		{
+			p_twb = &pall->trend_statuses;
+			Wb_init_wb_struct(option , p_twb);
+
+			printf("\n\nPlease enter trend name:");
+			gets(content);
+			strcpy( pall->trend_statuses.terndname_,content);
+		}
+		break;
+	case WEIBO_OPTION(POST_TRENDS_FOLLOW)://trends/follow 关注某一个话题
+		{
+			p_twb = &pall->trend_follow;
+			Wb_init_wb_struct(option , p_twb);
+
+			printf("\n\nPlease enter trend name:");
+			gets(content);
+			strcpy( pall->trend_follow.terndname_,content);
+		}
+		break;
+	case WEIBO_OPTION(DELETE_TRENDS_DESTROY)://trends/destroy 取消关注的某一个话题
+		{
+			p_twb = &pall->trend_destroy;
+			Wb_init_wb_struct(option , p_twb);
+
+			printf("\n\nPlease enter trend id:");
+			gets(content);
+			strcpy( pall->trend_destroy.trendid_,content);
+		}
+		break;
+
+	case WEIBO_OPTION(GET_TRENDS_HOURLY)://trends/destroy 按小时返回热门话题
+	case WEIBO_OPTION(GET_TRENDS_DAYLIY)://trends/daily 按日期返回热门话题。返回某一日期的话题
+	case WEIBO_OPTION(GET_TRENDS_WEEKLIY)://trends/weekly 按周返回热门话题。返回某一日期之前某一周的话题
+		{
+			p_twb = &pall->trend_hourly;
+			Wb_init_wb_struct(option , p_twb);
+
+			//printf("\n\nPlease enter trend id:");
+			//gets(content);
+			//strcpy(pall->trend_hourly.baseapp_,content);
+		}
+		break;
+
+
+		///////////////////////////////////////////////////
+		// 黑名单接口 ,by welbon,2011-01-10
+	case WEIBO_OPTION(POST_BLOCKS_CREATE)://将某用户加入黑名单
+		{
+			p_twb = &pall->block_create;
+			Wb_init_wb_struct(option , p_twb);
+
+			// user id
+			printf("\n\nPlease enter user id:");
+			gets(content);
+			strcpy( pall->block_create.usrid_,content);
+
+			// screen name 
+			printf("\n\nPlease enter screen name:");
+			gets(content);
+			strcpy( pall->block_create.screenname_,content);
+		}
+		break;
+	case WEIBO_OPTION(POST_BLOCKS_DESTROY)://将某用户移出黑名单
+		{
+			p_twb = &pall->block_destroy;
+			Wb_init_wb_struct(option , p_twb);
+
+			// user id
+			printf("\n\nPlease enter user id:");
+			gets(content);
+			strcpy( pall->block_destroy.usrid_,content);
+
+			// screen name 
+			printf("\n\nPlease enter screen name:");
+			gets(content);
+			strcpy( pall->block_destroy.screenname_,content);
+		}
+		break;
+	case WEIBO_OPTION(GET_BLOCKS_EXISTS)://检测某用户是否是黑名单用户
+		{
+			p_twb = &pall->block_exist;
+			Wb_init_wb_struct(option , p_twb);
+
+			// user id
+			printf("\n\nPlease enter user id:");
+			gets(content);
+			strcpy( pall->block_exist.usrid_,content);
+
+			// screen name 
+			printf("\n\nPlease enter screen name:");
+			gets(content);
+			strcpy( pall->block_exist.screenname_,content);
+		}
+		break;
+	case WEIBO_OPTION(GET_BLOCKS_BLOCKING)://列出黑名单用户(输出用户详细信息)
+		{
+			p_twb = &pall->block_exist;
+			Wb_init_wb_struct(option , p_twb);
+
+			// page
+			printf("\n\nPlease enter page:");
+			gets(content);
+			pall->block_bloking.page_ = atoi(content);
+
+			// count
+			printf("\n\nPlease enter count:");
+			gets(content);
+			pall->block_bloking.count_ = atoi(content);
+		}
+		break;
+
+	case WEIBO_OPTION(GET_BLOCKS_BLOCKING_IDS)://列出分页黑名单用户（只输出id）
+		{
+			p_twb = &pall->block_ids;
+			Wb_init_wb_struct(option , p_twb);
+
+			// page
+			printf("\n\nPlease enter page:");
+			gets(content);
+			pall->block_bloking.page_ = atoi(content);
+
+			// count
+			printf("\n\nPlease enter count:");
+			gets(content);
+			pall->block_bloking.count_ = atoi(content);
+		}
+		break;
+
+		/////////////////////////////////////////////////////
+		// 用户标签接口 ,BY WELBON,2011-01-10
+	case WEIBO_OPTION(GET_TAGS)://TAGS 返回指定用户的标签列表
+		{
+			p_twb = &pall->tags;
+			Wb_init_wb_struct(option , p_twb);
+
+			// user id
+			printf("\n\nPlease enter user id:");
+			gets(content);
+			strcpy( pall->tags.usrid_,content);
+
+			// page
+			printf("\n\nPlease enter page:");
+			gets(content);
+			pall->tags.page_ = atoi(content);
+
+			// count
+			printf("\n\nPlease enter count:");
+			gets(content);
+			pall->tags.count_ = atoi(content);
+		}
+		break;
+
+	case WEIBO_OPTION(POST_TAGS_CREATE)://TAGS/CREATE 添加用户标签
+		{
+			p_twb = &pall->tags_create;
+			Wb_init_wb_struct(option , p_twb);
+
+			// content
+			printf("\n\nPlease enter tags create,splite by \",\":");
+			gets(content);
+			strcpy( pall->tags_create.tags_,content );
+		}
+		break;
+
+	case WEIBO_OPTION(GET_TAGS_SUGGESTIONS)://TAGS/SUGGESTIONS 返回用户感兴趣的标签
+		{
+			p_twb = &pall->tags_suggestions;
+			Wb_init_wb_struct(option , p_twb);
+
+			// page
+			printf("\n\nPlease enter page:");
+			gets(content);
+			pall->tags_suggestions.page_ = atoi(content);
+
+			// count
+			printf("\n\nPlease enter count:");
+			gets(content);
+			pall->tags_suggestions.count_ = atoi(content);
+		}
+		break;
+	case WEIBO_OPTION(POST_TAGS_DESTROY)://TAGS/DESTROY 删除标签
+		{
+			p_twb = &pall->tags_destroy;
+			Wb_init_wb_struct(option , p_twb);
+
+			// tag_id
+			printf("\n\nPlease enter tags id:");
+			gets(content);
+			strcpy( pall->tags_destroy.tagId_,content );
+		}
+		break;
+	case WEIBO_OPTION(POST_TAGS_DESTROY_BATCH)://TAGS/DESTROY_BATCH 批量删除标签
+		{
+			p_twb = &pall->tags_destroy_batch ;
+			Wb_init_wb_struct(option , p_twb);
+
+			// tag_id
+			printf("\n\nPlease enter tags create,splite by \",\":");
+			gets(content);
+			strcpy( pall->tags_destroy_batch.ids_,content );
+		}
+		break;
+
+	case WEIBO_OPTION(POST_INVITE_MAILCONTACT)://邀请邮箱联系人
+		{
+			p_twb = &pall->invitec_mail ;
+			Wb_init_wb_struct(option , p_twb);
+
+			// 输入邮箱ID
+			printf("\n\nPlease enter your email account:\n");
+			gets(content);
+			strcpy( pall->invitec_mail.usrid_,content );
+
+			// 输入邮箱密码
+			printf("\n\nPlease enter your email password:\n");
+			gets(content);
+			strcpy( pall->invitec_mail.usrpwd_,content );
+
+			// 输入类型
+			printf("\n\nPlease enter your mail type [1 sina,2 gmail,3 126Mail,4 163Mail]:\n");
+			gets(content);
+			pall->invitec_mail.type_ = atoi(content);
+
+		}
+		break;
+	case WEIBO_OPTION(POST_INVITE_MSNCONTACT): //邀请MSN联系人
+		{
+			p_twb = &pall->invitec_msn ;
+			Wb_init_wb_struct(option , p_twb);
+
+			// 输入邮箱ID
+			printf("\n\nPlease enter your msn account:\n");
+			gets(content);
+			strcpy( pall->invitec_msn.usrid_,content );
+
+			// 输入邮箱密码
+			printf("\n\nPlease enter your msn password:\n");
+			gets(content);
+			strcpy( pall->invitec_msn.usrpwd_,content );
+		}
+		break;
+	case WEIBO_OPTION(POST_INVITE_SENDMAILS):  //发送邀请邮件
+		{
+			p_twb = &pall->invitec_sendmail ;
+			Wb_init_wb_struct(option , p_twb);
+
+			// 输入邮箱ID
+			printf("\n\nPlease enter your mail account:\n");
+			gets(content);
+			strcpy( pall->invitec_sendmail.myusrid_,content );
+
+			// 输入邮箱我的邮箱类型
+			printf("\n\nPlease enter your mail type [msn/mail]:\n");
+			gets(content);
+			strcpy( pall->invitec_sendmail.mailtype_,content );
+
+			// 输入邮箱我的昵称
+			printf("\n\nPlease enter your invite NICK Name:\n");
+			gets(content);
+			strcpy( pall->invitec_sendmail.nickname_,content );
+
+			// 输入邮箱我的邮箱列表
+			printf("\n\nPlease enter your mail list ,splite by \",\":\n");
+			gets(content);
+			strcpy( pall->invitec_sendmail.maillist_,content );
+		}
+		break;
+
+	case WEIBO_OPTION(UPDATETGT):
+		{
+			p_twb = &pall->cookie;
+			Wb_init_wb_struct(option , p_twb);
+		}
+		break;
+
+	case WEIBO_OPTION(GET_MEDIA_SHORTURL_BATCH):
+		{
+			p_twb = &pall->media_shorturl_batch ;
+			Wb_init_wb_struct(option , p_twb);
+
+			//
+			printf("\n\nPlease enter your get media short url ids:\n");
+			gets(content);
+			strcpy( pall->media_shorturl_batch.urlids_,content );
+		}
+		break;
+
 	}
 
 	if( !p_twb )
@@ -1052,6 +1530,7 @@ void test_weibo(WEIBORequest* wbRequest , int option , struct t_wb_allstruct* pa
 	pwb_interface->pfun_request_stop(wbRequest);
 	SYSTEM("pause");
 }
+
 
 int TEST_MAIN(int argc,char** argv)
 {
@@ -1232,12 +1711,17 @@ int TEST_MAIN(int argc,char** argv)
 
 	do
 	{
-		printf("\n\nPlease enter TEST number[exit:'q']:");
+		printf("\n\nPlease enter TEST number [exit:'q' keylist:list]:");
 		gets(enter);
 
 		// "q" exit
-		if( strcmp(enter ,"q") == 0 ) 
+		if( strcmp(enter ,"q") == 0 ) {
 			break;
+		}
+		else if( strcmp(enter,"list") == 0){
+			print_weibo_command_list();
+			continue;
+		}
 
 
 		void *pUsrData = NULL;
@@ -1260,4 +1744,3 @@ int TEST_MAIN(int argc,char** argv)
 
 	return 0;
 }
-

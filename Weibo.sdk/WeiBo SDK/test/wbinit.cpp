@@ -187,6 +187,15 @@ WEIBO_struct_init_callback(PUTSTATUSES_UPLOAD)
 	return true;
 }
 
+WEIBO_struct_init_callback(PUTSTATUSES_UPLOAD_PIC)
+{
+	WEIBO_struct_cast(t_wb_put_statuses_upload_pic);
+
+	SET_struct_callback_object( WEIBO_OPTION(PUTSTATUSES_UPLOAD_PIC) , pstruct->wbauth_ );
+
+	return true;
+}
+
 
 WEIBO_struct_init_callback(PUTSTATUSES_DESTROY)
 {
@@ -302,6 +311,16 @@ WEIBO_struct_init_callback(PUTDIRECTMSG_DESTROY)
 	return true;
 }
 
+WEIBO_struct_init_callback(GETDIRECTMSG_WITH)
+{
+	WEIBO_struct_cast(t_wb_get_direct_message_with);
+
+	SET_struct_callback_object( WEIBO_OPTION(GETDIRECTMSG_WITH) , pstruct->wbauth_ );
+
+	return true;
+}
+
+
 
 //关注
 WEIBO_struct_init_callback(PUTFRIENDSHIPS_CREATE)
@@ -309,6 +328,16 @@ WEIBO_struct_init_callback(PUTFRIENDSHIPS_CREATE)
 	WEIBO_struct_cast(t_wb_put_friendships_create);
 
 	SET_struct_callback_object( WEIBO_OPTION(PUTFRIENDSHIPS_CREATE) , pstruct->wbauth_ );
+
+	return true;
+}
+
+//关注
+WEIBO_struct_init_callback(PUTFRIENDSHIPS_CREATE_BATCH)
+{
+	WEIBO_struct_cast(t_wb_put_friendships_create_batch);
+
+	SET_struct_callback_object( WEIBO_OPTION(PUTFRIENDSHIPS_CREATE_BATCH) , pstruct->wbauth_ );
 
 	return true;
 }
@@ -330,6 +359,16 @@ WEIBO_struct_init_callback(GETFRIENDSHIPS_EXISTS)
 
 	return true;
 }
+
+WEIBO_struct_init_callback(GETFRIENDSHIPS_BATCH_EXISTS)
+{
+	WEIBO_struct_cast(t_wb_get_friendships_batchexist);
+
+	SET_struct_callback_object( WEIBO_OPTION(GETFRIENDSHIPS_BATCH_EXISTS) , pstruct->wbauth_ );
+
+	return true;
+}
+
 
 //Social Graph
 WEIBO_struct_init_callback(GETFRIEND_IDS)
@@ -466,15 +505,6 @@ WEIBO_struct_init_callback(OAUTH_ACCESS_TOKEN)// 获取授权过的Access Token
 	return true;
 }
 
-WEIBO_struct_init_callback(XAUTH_ACCESS_TOKEN)// xauth 获取授权过的Access Token
-{
-	WEIBO_struct_cast(t_wb_xauth_access_token);
-
-	SET_struct_callback_object( WEIBO_OPTION(XAUTH_ACCESS_TOKEN) , pstruct->wbauth_ );
-
-	return true;
-}
-
 //
 WEIBO_struct_init_callback(GET_EMOTIONS)
 {
@@ -528,13 +558,253 @@ WEIBO_struct_init_callback(COOKIE)
 }
 
 //自定义URL
-WEIBO_struct_init_callback(CUSTOM)
+WEIBO_struct_init_callback(UPDATETGT)
 {
-	WEIBO_struct_cast(t_wb_custom);
-    SET_struct_callback_object( WEIBO_OPTION(COOKIE) , pstruct->wbauth_ );
+	WEIBO_struct_cast(t_wb_updateTGT);
+	SET_struct_callback_object( WEIBO_OPTION(UPDATETGT) , pstruct->wbauth_ );
 	return true;
 }
 
+//自定义URL
+WEIBO_struct_init_callback(CUSTOM)
+{
+	WEIBO_struct_cast(t_wb_custom);
+    SET_struct_callback_object( WEIBO_OPTION(CUSTOM) , pstruct->wbauth_ );
+	return true;
+}
+
+//HOT_REPOST_DAYLIY
+WEIBO_struct_init_callback(HOT_REPOST_DAYLIY)
+{
+	WEIBO_struct_cast(t_wb_hotpoint);
+    SET_struct_callback_object( WEIBO_OPTION(HOT_REPOST_DAYLIY) , pstruct->wbauth_ );
+	return true;
+}
+
+//HOT_REPOST_WEEKLY
+WEIBO_struct_init_callback(HOT_REPOST_WEEKLIY)
+{
+	WEIBO_struct_cast(t_wb_hotpoint);
+    SET_struct_callback_object( WEIBO_OPTION(HOT_REPOST_WEEKLY) , pstruct->wbauth_ );
+	return true;
+}
+
+//HOT_COMMENT_DAYLIY
+WEIBO_struct_init_callback(HOT_COMMENT_DAYLIY)
+{
+	WEIBO_struct_cast(t_wb_hotpoint);
+    SET_struct_callback_object( WEIBO_OPTION(HOT_COMMENT_DAYLIY) , pstruct->wbauth_ );
+	return true;
+}
+
+//HOT_COMMENT_WEEKLY
+WEIBO_struct_init_callback(HOT_COMMENT_WEEKLIY)
+{
+	WEIBO_struct_cast(t_wb_hotpoint);
+    SET_struct_callback_object( WEIBO_OPTION(HOT_COMMENT_WEEKLY) , pstruct->wbauth_ );
+	return true;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// 用户新接口
+
+// 获取系统推荐用户
+WEIBO_struct_init_callback(GET_USERS_HOT)
+{
+	WEIBO_struct_cast(t_wb_users_hot);
+	SET_struct_callback_object( WEIBO_OPTION(GET_USERS_HOT) , pstruct->wbauth_ );
+	return true;
+}
+//更新修改当前登录用户所关注的某个好友的备注信息New!
+WEIBO_struct_init_callback(POST_USERS_REMARK)
+{
+	WEIBO_struct_cast(t_wb_users_remark);
+	SET_struct_callback_object( WEIBO_OPTION(POST_USERS_REMARK) , pstruct->wbauth_ );
+	return true;
+}
+
+//返回当前用户可能感兴趣的用户
+WEIBO_struct_init_callback(GET_USERS_SUGGESTIONS)
+{
+	WEIBO_struct_cast(t_wb_users_suggestions);
+	SET_struct_callback_object( WEIBO_OPTION(GET_USERS_SUGGESTIONS) , pstruct->wbauth_ );
+	return true;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// 用户
+
+// 话题接口 ,by welbon,2011-01-10
+//trends 获取某人的话题
+WEIBO_struct_init_callback(GET_TRENDS)
+{
+	WEIBO_struct_cast(t_wb_trends);
+	SET_struct_callback_object( WEIBO_OPTION(GET_TRENDS) , pstruct->wbauth_ );
+	return true;
+}
+
+//trends/statuses 获取某一话题下的微博
+WEIBO_struct_init_callback(GET_TRENDS_STATUSES)
+{
+	WEIBO_struct_cast(t_wb_trends_statuses);
+	SET_struct_callback_object( WEIBO_OPTION(GET_TRENDS_STATUSES) , pstruct->wbauth_ );
+	return true;
+}
+
+//trends/follow 关注某一个话题
+WEIBO_struct_init_callback(POST_TRENDS_FOLLOW)
+{
+	WEIBO_struct_cast(t_wb_trends_follow);
+	SET_struct_callback_object( WEIBO_OPTION(POST_TRENDS_FOLLOW) , pstruct->wbauth_ );
+	return true;
+}
+
+//trends/destroy 取消关注的某一个话题
+WEIBO_struct_init_callback(DELETE_TRENDS_DESTROY)
+{
+	WEIBO_struct_cast(t_wb_trends_destroy);
+	SET_struct_callback_object( WEIBO_OPTION(DELETE_TRENDS_DESTROY) , pstruct->wbauth_ );
+	return true;
+}
+
+//trends/destroy 按小时返回热门话题
+WEIBO_struct_init_callback(GET_TRENDS_HOURLY)
+{
+	WEIBO_struct_cast(t_wb_trends_hourly);
+	SET_struct_callback_object( WEIBO_OPTION(GET_TRENDS_HOURLY), pstruct->wbauth_ );
+	return true;
+}
+
+//trends/daily 按日期返回热门话题。返回某一日期的话题
+WEIBO_struct_init_callback(GET_TRENDS_DAYLIY)
+{
+	WEIBO_struct_cast(t_wb_trends_daily);
+	SET_struct_callback_object( WEIBO_OPTION(GET_TRENDS_DAYLIY), pstruct->wbauth_ );
+	return true;
+}
+
+//trends/weekly 按周返回热门话题。返回某一日期之前某一周的话题
+WEIBO_struct_init_callback(GET_TRENDS_WEEKLIY)
+{
+	WEIBO_struct_cast(t_wb_trends_weekly);
+	SET_struct_callback_object( WEIBO_OPTION(GET_TRENDS_WEEKLIY), pstruct->wbauth_ );
+	return true;
+}
+
+// 黑名单接口 ,by welbon,2011-01-10
+//将某用户加入黑名单
+WEIBO_struct_init_callback(POST_BLOCKS_CREATE)
+{
+	WEIBO_struct_cast(t_wb_blocks_create);
+	SET_struct_callback_object( WEIBO_OPTION(POST_BLOCKS_CREATE), pstruct->wbauth_ );
+	return true;
+}
+//将某用户移出黑名单
+WEIBO_struct_init_callback(POST_BLOCKS_DESTROY)
+{
+	WEIBO_struct_cast(t_wb_blocks_destroy);
+	SET_struct_callback_object( WEIBO_OPTION(POST_BLOCKS_DESTROY), pstruct->wbauth_ );
+	return true;
+}
+//检测某用户是否是黑名单用户
+WEIBO_struct_init_callback(GET_BLOCKS_EXISTS)
+{
+	WEIBO_struct_cast(t_wb_blocks_exist);
+	SET_struct_callback_object( WEIBO_OPTION(GET_BLOCKS_EXISTS), pstruct->wbauth_ );
+	return true;
+}
+//列出黑名单用户(输出用户详细信息)
+WEIBO_struct_init_callback(GET_BLOCKS_BLOCKING)
+{
+	WEIBO_struct_cast(t_wb_blocks_blocking);
+	SET_struct_callback_object( WEIBO_OPTION(GET_BLOCKS_BLOCKING), pstruct->wbauth_ );
+	return true;
+}
+
+//列出分页黑名单用户（只输出id）
+WEIBO_struct_init_callback(GET_BLOCKS_BLOCKING_IDS)
+{
+	WEIBO_struct_cast(t_wb_blocks_blocking_ids);
+	SET_struct_callback_object( WEIBO_OPTION(GET_BLOCKS_BLOCKING_IDS), pstruct->wbauth_ );
+	return true;
+}
+
+//用户标签接口 ,by welbon,2011-01-10
+
+//tags 返回指定用户的标签列表
+WEIBO_struct_init_callback(GET_TAGS)
+{
+	WEIBO_struct_cast(t_wb_tags);
+	SET_struct_callback_object( WEIBO_OPTION(GET_TAGS), pstruct->wbauth_ );
+	return true;
+}
+
+//tags/create 添加用户标签
+WEIBO_struct_init_callback(POST_TAGS_CREATE)
+{
+	WEIBO_struct_cast(t_wb_tags_create);
+	SET_struct_callback_object( WEIBO_OPTION(POST_TAGS_CREATE), pstruct->wbauth_ );
+	return true;
+}
+
+//tags/suggestions 返回用户感兴趣的标签
+WEIBO_struct_init_callback(GET_TAGS_SUGGESTIONS)
+{
+	WEIBO_struct_cast(t_wb_tags_suggestions);
+	SET_struct_callback_object( WEIBO_OPTION(GET_TAGS_SUGGESTIONS), pstruct->wbauth_ );
+	return true;
+}
+
+//tags/destroy 删除标签
+WEIBO_struct_init_callback(POST_TAGS_DESTROY)
+{
+	WEIBO_struct_cast(t_wb_tags_destroy);
+	SET_struct_callback_object( WEIBO_OPTION(POST_TAGS_DESTROY), pstruct->wbauth_ );
+	return true;
+}
+
+//tags/destroy_batch 批量删除标签
+WEIBO_struct_init_callback(POST_TAGS_DESTROY_BATCH)
+{
+	WEIBO_struct_cast(t_wb_tags_destroy_batch);
+	SET_struct_callback_object( WEIBO_OPTION(POST_TAGS_DESTROY_BATCH), pstruct->wbauth_ );
+	return true;
+}
+
+WEIBO_struct_init_callback(POST_INVITE_MAILCONTACT)
+{
+	WEIBO_struct_cast(t_wb_invite_mailcontect );
+	SET_struct_callback_object( WEIBO_OPTION(POST_INVITE_MAILCONTACT), pstruct->wbauth_ );
+	return true;
+}
+
+WEIBO_struct_init_callback(POST_INVITE_MSNCONTACT)
+{
+	WEIBO_struct_cast(t_wb_invite_msncontect);
+	SET_struct_callback_object( WEIBO_OPTION(POST_INVITE_MSNCONTACT), pstruct->wbauth_ );
+	return true;
+}
+
+WEIBO_struct_init_callback(POST_INVITE_SENDMAILS)
+{
+	WEIBO_struct_cast(t_wb_invite_sendmails);
+	SET_struct_callback_object( WEIBO_OPTION(POST_INVITE_SENDMAILS), pstruct->wbauth_ );
+	return true;
+}
+
+WEIBO_struct_init_callback(GET_MEDIA_SHORTURL_BATCH)
+{
+	WEIBO_struct_cast(t_wb_media_shorturl_batch);
+	SET_struct_callback_object( WEIBO_OPTION(GET_MEDIA_SHORTURL_BATCH), pstruct->wbauth_ );
+	return true;
+}
+
+WEIBO_struct_init_callback(XAUTH_ACCESS_TOKEN)
+{
+	WEIBO_struct_cast(t_wb_xauth_access_token);
+	SET_struct_callback_object( WEIBO_OPTION(XAUTH_ACCESS_TOKEN), pstruct->wbauth_ );
+	return true;
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -560,6 +830,7 @@ static fun_init_wb_struct_callback vector_init_callback[ WEIBO_OPTION(LAST) ] =
 	WEIBO_struct_init_fun(GOTOSTATUSES_ID),
 	WEIBO_struct_init_fun(PUTSTATUSES_UPDATE),
 	WEIBO_struct_init_fun(PUTSTATUSES_UPLOAD),
+	WEIBO_struct_init_fun(PUTSTATUSES_UPLOAD_PIC),
 	WEIBO_struct_init_fun(PUTSTATUSES_DESTROY),
 	WEIBO_struct_init_fun(PUTSTATUSES_REPOST),
 	WEIBO_struct_init_fun(PUTSTATUSES_COMMENT),
@@ -576,11 +847,15 @@ static fun_init_wb_struct_callback vector_init_callback[ WEIBO_OPTION(LAST) ] =
 	WEIBO_struct_init_fun(GETDIRESTMSG_SENT),
 	WEIBO_struct_init_fun(PUTDIRECTMSG_NEW),
 	WEIBO_struct_init_fun(PUTDIRECTMSG_DESTROY),
+	WEIBO_struct_init_fun(GETDIRECTMSG_WITH),
+	
 
 	//关注
 	WEIBO_struct_init_fun(PUTFRIENDSHIPS_CREATE),
+	WEIBO_struct_init_fun(PUTFRIENDSHIPS_CREATE_BATCH),
 	WEIBO_struct_init_fun(PUTFRIENDSHIPS_DESTROY),
 	WEIBO_struct_init_fun(GETFRIENDSHIPS_EXISTS),
+	WEIBO_struct_init_fun(GETFRIENDSHIPS_BATCH_EXISTS),
 
 	//Social Graph
 	WEIBO_struct_init_fun(GETFRIEND_IDS),
@@ -611,10 +886,55 @@ static fun_init_wb_struct_callback vector_init_callback[ WEIBO_OPTION(LAST) ] =
 	WEIBO_struct_init_fun(GET_PROVINCES),
 	WEIBO_struct_init_fun(REPORT),//49 举报
 	WEIBO_struct_init_fun(COOKIE),
+	WEIBO_struct_init_fun(UPDATETGT),//UPDATETGT,
 
-	WEIBO_struct_init_fun(XAUTH_ACCESS_TOKEN),// 获取授权过的Access Token
 	//自定义URL
 	WEIBO_struct_init_fun(CUSTOM),
+
+	//hot point 
+	WEIBO_struct_init_fun(HOT_REPOST_DAYLIY),
+	WEIBO_struct_init_fun(HOT_REPOST_WEEKLIY),
+	WEIBO_struct_init_fun(HOT_COMMENT_DAYLIY),
+	WEIBO_struct_init_fun(HOT_COMMENT_WEEKLIY),
+
+	//user new
+	WEIBO_struct_init_fun(GET_USERS_HOT),// 获取系统推荐用户
+	WEIBO_struct_init_fun(POST_USERS_REMARK),//更新修改当前登录用户所关注的某个好友的备注信息New!
+	WEIBO_struct_init_fun(GET_USERS_SUGGESTIONS),//返回当前用户可能感兴趣的用户
+
+	// 话题接口 ,by welbon,2011-01-10
+	WEIBO_struct_init_fun(GET_TRENDS),//trends 获取某人的话题
+	WEIBO_struct_init_fun(GET_TRENDS_STATUSES),//trends/statuses 获取某一话题下的微博
+	WEIBO_struct_init_fun(POST_TRENDS_FOLLOW),//trends/follow 关注某一个话题
+	WEIBO_struct_init_fun(DELETE_TRENDS_DESTROY),//trends/destroy 取消关注的某一个话题
+	WEIBO_struct_init_fun(GET_TRENDS_HOURLY),//trends/destroy 按小时返回热门话题
+	WEIBO_struct_init_fun(GET_TRENDS_DAYLIY),//trends/daily 按日期返回热门话题。返回某一日期的话题
+	WEIBO_struct_init_fun(GET_TRENDS_WEEKLIY),//trends/weekly 按周返回热门话题。返回某一日期之前某一周的话题
+
+	// 黑名单接口 ,by welbon,2011-01-10
+	WEIBO_struct_init_fun(POST_BLOCKS_CREATE),//将某用户加入黑名单
+	WEIBO_struct_init_fun(POST_BLOCKS_DESTROY),//将某用户移出黑名单
+	WEIBO_struct_init_fun(GET_BLOCKS_EXISTS),//检测某用户是否是黑名单用户
+	WEIBO_struct_init_fun(GET_BLOCKS_BLOCKING),//列出黑名单用户(输出用户详细信息)
+	WEIBO_struct_init_fun(GET_BLOCKS_BLOCKING_IDS),//列出分页黑名单用户（只输出id）
+
+	//用户标签接口 ,by welbon,2011-01-10
+	WEIBO_struct_init_fun(GET_TAGS),//tags 返回指定用户的标签列表
+	WEIBO_struct_init_fun(POST_TAGS_CREATE),//tags/create 添加用户标签
+	WEIBO_struct_init_fun(GET_TAGS_SUGGESTIONS),//tags/suggestions 返回用户感兴趣的标签
+	WEIBO_struct_init_fun(POST_TAGS_DESTROY),//tags/destroy 删除标签
+	WEIBO_struct_init_fun(POST_TAGS_DESTROY_BATCH),//tags/destroy_batch 批量删除标签
+
+	// 邀请接口
+	WEIBO_struct_init_fun(POST_INVITE_MAILCONTACT),//邀请邮箱联系人
+	WEIBO_struct_init_fun(POST_INVITE_MSNCONTACT), //邀请MSN联系人
+	WEIBO_struct_init_fun(POST_INVITE_SENDMAILS),  //发送邀请邮件
+
+	// Media
+	WEIBO_struct_init_fun(GET_MEDIA_SHORTURL_BATCH),  //批量获取
+
+	//XAuth
+	WEIBO_struct_init_fun(XAUTH_ACCESS_TOKEN),  //
 };
 
 

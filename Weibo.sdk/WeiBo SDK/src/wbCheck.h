@@ -41,7 +41,33 @@ typedef enum
 	Err_PWD_ID,
 	Err_OAUTHVERIFY_ID,
 	Err_UIDTYPE_ID,
+
+	// 
+	Err_KEYWORD, // keyword null
+	Err_TREND_ID,
+	Err_TAGS_ID,
+
+	// register
+	Err_REG_NICK,	// nick name
+	Err_REG_GENDER, // gender
+	Err_REG_MAIL,	// email
+	Err_REG_PWD,	// password
+	Err_REG_IP,		// city id
+
+	// tgt
+	Err_UPDATETGT_SUE,
+	Err_UPDATETGT_SUP,
+	Err_UPDATETGT_VERIFY_TGT,
+
+	// invite mail
+	Err_MAIL_ID, // mail ID
+	Err_MAIL_PWD,// mail password
+	Err_MAIL_TYPE,// mail type
+	Err_MAIL_LIST,// mail list
+	Err_MAIL_NICKNAME,// mail nick name
+
 	Err_AUTH_MODE,
+
 }WBCheckerror;
 
 /**
