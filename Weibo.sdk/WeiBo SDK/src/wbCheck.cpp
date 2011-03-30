@@ -231,17 +231,6 @@ WEIBO_check_callback(PUTSTATUSES_UPLOAD)
 	return Err_OK;
 }
 
-WEIBO_check_callback(PUTSTATUSES_UPLOAD_PIC)
-{// 上传图片
-
-	WEIBO_struct_cast(t_wb_put_statuses_upload_pic);
-
-	if( pstruct->szImagePath_[0] == '\0' ) {
-		return Err_IMAGE_ID;
-	}
-	return Err_OK;
-}
-
 
 WEIBO_check_callback(PUTSTATUSES_DESTROY)
 {// 删除一条微博信息
@@ -1053,7 +1042,6 @@ f_check_callback vector_check_callbak[]=
 	WEIBO_check_fun(GOTOSTATUSES_ID),// 根据微博ID和用户ID跳转到单条微博页面 
 	WEIBO_check_fun(PUTSTATUSES_UPDATE),// 发布一条微博信息 
 	WEIBO_check_fun(PUTSTATUSES_UPLOAD),// 上传图片并发布一条微博信息
-	WEIBO_check_fun(PUTSTATUSES_UPLOAD_PIC),// 上传图片
 	WEIBO_check_fun(PUTSTATUSES_DESTROY),// 删除一条微博信息 
 	WEIBO_check_fun(PUTSTATUSES_REPOST),// 转发一条微博信息（可加评论） 
 	WEIBO_check_fun(PUTSTATUSES_COMMENT),// 对一条微博信息进行评论 

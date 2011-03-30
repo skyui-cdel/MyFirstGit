@@ -545,7 +545,6 @@ const lohttp::HTTPChar* Weibo_url_geturi( WEIBOoption option )
 		{WEIBO_OPTION(GOTOSTATUSES_ID)            , HTTP_T("%s/%s/statuses/%s")},// 根据微博ID和用户ID跳转到单条微博页面 
 		{WEIBO_OPTION(PUTSTATUSES_UPDATE)         , HTTP_T("/statuses/update")},// 发布一条微博信息 
 		{WEIBO_OPTION(PUTSTATUSES_UPLOAD)         , HTTP_T("/statuses/upload")},// 上传图片并发布一条微博信息 
-		{WEIBO_OPTION(PUTSTATUSES_UPLOAD_PIC)	  , HTTP_T("/statuses/upload_pic")},// 上传图片
 		{WEIBO_OPTION(PUTSTATUSES_DESTROY)        , HTTP_T("/statuses/destroy")},// 删除一条微博信息 
 		{WEIBO_OPTION(PUTSTATUSES_REPOST)         , HTTP_T("/statuses/repost")},// 转发一条微博信息（可加评论） 
 		{WEIBO_OPTION(PUTSTATUSES_COMMENT)        , HTTP_T("/statuses/comment")},// 对一条微博信息进行评论 
@@ -1250,18 +1249,6 @@ WEIBO_url_callback(PUTSTATUSES_UPLOAD)
 
 	//Weibo_url_generate_URI(URI , HTTP_T("&status")   , CURLEncodeA(pstruct->szwbInfo_,0).c_str() , PARAM_ENCODE_UTF8 );
 	Weibo_url_generate_URI(URI , HTTP_T("&status")   , StringReplace(pstruct->szwbInfo_,"%","%25").c_str() , PARAM_ENCODE_UTF8 );
-	
-	HTTP_SET_UPLOAD_METHOD();
-
-	return 0;
-}
-
-WEIBO_url_callback(PUTSTATUSES_UPLOAD_PIC)
-{// 上传图片
-	int  ret = -1;
-	WEIBO_struct_cast(t_wb_put_statuses_upload_pic);
-
-	URICHECK_RETURN( Weibo_url_get_uri(URI , WEIBO_OPTION(PUTSTATUSES_UPLOAD_PIC), req_ex) );
 	
 	HTTP_SET_UPLOAD_METHOD();
 
@@ -2633,7 +2620,6 @@ f_url_callback vector_url_callbak[]=
 	WEIBO_url_fun(GOTOSTATUSES_ID),//12 根据微博ID和用户ID跳转到单条微博页面 
 	WEIBO_url_fun(PUTSTATUSES_UPDATE),//13 发布一条微博信息 
 	WEIBO_url_fun(PUTSTATUSES_UPLOAD),//14 上传图片并发布一条微博信息
-	WEIBO_url_fun(PUTSTATUSES_UPLOAD_PIC),// 上传图片并发布一条微博信息
 	WEIBO_url_fun(PUTSTATUSES_DESTROY),//15 删除一条微博信息 
 	WEIBO_url_fun(PUTSTATUSES_REPOST),//16 转发一条微博信息（可加评论） 
 	WEIBO_url_fun(PUTSTATUSES_COMMENT),//17 对一条微博信息进行评论 
@@ -2775,7 +2761,7 @@ int Weibo_url_set(lohttp::LOHttp* pHttp , WEIBOoption option , const void* t_wb 
 		{
 			return Weibo_url_http_seturl(pHttp , URI  , httpmethod , 0 , req_ex);
 		}
-		else if( WEIBO_OPTION(PUTSTATUSES_UPLOAD) == option || WEIBO_OPTION(PUTSTATUSES_UPLOAD_PIC) == option )
+		else if( WEIBO_OPTION(PUTSTATUSES_UPLOAD) == option )
 		{// 表单方式			
 			return Weibo_url_upload_form(pHttp ,URI  , httpmethod ,  t_wb , "pic" , req_ex );
 		}

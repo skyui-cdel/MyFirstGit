@@ -117,11 +117,7 @@ void* Weibo_senddata_create(int type , const void* senddata)
 		MALLOC( t_wb_put_statuses_upload );
 		break;
 
-	case WEIBO_OPTION(PUTSTATUSES_UPLOAD_PIC):
-		MALLOC( t_wb_put_statuses_upload_pic );
-		break;
-
-	case WEIBO_OPTION(PUTSTATUSES_DESTROY):
+    case WEIBO_OPTION(PUTSTATUSES_DESTROY):
 		MALLOC( t_wb_put_statuses_destroy );
 		break;
 
