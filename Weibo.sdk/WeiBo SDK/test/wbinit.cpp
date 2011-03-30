@@ -187,16 +187,6 @@ WEIBO_struct_init_callback(PUTSTATUSES_UPLOAD)
 	return true;
 }
 
-WEIBO_struct_init_callback(PUTSTATUSES_UPLOAD_PIC)
-{
-	WEIBO_struct_cast(t_wb_put_statuses_upload_pic);
-
-	SET_struct_callback_object( WEIBO_OPTION(PUTSTATUSES_UPLOAD_PIC) , pstruct->wbauth_ );
-
-	return true;
-}
-
-
 WEIBO_struct_init_callback(PUTSTATUSES_DESTROY)
 {
 	WEIBO_struct_cast(t_wb_put_statuses_destroy);
@@ -830,7 +820,6 @@ static fun_init_wb_struct_callback vector_init_callback[ WEIBO_OPTION(LAST) ] =
 	WEIBO_struct_init_fun(GOTOSTATUSES_ID),
 	WEIBO_struct_init_fun(PUTSTATUSES_UPDATE),
 	WEIBO_struct_init_fun(PUTSTATUSES_UPLOAD),
-	WEIBO_struct_init_fun(PUTSTATUSES_UPLOAD_PIC),
 	WEIBO_struct_init_fun(PUTSTATUSES_DESTROY),
 	WEIBO_struct_init_fun(PUTSTATUSES_REPOST),
 	WEIBO_struct_init_fun(PUTSTATUSES_COMMENT),

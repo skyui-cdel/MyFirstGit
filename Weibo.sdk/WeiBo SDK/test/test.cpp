@@ -570,18 +570,6 @@ void test_weibo(WEIBORequest* wbRequest , int option , struct t_wb_allstruct* pa
 			strcpy( pall->stat_upload.szwbInfo_ , content);
 		}
 		break;
-	case WEIBO_OPTION(PUTSTATUSES_UPLOAD_PIC):
-		{// 上传图片并发布一条微博信息
-			p_twb = &pall->stat_upload;
-
-			Wb_init_wb_struct( option , p_twb);
-			// to fill other information
-
-			printf("\n\nPlease enter image file:");			
-			gets(content);
-			strcpy( pall->stat_upload.szImagePath_ ,content );
-		}
-		break;
 	case WEIBO_OPTION(PUTSTATUSES_DESTROY):
 		{// 删除一条微博信息
 			p_twb = &pall->stat_destroy;

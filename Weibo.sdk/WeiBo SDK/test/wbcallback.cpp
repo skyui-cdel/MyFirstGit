@@ -229,23 +229,6 @@ WEIBO_struct_bodycallback_init(PUTSTATUSES_UPLOAD)
 
 }
 
-// 上传图片并发布一条微博信息
-WEIBO_struct_statuscallback_init(PUTSTATUSES_UPLOAD_PIC)
-{
-
-}
-WEIBO_struct_bodycallback_init(PUTSTATUSES_UPLOAD_PIC)
-{
-	printf("   PUTSTATUSES_UPLOAD_PIC : \n    %s \n\n" , body );
-
-	int iOutCount = 0;
-	wbParserNS::t_wbParse_UploadPic *pUploadPic = NULL;
-	wbParserNS::WBPARSE_HANDLE handle =  wbParserNS::USE_WBPARSE_FUNC( Statuses,Upload_Pic,body,len,iOutCount,(void**)&pUploadPic,NULL,NULL );
-	if( handle ){
-		wbParserNS::USE_WBFREE_FUNC( Statuses,Upload_Pic,handle);
-	}
-}
-
 // 15 删除一条微博信息
 WEIBO_struct_statuscallback_init(PUTSTATUSES_DESTROY)
 {
@@ -952,7 +935,6 @@ struct t_wb_callback_byloach callback_byloach[  WEIBO_OPTION(LAST) ] =
 	INIT_CALLBACK_BYLOACH(GOTOSTATUSES_ID),
 	INIT_CALLBACK_BYLOACH(PUTSTATUSES_UPDATE),
 	INIT_CALLBACK_BYLOACH(PUTSTATUSES_UPLOAD),
-	INIT_CALLBACK_BYLOACH(PUTSTATUSES_UPLOAD_PIC),
 	INIT_CALLBACK_BYLOACH(PUTSTATUSES_DESTROY),
 	INIT_CALLBACK_BYLOACH(PUTSTATUSES_REPOST),
 	INIT_CALLBACK_BYLOACH(PUTSTATUSES_COMMENT),
