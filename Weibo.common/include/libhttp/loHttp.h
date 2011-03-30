@@ -91,6 +91,9 @@ namespace lohttp
 
 		// http method
 	private:
+        /** init url */
+		void InitURL( const HTTPChar* szUrl,int method );
+
 		/** donwload to header AND body */
 		int	 HttpMethodGet();
 
