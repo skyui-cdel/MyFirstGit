@@ -191,7 +191,7 @@
 		</Configuration>
 		<Configuration
 			Name="DLL Debug|STANDARDSDK_500 (ARMV4I)"
-			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
+			OutputDirectory="..\..\..\bin\wince\w500\ARMV4I\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
@@ -266,7 +266,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy &quot;$(TargetDir)$(TargetName).lib&quot; &quot;..\..\..\lib\wince\w500\ARMV4I\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;..\..\..\bin\WINCE\w500\ARMV4I\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
+				CommandLine=""
 			/>
 			<DeploymentTool
 				ForceDirty="-1"
@@ -279,7 +279,7 @@
 		</Configuration>
 		<Configuration
 			Name="DLL Debug|STANDARDSDK_500 (MIPSII)"
-			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
+			OutputDirectory="..\..\..\bin\wince\w500\MIPSII\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
@@ -354,7 +354,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy &quot;$(TargetDir)$(TargetName).lib&quot; &quot;..\..\..\lib\wince\w500\MIPSII\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;..\..\..\bin\WINCE\w500\MIPSII\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
+				CommandLine=""
 			/>
 			<DeploymentTool
 				ForceDirty="-1"
@@ -535,7 +535,7 @@
 		</Configuration>
 		<Configuration
 			Name="DLL Release|STANDARDSDK_500 (ARMV4I)"
-			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
+			OutputDirectory="..\..\..\bin\wince\w500\ARMV4I\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
@@ -610,7 +610,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy &quot;$(TargetDir)$(TargetName).lib&quot; &quot;..\..\..\lib\wince\w500\ARMV4I\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;..\..\..\bin\WINCE\w500\ARMV4I\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
+				CommandLine=""
 			/>
 			<DeploymentTool
 				ForceDirty="-1"
@@ -623,7 +623,7 @@
 		</Configuration>
 		<Configuration
 			Name="DLL Release|STANDARDSDK_500 (MIPSII)"
-			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
+			OutputDirectory="..\..\..\bin\wince\w500\MIPSII\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
@@ -698,7 +698,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy &quot;$(TargetDir)$(TargetName).lib&quot; &quot;..\..\..\lib\wince\w500\MIPSII\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;..\..\..\bin\WINCE\w500\MIPSII\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
+				CommandLine=""
 			/>
 			<DeploymentTool
 				ForceDirty="-1"
