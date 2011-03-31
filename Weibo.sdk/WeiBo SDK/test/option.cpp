@@ -91,19 +91,12 @@ static const tagOption _option_map[] =
 	WEIBO_OPTION_MAP(GET_STATUSES_SEARCH),//47 搜索微博(多条件组合) (仅对合作开发者开放) 
 
 	WEIBO_OPTION_MAP(GET_PROVINCES), // 48 省份城市编码表 
-	WEIBO_OPTION_MAP(REPORT),//49 举报
 
 	WEIBO_OPTION_MAP(COOKIE),// 50 cookie
 	WEIBO_OPTION_MAP(UPDATETGT), // 51 更新cookie
 
 	//自定义URL
 	WEIBO_OPTION_MAP(CUSTOM),//
-
-	// 新加接口,by welbon,2011-01-07
-	WEIBO_OPTION_MAP(HOT_REPOST_DAYLIY), //热门转发-by day
-	WEIBO_OPTION_MAP(HOT_REPOST_WEEKLY), //热门转发-by week
-	WEIBO_OPTION_MAP(HOT_COMMENT_DAYLIY), //热门评论-by day
-	WEIBO_OPTION_MAP(HOT_COMMENT_WEEKLY), //热门评论-by week
 
 	WEIBO_OPTION_MAP(GET_USERS_HOT),// 获取系统推荐用户
 	WEIBO_OPTION_MAP(POST_USERS_REMARK),//更新修改当前登录用户所关注的某个好友的备注信息New!

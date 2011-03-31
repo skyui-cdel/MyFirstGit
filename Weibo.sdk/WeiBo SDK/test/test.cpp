@@ -42,6 +42,8 @@
 
 #define LIB_loadWEIBOSDK
 
+#pragma warning(disable:4996)
+
 #if defined(WIN32) || defined(WINCE)// WIN
 //
 #	if (defined(LIB_loadWEIBOSDK)) || (defined(WEIBO_STATICLIB))
@@ -315,7 +317,6 @@ struct t_wb_allstruct
 
 	struct t_wb_cookie                         cookie;
 	struct t_wb_updateTGT					   updateTGT;
-	struct t_wb_hotpoint					   hot_point;
 
 	//
 	struct t_wb_users_hot					   users_hot;
@@ -1151,16 +1152,6 @@ void test_weibo(WEIBORequest* wbRequest , int option , struct t_wb_allstruct* pa
 			printf("\n\nPlease enter user password:");			
 			gets(content);
 			strcpy( pall->cookie.usrpwd_ ,content );
-		}
-		break;
-
-	case WEIBO_OPTION(HOT_REPOST_DAYLIY): //热门转发-by day
-	case WEIBO_OPTION(HOT_REPOST_WEEKLY): //热门转发-by week
-	case WEIBO_OPTION(HOT_COMMENT_DAYLIY): //热门评论-by day
-	case WEIBO_OPTION(HOT_COMMENT_WEEKLY): //热门评论-by week
-		{
-			p_twb = &pall->hot_point;
-			Wb_init_wb_struct(option , p_twb);
 		}
 		break;
 

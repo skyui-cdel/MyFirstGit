@@ -524,18 +524,11 @@ WEIBO_struct_init_callback(GET_STATUSES_SEARCH)
 	return true;
 }
 
-//
+// 省份
 WEIBO_struct_init_callback(GET_PROVINCES)
 {
 	WEIBO_struct_cast(t_wb_provinces);
 	SET_struct_callback_object( WEIBO_OPTION(GET_PROVINCES) , pstruct->wbauth_ );
-	return true;
-}
-
-WEIBO_struct_init_callback(REPORT)
-{
-	WEIBO_struct_cast(t_wb_report);
-	SET_struct_callback_object( WEIBO_OPTION(REPORT) , pstruct->wbauth_ );
 	return true;
 }
 
@@ -563,37 +556,6 @@ WEIBO_struct_init_callback(CUSTOM)
 	return true;
 }
 
-//HOT_REPOST_DAYLIY
-WEIBO_struct_init_callback(HOT_REPOST_DAYLIY)
-{
-	WEIBO_struct_cast(t_wb_hotpoint);
-    SET_struct_callback_object( WEIBO_OPTION(HOT_REPOST_DAYLIY) , pstruct->wbauth_ );
-	return true;
-}
-
-//HOT_REPOST_WEEKLY
-WEIBO_struct_init_callback(HOT_REPOST_WEEKLIY)
-{
-	WEIBO_struct_cast(t_wb_hotpoint);
-    SET_struct_callback_object( WEIBO_OPTION(HOT_REPOST_WEEKLY) , pstruct->wbauth_ );
-	return true;
-}
-
-//HOT_COMMENT_DAYLIY
-WEIBO_struct_init_callback(HOT_COMMENT_DAYLIY)
-{
-	WEIBO_struct_cast(t_wb_hotpoint);
-    SET_struct_callback_object( WEIBO_OPTION(HOT_COMMENT_DAYLIY) , pstruct->wbauth_ );
-	return true;
-}
-
-//HOT_COMMENT_WEEKLY
-WEIBO_struct_init_callback(HOT_COMMENT_WEEKLIY)
-{
-	WEIBO_struct_cast(t_wb_hotpoint);
-    SET_struct_callback_object( WEIBO_OPTION(HOT_COMMENT_WEEKLY) , pstruct->wbauth_ );
-	return true;
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 // 用户新接口
@@ -873,18 +835,11 @@ static fun_init_wb_struct_callback vector_init_callback[ WEIBO_OPTION(LAST) ] =
 	WEIBO_struct_init_fun(GET_WB_SEARCH),
 	WEIBO_struct_init_fun(GET_STATUSES_SEARCH),
 	WEIBO_struct_init_fun(GET_PROVINCES),
-	WEIBO_struct_init_fun(REPORT),//49 举报
 	WEIBO_struct_init_fun(COOKIE),
 	WEIBO_struct_init_fun(UPDATETGT),//UPDATETGT,
 
 	//自定义URL
 	WEIBO_struct_init_fun(CUSTOM),
-
-	//hot point 
-	WEIBO_struct_init_fun(HOT_REPOST_DAYLIY),
-	WEIBO_struct_init_fun(HOT_REPOST_WEEKLIY),
-	WEIBO_struct_init_fun(HOT_COMMENT_DAYLIY),
-	WEIBO_struct_init_fun(HOT_COMMENT_WEEKLIY),
 
 	//user new
 	WEIBO_struct_init_fun(GET_USERS_HOT),// 获取系统推荐用户

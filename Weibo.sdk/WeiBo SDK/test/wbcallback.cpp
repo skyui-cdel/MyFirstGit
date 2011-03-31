@@ -748,17 +748,6 @@ WEIBO_struct_bodycallback_init(GET_PROVINCES)
 	printf("   GET_PROVINCES : \n    %s \n\n" , body );
 }
 
-// 省份
-WEIBO_struct_statuscallback_init(REPORT)
-{
-
-}
-
-WEIBO_struct_bodycallback_init(REPORT)
-{
-	printf("   REPORT : \n    %s \n\n" , body );
-}
-
 //cookie方式
 WEIBO_struct_statuscallback_init(COOKIE)
 {
@@ -987,7 +976,6 @@ struct t_wb_callback_byloach callback_byloach[  WEIBO_OPTION(LAST) ] =
 	INIT_CALLBACK_BYLOACH(GET_WB_SEARCH),
 	INIT_CALLBACK_BYLOACH(GET_STATUSES_SEARCH),
 	INIT_CALLBACK_BYLOACH(GET_PROVINCES),
-	INIT_CALLBACK_BYLOACH(REPORT),//49 举报
 
 	// COOKIE
 	{ WEIBO_struct_statuscallback_init_fun(COOKIE) , WEIBO_struct_bodycallback_init_fun(COOKIE) , WEIBO_struct_headercallback_init_fun(COOKIE)},
@@ -995,12 +983,6 @@ struct t_wb_callback_byloach callback_byloach[  WEIBO_OPTION(LAST) ] =
 
 	//自定义URL
 	INIT_CALLBACK_BYLOACH(CUSTOM),
-
-	//
-	INIT_CALLBACK_BYWELBON(HOT_REPOST_DAYLIY), //热门转发-by day
-	INIT_CALLBACK_BYWELBON(HOT_REPOST_WEEKLIY), //热门转发-by week
-	INIT_CALLBACK_BYWELBON(HOT_COMMENT_DAYLIY), //热门评论-by day
-	INIT_CALLBACK_BYWELBON(HOT_COMMENT_WEEKLY), //热门评论-by week
 
 	//
 	INIT_CALLBACK_BYWELBON(GET_USERS_HOT),// 获取系统推荐用户
