@@ -397,28 +397,6 @@ extern "C"{
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_DECLARE(Search,Users);
 		WBPARSER_API void WBFREE_FUNC_DECLARE(Search,Users);
 
-
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// 热点信息 :HOT API仅对新浪合作开发者开放，申请请联系 @微博开放平台,by welbon,2011-01-07
-		//
-
-		/** 获取热点评论的微博按当天 */
-		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_DECLARE(HotPoint,Comment_Dayliy);
-		WBPARSER_API void WBFREE_FUNC_DECLARE(HotPoint,Comment_Dayliy);
-
-		/** 获取热点评论的微博按本周 */
-		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_DECLARE(HotPoint,Comment_Weekliy);
-		WBPARSER_API void WBFREE_FUNC_DECLARE(HotPoint,Comment_Weekliy);
-
-		/** 获取热点转发的微博按当天 */
-		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_DECLARE(HotPoint,Repost_Dayliy);
-		WBPARSER_API void WBFREE_FUNC_DECLARE(HotPoint,Repost_Dayliy);
-
-		/** 获取热点转发的微博按本周 */
-		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_DECLARE(HotPoint,Repost_Weekliy);
-		WBPARSER_API void WBFREE_FUNC_DECLARE(HotPoint,Repost_Weekliy);
-
-
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// 话题接口 ,by welbon,2011-01-10
 

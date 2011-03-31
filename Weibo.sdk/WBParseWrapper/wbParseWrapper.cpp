@@ -1607,65 +1607,6 @@ extern "C"{
 			handle ? (delete ((CParseUserMultiplT*)handle)) : 0;
 		}
 
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// 热点信息 :HOT API仅对新浪合作开发者开放，申请请联系 @微博开放平台,by welbon,2011-01-07
-		//
-		/** 获取热点评论的微博按当天 */
-		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(HotPoint,Comment_Dayliy)
-		{
-			CParseStatusesMultiplT* pParseObj = new CONSTRUCT_STATUSES_MULTIPL(sc,len,pExternInfo);
-			pParseObj->ParseBody();
-			iOutCount = pParseObj->GetCounts();
-			ppout ? *ppout = pParseObj->get() : NULL;
-			return ((WBPARSE_HANDLE)pParseObj);
-		}
-		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(HotPoint,Comment_Dayliy)
-		{
-			handle ? (delete ((CParseStatusesMultiplT*)handle)) : 0;
-		}
-
-		/** 获取热点评论的微博按本周 */
-		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(HotPoint,Comment_Weekliy)
-		{
-			CParseStatusesMultiplT* pParseObj = new CONSTRUCT_STATUSES_MULTIPL(sc,len,pExternInfo);
-			pParseObj->ParseBody();
-			iOutCount = pParseObj->GetCounts();
-			ppout ? *ppout = pParseObj->get() : NULL;
-			return ((WBPARSE_HANDLE)pParseObj);
-		}
-		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(HotPoint,Comment_Weekliy)
-		{
-			handle ? (delete ((CParseStatusesMultiplT*)handle)) : 0;
-		}
-
-		/** 获取热点转发的微博按当天 */
-		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(HotPoint,Repost_Dayliy)
-		{
-			CParseStatusesMultiplT* pParseObj = new CONSTRUCT_STATUSES_MULTIPL(sc,len,pExternInfo);
-			pParseObj->ParseBody();
-			iOutCount = pParseObj->GetCounts();
-			ppout ? *ppout = pParseObj->get() : NULL;
-			return ((WBPARSE_HANDLE)pParseObj);
-		}
-		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(HotPoint,Repost_Dayliy)
-		{
-			handle ? (delete ((CParseStatusesMultiplT*)handle)) : 0;
-		}
-
-		/** 获取热点转发的微博按本周 */
-		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS(HotPoint,Repost_Weekliy)
-		{
-			CParseStatusesMultiplT* pParseObj = new CONSTRUCT_STATUSES_MULTIPL(sc,len,pExternInfo);
-			pParseObj->ParseBody();
-			iOutCount = pParseObj->GetCounts();
-			ppout ? *ppout = pParseObj->get() : NULL;
-			return ((WBPARSE_HANDLE)pParseObj);
-		}
-		WBPARSER_API void WBFREE_FUNC_IMPLEMENTS(HotPoint,Repost_Weekliy)
-		{
-			handle ? (delete ((CParseStatusesMultiplT*)handle)) : 0;
-		}
-
 #ifdef _USE_GET_SHORTURL_BATCH
 
 		WBPARSER_API WBPARSE_HANDLE WBPARSE_FUNC_IMPLEMENTS( MEDIA,SHORTURL )

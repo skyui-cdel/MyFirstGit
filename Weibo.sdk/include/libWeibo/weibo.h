@@ -92,11 +92,13 @@ extern "C" {
 	WB_MAX_LEN_DEFINE(PWD , 64 );
 	WB_MAX_LEN_DEFINE(OAUTH_TOKEN,1024); // ==> cookie's SUE
 	WB_MAX_LEN_DEFINE(OAUTH_TOKEN_SECRET,2048); // ==> cookie's SUP		
-	WB_MAX_LEN_DEFINE(OAUTH_VERIFIER,64);
+	WB_MAX_LEN_DEFINE(OAUTH_VERIFIER,256);
 	//
 	WB_MAX_LEN_DEFINE(OPT_VALUE, 64);
 	WB_MAX_LEN_DEFINE(WEIBO_ID , 64);
+	WB_MAX_LEN_DEFINE(WEIBO_IDS, 2048); ///< ID列表，以逗号分隔
 	WB_MAX_LEN_DEFINE(WB_INFO  , 280);
+	
 	//
 	WB_MAX_LEN_DEFINE(PROFILE_NAME, 20);
 	WB_MAX_LEN_DEFINE(PROFILE_GENDER, 2);
@@ -121,6 +123,11 @@ extern "C" {
 	WB_MAX_LEN_DEFINE(URL , 1024);
 	WB_MAX_LEN_DEFINE(MAX_PATH, 512);
 	WB_MAX_LEN_DEFINE(IP, 100);
+
+	// tags
+	WB_MAX_LEN_DEFINE(SCREEN_NAME,100);
+	WB_MAX_LEN_DEFINE(TAGS_INFO,2048);
+
 	// 实际的长度
 #define WB_REAL_LEN(name) WB_##name##_LEN + 1
 
@@ -147,77 +154,120 @@ extern "C" {
 		WEIBO_OPTION(GETSTATUSES_MENTIONS), //5 获取@当前用户的微博列表 
 		WEIBO_OPTION(GETSTATUSES_COMMENTS_TIMELINE), //6 获取当前用户发送及收到的评论列表
 		WEIBO_OPTION(GETSTATUSES_COMMENTS_BYME), //7 获取当前用户发出的评论 
-		WEIBO_OPTION(GETSTATUSES_COMMENTS_TOME), //7 获取当前用户收到的评论 
-		WEIBO_OPTION(GETSTATUSES_COMMENTS_LIST), //8 获取指定微博的评论列表 
-		WEIBO_OPTION(GETSTATUSES_COMMENTS_COUNTS), //9 批量获取一组微博的评论数及转发数 
-		WEIBO_OPTION(GETSTATUSES_UNREAD), //10 获取当前用户未读消息数 
-		WEIBO_OPTION(PUTSTATUSES_RESET_COUNT),//未读消息数清零接口 
+		WEIBO_OPTION(GETSTATUSES_COMMENTS_TOME), //8 获取当前用户收到的评论 
+		WEIBO_OPTION(GETSTATUSES_COMMENTS_LIST), //9 获取指定微博的评论列表 
+		WEIBO_OPTION(GETSTATUSES_COMMENTS_COUNTS), //10 批量获取一组微博的评论数及转发数 
+		WEIBO_OPTION(GETSTATUSES_UNREAD), //11 获取当前用户未读消息数 
+		WEIBO_OPTION(PUTSTATUSES_RESET_COUNT),//12 未读消息数清零接口 
 
 		//微博访问
-		WEIBO_OPTION(GETSTATUSES_SHOW), //11 根据ID获取单条微博信息内容 
-		WEIBO_OPTION(GOTOSTATUSES_ID),//12 根据微博ID和用户ID跳转到单条微博页面 
-		WEIBO_OPTION(PUTSTATUSES_UPDATE),//13 发布一条微博信息 
-		WEIBO_OPTION(PUTSTATUSES_UPLOAD),//14 上传图片并发布一条微博信息 
-		WEIBO_OPTION(PUTSTATUSES_DESTROY),//15 删除一条微博信息 
-		WEIBO_OPTION(PUTSTATUSES_REPOST),//16 转发一条微博信息（可加评论） 
-		WEIBO_OPTION(PUTSTATUSES_COMMENT),//17 对一条微博信息进行评论 
-		WEIBO_OPTION(PUTSTATUSES_COMMENT_DESTROY),//18 删除当前用户的微博评论信息 
-		WEIBO_OPTION(PUTSTATUSES_REPLY),//19 回复微博评论信息 
+		WEIBO_OPTION(GETSTATUSES_SHOW), //13 根据ID获取单条微博信息内容 
+		WEIBO_OPTION(GOTOSTATUSES_ID),//14 根据微博ID和用户ID跳转到单条微博页面 
+		WEIBO_OPTION(PUTSTATUSES_UPDATE),//15 发布一条微博信息 
+		WEIBO_OPTION(PUTSTATUSES_UPLOAD),//16 上传图片并发布一条微博信息 
+		WEIBO_OPTION(PUTSTATUSES_DESTROY),//18 删除一条微博信息 
+		WEIBO_OPTION(PUTSTATUSES_REPOST),//19 转发一条微博信息（可加评论） 
+		WEIBO_OPTION(PUTSTATUSES_COMMENT),//20 对一条微博信息进行评论 
+		WEIBO_OPTION(PUTSTATUSES_COMMENT_DESTROY),//21 删除当前用户的微博评论信息 
+		WEIBO_OPTION(PUTSTATUSES_REPLY),//22 回复微博评论信息 
 
 		//用户
-		WEIBO_OPTION(GETUSER_INFO),//20 根据用户ID获取用户资料（授权用户） 
-		WEIBO_OPTION(GETFRINDS_LIST),//21 获取当前用户关注对象列表及最新一条微博信息 
-		WEIBO_OPTION(GETFOLLOWERS_LIST),//22 获取当前用户粉丝列表及最新一条微博信息 
+		WEIBO_OPTION(GETUSER_INFO),//23 根据用户ID获取用户资料（授权用户） 
+		WEIBO_OPTION(GETFRINDS_LIST),//24 获取当前用户关注对象列表及最新一条微博信息 
+		WEIBO_OPTION(GETFOLLOWERS_LIST),//25 获取当前用户粉丝列表及最新一条微博信息 
 
 		//私信
-		WEIBO_OPTION(GETDIRECTMSG),//23 获取当前用户最新私信列表 
-		WEIBO_OPTION(GETDIRESTMSG_SENT),//24 获取当前用户发送的最新私信列表
-		WEIBO_OPTION(PUTDIRECTMSG_NEW),//25 发送一条私信 
-		WEIBO_OPTION(PUTDIRECTMSG_DESTROY),//26 删除一条私信 
+		WEIBO_OPTION(GETDIRECTMSG),//26 获取当前用户最新私信列表 
+		WEIBO_OPTION(GETDIRESTMSG_SENT),//27 获取当前用户发送的最新私信列表
+		WEIBO_OPTION(PUTDIRECTMSG_NEW),//28 发送一条私信 
+		WEIBO_OPTION(PUTDIRECTMSG_DESTROY),//29 删除一条私信 
+		WEIBO_OPTION(GETDIRECTMSG_WITH),//30获取用户往来私信列表
 		
 		//关注
-		WEIBO_OPTION(PUTFRIENDSHIPS_CREATE),//27 关注某用户 
-		WEIBO_OPTION(PUTFRIENDSHIPS_DESTROY),//28 取消关注 
-		WEIBO_OPTION(GETFRIENDSHIPS_EXISTS),//29 判断两个用户是否有关注关系，返回两个用户关系的详细情况
+		WEIBO_OPTION(PUTFRIENDSHIPS_CREATE),//31 关注某用户 
+		WEIBO_OPTION(PUTFRIENDSHIPS_CREATE_BATCH),//32 add by welbon,2011-01-21 批量关注接口
+		WEIBO_OPTION(PUTFRIENDSHIPS_DESTROY),//33 取消关注 
+		WEIBO_OPTION(GETFRIENDSHIPS_EXISTS),//34 判断两个用户是否有关注关系，返回两个用户关系的详细情况
+		WEIBO_OPTION(GETFRIENDSHIPS_BATCH_EXISTS),//35 批量获取一组用户是否为好友
 
         //Social Graph
-		WEIBO_OPTION(GETFRIEND_IDS),//30 关注列表
-		WEIBO_OPTION(GETFOLLOWER_IDS),//31 粉丝列表
+		WEIBO_OPTION(GETFRIEND_IDS),//36 关注列表
+		WEIBO_OPTION(GETFOLLOWER_IDS),// 37 粉丝列表
 		
 		//账号 
-	    WEIBO_OPTION(GETACCOUNT_VERIFY),//32 验证当前用户身份是否合法 
-		WEIBO_OPTION(GETACCOUNT_RATELIMIT),//33 获取当前用户API访问频率限制 
-		WEIBO_OPTION(PUTACCOUNT_QUITSESSION),//34 当前用户退出登录 
-		WEIBO_OPTION(PUTACCOUNT_UPDATE_PROFILEIMAGE),//35 更改头像
-		WEIBO_OPTION(PUTACCOUNT_UPDATE_PROFILE),//36 更改资料
-		WEIBO_OPTION(PUTACCOUNT_REGISTER),//37
+	    WEIBO_OPTION(GETACCOUNT_VERIFY),//38 验证当前用户身份是否合法 
+		WEIBO_OPTION(GETACCOUNT_RATELIMIT),//39 获取当前用户API访问频率限制 
+		WEIBO_OPTION(PUTACCOUNT_QUITSESSION),//40 当前用户退出登录 
+		WEIBO_OPTION(PUTACCOUNT_UPDATE_PROFILEIMAGE),//41 更改头像
+		WEIBO_OPTION(PUTACCOUNT_UPDATE_PROFILE),//42 更改资料
+		WEIBO_OPTION(PUTACCOUNT_REGISTER),//43
 		
 		// 收藏
-		WEIBO_OPTION(GETFAVORITES),// 38获取当前用户的收藏列表 
-		WEIBO_OPTION(PUTFAVORITES_CREATE),// 39添加收藏 
-		WEIBO_OPTION(PUTFAVORITES_DESTROY),// 40删除当前用户收藏的微博信息 
+		WEIBO_OPTION(GETFAVORITES),//44 获取当前用户的收藏列表 
+		WEIBO_OPTION(PUTFAVORITES_CREATE),//45 添加收藏 
+		WEIBO_OPTION(PUTFAVORITES_DESTROY),// 46 删除当前用户收藏的微博信息 
 
 		//登录/OAuth
-		WEIBO_OPTION(OAUTH_REQUEST_TOKEN),// 41获取未授权的Request Token 
-		WEIBO_OPTION(OAUTH_AUTHORIZE),// 42请求用户授权Token 
-		WEIBO_OPTION(OAUTH_ACCESS_TOKEN),// 43获取授权过的Access Token
+		WEIBO_OPTION(OAUTH_REQUEST_TOKEN),//47 获取未授权的Request Token 
+		WEIBO_OPTION(OAUTH_AUTHORIZE),//48 请求用户授权Token 
+		WEIBO_OPTION(OAUTH_ACCESS_TOKEN),// 49 获取授权过的Access Token
 
 		// 表情
-		WEIBO_OPTION(GET_EMOTIONS),// 44 返回新浪微博官方所有表情、魔法表情的相关信息。包括短语、表情类型、表情分类，是否热门等。 
+		WEIBO_OPTION(GET_EMOTIONS),// 50 返回新浪微博官方所有表情、魔法表情的相关信息。包括短语、表情类型、表情分类，是否热门等。 
 		
 		// 用户搜索 
-		WEIBO_OPTION(GET_USERS_SEARCH),// 45 搜索微博用户,返回关键字匹配的微博用户，(仅对新浪合作开发者开放) 
+		WEIBO_OPTION(GET_USERS_SEARCH),// 51 搜索微博用户,返回关键字匹配的微博用户，(仅对新浪合作开发者开放) 
 		
 		// 微博搜索 
-		WEIBO_OPTION(GET_WB_SEARCH),// 46 返回关键字匹配的微博，(仅对新浪合作开发者开放) 
-		WEIBO_OPTION(GET_STATUSES_SEARCH),//47 搜索微博(多条件组合) (仅对合作开发者开放) 
+		WEIBO_OPTION(GET_WB_SEARCH),//52 返回关键字匹配的微博，(仅对新浪合作开发者开放) 
+		WEIBO_OPTION(GET_STATUSES_SEARCH),// 53 搜索微博(多条件组合) (仅对合作开发者开放) 
 
-		WEIBO_OPTION(GET_PROVINCES), // 48 省份城市编码表 
-		WEIBO_OPTION(REPORT),//49 举报
-		WEIBO_OPTION(COOKIE),// cookie
+		WEIBO_OPTION(GET_PROVINCES), //54 省份城市编码表 
+
+		WEIBO_OPTION(COOKIE),// 56 cookie
+		WEIBO_OPTION(UPDATETGT), // 57 更新cookie
 
 		//自定义URL
-		WEIBO_OPTION(CUSTOM),//45
+		WEIBO_OPTION(CUSTOM),// 58
+
+		WEIBO_OPTION(GET_USERS_HOT),//63 获取系统推荐用户
+		WEIBO_OPTION(POST_USERS_REMARK),//64 更新修改当前登录用户所关注的某个好友的备注信息New!
+		WEIBO_OPTION(GET_USERS_SUGGESTIONS), // 65 Users/suggestions 返回当前用户可能感兴趣的用户
+
+		// 话题接口 ,by welbon,2011-01-10
+		WEIBO_OPTION(GET_TRENDS),// 66 trends 获取某人的话题
+		WEIBO_OPTION(GET_TRENDS_STATUSES),//67 trends/statuses 获取某一话题下的微博
+		WEIBO_OPTION(POST_TRENDS_FOLLOW),//68 trends/follow 关注某一个话题
+		WEIBO_OPTION(DELETE_TRENDS_DESTROY),//69 trends/destroy 取消关注的某一个话题
+		WEIBO_OPTION(GET_TRENDS_HOURLY),//70 trends/destroy 按小时返回热门话题
+		WEIBO_OPTION(GET_TRENDS_DAYLIY),//71 trends/daily 按日期返回热门话题。返回某一日期的话题
+		WEIBO_OPTION(GET_TRENDS_WEEKLIY),// 72 trends/weekly 按周返回热门话题。返回某一日期之前某一周的话题
+
+		// 黑名单接口 ,by welbon,2011-01-10
+		WEIBO_OPTION(POST_BLOCKS_CREATE),//73 将某用户加入黑名单
+		WEIBO_OPTION(POST_BLOCKS_DESTROY),//74 将某用户移出黑名单
+		WEIBO_OPTION(GET_BLOCKS_EXISTS),//75 检测某用户是否是黑名单用户
+		WEIBO_OPTION(GET_BLOCKS_BLOCKING),//76 列出黑名单用户(输出用户详细信息)
+		WEIBO_OPTION(GET_BLOCKS_BLOCKING_IDS),//77 列出分页黑名单用户（只输出id）
+
+		//用户标签接口 ,by welbon,2011-01-10
+		WEIBO_OPTION(GET_TAGS),//78 tags 返回指定用户的标签列表
+		WEIBO_OPTION(POST_TAGS_CREATE),//79 tags/create 添加用户标签
+		WEIBO_OPTION(GET_TAGS_SUGGESTIONS),//80 tags/suggestions 返回用户感兴趣的标签
+		WEIBO_OPTION(POST_TAGS_DESTROY),//81 tags/destroy 删除标签
+		WEIBO_OPTION(POST_TAGS_DESTROY_BATCH),// 82 tags/destroy_batch 批量删除标签
+
+		//关系中心
+		WEIBO_OPTION(POST_INVITE_MAILCONTACT),//83 邀请邮箱联系人
+		WEIBO_OPTION(POST_INVITE_MSNCONTACT), //84 邀请MSN联系人
+		WEIBO_OPTION(POST_INVITE_SENDMAILS),  // 85 发送邀请邮件
+
+		//
+		WEIBO_OPTION(GET_MEDIA_SHORTURL_BATCH),///< 86 批量取得多个短链的富内容信息
+
+		//登录/XAuth
+		WEIBO_OPTION(XAUTH_ACCESS_TOKEN),//87  获取授权过的Access Token
+
 		
 		WEIBO_OPTION(LAST),
 	}WEIBOoption;
@@ -269,11 +319,19 @@ extern "C" {
 	/** 每个包必定需要这个 */
 	struct t_wb_oauth
 	{
-		char oauth_token_[ WB_REAL_LEN(OAUTH_TOKEN) ];
-		char oauth_token_secret_[ WB_REAL_LEN(OAUTH_TOKEN_SECRET) ];
-
-		//  从官方网页获取到 认证返回的验证码 ，为了oauth第三步 ,获取授权过的Access Token
-		char oauth_verifier_[ WB_REAL_LEN(OAUTH_VERIFIER) ];
+		union{
+			char oauth_token_[ WB_REAL_LEN(OAUTH_TOKEN) ];
+			char sue_[ WB_REAL_LEN(OAUTH_TOKEN) ];
+		};
+		union{
+			char oauth_token_secret_[ WB_REAL_LEN(OAUTH_TOKEN_SECRET) ];
+			char sup_[ WB_REAL_LEN(OAUTH_TOKEN_SECRET) ];
+		};
+		union{
+			//  从官方网页获取到 认证返回的验证码 ，为了oauth第三步 ,获取授权过的Access Token
+			char oauth_verifier_[ WB_REAL_LEN(OAUTH_VERIFIER) ];
+			char tgt_[ WB_REAL_LEN(OAUTH_VERIFIER) ];
+		};
 		int  format_; ///< json/xml
 		int  cookie_; ///< 是否cookie方式
 
@@ -435,6 +493,16 @@ extern "C" {
 		WBChar szwbInfo_[WB_REAL_LEN(WB_INFO)];// 要更新的微博信息,信息内容部超过140个汉字。 
 	};
 
+	/*上传图片
+	* 图片可以设置图片文件的路径，也可以直接设置图片的二进制数据来进行上传
+	*/
+	struct t_wb_put_statuses_upload_pic
+	{
+		t_wb_oauth wbauth_;
+		WBChar szImagePath_[ WB_REAL_LEN(MAX_PATH) ];///< 图片路径
+	};
+
+
 	/*删除微博。注意：只能删除自己发布的信息。 
 	*/
 	struct t_wb_put_statuses_destroy
@@ -452,6 +520,8 @@ extern "C" {
 		WBChar wbId_[WB_REAL_LEN(WEIBO_ID)];///< 转发的微博ID 
 
 		WBChar szwbInfo_[WB_REAL_LEN(WB_INFO)]; ///< 转发信息。信息内容不超过140个汉字
+		
+		int iCommentFlags ; ///< 是否在转发的同时发表评论
 	};
 
 	//对一条微博信息进行评论
@@ -516,6 +586,52 @@ extern "C" {
 	*/
     #define t_wb_get_statuses_followers t_wb_get_statuses_friends
 
+	/* 系统推荐用户 
+	* 分类，返回某一类别的推荐用户，默认为default。
+	* default：人气关注
+	* ent：影视名星
+	* hk_famous：港台名人
+	* model：模特
+	* cooking：美食&健康
+	* sport：体育名人
+	* finance：商界名人
+	* tech：IT互联网
+	* singer：歌手
+	* writer：作家
+	* moderator：主持人
+	* medium：媒体总编
+	* stockplayer：炒股高手
+	*/
+	struct t_wb_users_hot
+	{
+		t_wb_oauth wbauth_;
+
+		// 推荐种类，如果不在以上分类中，返回空列表。
+		WBChar category_[WB_REAL_LEN(WEIBO_ID)];
+	};
+
+	/** 更新当前登录用户所关注的某个好友的备注信息 */
+	struct t_wb_users_remark
+	{
+		t_wb_oauth wbauth_;
+
+		//用户ID号
+		WBChar userId_[WB_REAL_LEN(WEIBO_ID)];
+
+		//更新的备注
+		WBChar remark_[WB_REAL_LEN(WB_INFO)];
+	};
+
+	/** 返回当前用户可能感兴趣的用户 */
+	struct t_wb_users_suggestions
+	{
+		t_wb_oauth wbauth_;
+
+		//是否返回推荐原因，可选值1/0。当值为1，返回结果中增加推荐原因，会大幅改变返回值格式。
+		int with_reason;
+	};
+
+
 	/////////////////////////////////////////////////////////////////////////////////////
 	//私信
 
@@ -559,6 +675,19 @@ extern "C" {
 		WBChar wbId_[WB_REAL_LEN(WEIBO_ID)];//要删除的私信主键ID. 
 	};
 
+	/*
+	 * 按ID获取往来私信列表。操作用户必须为私信的接收人。
+	*/
+	struct t_wb_get_direct_message_with
+	{
+		t_wb_oauth wbauth_;
+
+		int count_; //返回私信条数，默认为50。
+		int page_;  //返回结果的页序号。
+
+		WBChar wbuid_[WB_REAL_LEN(WEIBO_ID)];//ID
+	};
+
 	////////////////////////////////////////////////////////////////////////////
 	// 关注接口
 
@@ -570,8 +699,23 @@ extern "C" {
 		t_wb_uid wbuid_;
 	};
 
+	// 批量关注接口
+	struct t_wb_put_friendships_create_batch
+	{
+		t_wb_oauth wbauth_;
+
+		WBChar wbIDs_[WB_REAL_LEN(WEIBO_IDS)];//批量关注ID列表，逗号分隔 
+	};
+
 	// 取消关注 
-    #define t_wb_put_friendships_destroy t_wb_put_friendships_create
+	struct t_wb_put_friendships_destroy 
+	{
+		t_wb_oauth wbauth_;
+
+		t_wb_uid wbuid_;
+
+		int is_follower;
+	};
 
 
 	/* 判断两个用户是否有关注关系，返回两个用户关系的详细情况  */
@@ -583,6 +727,16 @@ extern "C" {
 
 		t_wb_uid wbuid_target_;
 	};
+
+	/* 批量获取一组用户是否为好友 */
+	struct t_wb_get_friendships_batchexist
+	{
+		t_wb_oauth wbauth_;
+
+		//
+		WBChar wbIDs_[WB_REAL_LEN(WEIBO_IDS)];//批量获取用户关系的ID列表，逗号分隔
+	};
+
 
 	////////////////////////////////////////////////////////////////////////////
 	// Social Graph
@@ -653,34 +807,34 @@ extern "C" {
 		struct t_wb_profile profile_;
 	};
 
-	///** 注册［不支持,官方网站注册］
-	// * 该接口为受限接口（只对受邀请的合作伙伴开放）。 
-	//*/
-	//struct t_wb_put_account_register
-	//{
-	//	t_wb_oauth wbauth_;
+	/** 注册［不支持,官方网站注册］
+	 * 该接口为受限接口（只对受邀请的合作伙伴开放）。 
+	*/
+	struct t_wb_put_account_register
+	{
+		t_wb_oauth wbauth_;
 
-	//	// nick. 昵称，必须参数.不超过20个汉字 
-	//	WBChar szNick_[ WB_REAL_LEN(PROFILE_NAME)];
+		// nick. 昵称，必须参数.不超过20个汉字 
+		WBChar szNick_[ WB_REAL_LEN(PROFILE_NAME)];
 
-	//	// gender 性别，必须参数. m,男，f,女。 
-	//	WBChar szGender_[ WB_REAL_LEN(PROFILE_GENDER) ];
+		// gender 性别，必须参数. m,男，f,女。 
+		WBChar szGender_[ WB_REAL_LEN(PROFILE_GENDER) ];
 
-	//	// province 可选参数. 参考省份城市编码表  
-	//	WBChar szProvince_[WB_REAL_LEN(PROFILE_PROVINCE)];//省份ID
+		// province 可选参数. 参考省份城市编码表  
+		WBChar szProvince_[WB_REAL_LEN(PROFILE_PROVINCE)];//省份ID
 
-	//	// city 可选参数. 参考省份城市编码表,1000为不限 
-	//	WBChar szCity_[ WB_REAL_LEN(PROFILE_CITY) ];//城市ID
+		// city 可选参数. 参考省份城市编码表,1000为不限 
+		WBChar szCity_[ WB_REAL_LEN(PROFILE_CITY) ];//城市ID
 
- //   	// email 注册邮箱 必须参数.
-	//	WBChar szEmail_[WB_REAL_LEN(PROFILE_EMAIL)];
+    	// email 注册邮箱 必须参数.
+		WBChar szEmail_[WB_REAL_LEN(PROFILE_EMAIL)];
 
-	//	// password 密码 必须参数. 
-	//	WBChar szPwd_[ WB_REAL_LEN(PWD)];
+		// password 密码 必须参数. 
+		WBChar szPwd_[ WB_REAL_LEN(PWD)];
 
-	//	// ip 必须参数，注册用户用户当前真实的IP。
-	//	WBChar szIP_[ WB_REAL_LEN(IP) ];//城市ID
-	//};
+		// ip 必须参数，注册用户用户当前真实的IP。
+		WBChar szIP_[ WB_REAL_LEN(IP) ];//城市ID
+	};
 
     ////////////////////////////////////////////////////////////////////////////
 	// 收藏接口 
@@ -729,6 +883,16 @@ extern "C" {
 	struct t_wb_oauth_access_token
 	{
 		t_wb_oauth wbauth_;
+	};
+
+	// 第三方应用使用 xauth 来获取换取用户授权过的Access_token
+	struct t_wb_xauth_access_token
+	{
+		t_wb_oauth wbauth_;
+
+		WBChar  usrid_[ WB_REAL_LEN(UID) ];
+		WBChar  usrpwd_[ WB_REAL_LEN(PWD) ];
+		WBChar  authmode_[ WB_REAL_LEN(PWD) ];
 	};
 
 	// 表情(无参数)
@@ -841,16 +1005,6 @@ extern "C" {
 		t_wb_oauth wbauth_;
 	};
 
-	// 举报
-	struct t_wb_report
-	{
-		t_wb_oauth wbauth_;
-
-        WBChar ip_[WB_REAL_LEN(IP)];///< 举报人IP
-        WBChar url_[WB_REAL_LEN(URL)];///< 举报url
-        WBChar content_[WB_REAL_LEN(WB_INFO)];///< 举报内容 
-	};
-
 	// cookie 方式
 	struct t_wb_cookie
 	{
@@ -859,6 +1013,17 @@ extern "C" {
 		WBChar  usrid_[ WB_REAL_LEN(UID) ];
 		WBChar  usrpwd_[ WB_REAL_LEN(PWD) ];
 	};
+
+	// update tgt
+	#define t_wb_updateTGT t_wb_cookie
+	//struct t_wb_updateTGT 
+	//{
+	//	t_wb_oauth wbauth_;
+
+	//	WBChar tgt_[ WB_REAL_LEN(OAUTH_VERIFIER) ]; ///< VERIFY TGT
+	//	WBChar usrid_[ WB_REAL_LEN(OAUTH_TOKEN) ];///< SUE
+	//	WBChar usrpwd_[ WB_REAL_LEN(OAUTH_TOKEN_SECRET) ]; ///< SUP
+	//};
 
 	/*
 	数据请求,自定义的
@@ -871,6 +1036,216 @@ extern "C" {
 		WBChar szPost_[WB_REAL_LEN(POST)]; ///< 参数
 		int    method_; ///< 请求方法，POST， GET
 	};
+
+	////////////////////////////////////////////////////////////////////////////
+	// 话题接口
+
+	/** 获取某人话题 */
+	struct t_wb_trends
+	{
+		t_wb_oauth wbauth_;
+
+		//
+		WBChar  usrid_[ WB_REAL_LEN(UID) ];///< 用户id（必选）
+		int     page_;  ///< 页码，缺省值为1
+		int     count_;///< 每页返回的记录数，缺省值为10
+	};
+
+	/** 获取某一话题下的微博 */
+	struct t_wb_trends_statuses
+	{
+		t_wb_oauth wbauth_;
+
+		WBChar  terndname_[ WB_REAL_LEN(WB_INFO) ];///< 话题关键字（必选参数）
+	};
+
+	/** 关注某一个话题 */
+	struct t_wb_trends_follow
+	{
+		t_wb_oauth wbauth_;
+
+		WBChar  terndname_[ WB_REAL_LEN(WB_INFO) ];///< 话题关键字（必选参数）
+	};
+
+	/** 取消关注某一个话题 */
+	struct t_wb_trends_destroy
+	{
+		t_wb_oauth wbauth_;
+
+		WBChar  trendid_[ WB_REAL_LEN(UID) ];///< 话题ID（必选参数）
+	};
+
+	/**返回最近一小时内的热门话题。*/
+	struct t_wb_trends_hourly
+	{
+		t_wb_oauth wbauth_;
+
+		int baseapp_;///< 是否基于当前应用来获取数据。1表示基于当前应用来获取数据。
+	};
+
+	/**按日期返回热门话题。返回某一日期的话题。*/
+	struct t_wb_trends_daily
+	{
+		t_wb_oauth wbauth_;
+
+		int baseapp_;///< 是否基于当前应用来获取数据。1表示基于当前应用来获取数据。
+	};
+
+	/**按周返回热门话题。返回某一日期之前某一周的话题。*/
+	struct t_wb_trends_weekly
+	{
+		t_wb_oauth wbauth_;
+
+		int baseapp_;///< 是否基于当前应用来获取数据。1表示基于当前应用来获取数据。
+	};
+
+	////////////////////////////////////////////////////////////////////////////
+	// 黑名单接口
+
+	/** 将某用户加入黑名单 */
+	struct t_wb_blocks_create
+	{
+		t_wb_oauth wbauth_;
+
+		//
+		WBChar  usrid_[ WB_REAL_LEN(UID) ];///< 用户id（必选）
+		WBChar  screenname_[ WB_REAL_LEN(SCREEN_NAME) ];///< 微博昵称
+	};
+
+	/** 将某用户移出黑名单 */
+	struct t_wb_blocks_destroy
+	{
+		t_wb_oauth wbauth_;
+
+		//
+		WBChar  usrid_[ WB_REAL_LEN(UID) ];///< 用户id（必选）
+		WBChar  screenname_[ WB_REAL_LEN(SCREEN_NAME) ];///< 微博昵称
+	};
+
+	/** 检测某用户是否是黑名单用户 */
+	struct t_wb_blocks_exist
+	{
+		t_wb_oauth wbauth_;
+
+		//
+		WBChar  usrid_[ WB_REAL_LEN(UID) ];///< 用户id（必选）
+		WBChar  screenname_[ WB_REAL_LEN(SCREEN_NAME) ];///< 微博昵称
+	};
+
+	/** 列出黑名单用户(输出用户详细信息) */
+	struct t_wb_blocks_blocking
+	{
+		t_wb_oauth wbauth_;
+
+		//
+		int page_; ///< 页码。
+		int count_;///< 单页记录数。
+	};
+
+	/** 列出分页黑名单用户（只输出id） */
+	struct t_wb_blocks_blocking_ids
+	{
+		t_wb_oauth wbauth_;
+
+		//
+		int page_; ///< 页码。
+		int count_;///< 单页记录数。
+	};
+
+	////////////////////////////////////////////////////////////////////////////
+	// 用户标签接口
+
+	/** 返回指定用户的标签列表 */
+	struct t_wb_tags
+	{
+		t_wb_oauth wbauth_;
+
+		//
+		WBChar  usrid_[ WB_REAL_LEN(UID) ];///< 要获取的标签列表所属的用户ID（必选）
+		int count_;///< 单页记录数，默认20，最大200
+		int page_; ///< 页码。
+	};
+
+	/** 返回指定用户的标签列表 */
+	struct t_wb_tags_create
+	{
+		t_wb_oauth wbauth_;
+
+		//
+		WBChar  tags_[ WB_REAL_LEN(TAGS_INFO) ];///< 要创建的一组标签，用半角逗号隔开。（必选）
+	};
+
+	/** 返回用户感兴趣的标签 */
+	struct t_wb_tags_suggestions
+	{
+		t_wb_oauth wbauth_;
+
+		int count_;///< 单页记录数。默认10，最大10。
+		int page_;///<	默认1 页码。由于推荐标签是随机返回，故此特性暂不支持。
+	};
+
+	/**  删除标签 */
+	struct t_wb_tags_destroy
+	{
+		t_wb_oauth wbauth_;
+
+		WBChar tagId_[ WB_REAL_LEN(UID) ];///< 要删除的标签ID（必选）
+	};
+
+	/** 批量删除标签 */
+	struct t_wb_tags_destroy_batch
+	{
+		t_wb_oauth wbauth_;
+
+		WBChar ids_[WB_REAL_LEN(TAGS_INFO) ];///< 要删除的一组标签ID，以半角逗号隔开，一次最多提交20个ID。（必选）
+	};
+
+	////////////////////////////////////////////////////////////////////////////
+	// 关系中心
+
+	/** 邀请邮箱联系人 */
+	struct t_wb_invite_mailcontect
+	{
+		t_wb_oauth wbauth_;
+
+		WBChar usrid_[ WB_REAL_LEN(UID) ];
+		WBChar usrpwd_[ WB_REAL_LEN(PWD) ];
+		int    type_;
+	};
+
+	/** 邀请MSN联系人 */
+	struct t_wb_invite_msncontect
+	{
+		t_wb_oauth wbauth_;
+
+		//
+		WBChar usrid_[ WB_REAL_LEN(UID) ];
+		WBChar usrpwd_[ WB_REAL_LEN(PWD) ];
+	};
+
+	/** 发送邀请邮件 */
+	struct t_wb_invite_sendmails
+	{
+		//
+		t_wb_oauth wbauth_;
+
+		//
+		WBChar myusrid_[ WB_REAL_LEN(UID) ];
+		WBChar nickname_[ WB_REAL_LEN(SCREEN_NAME) ];
+		WBChar mailtype_[ 32 ];
+		WBChar maillist_[ 2048 ];
+	};
+
+	/** 批量获取短链接地址 */
+	struct t_wb_media_shorturl_batch
+	{
+		t_wb_oauth wbauth_;
+
+		//url ids
+		WBChar urlids_ [ WB_REAL_LEN(WEIBO_IDS) ];
+	};
+
+	////////////////////////////////////////////////////////////////////////////
 
 	/** url 直接生成，通过 loWeibo_get_url() */
 	struct t_wb_URI
