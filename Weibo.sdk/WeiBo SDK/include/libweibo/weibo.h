@@ -223,19 +223,12 @@ extern "C" {
 		WEIBO_OPTION(GET_STATUSES_SEARCH),// 53 搜索微博(多条件组合) (仅对合作开发者开放) 
 
 		WEIBO_OPTION(GET_PROVINCES), //54 省份城市编码表 
-		WEIBO_OPTION(REPORT),// 55 举报
 
 		WEIBO_OPTION(COOKIE),// 56 cookie
 		WEIBO_OPTION(UPDATETGT), // 57 更新cookie
 
 		//自定义URL
 		WEIBO_OPTION(CUSTOM),// 58
-
-		// 新加接口,by welbon,2011-01-07
-		WEIBO_OPTION(HOT_REPOST_DAYLIY), //59 热门转发-by day
-		WEIBO_OPTION(HOT_REPOST_WEEKLY), //60 热门转发-by week
-		WEIBO_OPTION(HOT_COMMENT_DAYLIY), //61 热门评论-by day
-		WEIBO_OPTION(HOT_COMMENT_WEEKLY), // 62 热门评论-by week
 
 		WEIBO_OPTION(GET_USERS_HOT),//63 获取系统推荐用户
 		WEIBO_OPTION(POST_USERS_REMARK),//64 更新修改当前登录用户所关注的某个好友的备注信息New!
@@ -1012,16 +1005,6 @@ extern "C" {
 		t_wb_oauth wbauth_;
 	};
 
-	// 举报
-	struct t_wb_report
-	{
-		t_wb_oauth wbauth_;
-
-        WBChar ip_[WB_REAL_LEN(IP)];///< 举报人IP
-        WBChar url_[WB_REAL_LEN(URL)];///< 举报url
-        WBChar content_[WB_REAL_LEN(WB_INFO)];///< 举报内容 
-	};
-
 	// cookie 方式
 	struct t_wb_cookie
 	{
@@ -1052,15 +1035,6 @@ extern "C" {
 		WBChar szUrl_[WB_REAL_LEN(URL)];
 		WBChar szPost_[WB_REAL_LEN(POST)]; ///< 参数
 		int    method_; ///< 请求方法，POST， GET
-	};
-
-	/** 热门微博/评论查询,内部接口.by welbon,2011-01-07 */
-	struct t_wb_hotpoint
-	{
-		t_wb_oauth wbauth_;
-
-		//
-		int count_; ///< 指定返回的条数
 	};
 
 	////////////////////////////////////////////////////////////////////////////

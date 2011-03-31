@@ -603,7 +603,6 @@ const lohttp::HTTPChar* Weibo_url_geturi( WEIBOoption option )
 		{WEIBO_OPTION(GET_STATUSES_SEARCH) , HTTP_T("/statuses/search")},//47 搜索微博(多条件组合) (仅对合作开发者开放) 
 
 		{WEIBO_OPTION(GET_PROVINCES) , HTTP_T("/provinces")},//48 省份城市编码表 
-		{WEIBO_OPTION(REPORT)  , HTTP_T("/report_spam")},//49 举报
 
 		// cookie
 		{WEIBO_OPTION(COOKIE)  , HTTP_T("/sso/login.php")},// 获取COOKIE
@@ -611,12 +610,6 @@ const lohttp::HTTPChar* Weibo_url_geturi( WEIBOoption option )
 
 		// custom
 		{WEIBO_OPTION(CUSTOM)  , HTTP_T("")},
-
-		// 热门接口
-		{WEIBO_OPTION(HOT_REPOST_DAYLIY)   ,HTTP_T("/statuses/hot/repost_daily")   }, //热门转发-by day
-		{WEIBO_OPTION(HOT_REPOST_WEEKLY)   ,HTTP_T("/statuses/hot/repost_weekly")  }, //热门转发-by week
-		{WEIBO_OPTION(HOT_COMMENT_DAYLIY)  ,HTTP_T("/statuses/hot/comments_daily") }, //热门评论-by day
-		{WEIBO_OPTION(HOT_COMMENT_WEEKLY)  ,HTTP_T("/statuses/hot/comments_weekly")}, //热门评论-by week
 
 		// 用户接口（NEW）
 		{WEIBO_OPTION(GET_USERS_HOT)		,HTTP_T("/users/hot")},// 获取系统推荐用户
@@ -2081,18 +2074,6 @@ WEIBO_url_callback(GET_PROVINCES)
 	return 0;
 }
 
-WEIBO_url_callback(REPORT)
-{//49 
-	int   ret = -1;
-	WEIBO_struct_cast(t_wb_report);
-
-	URICHECK_RETURN( Weibo_url_get_uri(URI , WEIBO_OPTION(REPORT), req_ex)  );
-
-	HTTP_SET_POST_METHOD();
-
-	return 0;
-}
-
 WEIBO_url_callback(COOKIE)
 {
 	int   ret = -1;
@@ -2131,54 +2112,6 @@ WEIBO_url_callback(UPDATETGT)
 // 自定义
 WEIBO_url_callback(CUSTOM)
 {
-	return 0;
-}
-
-/**  热点实现 */
-int WEIBO_HotPoint_url_callback(lohttp::HTTPChar *URI,const void* t_wb ,const struct t_wb_REQ_EX* req_ex,const int type)
-{
-	int ret = -1;
-	WEIBO_struct_cast(t_wb_hotpoint);
-	URICHECK_RETURN( Weibo_url_get_uri(URI , (WEIBOoption)type, req_ex) );
-	//
-	if( pstruct->count_) 
-	{
-		WBChar val[16] = {0};
-		_TSPRINTF(val ,"%d",pstruct->count_ );
-		Weibo_url_generate_URI( URI,HTTP_T("?counts"),val, PARAM_ENCODE_UTF8 );
-	}
-	return 0;
-}
-
-
-//热点
-WEIBO_url_callback(HOT_REPOST_DAYLIY)
-{
-	WEIBO_HotPoint_url_callback(URI,t_wb,req_ex,WEIBO_OPTION(HOT_REPOST_DAYLIY));
-	
-	HTTP_SET_GET_METHOD();
-
-	return 0;
-}
-WEIBO_url_callback(HOT_REPOST_WEEKLY)
-{
-	WEIBO_HotPoint_url_callback(URI,t_wb,req_ex,WEIBO_OPTION(HOT_REPOST_WEEKLY));
-	HTTP_SET_GET_METHOD();
-
-	return 0;
-}
-WEIBO_url_callback(HOT_COMMENT_DAYLIY)
-{
-	WEIBO_HotPoint_url_callback(URI,t_wb,req_ex,WEIBO_OPTION(HOT_COMMENT_DAYLIY));
-	HTTP_SET_GET_METHOD();
-
-	return 0;
-}
-WEIBO_url_callback(HOT_COMMENT_WEEKLY)
-{
-	WEIBO_HotPoint_url_callback(URI,t_wb,req_ex,WEIBO_OPTION(HOT_COMMENT_WEEKLY));
-	HTTP_SET_GET_METHOD();
-
 	return 0;
 }
 
@@ -2678,18 +2611,12 @@ f_url_callback vector_url_callbak[]=
 	WEIBO_url_fun(GET_STATUSES_SEARCH),//47 搜索微博(多条件组合) (仅对合作开发者开放) 
 
 	WEIBO_url_fun(GET_PROVINCES),// 48 省份城市编码表 
-	WEIBO_url_fun(REPORT),//49 举报
+
 	// cookie 
 	WEIBO_url_fun(COOKIE),
 	WEIBO_url_fun(UPDATETGT),// UPDATETGT,
 	// buffer
 	WEIBO_url_fun(CUSTOM),
-
-	// hot point 
-	WEIBO_url_fun(HOT_REPOST_DAYLIY),
-	WEIBO_url_fun(HOT_REPOST_WEEKLY),
-	WEIBO_url_fun(HOT_COMMENT_DAYLIY),
-	WEIBO_url_fun(HOT_COMMENT_WEEKLY),
 
 	//user interface new
 	WEIBO_url_fun(GET_USERS_HOT),// 获取系统推荐用户

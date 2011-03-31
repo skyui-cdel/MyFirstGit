@@ -281,10 +281,6 @@ void* Weibo_senddata_create(int type , const void* senddata)
 		MALLOC( t_wb_provinces );
 		break;
 
-	case WEIBO_OPTION(REPORT):
-		MALLOC( t_wb_report );
-		break;
-
 	case WEIBO_OPTION(COOKIE):
 		MALLOC( t_wb_cookie );
 		break;
@@ -295,13 +291,6 @@ void* Weibo_senddata_create(int type , const void* senddata)
 
 	case WEIBO_OPTION(CUSTOM):
 		MALLOC(  t_wb_custom );
-		break;
-
-	case WEIBO_OPTION(HOT_REPOST_DAYLIY):
-	case WEIBO_OPTION(HOT_REPOST_WEEKLY):
-	case WEIBO_OPTION(HOT_COMMENT_DAYLIY):
-	case WEIBO_OPTION(HOT_COMMENT_WEEKLY):
-		MALLOC( t_wb_hotpoint );
 		break;
 
 	case WEIBO_OPTION(GET_USERS_HOT):

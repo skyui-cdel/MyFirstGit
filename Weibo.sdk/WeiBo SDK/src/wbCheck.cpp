@@ -694,12 +694,6 @@ WEIBO_check_callback(GET_PROVINCES)
 	return Err_OK;
 }
 
-WEIBO_check_callback(REPORT)
-{
-	return Err_OK;
-}
-
-
 WEIBO_check_callback(COOKIE)
 {
 	WEIBO_struct_cast(t_wb_cookie);
@@ -751,28 +745,6 @@ WEIBO_check_callback(CUSTOM)
 {
 	return Err_OK;
 }
-
-// 热点推荐
-WEIBO_check_callback(HOT_REPOST_DAYLIY)
-{
-	return Err_OK;
-}
-
-WEIBO_check_callback(HOT_REPOST_WEEKLY)
-{
-	return Err_OK;
-}
-
-WEIBO_check_callback(HOT_COMMENT_DAYLIY)
-{
-	return Err_OK;
-}
-
-WEIBO_check_callback(HOT_COMMENT_WEEKLY)
-{
-	return Err_OK;
-}
-
 
 //用户接口NEW
 WEIBO_check_callback(GET_USERS_HOT)
@@ -1101,7 +1073,6 @@ f_check_callback vector_check_callbak[]=
 	WEIBO_check_fun(GET_STATUSES_SEARCH),// 搜索微博(多条件组合) (仅对合作开发者开放) 
 
 	WEIBO_check_fun(GET_PROVINCES),//  省份城市编码表 
-	WEIBO_check_fun(REPORT),// 举报
 
 	// cookie 
 	WEIBO_check_fun(COOKIE),
@@ -1110,11 +1081,6 @@ f_check_callback vector_check_callbak[]=
 	//
 	WEIBO_check_fun(CUSTOM),
 
-	// hot point 
-	WEIBO_check_fun(HOT_REPOST_DAYLIY),
-	WEIBO_check_fun(HOT_REPOST_WEEKLY),
-	WEIBO_check_fun(HOT_COMMENT_DAYLIY),
-	WEIBO_check_fun(HOT_COMMENT_WEEKLY),
 
 	//
 	WEIBO_check_fun(GET_USERS_HOT),// 获取系统推荐用户
