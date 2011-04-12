@@ -45,14 +45,14 @@ void testJson()
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	testJson();
+	//testJson();
 
 	lohttp::LOHttp* pHttp =  lohttp::Http_createobject();
 
 
 	lohttp::Http_seturl(pHttp , HTTP_T("http://sina.com.cn") );
 
-#if 0
+#if 1
 	// 异步
 	lohttp::Http_setopt(pHttp , lohttp::LOHTTP_OPT_setmethod ,lohttp::E_HTTP_GET_METHOD );
 	lohttp::Http_start_asyn( pHttp );
@@ -60,7 +60,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 	// 下载到文件
-    lohttp::Http_setopt(pHttp , lohttp::LOHTTP_OPT_setmethod ,lohttp::E_HTTP_DOWNLOAD_FILE );
+    lohttp::Http_setopt(pHttp , lohttp::LOHTTP_OPT_setmethod ,lohttp::E_HTTP_DOWNLOAD_METHOD );
 	lohttp::Http_setopt(pHttp , lohttp::LOHTTP_OPT_setfile , HTTP_T("C:\\Users\\Loach\\Documents\\") , HTTP_T("sina.html") );
 	lohttp::Http_start_asyn( pHttp );
 	lohttp::Http_wait( pHttp );

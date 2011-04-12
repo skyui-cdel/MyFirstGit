@@ -6,7 +6,6 @@
 	ProjectGUID="{3EED7235-2F4E-4D98-9408-74F1ED102689}"
 	RootNamespace="HttpDownload"
 	Keyword="Win32Proj"
-	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
 		<Platform
@@ -68,7 +67,7 @@
 				AdditionalDependencies="curllib_7.21.1_VC80.lib wsock32.lib"
 				OutputFile="$(OutDir)\HttpU_VC80.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\..\lib\$(ConfigurationName)"
+				AdditionalLibraryDirectories="&quot;..\..\lib\$(ConfigurationName)&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -90,6 +89,9 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -147,7 +149,7 @@
 				AdditionalDependencies="curllib_7.21.1_VC80.lib wsock32.lib"
 				OutputFile="$(OutDir)\HttpU_VC80.dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\..\lib\$(ConfigurationName)"
+				AdditionalLibraryDirectories="&quot;..\..\lib\$(ConfigurationName)&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -171,6 +173,9 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -503,6 +508,9 @@
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
+				Name="VCWebDeploymentTool"
+			/>
+			<Tool
 				Name="VCPostBuildEventTool"
 				CommandLine="copy &quot;$(TargetDir)$(TargetName).lib&quot; &quot;..\..\lib\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;..\..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;..\..\bin\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
@@ -582,6 +590,9 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
