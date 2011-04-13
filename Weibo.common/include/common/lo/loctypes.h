@@ -23,8 +23,8 @@ typedef unsigned short uint16;
 typedef unsigned char uint8;
 
 //
-template<class T> inline T _min(T a, T b) { return (a > b) ? b : a; }
-template<class T> inline T _max(T a, T b) { return (a < b) ? b : a; }
+#define MIN_(a, b) ((a) > (b)) ? (b) : (a)
+#define MAX_(a,b)  ((a) < (b)) ? (b) : (a)
 
 #if defined(UNICODE) || defined(_UNICODE)
 typedef wchar_t  loTCHAR;

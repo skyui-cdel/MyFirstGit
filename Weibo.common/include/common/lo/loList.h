@@ -60,6 +60,7 @@ public:
 	* @param element The pointer on the element to add.
 	*/
 	int add (T element , POSITION_l insert=NULL);
+	POSITION_l add_position(T element , POSITION_l insert=NULL);
 	/**
 	* Remove an element from a list.
 	* @param li The element to work on.
@@ -179,41 +180,65 @@ POSITION_l CloListT<T>::query( PNodeQueryCallBack queryCB , void* object)
 }
 
 template<class T>
-int CloListT<T>::size() const{
+int CloListT<T>::size() const
+{
 	return m_counts;
 }
 
 template<class T>
 int CloListT<T>::add (T el , POSITION_l position)
 {
-	CloNodeT<T> *node  = 0;
+	int i = m_counts;
+	if( !add_position(el , position) )
+	{
+		return -1;
+	}
+	return i;
+}
+
+template<class T>
+POSITION_l CloListT<T>::add_position(T el , POSITION_l position)
+{
+	CloNodeT<T> *newnode = 0;
 	CloNodeT<T> *insert= Position_node_cast(position);
-	int i = 0;
 	if (m_counts == 0)
 	{
-		m_first = new  CloNodeT<T>();
-		if (m_first == NULL)
-			return -1;
-		m_first->element = el;
-		m_first->next = 0;
-		m_first->prev = 0;
-		m_tail = m_first;
+		newnode = new CloNodeT<T>();		
+		if (newnode == NULL)
+		{
+			return NULL;
+		}
+		newnode->element = el;
+		newnode->next = 0;
+		newnode->prev = 0;
+		m_tail = m_first = newnode;
 	}
-	else if( !insert ) {
-		node = Position_node_cast( last() );
-		if ( !node ) return -1;
-		CloNodeT<T> *nextnode = new CloNodeT<T>();
-		if ( !nextnode ) return -1;
-		nextnode->element = el;
-		nextnode->next = NULL;
-		nextnode->prev = node;
-		node->next = nextnode;			
-		m_tail = nextnode;
+	else if( !insert )
+	{
+		CloNodeT<T> *node = Position_node_cast( last() );
+		if ( !node )
+		{
+			return NULL;
+		}
+		newnode = new CloNodeT<T>();
+		if ( !newnode )
+		{
+			return NULL;
+		}
+		newnode->element = el;
+		newnode->next = NULL;
+		newnode->prev = node;
+		node->next = newnode;			
+		m_tail = newnode;
 	}
-	else {
-		CloNodeT<T> *prev =0;
-		CloNodeT<T> *newnode = new CloNodeT<T>();
-		if ( !newnode ) return -1;
+	else 
+	{
+		CloNodeT<T> *prev = 0;
+		newnode = new CloNodeT<T>();
+		if ( !newnode ) 
+		{
+			return NULL;
+		}
 		newnode->element = el;
 		newnode->next    = 0;
 		newnode->prev    = 0;
@@ -222,12 +247,17 @@ int CloListT<T>::add (T el , POSITION_l position)
 		newnode->next = insert;
 		newnode->prev = prev;
 		if( prev )
+		{
 			prev->next= newnode;
+		}
 		insert->prev   = newnode ;
 		if( insert == m_first )
+		{
 			m_first = newnode;
+		}
 	}
-	return (m_counts++);
+	m_counts++;
+	return Node_position_cast(newnode);
 }
 
 template<class T>

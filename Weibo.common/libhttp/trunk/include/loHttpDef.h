@@ -213,7 +213,7 @@ namespace lohttp
 	}EHttpProxyType;
 
 	const int HTTP_BUFFER_STREAM_LENGTH  = 1024*10;
-	const int HTTP_URL_LENGTH = 1024 ;
+	const int HTTP_URL_LENGTH = 2048 ;
 
 	/** 下载数据缓冲区 */
 	struct  THttpBuffer
@@ -225,7 +225,7 @@ namespace lohttp
 	/** http 传输时间记录 */
 	struct THttpTime
 	{
-		HTTPChar szURL[1024];
+		HTTPChar szURL[HTTP_URL_LENGTH];
 		time_t	 tRequest;
 		time_t	 tResponse;
 	};

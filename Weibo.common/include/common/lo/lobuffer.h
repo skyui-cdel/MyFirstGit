@@ -25,23 +25,37 @@ public:
 	(tj).data = (char*)c;\
 	(tj).len = strlen(c);}
 
+#define lo_Buffer_tdata_char_len(tj,c,size){\
+	(tj).data = (char*)c;\
+	(tj).len = size;}
+
 #define lo_Buffer_tdata_wchar(tj,c){\
 	(tj).data = (char*)c;\
 	(tj).len = wcslen(c)*sizeof(wchar_t);}
 
-#define lo_Buffer_tdata_buff(tj,c,l){\
+#define lo_Buffer_tdata_wchar_len(tj,c,size){\
 	(tj).data = (char*)c;\
-	(tj).len = l;}
+	(tj).len = size*sizeof(wchar_t);}
+
+#define lo_Buffer_tdata_buff(tj,c,size){\
+	(tj).data = (char*)c;\
+	(tj).len = size;}
 
 	// 为 char 类型
 #define lo_Buffer_for_char_copy(buffer_lo,buf) {\
 	size_t l = strlen(buf);\
 	(buffer_lo).str(buf,l);}
-
+	
+#define lo_Buffer_for_char_copy_len(buffer_lo,buf,l) {\
+	(buffer_lo).str(buf,l);}
+	
 	// 为 wchar 类型
 #define lo_Buffer_for_wchar_copy(buffer_lo,buf) {\
 	size_t l = wcslen(buf);\
 	(buffer_lo).str(buf,l*sizeof(wchar_t));}
+
+#define lo_Buffer_for_wchar_copy_len(buffer_lo,buf,size) {\
+	(buffer_lo).str((const char*)buf,size*sizeof(wchar_t));}
 
 	// 为 buff , l指定长度
 #define lo_Buffer_for_buff_copy(buffer_lo,buf,l) \
@@ -67,21 +81,38 @@ public:
 	}
 	const CloBuffer& operator = (const CloBuffer& d)
 	{
-		str( d.c_str() ,d.length() );
+		str( d.data() ,d.length() );
 		return *this;
 	}
 
 	// read interface
 	const char* c_str(void) const{
-		return _tdata_lo.data;
+		if( _tdata_lo.data )
+		{
+			return _tdata_lo.data;
+		}
+		return "";
+	}
+	const wchar_t* wc_str(void){
+		if( _tdata_lo.data )
+		{
+			return (wchar_t*)_tdata_lo.data;
+		}
+		return L"";
 	}
 
 	char* data(void) const{
 		return _tdata_lo.data;
 	}
+	wchar_t* wdata(void){
+		return (wchar_t*)_tdata_lo.data;
+	}
 
 	size_t length() const{
 		return _tdata_lo.len;
+	}
+	size_t wlength() const{
+		return _tdata_lo.len/sizeof(wchar_t);
 	}
 
 	bool operator == (const CloBuffer& buff)

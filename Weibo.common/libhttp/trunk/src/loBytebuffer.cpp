@@ -133,9 +133,9 @@ void CloByteBuffer::WriteBytes(size_t index,const char* val,size_t len)
 
 void CloByteBuffer::Resize(size_t size) {
 	if (size > size_)
-		size = _max(size, 3 * size_ / 2);
+		size = MAX_(size, 3 * size_ / 2);
 
-	size_t len = _min(end_ - start_, size);
+	size_t len = MIN_(end_ - start_, size);
 	char* new_bytes = new char[size];
 	memcpy(new_bytes, bytes_ + start_, len);
 	delete [] bytes_;

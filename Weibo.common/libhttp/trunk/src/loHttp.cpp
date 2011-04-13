@@ -62,10 +62,109 @@ void CloHttp::ClearHeader()
 	m_pAssoc->ClearHeader();
 }
 
+//int CloHttp::Split_url_param(const HTTPChar*& next , const HTTPChar*& key ,
+//							 const HTTPChar*& qe , const HTTPChar*& split ,const char endflag )
+//{
+//	if( !next || *next == '\0' )
+//		return -1;
+//
+//	key = next; 
+//	// 前面的空格除掉
+//	do
+//	{
+//		if( *key != 0x20 || *key == '\0' ) break;
+//		key++;
+//	}while(1);
+//
+//	qe = strchr(key , '=' );
+//	if( !qe )
+//		return -1;
+//
+//	split = strchr( (qe+1) , endflag);
+//
+//	if(split) next = (split + 1 );
+//	else next = 0;
+//
+//	return 0;
+//}
+//
+//int CloHttp::Split_url_copy_keyval(HTTPChar* val , const HTTPChar* start , const HTTPChar* end)
+//{
+//	if( !val || !start || *start == '\0' )
+//		return -1;
+//
+//	if( end && end <= start )
+//		return -1;
+//
+//	if( !end || *end == '\0' )
+//	{
+//		strcpy(val , start );
+//	}
+//	else
+//	{
+//		strncpy(val , start , end - start );		
+//	}
+//	return 0;
+//}
+
+void CloHttp::InitURL( const HTTPChar* szUrl,int method )
+{
+	HTTPChar szURI[ConstURLLength]={0};
+	HTTP_TCSCPY_S(szURI , ConstURLLength, szUrl);
+
+	if( E_HTTP_GET_METHOD != method &&
+		E_HTTP_DOWNLOAD_METHOD != method )
+	{// 其他的就需要用把参数
+		HTTPChar* szFind = HTTP_TCSCHR(szURI, HTTP_T('?') );
+		if( szFind )
+		{
+			HTTPChar* szFind1 = szFind;
+			szFind1++;
+
+			HTTPChar* key = 0;
+			HTTPChar* param = HTTP_TCSCHR(szFind1 ,HTTP_T('&') );
+			*szFind = HTTP_T('\0');
+			do
+			{
+				if( param )
+				{
+					*param = HTTP_T('\0');
+					param++;
+				}
+				key = HTTP_TCSCHR(szFind1 ,HTTP_T('=') );
+				if( key )
+				{
+					*key = HTTP_T('\0');
+					key++;
+					AddParam(szFind1 , key);
+				}
+				else
+				{
+					assert(0);
+				}
+				szFind1 = param;
+				if( !szFind1 || *szFind1 == HTTP_T('\0') )
+				{
+					break;
+				}
+				else
+				{
+					param = HTTP_TCSCHR(szFind1 ,HTTP_T('&') );
+				}
+			}while(1);				
+		}		
+	}
+	SetURL(szURI);
+}
+
 #define REQUEST_CHECK( ret ) \
 {\
 	if( szUrl && *szUrl != '\0' ) \
-	   HTTP_TCSCPY_S(m_pAssoc->m_szURL , 1024, szUrl);\
+    {\
+	    InitURL(szUrl,method);\
+    }else{\
+	    InitURL(m_pAssoc->m_szURL,method);\
+    }\
 	if( !m_pAssoc->m_pHttpCurl ) return ret;\
 	if( *m_pAssoc->m_szURL == '\0' ) return ret;\
 }\
@@ -377,7 +476,7 @@ void CloHttp::SetUserAgent(const HTTPChar* szAgent)
 #define START_HTTP_TIME() \
 	THttpTime dTime;\
 	time_t now;\
-	HTTP_TCSCPY_S(dTime.szURL, 1024, m_pAssoc->m_szURL );\
+	HTTP_TCSCPY_S(dTime.szURL, ConstURLLength, m_pAssoc->m_szURL );\
 	time(&now);\
 	dTime.tRequest = now;\
 

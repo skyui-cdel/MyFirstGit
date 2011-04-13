@@ -91,8 +91,9 @@ namespace lohttp
 
 		// http method
 	private:
-        /** init url */
 		void InitURL( const HTTPChar* szUrl,int method );
+		//int  Split_url_copy_keyval(HTTPChar* val , const HTTPChar* start , const HTTPChar* end);
+		//int  Split_url_param(const HTTPChar*& next , const HTTPChar*& key , const HTTPChar*& qe , const HTTPChar*& split ,const char endflag );
 
 		/** donwload to header AND body */
 		int	 HttpMethodGet();

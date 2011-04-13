@@ -130,7 +130,7 @@ namespace lohttp
 	const int ConstFormNameLength = 256;
 	const int ConstFormContentLength = 1024;
 	const int ConstHeadLength = 4096;
-	const int ConstURLLength = 1024;
+	const int ConstURLLength = 2048;
 	const int ConstUploadParamLength = 1024;
 
 

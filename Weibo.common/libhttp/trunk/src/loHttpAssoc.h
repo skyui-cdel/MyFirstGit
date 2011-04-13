@@ -6,7 +6,7 @@
 #include "loHttpStr.h"
 #include "loHttpStruct.h"
 #include "loHttpCurl.h"
-#include "common/loBytebuffer.h"
+#include "loBytebuffer.h"
 #include "loHttpThread.h"
 
 
