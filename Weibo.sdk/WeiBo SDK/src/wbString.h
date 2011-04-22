@@ -63,8 +63,8 @@ const char* MbcsToUTF8(const char *zz , char** outstr);
 
 #define _TCSCPY_S     strcpy
 #define _TCSCAT_S     strcat
-#define _TSPRINTF     sprintf
-#define _ITOT         itoa
+#define _TSPRINTF      sprintf
+#define _ITOT             _itoa
 
 #define Char_2HTTPChar(S)   S
 #define Char_2WBChar(S)     S

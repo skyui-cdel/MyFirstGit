@@ -201,7 +201,7 @@ extern "C" {
 		CIntToStr(int count)
 		{
 			_out[0] = '\0';
-			itoa(count , _out , 10 );
+			_itoa(count , _out , 10 );
 		}
 		const char* c_str() const{ return _out;}
 	private:
