@@ -35,8 +35,8 @@
 	<Configurations>
 		<Configuration
 			Name="DLL Debug|STANDARDSDK_500 (ARMV4I)"
-			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory="..\..\bin\WINCE\W500\ARMV4I\$(ConfigurationName)"
+			IntermediateDirectory="..\..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
 			>
@@ -86,7 +86,7 @@
 				AdditionalDependencies="json_VC80.lib tinyxml_VC80.lib wcecompat.lib"
 				OutputFile="$(OutDir)/$(ProjectName)U_VC80.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\..\..\third-party\lib\WINCE\w500\ARMV4I\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;..\..\third-party\lib\WINCE\w500\ARMV4I\$(ConfigurationName)&quot;"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
@@ -280,8 +280,8 @@
 		</Configuration>
 		<Configuration
 			Name="DLL Debug|STANDARDSDK_500 (MIPSII)"
-			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory="..\..\bin\WINCE\W500\MIPSII\$(ConfigurationName)"
+			IntermediateDirectory="..\..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
 			>
@@ -304,7 +304,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\common;&quot;..\..\..\third-party\include&quot;"
+				AdditionalIncludeDirectories="..\..\common;..\Convt;..\include;&quot;..\..\..\third-party\include&quot;"
 				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;BUILDING_LIBWBPARSER"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
@@ -330,7 +330,7 @@
 				AdditionalDependencies="json_VC80.lib tinyxml_VC80.lib wcecompat.lib"
 				OutputFile="$(OutDir)/$(ProjectName)U_VC80.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\..\..\third-party\lib\WINCE\w500\MIPSII\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;..\..\third-party\lib\WINCE\w500\MIPSII\$(ConfigurationName)&quot;"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
@@ -351,7 +351,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="xcopy &quot;$(TargetDir)$(TargetName).lib&quot; &quot;..\..\lib\wince\w500\MIPSII\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;xcopy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;"
+				CommandLine=""
 			/>
 			<DeploymentTool
 				ForceDirty="-1"
@@ -604,8 +604,8 @@
 		</Configuration>
 		<Configuration
 			Name="DLL Release|STANDARDSDK_500 (ARMV4I)"
-			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory="..\..\bin\WINCE\W500\ARMV4I\$(ConfigurationName)"
+			IntermediateDirectory="..\..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
 			>
@@ -628,7 +628,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="2"
-				AdditionalIncludeDirectories="..\..\common;&quot;..\..\..\third-party\include&quot;"
+				AdditionalIncludeDirectories="..\..\common;..\Convt;..\include;&quot;..\..\..\third-party\include&quot;"
 				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;BUILDING_LIBWBPARSER;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;WEIBOPARSER_EXPORTS"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="2"
@@ -653,7 +653,7 @@
 				AdditionalDependencies="json_VC80.lib tinyxml_VC80.lib wcecompat.lib"
 				OutputFile="$(OutDir)/$(ProjectName)U_VC80.dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\..\..\third-party\lib\WINCE\w500\ARMV4I\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;..\..\third-party\lib\WINCE\w500\ARMV4I\$(ConfigurationName)&quot;"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
@@ -851,8 +851,8 @@
 		</Configuration>
 		<Configuration
 			Name="DLL Release|STANDARDSDK_500 (MIPSII)"
-			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
+			OutputDirectory="..\..\bin\WINCE\W500\MIPSII\$(ConfigurationName)"
+			IntermediateDirectory="..\..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
 			>
@@ -875,7 +875,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="2"
-				AdditionalIncludeDirectories="..\..\common;&quot;..\..\..\third-party\include&quot;"
+				AdditionalIncludeDirectories="..\..\common;..\Convt;..\include;&quot;..\..\..\third-party\include&quot;"
 				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;BUILDING_LIBWBPARSER"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="2"
@@ -900,7 +900,7 @@
 				AdditionalDependencies="json_VC80.lib tinyxml_VC80.lib wcecompat.lib"
 				OutputFile="$(OutDir)/$(ProjectName)U_VC80.dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\..\..\third-party\lib\WINCE\w500\MIPSII\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;..\..\third-party\lib\WINCE\w500\MIPSII\$(ConfigurationName)&quot;"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
@@ -923,7 +923,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="xcopy &quot;$(TargetDir)$(TargetName).lib&quot; &quot;..\..\lib\wince\w500\MIPSII\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;xcopy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;"
+				CommandLine="xcopy &quot;$(TargetDir)$(TargetName).lib&quot; &quot;..\..\lib\wince\w500\MIPSII\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;xcopy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;..\..\bin\wince\w500\MIPSII\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;"
 			/>
 			<DeploymentTool
 				ForceDirty="-1"
@@ -1321,7 +1321,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\wbParser.h"
+				RelativePath="..\include\wbParser.h"
 				>
 			</File>
 		</Filter>
@@ -1335,52 +1335,20 @@
 			Name="common"
 			>
 			<File
-				RelativePath="..\..\common\strconv.cpp"
+				RelativePath="..\Convt\strconv.cpp"
 				>
-				<FileConfiguration
-					Name="DLL Debug|STANDARDSDK_500 (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DLL Debug|STANDARDSDK_500 (MIPSII)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DLL Release|STANDARDSDK_500 (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DLL Release|STANDARDSDK_500 (MIPSII)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\common\strconv.h"
+				RelativePath="..\Convt\strconv.h"
 				>
 			</File>
 		</Filter>
 		<File
-			RelativePath="..\ReadMe.txt"
+			RelativePath=".\ReadMe.txt"
 			>
 		</File>
 		<File
-			RelativePath=".\ReadMe.txt"
+			RelativePath="..\ReadMe.txt"
 			>
 		</File>
 	</Files>
