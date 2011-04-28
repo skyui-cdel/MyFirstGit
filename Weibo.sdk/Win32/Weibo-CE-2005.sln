@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libWeiboCE", "..\WeiBo SDK\libWeiboCE\libWeiboCE.vcproj", "{E621678F-68E8-43CD-AF73-0B7B5B3FF2D0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Weibo", "..\WeiBo SDK\libWeiboCE\libWeiboCE.vcproj", "{E621678F-68E8-43CD-AF73-0B7B5B3FF2D0}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestCE", "..\WeiBo SDK\test\TestCE\TestCE.vcproj", "{24071E1E-C224-44AB-A3DA-D57B00F2BE13}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wbParserCE", "..\WeiBo SDK\wbParser\wbParserCE\wbParserCE.vcproj", "{13AA141B-A8D7-4227-A9D6-1C2881E67A49}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WbParser", "..\WBParseWrapper\wbParserCE\wbParserCE.vcproj", "{13AA141B-A8D7-4227-A9D6-1C2881E67A49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
