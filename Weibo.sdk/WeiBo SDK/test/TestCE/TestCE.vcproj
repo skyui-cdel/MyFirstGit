@@ -285,7 +285,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\libHttpU_VC80.dll&quot; &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\curllib_7.21.1_VC80.dll&quot;  &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\libeay32.dll&quot;  &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\ssleay32.dll&quot;  &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
+				CommandLine="xcopy &quot;..\..\..\lib\WINCE\W500\MIPSII\$(ConfigurationName)\*.dll&quot; &quot;..\..\bin\WINCE\W500\MIPSII\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;xcopy &quot;..\..\..\lib\WINCE\W500\MIPSII\$(ConfigurationName)\*.pdb&quot; &quot;..\..\bin\WINCE\W500\MIPSII\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;xcopy &quot;..\..\..\lib\WINCE\W500\MIPSII\$(ConfigurationName)\*.lib&quot; &quot;..\..\lib\WINCE\W500\MIPSII\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;xcopy &quot;..\..\..\third-party\lib\WINCE\W500\MIPSII\$(ConfigurationName)\*.lib&quot; &quot;..\..\lib\WINCE\W500\MIPSII\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\libHttpU_VC80.dll&quot; &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\curllib_7.21.1_VC80.dll&quot;  &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\libeay32.dll&quot;  &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\ssleay32.dll&quot;  &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -303,8 +303,8 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\;..\..\include"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_CONSOLE;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;USE_WEIBOPARSER;WEIBO_VC80"
+				AdditionalIncludeDirectories="..\;..\..\..\include"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_CONSOLE;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;USE_WEIBOPARSER;WEIBO_VC80;_USE_JSON_PARSER;WEIBO_PARSER_STATICLIB"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="2"
@@ -854,7 +854,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\libHttpU_VC80.dll&quot; &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\curllib_7.21.1_VC80.dll&quot;  &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\libeay32.dll&quot;  &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\ssleay32.dll&quot;  &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
+				CommandLine="xcopy &quot;..\..\..\lib\WINCE\W500\MIPSII\$(ConfigurationName)\*.dll&quot; &quot;..\..\bin\WINCE\W500\MIPSII\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;xcopy &quot;..\..\..\lib\WINCE\W500\MIPSII\$(ConfigurationName)\*.pdb&quot; &quot;..\..\bin\WINCE\W500\MIPSII\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;xcopy &quot;..\..\..\lib\WINCE\W500\MIPSII\$(ConfigurationName)\*.lib&quot; &quot;..\..\lib\WINCE\W500\MIPSII\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;xcopy &quot;..\..\..\third-party\lib\WINCE\W500\MIPSII\$(ConfigurationName)\*.lib&quot; &quot;..\..\lib\WINCE\W500\MIPSII\$(ConfigurationName)\&quot;   /E /Y /C /I&#x0D;&#x0A;copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\libHttpU_VC80.dll&quot; &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\curllib_7.21.1_VC80.dll&quot;  &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\libeay32.dll&quot;  &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;copy &quot;..\..\..\third-party\bin\WINCE\W500\MIPSII\$(ConfigurationName)\ssleay32.dll&quot;  &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -872,8 +872,8 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="2"
-				AdditionalIncludeDirectories="..\;..\..\include"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_CONSOLE;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;USE_WEIBOPARSER;WEIBO_VC80"
+				AdditionalIncludeDirectories="..\;..\..\..\include"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_CONSOLE;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;USE_WEIBOPARSER;WEIBO_VC80;_USE_JSON_PARSER;WEIBO_PARSER_STATICLIB"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
@@ -1182,6 +1182,10 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath="..\option.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -1308,6 +1312,10 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath="..\option.h"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.h"
 				>
 			</File>
@@ -1399,50 +1407,6 @@
 			</File>
 			<File
 				RelativePath="..\wbinit.h"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="WeiboParse"
-			>
-			<File
-				RelativePath="..\WeiboParse\UnitTestDisplay.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\WeiboParse\UnitTestDisplay.h"
-				>
-			</File>
-			<File
-				RelativePath="..\WeiboParse\WeiboParse.inl"
-				>
-			</File>
-			<File
-				RelativePath="..\WeiboParse\WeiboParseFunc.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\WeiboParse\WeiboParseFunc.h"
-				>
-			</File>
-			<File
-				RelativePath="..\WeiboParse\WeiboParseObj.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\WeiboParse\WeiboParseObj.h"
-				>
-			</File>
-			<File
-				RelativePath="..\WeiboParse\WeiboParserMemop.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\WeiboParse\WeiboParserMemop.h"
-				>
-			</File>
-			<File
-				RelativePath="..\WeiboParse\WeiboParseStruct.h"
 				>
 			</File>
 		</Filter>

@@ -20,9 +20,9 @@
 
 
 #if defined(WIN32) || defined(WINCE)
-#define GET_LONG_TO_STR(type,obj,key,out,outlen) _i64toa( wbParserNS::GetLONG_Key_##type( key,obj ),out,10 );
+#define GET_LONG_TO_STR(type,obj,key,out,outlen) _ltoa( wbParserNS::GetLONG_Key_##type( key,obj ),out,10 );
 #else
-#define GET_LONG_TO_STR(type,obj,key,out,outlen) sprintf( out,"%ld",GetLONG_Key_##type( key,obj ) );
+#define GET_LONG_TO_STR(type,obj,key,out,outlen) sprintf( out,"%llu",GetLONG_Key_##type( key,obj ) );
 #endif //
 
 

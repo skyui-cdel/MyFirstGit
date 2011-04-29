@@ -1742,16 +1742,16 @@ extern "C"{
 						{
 							const std::string &name    = *it;
 							const Json::Value& jovalue = (*jo)[name];
-							if( stricmp(name.c_str(),"ticket") == 0 )
+							if( strcmp(name.c_str(),"ticket") == 0 )
 							{// ticket
 								if( jovalue.type() == Json::stringValue)
 								{
 									const char* szTicket = jovalue.asCString();
-									if( strnicmp(szTicket,"ST-",3) == 0 )
+									if( strncmp(szTicket,"ST-",3) == 0 )
 									{
 										ticket = szTicket;
 									}
-									else if( strnicmp(szTicket,"ERR-",4) == 0 )
+									else if( strncmp(szTicket,"ERR-",4) == 0 )
 									{
 										std::string error = szTicket;
 										int pos = error.find('-');
@@ -1775,21 +1775,21 @@ extern "C"{
 									}
 								}
 							}					
-							else if( stricmp(name.c_str(),"uid") == 0 )
+							else if( strcmp(name.c_str(),"uid") == 0 )
 							{// uid
 								if( jovalue.type() == Json::stringValue)
 								{
 									uid = jovalue.asCString();
 								}
 							}
-							else if( stricmp(name.c_str(),"tgt") == 0 )
+							else if( strcmp(name.c_str(),"tgt") == 0 )
 							{
 								if( jovalue.type() == Json::stringValue)
 								{
 									tgt = jovalue.asCString();
 								}
 							}
-							else if( stricmp(name.c_str(),"retcode") == 0 )
+							else if( strcmp(name.c_str(),"retcode") == 0 )
 							{
 								if( jovalue.type() == Json::stringValue)
 								{
@@ -1801,17 +1801,17 @@ extern "C"{
 								}
 
 							}
-							else if( stricmp(name.c_str(),"servertime") == 0 )
+							else if( strcmp(name.c_str(),"servertime") == 0 )
 							{
 								if( jovalue.type() == Json::stringValue )
 									lservertime = _atoi64(jovalue.asString().c_str() );
 							}
-							else if( stricmp(name.c_str(),"publickey") == 0 )
+							else if( strcmp(name.c_str(),"publickey") == 0 )
 							{
 								if( jovalue.type() == Json::stringValue )
 									publickey = jovalue.asString();
 							}
-							else if( stricmp(name.c_str(),"keyversion") == 0 )
+							else if( strcmp(name.c_str(),"keyversion") == 0 )
 							{
 								if( jovalue.type() == Json::stringValue )
 									keyversion = jovalue.asString();

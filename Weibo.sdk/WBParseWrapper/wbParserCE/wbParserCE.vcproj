@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="WbParser"
+	Name="WBParseWrapper_VC80"
 	ProjectGUID="{13AA141B-A8D7-4227-A9D6-1C2881E67A49}"
 	RootNamespace="wbParserCE"
 	Keyword="Win32Proj"
@@ -280,9 +280,9 @@
 		</Configuration>
 		<Configuration
 			Name="DLL Debug|STANDARDSDK_500 (MIPSII)"
-			OutputDirectory="..\..\bin\WINCE\W500\MIPSII\$(ConfigurationName)"
+			OutputDirectory="..\..\lib\WINCE\W500\MIPSII\$(ConfigurationName)"
 			IntermediateDirectory="..\..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="1"
 			>
 			<Tool
@@ -304,8 +304,8 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\common;..\Convt;..\include;&quot;..\..\..\third-party\include&quot;"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;BUILDING_LIBWBPARSER"
+				AdditionalIncludeDirectories="..\..\common;..\Convt;..\include;&quot;..\..\third-party\include&quot;"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;WEIBO_PARSER_STATICLIB;WEIBO_VC80;_USE_JSON_PARSER"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="2"
@@ -325,17 +325,8 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions=" /subsystem:windowsce,5.00 /machine:MIPS"
-				AdditionalDependencies="json_VC80.lib tinyxml_VC80.lib wcecompat.lib"
-				OutputFile="$(OutDir)/$(ProjectName)U_VC80.dll"
-				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\..\third-party\lib\WINCE\w500\MIPSII\$(ConfigurationName)&quot;"
-				DelayLoadDLLs="$(NOINHERIT)"
-				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
-				SubSystem="0"
-				ImportLibrary="$(TargetDir)$(TargetName).lib"
+				Name="VCLibrarianTool"
+				AdditionalOptions=" /SUBSYSTEM:WINDOWSCE,5.00 /MACHINE:MIPS"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -851,9 +842,9 @@
 		</Configuration>
 		<Configuration
 			Name="DLL Release|STANDARDSDK_500 (MIPSII)"
-			OutputDirectory="..\..\bin\WINCE\W500\MIPSII\$(ConfigurationName)"
+			OutputDirectory="..\..\lib\WINCE\W500\MIPSII\$(ConfigurationName)"
 			IntermediateDirectory="..\..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="1"
 			>
 			<Tool
@@ -875,8 +866,8 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="2"
-				AdditionalIncludeDirectories="..\..\common;..\Convt;..\include;&quot;..\..\..\third-party\include&quot;"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;BUILDING_LIBWBPARSER"
+				AdditionalIncludeDirectories="..\..\common;..\Convt;..\include;&quot;..\..\third-party\include&quot;"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;WEIBO_PARSER_STATICLIB;WEIBO_VC80;_USE_JSON_PARSER"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
@@ -895,19 +886,8 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions=" /subsystem:windowsce,5.00 /machine:MIPS"
-				AdditionalDependencies="json_VC80.lib tinyxml_VC80.lib wcecompat.lib"
-				OutputFile="$(OutDir)/$(ProjectName)U_VC80.dll"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\..\third-party\lib\WINCE\w500\MIPSII\$(ConfigurationName)&quot;"
-				DelayLoadDLLs="$(NOINHERIT)"
-				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
-				SubSystem="0"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				ImportLibrary="$(TargetDir)$(TargetName).lib"
+				Name="VCLibrarianTool"
+				AdditionalOptions=" /SUBSYSTEM:WINDOWSCE,5.00 /MACHINE:MIPS"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -1191,6 +1171,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\splitstr.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -1307,7 +1291,23 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\wbParseImpl.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\wbParseMalloc.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\wbParseObj.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\wbParser.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\wbParseWrapper.cpp"
 				>
 			</File>
 		</Filter>
@@ -1317,11 +1317,27 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath="..\config.h"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.h"
 				>
 			</File>
 			<File
+				RelativePath="..\wbParseImpl.h"
+				>
+			</File>
+			<File
+				RelativePath="..\wbParseMacro.h"
+				>
+			</File>
+			<File
 				RelativePath="..\include\wbParser.h"
+				>
+			</File>
+			<File
+				RelativePath="..\wbParseT.hpp"
 				>
 			</File>
 		</Filter>
@@ -1344,11 +1360,11 @@
 			</File>
 		</Filter>
 		<File
-			RelativePath="..\ReadMe.txt"
+			RelativePath=".\ReadMe.txt"
 			>
 		</File>
 		<File
-			RelativePath=".\ReadMe.txt"
+			RelativePath="..\ReadMe.txt"
 			>
 		</File>
 	</Files>

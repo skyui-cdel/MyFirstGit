@@ -10,5 +10,8 @@ xcopy "Weibo.common/lib/DLL Release" "Weibo.sdk/third-party/lib/DLL Release" /E 
 @rem Include file,if you need,please turn it on.
 xcopy "Weibo.common/include" "Weibo.sdk/third-party/include" /E /Y /C /I
 
+@rem WinCE Library
+xcopy "Weibo.common/lib/WINCE" "Weibo.sdk/third-party/lib/WINCE" /E /Y /C /I
+xcopy "Weibo.common/bin/WINCE" "Weibo.sdk/third-party/bin/WINCE" /E /Y /C /I
 
 pause

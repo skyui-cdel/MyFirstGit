@@ -26,6 +26,7 @@
 *
 */
 
+#include "stdafx.h"
 #include "splitstr.h"
 #include <stdio.h>
 #include <stdlib.h>

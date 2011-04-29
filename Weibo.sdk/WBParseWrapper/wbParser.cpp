@@ -224,7 +224,7 @@ extern "C" {
 				else if ( jChildValue.isDouble()){
 					l = jChildValue.asDouble();
 				}
-				_i64toa( l,out,10); 
+				_i64toa_s(l, out, len, 10); 
 			}
 		}
 		WBPARSER_API void GetCHAR_Idx_JSON(const int idx,REQOBJ *obj,char *out,const int len)
@@ -257,7 +257,7 @@ extern "C" {
 				else if ( jChildValue.isDouble()){
 					l = jChildValue.asDouble();
 				}
-				_i64toa( l,out,10); 
+				_i64toa_s(l, out, len, 10); 
 			}
 		}
 		// string 
