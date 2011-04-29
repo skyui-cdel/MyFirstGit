@@ -35,9 +35,9 @@
 	<Configurations>
 		<Configuration
 			Name="DLL Debug|STANDARDSDK_500 (ARMV4I)"
-			OutputDirectory="..\..\bin\WINCE\W500\ARMV4I\$(ConfigurationName)"
+			OutputDirectory="..\..\lib\WINCE\W500\ARMV4I\$(ConfigurationName)"
 			IntermediateDirectory="..\..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="1"
 			>
 			<Tool
@@ -60,8 +60,8 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\common;..\Convt;..\include;&quot;..\..\..\third-party\include&quot;"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;BUILDING_LIBWBPARSER"
+				AdditionalIncludeDirectories="..\..\common;..\Convt;..\include;&quot;..\..\third-party\include&quot;"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;WEIBO_PARSER_STATICLIB;WEIBO_VC80;_USE_JSON_PARSER"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="2"
@@ -81,17 +81,8 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions=" /subsystem:windowsce,5.00"
-				AdditionalDependencies="json_VC80.lib tinyxml_VC80.lib wcecompat.lib"
-				OutputFile="$(OutDir)/$(ProjectName)U_VC80.dll"
-				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\..\third-party\lib\WINCE\w500\ARMV4I\$(ConfigurationName)&quot;"
-				DelayLoadDLLs="$(NOINHERIT)"
-				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
-				SubSystem="0"
-				ImportLibrary="$(TargetDir)$(TargetName).lib"
+				Name="VCLibrarianTool"
+				AdditionalOptions=" /SUBSYSTEM:WINDOWSCE,5.00"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -107,7 +98,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="xcopy &quot;$(TargetDir)$(TargetName).lib&quot; &quot;..\..\lib\wince\w500\ARMV4I\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;xcopy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;"
+				CommandLine=""
 			/>
 			<DeploymentTool
 				ForceDirty="-1"
@@ -595,9 +586,9 @@
 		</Configuration>
 		<Configuration
 			Name="DLL Release|STANDARDSDK_500 (ARMV4I)"
-			OutputDirectory="..\..\bin\WINCE\W500\ARMV4I\$(ConfigurationName)"
+			OutputDirectory="..\..\lib\WINCE\W500\ARMV4I\$(ConfigurationName)"
 			IntermediateDirectory="..\..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="1"
 			>
 			<Tool
@@ -619,8 +610,8 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="2"
-				AdditionalIncludeDirectories="..\..\common;..\Convt;..\include;&quot;..\..\..\third-party\include&quot;"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;BUILDING_LIBWBPARSER;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;WEIBOPARSER_EXPORTS"
+				AdditionalIncludeDirectories="..\..\common;..\Convt;..\include;&quot;..\..\third-party\include&quot;"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;BUILDING_LIBWBPARSER;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE;WEIBO_PARSER_STATICLIB;WEIBO_VC80;_USE_JSON_PARSER"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
@@ -639,19 +630,8 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions=" /subsystem:windowsce,5.00"
-				AdditionalDependencies="json_VC80.lib tinyxml_VC80.lib wcecompat.lib"
-				OutputFile="$(OutDir)/$(ProjectName)U_VC80.dll"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\..\third-party\lib\WINCE\w500\ARMV4I\$(ConfigurationName)&quot;"
-				DelayLoadDLLs="$(NOINHERIT)"
-				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
-				SubSystem="0"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				ImportLibrary="$(TargetDir)$(TargetName).lib"
+				Name="VCLibrarianTool"
+				AdditionalOptions=" /SUBSYSTEM:WINDOWSCE,5.00"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -667,7 +647,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="xcopy &quot;$(TargetDir)$(TargetName).lib&quot; &quot;..\..\lib\wince\w500\ARMV4I\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;xcopy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;..\..\bin\$(PlatformName)\$(ConfigurationName)\&quot; /E /Y /C /I&#x0D;&#x0A;"
+				CommandLine="&#x0D;&#x0A;"
 			/>
 			<DeploymentTool
 				ForceDirty="-1"

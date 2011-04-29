@@ -35,7 +35,7 @@
 	<Configurations>
 		<Configuration
 			Name="DLL Debug|STANDARDSDK_500 (ARMV4I)"
-			OutputDirectory="..\lib\WINCE\w500\$(PlatformName)\$(ConfigurationName)"
+			OutputDirectory="..\lib\WINCE\w500\ARMV4I\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
@@ -279,7 +279,7 @@
 		</Configuration>
 		<Configuration
 			Name="DLL Debug|STANDARDSDK_500 (MIPSII)"
-			OutputDirectory="..\lib\WINCE\w500\$(PlatformName)\$(ConfigurationName)"
+			OutputDirectory="..\lib\WINCE\w500\MIPSII\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
@@ -603,7 +603,7 @@
 		</Configuration>
 		<Configuration
 			Name="DLL Release|STANDARDSDK_500 (ARMV4I)"
-			OutputDirectory="..\lib\WINCE\w500\$(PlatformName)\$(ConfigurationName)"
+			OutputDirectory="..\lib\WINCE\w500\ARMV4I\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
@@ -850,7 +850,7 @@
 		</Configuration>
 		<Configuration
 			Name="DLL Release|STANDARDSDK_500 (MIPSII)"
-			OutputDirectory="..\lib\WINCE\w500\$(PlatformName)\$(ConfigurationName)"
+			OutputDirectory="..\lib\WINCE\w500\MIPSII\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\Build\$(PlatformName)\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
