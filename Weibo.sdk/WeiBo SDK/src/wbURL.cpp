@@ -767,6 +767,7 @@ void Weibo_url_http_option_param_URI(lohttp::HTTPChar URI[] , const struct t_wb_
 		HTTP_T("&role"),
 		HTTP_T("&follow"),
 		HTTP_T("&with_new_status"),
+		HTTP_T("&feature"),
 	};
 	for( int i = 1 ; i < OPT_PARAMS_COUNTS  ; i++ )
 	{

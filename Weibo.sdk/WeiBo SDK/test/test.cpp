@@ -381,15 +381,24 @@ void test_weibo(WEIBORequest* wbRequest , int option , struct t_wb_allstruct* pa
 		break;
 	case WEIBO_OPTION(GETSTATUSES_FRIENDS_TIMELINE):
 		{// 获取当前用户所关注用户的最新微博信息
+			
 			p_twb = &pall->stat_fri_tl;
-
+			
+			
 			Wb_init_wb_struct( option , p_twb);
+
+			printf("\n\nPlease enter the feature 0:all/1:self/2:pic/3:video/4:music :");
+			gets(content);
+
+            strcpy(pall->stat_fri_tl.wbopt_.szOpt_[t_wb_option_params::WBOPTType_feature] , content);
+			
 			// to fill other information 
 
 			// since_id: （微博信息ID) ;
 			// max_id: 可选参数（微博信息ID）;
 			// count: 可选参数. 每次返回的最大记录数，不能超过200，默认20. 
 			// page:可选参数. 返回结果的页序号。注意：有分页限制。根据用户关注对象发表的数量，通常最多返回1,000条最新微博分页内容, 默认1 
+			// feature: 可选参数.微博类型，0全部，1原创，2图片，3视频，4音乐. 返回指定类型的微博信息内容。 
 		}
 		break;
 	case WEIBO_OPTION(GETSTATUSES_USE_TIMELINE):

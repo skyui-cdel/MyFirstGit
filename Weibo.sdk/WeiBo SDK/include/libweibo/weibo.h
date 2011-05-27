@@ -272,7 +272,7 @@ extern "C" {
 		WEIBO_OPTION(LAST),
 	}WEIBOoption;
 
-	const int OPT_PARAMS_COUNTS = 9;
+	const int OPT_PARAMS_COUNTS = 10;
 	/** 动态参数 */
 	struct t_wb_option_params
 	{
@@ -287,6 +287,7 @@ extern "C" {
 			WBOPTType_role,
 			WBOPTType_follow,
 			WBOPTType_with_new_status, ///< for 获取当前用户Web未读消息数
+			WBOPTType_feature, ///< 返回指定类型的微博信息内容。
 		};
 		WBChar szOpt_[OPT_PARAMS_COUNTS][ WB_REAL_LEN(OPT_VALUE) ];///< 根据设置的type_，所以有 4组
 	};
